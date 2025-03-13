@@ -4,6 +4,7 @@ import { FadeInSection } from "@/components/animations/FadeInSection";
 import { DateRangeSelector, DateRange } from "@/components/DateRangeSelector";
 import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { CreateAdModal } from "./CreateAdModal";
 
 interface GoogleAdsHeaderProps {
   dateRange: DateRange;
@@ -36,9 +37,7 @@ export const GoogleAdsHeader: React.FC<GoogleAdsHeaderProps> = ({
               <Button variant="outline">
                 Export
               </Button>
-              <Button>
-                Create New Ad
-              </Button>
+              <CreateAdModal />
             </div>
           </div>
         </div>
