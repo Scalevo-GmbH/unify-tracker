@@ -45,6 +45,7 @@ import { Separator } from "@/components/ui/separator";
 import { NotificationsDropdown } from "@/components/notifications/NotificationsDropdown";
 import { useNotifications } from "@/hooks/use-notifications";
 import { Toaster } from "@/components/ui/toaster";
+import { CommandSearch } from "@/components/CommandSearch";
 
 export const Navbar: React.FC = () => {
   const isMobile = useIsMobile();
@@ -168,13 +169,8 @@ export const Navbar: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-2 sm:gap-4">
-            <div className="relative hidden md:flex items-center">
-              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-              <input 
-                type="text" 
-                placeholder="Search..." 
-                className="h-9 w-60 rounded-md border border-input bg-transparent pl-10 pr-4 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-              />
+            <div className="hidden md:block">
+              <CommandSearch />
             </div>
             
             <NotificationsDropdown 
@@ -230,14 +226,7 @@ export const Navbar: React.FC = () => {
                     />
                   </Link>
                   
-                  <div className="relative">
-                    <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                    <input 
-                      type="text" 
-                      placeholder="Search..." 
-                      className="h-9 w-full rounded-md border border-input bg-transparent pl-10 pr-4 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                    />
-                  </div>
+                  <CommandSearch isMobile={true} />
                   
                   <nav className="grid gap-2">
                     {mainMenuItems.map((item) => (
