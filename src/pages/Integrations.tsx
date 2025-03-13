@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -7,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { IntegrationCard } from "@/components/IntegrationCard";
 import { ConnectPlatformModal } from "@/components/ConnectPlatformModal";
 import FadeInSection from "@/components/animations/FadeInSection";
-import { Search } from "lucide-react";
+import { Search, Grid } from "lucide-react";
 import { 
   Facebook, 
   Instagram, 
@@ -188,6 +187,9 @@ const Integrations = () => {
     ],
   };
 
+  // Prepare an "all" category with all integrations combined
+  const allIntegrations = Object.values(integrations).flat();
+
   // Filter integrations based on search term
   const filterIntegrations = (integrations: any) => {
     if (!searchTerm) return integrations;
@@ -206,10 +208,17 @@ const Integrations = () => {
   
   const filteredIntegrations = filterIntegrations(integrations);
   
+  // Filter all integrations for the "all" tab
+  const filteredAllIntegrations = searchTerm 
+    ? allIntegrations.filter(integration => 
+        integration.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        integration.description.toLowerCase().includes(searchTerm.toLowerCase()))
+    : allIntegrations;
+  
   // Check if we have any results after filtering
   const hasResults = Object.values(filteredIntegrations).some(
     (category: any) => (category as any[]).length > 0
-  );
+  ) || filteredAllIntegrations.length > 0;
 
   return (
     <div className="container px-4 sm:px-6 lg:px-8 py-8">
@@ -232,9 +241,12 @@ const Integrations = () => {
         </div>
       </FadeInSection>
 
-      <Tabs defaultValue="advertising" className="space-y-4">
+      <Tabs defaultValue="all" className="space-y-4">
         <FadeInSection>
           <TabsList className="flex flex-wrap h-auto space-x-2 p-1 bg-transparent">
+            <TabsTrigger value="all" className="text-sm px-3 py-1.5 rounded-md">
+              All
+            </TabsTrigger>
             <TabsTrigger value="advertising" className="text-sm px-3 py-1.5 rounded-md">
               Advertising
             </TabsTrigger>
@@ -277,6 +289,53 @@ const Integrations = () => {
           </FadeInSection>
         ) : (
           <>
+            {/* New "All" tab content */}
+            <TabsContent value="all" className="space-y-4">
+              {filteredAllIntegrations.length === 0 ? (
+                <FadeInSection>
+                  <Card>
+                    <CardContent className="flex flex-col items-center justify-center py-8">
+                      <p className="text-muted-foreground">
+                        No integrations matching your search.
+                      </p>
+                    </CardContent>
+                  </Card>
+                </FadeInSection>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                  {filteredAllIntegrations.map((integration: any, index: number) => (
+                    <FadeInSection key={`all-${integration.name}`} delay={index * 50}>
+                      <IntegrationCard
+                        name={integration.name}
+                        icon={integration.icon}
+                        description={integration.description}
+                        popular={integration.popular}
+                        onClick={() => handleOpenModal(integration.name, integration.icon)}
+                        className="h-full"
+                      />
+                    </FadeInSection>
+                  ))}
+                  {!searchTerm && (
+                    <FadeInSection delay={(filteredAllIntegrations.length) * 50}>
+                      <div className="relative flex h-full flex-col items-center justify-center rounded-xl border border-dashed border-border bg-card/50 p-6 shadow-subtle transition-all duration-300 hover:bg-card hover:shadow-card cursor-pointer">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/5 mb-4">
+                          <span className="text-lg font-semibold">+</span>
+                        </div>
+                        <h3 className="text-base font-medium mb-2">Request Integration</h3>
+                        <p className="text-sm text-muted-foreground text-center flex-grow">
+                          Don't see what you need? Request a new integration.
+                        </p>
+                        <div className="mt-auto w-full">
+                          <div className="h-[38px]"></div>
+                        </div>
+                      </div>
+                    </FadeInSection>
+                  )}
+                </div>
+              )}
+            </TabsContent>
+
+            {/* Existing category tabs */}
             {Object.keys(integrations).map((category) => (
               <TabsContent key={category} value={category} className="space-y-4">
                 {filteredIntegrations[category].length === 0 ? (
@@ -340,3 +399,4 @@ const Integrations = () => {
 };
 
 export default Integrations;
+
