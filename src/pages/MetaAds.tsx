@@ -3,13 +3,15 @@ import { FadeInSection } from "@/components/animations/FadeInSection";
 import { MetricCard } from "@/components/MetricCard";
 import { PerformanceChart } from "@/components/PerformanceChart";
 import { DateRangeSelector, DateRange } from "@/components/DateRangeSelector";
-import { ArrowLeft, ArrowRight, Facebook, Users, Eye, MousePointerClick, Target, TrendingUp } from "lucide-react";
+import { ArrowLeft, ArrowRight, Facebook, Users, Eye, MousePointerClick, Target, TrendingUp, User, MapPin, BarChart3, Globe, Users2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import { BarChart, PieChart, Pie, Bar, Cell, XAxis, YAxis, ResponsiveContainer, Tooltip, Legend } from "recharts";
 
 const metaAdsData = [
   {
@@ -70,6 +72,55 @@ const metaAdsData = [
     adPreview: "/placeholder.svg",
   }
 ];
+
+const demographicsData = {
+  ageGroups: [
+    { name: "18-24", value: 15, fill: "#8884d8" },
+    { name: "25-34", value: 35, fill: "#83a6ed" },
+    { name: "35-44", value: 25, fill: "#8dd1e1" },
+    { name: "45-54", value: 15, fill: "#82ca9d" },
+    { name: "55-64", value: 8, fill: "#a4de6c" },
+    { name: "65+", value: 2, fill: "#d0ed57" }
+  ],
+  genderData: [
+    { name: "Male", value: 42, fill: "#0088FE" },
+    { name: "Female", value: 56, fill: "#FF8042" },
+    { name: "Other", value: 2, fill: "#FFBB28" }
+  ],
+  locationData: [
+    { name: "United States", value: 58, fill: "#8884d8" },
+    { name: "Canada", value: 12, fill: "#83a6ed" },
+    { name: "United Kingdom", value: 10, fill: "#8dd1e1" },
+    { name: "Australia", value: 7, fill: "#82ca9d" },
+    { name: "Germany", value: 5, fill: "#a4de6c" },
+    { name: "Other", value: 8, fill: "#d0ed57" }
+  ],
+  deviceData: [
+    { name: "Mobile", value: 68, fill: "#8884d8" },
+    { name: "Desktop", value: 28, fill: "#83a6ed" },
+    { name: "Tablet", value: 4, fill: "#82ca9d" }
+  ],
+  engagementByAge: [
+    { age: "18-24", clicks: 320, impressions: 5400, ctr: 5.9 },
+    { age: "25-34", clicks: 580, impressions: 11200, ctr: 5.2 },
+    { age: "35-44", clicks: 420, impressions: 8800, ctr: 4.8 },
+    { age: "45-54", clicks: 280, impressions: 7200, ctr: 3.9 },
+    { age: "55-64", clicks: 140, impressions: 4800, ctr: 2.9 },
+    { age: "65+", clicks: 60, impressions: 3200, ctr: 1.9 }
+  ]
+};
+
+const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
+  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+  const x = cx + radius * Math.cos(-midAngle * Math.PI / 180);
+  const y = cy + radius * Math.sin(-midAngle * Math.PI / 180);
+
+  return (
+    <text x={x} y={y} fill="white" textAnchor="middle" dominantBaseline="central">
+      {`${(percent * 100).toFixed(0)}%`}
+    </text>
+  );
+};
 
 export default function MetaAds() {
   const [dateRange, setDateRange] = useState<DateRange>("this-month");
@@ -261,17 +312,179 @@ export default function MetaAds() {
             </TabsContent>
 
             <TabsContent value="demographics">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Audience Demographics</CardTitle>
-                  <CardDescription>Breakdown of who is engaging with your ad</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="h-[400px] flex items-center justify-center text-muted-foreground">
-                    Demographics data visualization would appear here
-                  </div>
-                </CardContent>
-              </Card>
+              <div className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                  <MetricCard
+                    title="Total Reach"
+                    value={currentAd.reach.toLocaleString()}
+                    icon={<Users className="h-4 w-4" />}
+                    description="Unique users who saw your ad"
+                    className="h-full"
+                  />
+                  <MetricCard
+                    title="Primary Age Group"
+                    value="25-34"
+                    icon={<User className="h-4 w-4" />}
+                    description="Most engaged age demographic"
+                    className="h-full"
+                  />
+                  <MetricCard
+                    title="Gender Split"
+                    value="56% F / 42% M"
+                    icon={<Users2 className="h-4 w-4" />}
+                    description="Female/Male audience ratio"
+                    className="h-full"
+                  />
+                  <MetricCard
+                    title="Top Location"
+                    value="United States"
+                    icon={<MapPin className="h-4 w-4" />}
+                    description="Country with highest engagement"
+                    className="h-full"
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <User className="h-5 w-5 text-muted-foreground" />
+                        Age Distribution
+                      </CardTitle>
+                      <CardDescription>
+                        Breakdown of audience by age groups
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="h-[300px]">
+                        <ResponsiveContainer width="100%" height="100%">
+                          <BarChart
+                            data={demographicsData.ageGroups}
+                            margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+                          >
+                            <XAxis dataKey="name" />
+                            <YAxis />
+                            <Tooltip />
+                            <Bar dataKey="value" name="Percentage" label={{ position: 'top' }}>
+                              {demographicsData.ageGroups.map((entry, index) => (
+                                <Cell key={`cell-${index}`} fill={entry.fill} />
+                              ))}
+                            </Bar>
+                          </BarChart>
+                        </ResponsiveContainer>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <Users2 className="h-5 w-5 text-muted-foreground" />
+                        Gender Distribution
+                      </CardTitle>
+                      <CardDescription>
+                        Breakdown of audience by gender
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="h-[300px]">
+                        <ResponsiveContainer width="100%" height="100%">
+                          <PieChart>
+                            <Pie
+                              data={demographicsData.genderData}
+                              cx="50%"
+                              cy="50%"
+                              labelLine={false}
+                              label={renderCustomizedLabel}
+                              outerRadius={100}
+                              fill="#8884d8"
+                              dataKey="value"
+                            >
+                              {demographicsData.genderData.map((entry, index) => (
+                                <Cell key={`cell-${index}`} fill={entry.fill} />
+                              ))}
+                            </Pie>
+                            <Tooltip />
+                            <Legend />
+                          </PieChart>
+                        </ResponsiveContainer>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <Globe className="h-5 w-5 text-muted-foreground" />
+                        Geographic Distribution
+                      </CardTitle>
+                      <CardDescription>
+                        Top locations by audience percentage
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <Table>
+                        <TableHeader>
+                          <TableRow>
+                            <TableHead>Location</TableHead>
+                            <TableHead>Percentage</TableHead>
+                            <TableHead>Engagement Rate</TableHead>
+                          </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                          {demographicsData.locationData.map((location) => (
+                            <TableRow key={location.name}>
+                              <TableCell className="font-medium">{location.name}</TableCell>
+                              <TableCell>{location.value}%</TableCell>
+                              <TableCell>
+                                <div className="flex items-center gap-2">
+                                  <div className="w-full max-w-24 bg-muted rounded-full h-2.5">
+                                    <div 
+                                      className="bg-primary h-2.5 rounded-full" 
+                                      style={{ width: `${Math.min(location.value * 1.5, 100)}%` }}
+                                    ></div>
+                                  </div>
+                                  <span className="text-xs">{(location.value * 0.1 + 2).toFixed(1)}%</span>
+                                </div>
+                              </TableCell>
+                            </TableRow>
+                          ))}
+                        </TableBody>
+                      </Table>
+                    </CardContent>
+                  </Card>
+
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <BarChart3 className="h-5 w-5 text-muted-foreground" />
+                        Engagement by Age
+                      </CardTitle>
+                      <CardDescription>
+                        Click-through rates across different age groups
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="h-[300px]">
+                        <ResponsiveContainer width="100%" height="100%">
+                          <BarChart
+                            data={demographicsData.engagementByAge}
+                            margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+                          >
+                            <XAxis dataKey="age" />
+                            <YAxis />
+                            <Tooltip />
+                            <Legend />
+                            <Bar dataKey="ctr" name="CTR %" fill="#82ca9d" />
+                          </BarChart>
+                        </ResponsiveContainer>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
             </TabsContent>
 
             <TabsContent value="placements">
