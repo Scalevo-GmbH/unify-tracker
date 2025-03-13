@@ -118,16 +118,16 @@ export const CommandSearch: React.FC<SearchInputProps> = ({ isMobile = false }) 
               placeholder="Search commands, pages, and more..."
               value={searchQuery}
               onValueChange={setSearchQuery}
-              className="pr-8"
+              className="pr-12"
             />
             {searchQuery && (
               <Button
                 variant="ghost"
                 size="icon"
                 onClick={() => setSearchQuery("")}
-                className="absolute right-0 top-1/2 -translate-y-1/2 h-8 w-8"
+                className="absolute right-2 top-1/2 -translate-y-1/2 h-7 w-7"
               >
-                <X className="h-4 w-4" />
+                <X className="h-3.5 w-3.5" />
               </Button>
             )}
           </div>
