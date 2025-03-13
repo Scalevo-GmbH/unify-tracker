@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { Search, Command, X, BarChart3, Users, FileText, ImageIcon, Calendar } from "lucide-react";
+import { Search, Command, X, BarChart3, Users, FileText, ImageIcon, Calendar, CircleX } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import {
   CommandDialog,
@@ -127,7 +127,7 @@ export const CommandSearch: React.FC<SearchInputProps> = ({ isMobile = false }) 
                 onClick={() => setSearchQuery("")}
                 className="absolute right-4 top-1/2 -translate-y-1/2 h-7 w-7"
               >
-                <X className="h-3.5 w-3.5" />
+                <CircleX className="h-3.5 w-3.5" />
               </Button>
             )}
           </div>
