@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -21,13 +21,24 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
-import { FilePlus } from "lucide-react";
+import { FilePlus, Upload } from "lucide-react";
 
 interface CreateAdModalProps {
   trigger?: React.ReactNode;
 }
 
 export const CreateAdModal: React.FC<CreateAdModalProps> = ({ trigger }) => {
+  const [adImage, setAdImage] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      setAdImage(file);
+      setImagePreview(URL.createObjectURL(file));
+    }
+  };
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -88,6 +99,43 @@ export const CreateAdModal: React.FC<CreateAdModalProps> = ({ trigger }) => {
           <div className="grid gap-2">
             <Label htmlFor="final-url">Final URL</Label>
             <Input id="final-url" placeholder="https://example.com/summer-sale" type="url" />
+          </div>
+          
+          <div className="grid gap-2">
+            <Label htmlFor="ad-image">Ad Image</Label>
+            <div className="flex flex-col gap-4">
+              <div className="flex items-center gap-4">
+                <Input 
+                  id="ad-image" 
+                  type="file" 
+                  accept="image/*"
+                  className="hidden"
+                  onChange={handleImageChange}
+                />
+                <Label 
+                  htmlFor="ad-image" 
+                  className="flex h-10 items-center justify-center rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background cursor-pointer hover:bg-accent hover:text-accent-foreground"
+                >
+                  <Upload className="mr-2 h-4 w-4" />
+                  Upload Image
+                </Label>
+                <span className="text-sm text-muted-foreground">
+                  {adImage ? adImage.name : "No file selected"}
+                </span>
+              </div>
+              
+              {imagePreview && (
+                <div className="relative w-full max-w-full overflow-hidden rounded-md border border-input">
+                  <div className="aspect-video relative">
+                    <img 
+                      src={imagePreview} 
+                      alt="Ad preview" 
+                      className="object-contain w-full h-full"
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
           
           <div className="grid grid-cols-2 gap-4">
