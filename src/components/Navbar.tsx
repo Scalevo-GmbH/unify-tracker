@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { 
@@ -108,10 +107,6 @@ export const Navbar: React.FC = () => {
     }
   ];
 
-  const getCurrentLanguageFlag = () => {
-    return language === 'en' ? '🇺🇸' : '🇩🇪';
-  };
-
   return (
     <>
       <header className="w-full border-b border-border sticky top-0 z-40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -190,33 +185,34 @@ export const Navbar: React.FC = () => {
               <CommandSearch />
             </div>
             
-            <Select
-              value={language}
-              onValueChange={(value) => setLanguage(value as 'en' | 'de')}
-            >
-              <SelectTrigger className="w-[85px] h-9 border-none focus:ring-0">
-                <SelectValue placeholder="Language">
-                  <div className="flex items-center gap-2">
-                    <span className="text-base">{language === 'en' ? '🇺🇸' : '🇩🇪'}</span>
-                    <span>{language === 'en' ? 'EN' : 'DE'}</span>
-                  </div>
-                </SelectValue>
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="en" className="flex items-center gap-2">
-                  <div className="flex items-center gap-2">
-                    <span className="text-base">🇺🇸</span>
-                    <span>English</span>
-                  </div>
-                </SelectItem>
-                <SelectItem value="de" className="flex items-center gap-2">
-                  <div className="flex items-center gap-2">
-                    <span className="text-base">🇩🇪</span>
-                    <span>Deutsch</span>
-                  </div>
-                </SelectItem>
-              </SelectContent>
-            </Select>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="sm" className="h-9 gap-2 flex items-center">
+                  <span className="text-base" style={{ fontSize: "16px" }}>
+                    {language === 'en' ? '🇺🇸' : '🇩🇪'}
+                  </span>
+                  <span>{language === 'en' ? 'EN' : 'DE'}</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-40">
+                <DropdownMenuItem 
+                  onClick={() => setLanguage('en')}
+                  className="flex items-center gap-2"
+                >
+                  <span style={{ fontSize: "16px" }}>🇺🇸</span>
+                  <span>English</span>
+                  {language === 'en' && <Check className="h-4 w-4 ml-auto" />}
+                </DropdownMenuItem>
+                <DropdownMenuItem 
+                  onClick={() => setLanguage('de')}
+                  className="flex items-center gap-2"
+                >
+                  <span style={{ fontSize: "16px" }}>🇩🇪</span>
+                  <span>Deutsch</span>
+                  {language === 'de' && <Check className="h-4 w-4 ml-auto" />}
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
             
             <NotificationsDropdown 
               notifications={notifications}
@@ -227,11 +223,8 @@ export const Navbar: React.FC = () => {
             
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="flex items-center gap-2">
-                  <div className="size-8 rounded-full bg-gradient-to-r from-marketing-blue to-marketing-purple flex items-center justify-center text-white font-medium">
-                    JD
-                  </div>
-                  <span className="hidden md:inline-block text-sm font-medium">John Doe</span>
+                <Button variant="ghost" size="icon">
+                  <Menu className="h-5 w-5" />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-56">
