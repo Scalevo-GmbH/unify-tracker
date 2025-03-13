@@ -39,28 +39,28 @@ const Index = () => {
     <div className="container px-4 sm:px-6 lg:px-8 py-8">
       <section className="mb-8">
         <FadeInSection>
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6">
-            <div>
-              <h1 className="text-2xl font-semibold tracking-tight">Marketing Dashboard</h1>
-              <div className="flex flex-col sm:flex-row sm:items-center gap-1.5">
-                <div className="bg-primary/5 text-primary font-medium px-3 py-1 rounded-md inline-flex items-center">
-                  <span>👋 Welcome back, {userName}!</span>
+          <div className="flex flex-col gap-4 sm:gap-6 mb-6">
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between">
+              <div className="space-y-2">
+                <div className="inline-flex items-center gap-2 bg-primary/5 text-primary font-medium px-3 py-1 rounded-full text-sm">
+                  <span className="text-lg">👋</span> Welcome back, {userName}!
                 </div>
+                <h1 className="text-3xl font-semibold tracking-tight">Marketing Dashboard</h1>
                 <p className="text-muted-foreground">Track and optimize your marketing performance across platforms.</p>
               </div>
-            </div>
-            
-            <div className="mt-4 sm:mt-0 flex flex-wrap items-center gap-2">
-              <DateRangeSelector 
-                value={dateRange} 
-                onChange={setDateRange} 
-              />
-              <button className="inline-flex items-center justify-center rounded-md px-4 h-9 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 border border-input bg-background hover:bg-accent hover:text-accent-foreground">
-                Export
-              </button>
-              <button className="inline-flex items-center justify-center rounded-md px-4 h-9 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 bg-primary text-primary-foreground hover:bg-primary/90">
-                New Campaign
-              </button>
+              
+              <div className="mt-4 sm:mt-0 flex flex-wrap items-center gap-2">
+                <DateRangeSelector 
+                  value={dateRange} 
+                  onChange={setDateRange} 
+                />
+                <button className="inline-flex items-center justify-center rounded-md px-4 h-9 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 border border-input bg-background hover:bg-accent hover:text-accent-foreground">
+                  Export
+                </button>
+                <button className="inline-flex items-center justify-center rounded-md px-4 h-9 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 bg-primary text-primary-foreground hover:bg-primary/90">
+                  New Campaign
+                </button>
+              </div>
             </div>
           </div>
         </FadeInSection>
