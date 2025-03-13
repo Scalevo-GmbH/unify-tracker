@@ -5,6 +5,7 @@ import { PerformanceChart } from "@/components/PerformanceChart";
 import { IntegrationCard } from "@/components/IntegrationCard";
 import { ConnectPlatformModal } from "@/components/ConnectPlatformModal";
 import FadeInSection from "@/components/animations/FadeInSection";
+import DateRangeSelector, { DateRange } from "@/components/DateRangeSelector";
 import { 
   Facebook, 
   Instagram, 
@@ -22,6 +23,7 @@ const Index = () => {
     icon: React.ReactNode;
   } | null>(null);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [dateRange, setDateRange] = useState<DateRange>("this-month");
 
   const handleOpenModal = (name: string, icon: React.ReactNode) => {
     setSelectedPlatform({ name, icon });
@@ -38,7 +40,11 @@ const Index = () => {
               <p className="text-muted-foreground">Track and optimize your marketing performance across platforms.</p>
             </div>
             
-            <div className="mt-4 sm:mt-0 flex flex-wrap gap-2">
+            <div className="mt-4 sm:mt-0 flex flex-wrap items-center gap-2">
+              <DateRangeSelector 
+                value={dateRange} 
+                onChange={setDateRange} 
+              />
               <button className="inline-flex items-center justify-center rounded-md px-4 h-9 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 border border-input bg-background hover:bg-accent hover:text-accent-foreground">
                 Export
               </button>
@@ -54,7 +60,7 @@ const Index = () => {
       
       <section className="mb-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
         <FadeInSection className="lg:col-span-2">
-          <PerformanceChart />
+          <PerformanceChart dateRange={dateRange} />
         </FadeInSection>
         
         <FadeInSection className="h-full">

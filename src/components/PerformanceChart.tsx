@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { 
   AreaChart, 
@@ -13,6 +12,7 @@ import {
   LineChart,
   Line
 } from "recharts";
+import { DateRange } from "@/components/DateRangeSelector";
 
 const data = [
   { name: "Jan", revenue: 4000, profit: 2400, customers: 240 },
@@ -33,19 +33,28 @@ type ChartType = "area" | "bar" | "line";
 
 interface PerformanceChartProps {
   className?: string;
+  dateRange?: DateRange;
 }
 
 export const PerformanceChart: React.FC<PerformanceChartProps> = ({ 
-  className = "" 
+  className = "",
+  dateRange = "this-month"
 }) => {
   const [chartType, setChartType] = useState<ChartType>("area");
   const [timeframe, setTimeframe] = useState<string>("year");
+
+  const getFilteredData = () => {
+    console.log("Date range selected:", dateRange);
+    return data;
+  };
+
+  const filteredData = getFilteredData();
 
   const renderChart = () => {
     switch (chartType) {
       case "area":
         return (
-          <AreaChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+          <AreaChart data={filteredData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
             <defs>
               <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor="#3B82F6" stopOpacity={0.8} />
@@ -100,7 +109,7 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
         );
       case "bar":
         return (
-          <BarChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+          <BarChart data={filteredData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
             <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f5f5f5" />
             <XAxis 
               dataKey="name" 
@@ -131,7 +140,7 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
         );
       case "line":
         return (
-          <LineChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+          <LineChart data={filteredData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
             <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f5f5f5" />
             <XAxis 
               dataKey="name" 
