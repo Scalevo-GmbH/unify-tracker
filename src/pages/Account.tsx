@@ -6,13 +6,6 @@ import {
   TabsTrigger, 
   TabsContent 
 } from "@/components/ui/tabs";
-import { 
-  Card, 
-  CardHeader, 
-  CardTitle, 
-  CardDescription, 
-  CardContent 
-} from "@/components/ui/card";
 import AccountSettings from "@/components/account/AccountSettings";
 import SubscriptionManagement from "@/components/account/SubscriptionManagement";
 import PaymentMethods from "@/components/account/PaymentMethods";
