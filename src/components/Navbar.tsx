@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { 
@@ -187,19 +188,21 @@ export const Navbar: React.FC = () => {
             
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="sm" className="h-9 gap-2 flex items-center">
-                  <span className="text-base" style={{ fontSize: "16px" }}>
-                    {language === 'en' ? '🇺🇸' : '🇩🇪'}
+                <Button variant="ghost" size="sm" className="h-8 px-2 text-sm font-normal">
+                  <span className="uppercase mr-1 text-xs font-medium text-muted-foreground">
+                    {language === 'en' ? 'us' : 'de'}
                   </span>
-                  <span>{language === 'en' ? 'EN' : 'DE'}</span>
+                  <span className="font-medium">
+                    {language === 'en' ? 'EN' : 'DE'}
+                  </span>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-40">
+              <DropdownMenuContent align="end" className="w-[120px]">
                 <DropdownMenuItem 
                   onClick={() => setLanguage('en')}
                   className="flex items-center gap-2"
                 >
-                  <span style={{ fontSize: "16px" }}>🇺🇸</span>
+                  <span className="uppercase text-xs text-muted-foreground">us</span>
                   <span>English</span>
                   {language === 'en' && <Check className="h-4 w-4 ml-auto" />}
                 </DropdownMenuItem>
@@ -207,7 +210,7 @@ export const Navbar: React.FC = () => {
                   onClick={() => setLanguage('de')}
                   className="flex items-center gap-2"
                 >
-                  <span style={{ fontSize: "16px" }}>🇩🇪</span>
+                  <span className="uppercase text-xs text-muted-foreground">de</span>
                   <span>Deutsch</span>
                   {language === 'de' && <Check className="h-4 w-4 ml-auto" />}
                 </DropdownMenuItem>
