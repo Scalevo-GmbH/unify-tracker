@@ -12,6 +12,7 @@ import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, Pagi
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import { BarChart, PieChart, Pie, Bar, Cell, XAxis, YAxis, ResponsiveContainer, Tooltip, Legend, LineChart, Line, CartesianGrid, Area, AreaChart } from "recharts";
+import { CreateAdModal } from "@/components/meta-ads/CreateAdModal";
 
 const metaAdsData = [
   {
@@ -184,9 +185,7 @@ export default function MetaAds() {
                 <Button variant="outline">
                   Export
                 </Button>
-                <Button>
-                  Create New Ad
-                </Button>
+                <CreateAdModal />
               </div>
             </div>
           </div>
