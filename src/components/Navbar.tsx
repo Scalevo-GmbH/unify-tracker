@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { 
@@ -23,7 +22,8 @@ import {
   Linkedin,
   Headphones,
   Globe,
-  Check
+  Check,
+  ChevronDown
 } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import {
@@ -99,6 +99,10 @@ export const Navbar: React.FC = () => {
       ]
     }
   ];
+
+  const getCurrentLanguageFlag = () => {
+    return language === 'en' ? '🇺🇸' : '🇩🇪';
+  };
 
   return (
     <>
@@ -178,30 +182,37 @@ export const Navbar: React.FC = () => {
               <CommandSearch />
             </div>
             
-            {/* Language Switcher */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" className="h-9 w-9">
-                  <Globe className="h-4 w-4" />
+                <Button variant="ghost" size="icon" className="relative h-9 w-9 text-lg">
+                  <span className="text-xl">{getCurrentLanguageFlag()}</span>
                   <span className="sr-only">Switch language</span>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
+              <DropdownMenuContent align="end" className="w-32 bg-popover">
                 <DropdownMenuItem 
                   onClick={() => setLanguage('en')}
-                  className={language === 'en' ? 'bg-accent' : ''}
+                  className={cn("flex justify-between items-center", 
+                    language === 'en' ? 'bg-accent' : ''
+                  )}
                 >
-                  <span className="mr-2">🇺🇸</span>
-                  <span>English</span>
-                  {language === 'en' && <Check className="ml-auto h-4 w-4" />}
+                  <div className="flex items-center gap-2">
+                    <span className="text-lg">🇺🇸</span>
+                    <span>English</span>
+                  </div>
+                  {language === 'en' && <Check className="h-4 w-4" />}
                 </DropdownMenuItem>
                 <DropdownMenuItem 
                   onClick={() => setLanguage('de')}
-                  className={language === 'de' ? 'bg-accent' : ''}
+                  className={cn("flex justify-between items-center", 
+                    language === 'de' ? 'bg-accent' : ''
+                  )}
                 >
-                  <span className="mr-2">🇩🇪</span>
-                  <span>Deutsch</span>
-                  {language === 'de' && <Check className="ml-auto h-4 w-4" />}
+                  <div className="flex items-center gap-2">
+                    <span className="text-lg">🇩🇪</span>
+                    <span>Deutsch</span>
+                  </div>
+                  {language === 'de' && <Check className="h-4 w-4" />}
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
