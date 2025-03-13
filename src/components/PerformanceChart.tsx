@@ -52,9 +52,11 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
 
   const filteredData = getFilteredData();
 
-  // Updated brand colors
-  const reachColor = "#8B5CF6"; // Purple from our brand colors
-  const clicksColor = "#F97316"; // Orange from our brand colors
+  // Updated to use more subtle colors
+  const reachColor = "#E5DEFF"; // Soft purple
+  const clicksColor = "#FEC6A1"; // Soft orange
+  const reachStrokeColor = "#9b87f5"; // Darker purple for stroke
+  const clicksStrokeColor = "#F97316"; // Darker orange for stroke
 
   const renderChart = () => {
     switch (chartType) {
@@ -64,30 +66,32 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
             <defs>
               <linearGradient id="colorReach" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor={reachColor} stopOpacity={0.8} />
-                <stop offset="95%" stopColor={reachColor} stopOpacity={0} />
+                <stop offset="95%" stopColor={reachColor} stopOpacity={0.1} />
               </linearGradient>
               <linearGradient id="colorClicks" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor={clicksColor} stopOpacity={0.8} />
-                <stop offset="95%" stopColor={clicksColor} stopOpacity={0} />
+                <stop offset="95%" stopColor={clicksColor} stopOpacity={0.1} />
               </linearGradient>
             </defs>
             <XAxis 
               dataKey="name" 
               axisLine={false}
               tickLine={false}
-              tick={{ fontSize: 12 }}
+              tick={{ fill: '#888888', fontSize: 11 }}
+              style={{ opacity: 0.7 }}
             />
             <YAxis 
               axisLine={false}
               tickLine={false}
-              tick={{ fontSize: 12 }}
+              tick={{ fill: '#888888', fontSize: 11 }}
+              style={{ opacity: 0.7 }}
             />
-            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f5f5f5" />
+            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f5f5f5" opacity={0.3} />
             <Tooltip 
               contentStyle={{ 
-                background: "rgba(255, 255, 255, 0.8)",
+                background: "rgba(255, 255, 255, 0.9)",
                 backdropFilter: "blur(8px)",
-                border: "none",
+                border: "1px solid rgba(0, 0, 0, 0.05)",
                 borderRadius: "0.5rem",
                 boxShadow: "0 4px 12px rgba(0, 0, 0, 0.05)",
                 fontSize: "12px",
@@ -97,7 +101,7 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
             <Area 
               type="monotone" 
               dataKey="reach" 
-              stroke={reachColor} 
+              stroke={reachStrokeColor} 
               fillOpacity={1} 
               fill="url(#colorReach)" 
               strokeWidth={2}
@@ -105,7 +109,7 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
             <Area 
               type="monotone" 
               dataKey="clicks" 
-              stroke={clicksColor} 
+              stroke={clicksStrokeColor} 
               fillOpacity={1} 
               fill="url(#colorClicks)" 
               strokeWidth={2}
@@ -115,23 +119,25 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
       case "bar":
         return (
           <BarChart data={filteredData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f5f5f5" />
+            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f5f5f5" opacity={0.3} />
             <XAxis 
               dataKey="name" 
               axisLine={false}
               tickLine={false}
-              tick={{ fontSize: 12 }}
+              tick={{ fill: '#888888', fontSize: 11 }}
+              style={{ opacity: 0.7 }}
             />
             <YAxis 
               axisLine={false}
               tickLine={false}
-              tick={{ fontSize: 12 }}
+              tick={{ fill: '#888888', fontSize: 11 }}
+              style={{ opacity: 0.7 }}
             />
             <Tooltip 
               contentStyle={{ 
-                background: "rgba(255, 255, 255, 0.8)",
+                background: "rgba(255, 255, 255, 0.9)",
                 backdropFilter: "blur(8px)",
-                border: "none",
+                border: "1px solid rgba(0, 0, 0, 0.05)",
                 borderRadius: "0.5rem",
                 boxShadow: "0 4px 12px rgba(0, 0, 0, 0.05)",
                 fontSize: "12px",
@@ -145,23 +151,25 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
       case "line":
         return (
           <LineChart data={filteredData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f5f5f5" />
+            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f5f5f5" opacity={0.3} />
             <XAxis 
               dataKey="name" 
               axisLine={false}
               tickLine={false}
-              tick={{ fontSize: 12 }}
+              tick={{ fill: '#888888', fontSize: 11 }}
+              style={{ opacity: 0.7 }}
             />
             <YAxis 
               axisLine={false}
               tickLine={false}
-              tick={{ fontSize: 12 }}
+              tick={{ fill: '#888888', fontSize: 11 }}
+              style={{ opacity: 0.7 }}
             />
             <Tooltip 
               contentStyle={{ 
-                background: "rgba(255, 255, 255, 0.8)",
+                background: "rgba(255, 255, 255, 0.9)",
                 backdropFilter: "blur(8px)",
-                border: "none",
+                border: "1px solid rgba(0, 0, 0, 0.05)",
                 borderRadius: "0.5rem",
                 boxShadow: "0 4px 12px rgba(0, 0, 0, 0.05)",
                 fontSize: "12px",
@@ -171,18 +179,18 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
             <Line 
               type="monotone" 
               dataKey="reach" 
-              stroke={reachColor} 
+              stroke={reachStrokeColor} 
               strokeWidth={2}
-              dot={{ r: 3 }}
-              activeDot={{ r: 5 }}
+              dot={{ r: 3, fill: reachStrokeColor, strokeWidth: 1, stroke: "white" }}
+              activeDot={{ r: 5, strokeWidth: 0 }}
             />
             <Line 
               type="monotone" 
               dataKey="clicks" 
-              stroke={clicksColor} 
+              stroke={clicksStrokeColor} 
               strokeWidth={2}
-              dot={{ r: 3 }}
-              activeDot={{ r: 5 }}
+              dot={{ r: 3, fill: clicksStrokeColor, strokeWidth: 1, stroke: "white" }}
+              activeDot={{ r: 5, strokeWidth: 0 }}
             />
           </LineChart>
         );
@@ -270,7 +278,7 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
       
       <div className="flex items-center gap-4 mb-4">
         <div className="flex items-center">
-          <div className="h-3 w-3 rounded-full bg-[#8B5CF6] mr-2"></div>
+          <div className="h-3 w-3 rounded-full bg-[#9b87f5] mr-2"></div>
           <span className="text-sm font-medium">Reach</span>
         </div>
         <div className="flex items-center">

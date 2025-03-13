@@ -1,9 +1,8 @@
-
 import React, { useState } from "react";
 import { FadeInSection } from "@/components/animations/FadeInSection";
 import { MetricCard } from "@/components/MetricCard";
 import { PerformanceChart } from "@/components/PerformanceChart";
-import { DateRangeSelector } from "@/components/DateRangeSelector";
+import { DateRangeSelector, DateRange } from "@/components/DateRangeSelector";
 import { ArrowLeft, ArrowRight, Facebook, Users, Eye, MousePointerClick, Target, TrendingUp, User, MapPin, BarChart3, Globe, Users2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -76,30 +75,30 @@ const metaAdsData = [
 
 const demographicsData = {
   ageGroups: [
-    { name: "18-24", value: 15, fill: "#9b87f5" },
-    { name: "25-34", value: 35, fill: "#0EA5E9" },
-    { name: "35-44", value: 25, fill: "#22C55E" },
-    { name: "45-54", value: 15, fill: "#F97316" },
-    { name: "55-64", value: 8, fill: "#D946EF" },
-    { name: "65+", value: 2, fill: "#EAB308" }
+    { name: "18-24", value: 15, fill: "#E5DEFF" },
+    { name: "25-34", value: 35, fill: "#D3E4FD" },
+    { name: "35-44", value: 25, fill: "#F2FCE2" },
+    { name: "45-54", value: 15, fill: "#FEC6A1" },
+    { name: "55-64", value: 8, fill: "#FFDEE2" },
+    { name: "65+", value: 2, fill: "#FEF7CD" }
   ],
   genderData: [
-    { name: "Male", value: 42, fill: "#9b87f5" },
-    { name: "Female", value: 56, fill: "#D946EF" },
-    { name: "Other", value: 2, fill: "#0EA5E9" }
+    { name: "Male", value: 42, fill: "#E5DEFF" },
+    { name: "Female", value: 56, fill: "#FFDEE2" },
+    { name: "Other", value: 2, fill: "#D3E4FD" }
   ],
   locationData: [
-    { name: "United States", value: 58, fill: "#9b87f5" },
-    { name: "Canada", value: 12, fill: "#0EA5E9" },
-    { name: "United Kingdom", value: 10, fill: "#22C55E" },
-    { name: "Australia", value: 7, fill: "#F97316" },
-    { name: "Germany", value: 5, fill: "#D946EF" },
-    { name: "Other", value: 8, fill: "#EAB308" }
+    { name: "United States", value: 58, fill: "#E5DEFF" },
+    { name: "Canada", value: 12, fill: "#D3E4FD" },
+    { name: "United Kingdom", value: 10, fill: "#F2FCE2" },
+    { name: "Australia", value: 7, fill: "#FEC6A1" },
+    { name: "Germany", value: 5, fill: "#FFDEE2" },
+    { name: "Other", value: 8, fill: "#FEF7CD" }
   ],
   deviceData: [
-    { name: "Mobile", value: 68, fill: "#9b87f5" },
-    { name: "Desktop", value: 28, fill: "#0EA5E9" },
-    { name: "Tablet", value: 4, fill: "#22C55E" }
+    { name: "Mobile", value: 68, fill: "#E5DEFF" },
+    { name: "Desktop", value: 28, fill: "#D3E4FD" },
+    { name: "Tablet", value: 4, fill: "#F2FCE2" }
   ],
   engagementByAge: [
     { age: "18-24", clicks: 320, impressions: 5400, ctr: 5.9 },
@@ -117,7 +116,7 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
   const y = cy + radius * Math.sin(-midAngle * Math.PI / 180);
 
   return (
-    <text x={x} y={y} fill="white" textAnchor="middle" dominantBaseline="central" className="text-xs font-medium">
+    <text x={x} y={y} fill="black" textAnchor="middle" dominantBaseline="central" className="text-xs font-medium">
       {`${(percent * 100).toFixed(0)}%`}
     </text>
   );
@@ -130,16 +129,23 @@ const chartConfig = {
   },
   impressions: {
     label: "Impressions",
-    color: "#0EA5E9",
+    color: "#D3E4FD",
   },
   ctr: {
     label: "CTR",
-    color: "#22C55E",
+    color: "#F2FCE2",
   },
 };
 
+const axisStyles = {
+  axisLine: false,
+  tickLine: false,
+  tick: { fill: '#888888', fontSize: 11 },
+  style: { opacity: 0.7 }
+};
+
 export default function MetaAds() {
-  const [dateRange, setDateRange] = useState("this-month");
+  const [dateRange, setDateRange] = useState<DateRange>("this-month");
   const [currentAdIndex, setCurrentAdIndex] = useState(0);
   const currentAd = metaAdsData[currentAdIndex];
   
@@ -378,13 +384,24 @@ export default function MetaAds() {
                             data={demographicsData.ageGroups}
                             margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
                           >
-                            <XAxis dataKey="name" />
-                            <YAxis />
+                            <XAxis 
+                              dataKey="name" 
+                              axisLine={false}
+                              tickLine={false}
+                              tick={{ fill: '#888888', fontSize: 11 }}
+                              style={{ opacity: 0.7 }}
+                            />
+                            <YAxis 
+                              axisLine={false}
+                              tickLine={false}
+                              tick={{ fill: '#888888', fontSize: 11 }}
+                              style={{ opacity: 0.7 }}
+                            />
                             <Tooltip 
                               content={({ active, payload }) => {
                                 if (active && payload && payload.length) {
                                   return (
-                                    <div className="bg-background border border-border/50 p-2 rounded-md shadow-lg">
+                                    <div className="bg-background/90 backdrop-blur-sm border border-border/30 p-2.5 rounded-md shadow-lg">
                                       <p className="font-medium">{payload[0].name}</p>
                                       <p className="text-sm text-muted-foreground">{`${payload[0].value}%`}</p>
                                     </div>
@@ -399,7 +416,7 @@ export default function MetaAds() {
                               radius={[4, 4, 0, 0]}
                               label={{ 
                                 position: 'top', 
-                                className: 'text-xs font-medium',
+                                className: 'text-xs font-medium text-muted-foreground',
                                 formatter: (value) => `${value}%`
                               }}
                             >
@@ -443,7 +460,7 @@ export default function MetaAds() {
                                 <Cell 
                                   key={`cell-${index}`} 
                                   fill={entry.fill} 
-                                  stroke="transparent"
+                                  stroke="rgba(255,255,255,0.5)"
                                   className="hover:opacity-90 transition-opacity"
                                 />
                               ))}
@@ -452,7 +469,7 @@ export default function MetaAds() {
                               content={({ active, payload }) => {
                                 if (active && payload && payload.length) {
                                   return (
-                                    <div className="bg-background border border-border/50 p-2 rounded-md shadow-lg">
+                                    <div className="bg-background/90 backdrop-blur-sm border border-border/30 p-2.5 rounded-md shadow-lg">
                                       <p className="font-medium">{payload[0].name}</p>
                                       <p className="text-sm text-muted-foreground">{`${payload[0].value}%`}</p>
                                     </div>
@@ -507,7 +524,7 @@ export default function MetaAds() {
                                       style={{ width: `${Math.min(location.value * 1.5, 100)}%`, backgroundColor: location.fill }}
                                     ></div>
                                   </div>
-                                  <span className="text-xs">{(location.value * 0.1 + 2).toFixed(1)}%</span>
+                                  <span className="text-xs text-muted-foreground">{(location.value * 0.1 + 2).toFixed(1)}%</span>
                                 </div>
                               </TableCell>
                             </TableRow>
@@ -536,18 +553,29 @@ export default function MetaAds() {
                           >
                             <defs>
                               <linearGradient id="ctrGradient" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="5%" stopColor="#22C55E" stopOpacity={0.8}/>
-                                <stop offset="95%" stopColor="#22C55E" stopOpacity={0.1}/>
+                                <stop offset="5%" stopColor="#F2FCE2" stopOpacity={0.8}/>
+                                <stop offset="95%" stopColor="#F2FCE2" stopOpacity={0.1}/>
                               </linearGradient>
                             </defs>
-                            <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" opacity={0.3} />
-                            <XAxis dataKey="age" />
-                            <YAxis />
+                            <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" opacity={0.2} />
+                            <XAxis 
+                              dataKey="age" 
+                              axisLine={false}
+                              tickLine={false}
+                              tick={{ fill: '#888888', fontSize: 11 }}
+                              style={{ opacity: 0.7 }}
+                            />
+                            <YAxis 
+                              axisLine={false}
+                              tickLine={false}
+                              tick={{ fill: '#888888', fontSize: 11 }}
+                              style={{ opacity: 0.7 }}
+                            />
                             <Tooltip 
                               content={({ active, payload }) => {
                                 if (active && payload && payload.length) {
                                   return (
-                                    <div className="bg-background border border-border/50 p-2 rounded-md shadow-lg">
+                                    <div className="bg-background/90 backdrop-blur-sm border border-border/30 p-2.5 rounded-md shadow-lg">
                                       <p className="font-medium">{payload[0].payload.age}</p>
                                       <p className="text-sm text-muted-foreground">CTR: {payload[0].value}%</p>
                                     </div>
@@ -560,7 +588,8 @@ export default function MetaAds() {
                               type="monotone" 
                               dataKey="ctr" 
                               name="CTR %" 
-                              stroke="#22C55E" 
+                              stroke="#9b87f5" 
+                              strokeWidth={2}
                               fillOpacity={1} 
                               fill="url(#ctrGradient)" 
                             />
@@ -791,4 +820,3 @@ export default function MetaAds() {
     </div>
   );
 }
-

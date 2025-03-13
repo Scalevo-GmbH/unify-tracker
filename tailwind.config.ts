@@ -74,19 +74,19 @@ export default {
 					green: '#22C55E'
 				},
 				chart: {
-					purple: '#9b87f5',
-					'purple-light': '#e5deff',
-					'purple-dark': '#6E59A5',
-					blue: '#0EA5E9',
-					'blue-light': '#D3E4FD',
-					green: '#22C55E',
-					'green-light': '#F2FCE2',
-					orange: '#F97316',
-					'orange-light': '#FEC6A1',
-					pink: '#D946EF',
-					'pink-light': '#FFDEE2',
-					yellow: '#EAB308',
-					'yellow-light': '#FEF7CD',
+					purple: '#E5DEFF',
+					'purple-light': '#F1F0FB',
+					'purple-dark': '#9b87f5',
+					blue: '#D3E4FD',
+					'blue-light': '#E8F2FD',
+					green: '#F2FCE2',
+					'green-light': '#FAFDF7',
+					orange: '#FEC6A1',
+					'orange-light': '#FEE8D9',
+					pink: '#FFDEE2',
+					'pink-light': '#FFF2F4',
+					yellow: '#FEF7CD',
+					'yellow-light': '#FEFBE6',
 					peach: '#FDE1D3'
 				}
 			},
@@ -160,4 +160,3 @@ export default {
 	},
 	plugins: [require("tailwindcss-animate")],
 } satisfies Config;
-
