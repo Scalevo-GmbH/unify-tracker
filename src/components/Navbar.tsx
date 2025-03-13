@@ -189,8 +189,8 @@ export const Navbar: React.FC = () => {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="sm" className="h-8 px-2 text-sm font-normal">
-                  <span className="uppercase mr-1 text-xs font-medium text-muted-foreground">
-                    {language === 'en' ? 'us' : 'de'}
+                  <span className="mr-1 text-base">
+                    {language === 'en' ? '🇬🇧' : '🇩🇪'}
                   </span>
                   <span className="font-medium">
                     {language === 'en' ? 'EN' : 'DE'}
@@ -202,7 +202,7 @@ export const Navbar: React.FC = () => {
                   onClick={() => setLanguage('en')}
                   className="flex items-center gap-2"
                 >
-                  <span className="uppercase text-xs text-muted-foreground">us</span>
+                  <span className="text-base">🇬🇧</span>
                   <span>English</span>
                   {language === 'en' && <Check className="h-4 w-4 ml-auto" />}
                 </DropdownMenuItem>
@@ -210,7 +210,7 @@ export const Navbar: React.FC = () => {
                   onClick={() => setLanguage('de')}
                   className="flex items-center gap-2"
                 >
-                  <span className="uppercase text-xs text-muted-foreground">de</span>
+                  <span className="text-base">🇩🇪</span>
                   <span>Deutsch</span>
                   {language === 'de' && <Check className="h-4 w-4 ml-auto" />}
                 </DropdownMenuItem>
