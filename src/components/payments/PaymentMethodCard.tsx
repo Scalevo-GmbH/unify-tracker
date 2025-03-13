@@ -1,18 +1,21 @@
-
 import React, { useState } from "react";
 import { 
   Button,
+} from "@/components/ui/button";
+import {
   Collapsible,
   CollapsibleTrigger,
   CollapsibleContent,
+} from "@/components/ui/collapsible";
+import { 
   Dialog, 
   DialogTrigger, 
   DialogContent, 
   DialogHeader, 
   DialogTitle, 
   DialogDescription, 
-  DialogFooter
-} from "@/components/ui";
+  DialogFooter 
+} from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
 import { CreditCard, Check, Trash, ChevronDown } from "lucide-react";
 

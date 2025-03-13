@@ -7,16 +7,16 @@ import {
   CardDescription,
   CardContent,
   CardFooter,
-  Button,
-  Input,
-  Label,
-  Form,
-  FormItem,
-  FormLabel,
-  FormControl,
-  FormDescription,
-  FormMessage
-} from "@/components/ui";
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Form } from "@/components/ui/form";
+import { FormItem } from "@/components/ui/form";
+import { FormLabel } from "@/components/ui/form";
+import { FormControl } from "@/components/ui/form";
+import { FormDescription } from "@/components/ui/form";
+import { FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 
 // This component is a placeholder for a Stripe Elements form

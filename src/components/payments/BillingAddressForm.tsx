@@ -1,6 +1,9 @@
 
 import React from "react";
-import { Button, Input, Label, CardFooter } from "@/components/ui";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label"; 
+import { CardFooter } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 
 const BillingAddressForm = () => {

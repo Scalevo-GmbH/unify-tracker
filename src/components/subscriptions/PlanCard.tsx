@@ -6,10 +6,10 @@ import {
   CardTitle, 
   CardDescription, 
   CardContent, 
-  CardFooter, 
-  Button,
-  Badge 
-} from "@/components/ui";
+  CardFooter,
+} from "@/components/ui/card"; 
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { CheckCircle, Clock } from "lucide-react";
 

@@ -6,16 +6,18 @@ import {
   CardTitle,
   CardDescription,
   CardContent,
-  Button,
-  Badge,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { 
   Dialog,
   DialogTrigger,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogDescription,
-  DialogFooter
-} from "@/components/ui";
+  DialogFooter 
+} from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
 import { PieChart, ArrowUpRight } from "lucide-react";
 

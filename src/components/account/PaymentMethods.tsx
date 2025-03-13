@@ -6,9 +6,9 @@ import {
   CardTitle, 
   CardDescription, 
   CardContent, 
-  CardFooter, 
-  Button 
-} from "@/components/ui";
+  CardFooter,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { CreditCard, Plus, AlertCircle } from "lucide-react";
 import PaymentMethodCard, { PaymentMethod } from "../payments/PaymentMethodCard";
