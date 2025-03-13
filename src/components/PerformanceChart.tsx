@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { 
   AreaChart, 
@@ -15,18 +16,18 @@ import {
 import { DateRange } from "@/components/DateRangeSelector";
 
 const data = [
-  { name: "Jan", revenue: 4000, profit: 2400, customers: 240 },
-  { name: "Feb", revenue: 3000, profit: 1398, customers: 210 },
-  { name: "Mar", revenue: 2000, profit: 9800, customers: 290 },
-  { name: "Apr", revenue: 2780, profit: 3908, customers: 350 },
-  { name: "May", revenue: 1890, profit: 4800, customers: 320 },
-  { name: "Jun", revenue: 2390, profit: 3800, customers: 310 },
-  { name: "Jul", revenue: 3490, profit: 4300, customers: 390 },
-  { name: "Aug", revenue: 4000, profit: 2400, customers: 240 },
-  { name: "Sep", revenue: 3000, profit: 1398, customers: 210 },
-  { name: "Oct", revenue: 2000, profit: 9800, customers: 290 },
-  { name: "Nov", revenue: 2780, profit: 3908, customers: 350 },
-  { name: "Dec", revenue: 3490, profit: 4300, customers: 390 },
+  { name: "Jan", reach: 8000, impressions: 12000, customers: 240 },
+  { name: "Feb", reach: 7500, impressions: 11500, customers: 210 },
+  { name: "Mar", reach: 9000, impressions: 14000, customers: 290 },
+  { name: "Apr", reach: 9800, impressions: 15200, customers: 350 },
+  { name: "May", reach: 10500, impressions: 16500, customers: 320 },
+  { name: "Jun", reach: 11000, impressions: 17200, customers: 310 },
+  { name: "Jul", reach: 12400, impressions: 19000, customers: 390 },
+  { name: "Aug", reach: 12800, impressions: 20100, customers: 240 },
+  { name: "Sep", reach: 13200, impressions: 21500, customers: 210 },
+  { name: "Oct", reach: 14500, impressions: 23800, customers: 290 },
+  { name: "Nov", reach: 15200, impressions: 25000, customers: 350 },
+  { name: "Dec", reach: 16000, impressions: 27000, customers: 390 },
 ];
 
 type ChartType = "area" | "bar" | "line";
@@ -56,11 +57,11 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
         return (
           <AreaChart data={filteredData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
             <defs>
-              <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
+              <linearGradient id="colorReach" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor="#3B82F6" stopOpacity={0.8} />
                 <stop offset="95%" stopColor="#3B82F6" stopOpacity={0} />
               </linearGradient>
-              <linearGradient id="colorProfit" x1="0" y1="0" x2="0" y2="1">
+              <linearGradient id="colorImpressions" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor="#8B5CF6" stopOpacity={0.8} />
                 <stop offset="95%" stopColor="#8B5CF6" stopOpacity={0} />
               </linearGradient>
@@ -75,7 +76,6 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
               axisLine={false}
               tickLine={false}
               tick={{ fontSize: 12 }}
-              tickFormatter={(value) => `$${value}`}
             />
             <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f5f5f5" />
             <Tooltip 
@@ -87,22 +87,22 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
                 boxShadow: "0 4px 12px rgba(0, 0, 0, 0.05)",
                 fontSize: "12px",
               }}
-              formatter={(value: number) => [`$${value.toLocaleString()}`, undefined]}
+              formatter={(value: number) => [`${value.toLocaleString()}`, undefined]}
             />
             <Area 
               type="monotone" 
-              dataKey="revenue" 
+              dataKey="reach" 
               stroke="#3B82F6" 
               fillOpacity={1} 
-              fill="url(#colorRevenue)" 
+              fill="url(#colorReach)" 
               strokeWidth={2}
             />
             <Area 
               type="monotone" 
-              dataKey="profit" 
+              dataKey="impressions" 
               stroke="#8B5CF6" 
               fillOpacity={1} 
-              fill="url(#colorProfit)" 
+              fill="url(#colorImpressions)" 
               strokeWidth={2}
             />
           </AreaChart>
@@ -121,7 +121,6 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
               axisLine={false}
               tickLine={false}
               tick={{ fontSize: 12 }}
-              tickFormatter={(value) => `$${value}`}
             />
             <Tooltip 
               contentStyle={{ 
@@ -132,10 +131,10 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
                 boxShadow: "0 4px 12px rgba(0, 0, 0, 0.05)",
                 fontSize: "12px",
               }}
-              formatter={(value: number) => [`$${value.toLocaleString()}`, undefined]}
+              formatter={(value: number) => [`${value.toLocaleString()}`, undefined]}
             />
-            <Bar dataKey="revenue" fill="#3B82F6" radius={[4, 4, 0, 0]} />
-            <Bar dataKey="profit" fill="#8B5CF6" radius={[4, 4, 0, 0]} />
+            <Bar dataKey="reach" fill="#3B82F6" radius={[4, 4, 0, 0]} />
+            <Bar dataKey="impressions" fill="#8B5CF6" radius={[4, 4, 0, 0]} />
           </BarChart>
         );
       case "line":
@@ -152,7 +151,6 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
               axisLine={false}
               tickLine={false}
               tick={{ fontSize: 12 }}
-              tickFormatter={(value) => `$${value}`}
             />
             <Tooltip 
               contentStyle={{ 
@@ -163,11 +161,11 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
                 boxShadow: "0 4px 12px rgba(0, 0, 0, 0.05)",
                 fontSize: "12px",
               }}
-              formatter={(value: number) => [`$${value.toLocaleString()}`, undefined]}
+              formatter={(value: number) => [`${value.toLocaleString()}`, undefined]}
             />
             <Line 
               type="monotone" 
-              dataKey="revenue" 
+              dataKey="reach" 
               stroke="#3B82F6" 
               strokeWidth={2}
               dot={{ r: 3 }}
@@ -175,7 +173,7 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
             />
             <Line 
               type="monotone" 
-              dataKey="profit" 
+              dataKey="impressions" 
               stroke="#8B5CF6" 
               strokeWidth={2}
               dot={{ r: 3 }}
@@ -192,8 +190,8 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
     <div className={`bg-card rounded-xl shadow-subtle p-6 ${className}`}>
       <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6">
         <div>
-          <h3 className="text-lg font-semibold">Revenue Overview</h3>
-          <p className="text-sm text-muted-foreground">Revenue vs. Profit Analysis</p>
+          <h3 className="text-lg font-semibold">Platform Performance</h3>
+          <p className="text-sm text-muted-foreground">Combined Reach & Impressions Across All Tools</p>
         </div>
         
         <div className="flex flex-wrap mt-4 sm:mt-0 space-x-2">
@@ -268,11 +266,11 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
       <div className="flex items-center gap-4 mb-4">
         <div className="flex items-center">
           <div className="h-3 w-3 rounded-full bg-marketing-blue mr-2"></div>
-          <span className="text-sm font-medium">Revenue</span>
+          <span className="text-sm font-medium">Reach</span>
         </div>
         <div className="flex items-center">
           <div className="h-3 w-3 rounded-full bg-marketing-purple mr-2"></div>
-          <span className="text-sm font-medium">Profit</span>
+          <span className="text-sm font-medium">Impressions</span>
         </div>
       </div>
       
