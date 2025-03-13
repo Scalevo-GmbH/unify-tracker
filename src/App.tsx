@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
 
@@ -16,7 +17,7 @@ const queryClient = new QueryClient();
 // Helper component to conditionally render the Navbar
 const AppLayout = () => {
   const location = useLocation();
-  const isAuthRoute = ['/login', '/register', '/signup', '/forgot-password'].includes(location.pathname);
+  const isAuthRoute = ['/login', '/register', '/signup', '/forgot-password', '/reset-password'].includes(location.pathname);
   
   return (
     <div className="min-h-screen flex flex-col">
@@ -27,6 +28,7 @@ const AppLayout = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
