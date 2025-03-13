@@ -131,6 +131,13 @@ export default {
 				float: {
 					'0%, 100%': { transform: 'translateY(0)' },
 					'50%': { transform: 'translateY(-5px)' }
+				},
+				shake: {
+					'0%': { transform: 'rotate(0deg)' },
+					'25%': { transform: 'rotate(10deg)' },
+					'50%': { transform: 'rotate(0deg)' },
+					'75%': { transform: 'rotate(-10deg)' },
+					'100%': { transform: 'rotate(0deg)' }
 				}
 			},
 			animation: {
@@ -140,7 +147,9 @@ export default {
 				'slide-in': 'slideIn 0.5s ease-out forwards',
 				'shimmer': 'shimmer 2s infinite linear',
 				'pulse': 'pulse 2s infinite ease-in-out',
-				'float': 'float 3s infinite ease-in-out'
+				'float': 'float 3s infinite ease-in-out',
+				'shake': 'shake 2.5s ease-in-out infinite',
+				'delayed-shake': 'shake 2.5s ease-in-out 1s infinite'
 			},
 			fontFamily: {
 				sans: ['Inter', 'SF Pro Display', 'system-ui', 'sans-serif'],

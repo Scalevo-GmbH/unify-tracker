@@ -43,7 +43,7 @@ const Index = () => {
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between">
               <div className="space-y-2">
                 <div className="inline-flex items-center gap-2 bg-primary/5 text-primary font-medium px-3 py-1 rounded-full text-sm">
-                  <span className="text-lg">👋</span> Welcome back, {userName}!
+                  <span className="text-lg animate-delayed-shake inline-block">👋</span> Welcome back, {userName}!
                 </div>
                 <h1 className="text-3xl font-semibold tracking-tight">Marketing Dashboard</h1>
                 <p className="text-muted-foreground">Track and optimize your marketing performance across platforms.</p>
