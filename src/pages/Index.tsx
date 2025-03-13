@@ -42,7 +42,12 @@ const Index = () => {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6">
             <div>
               <h1 className="text-2xl font-semibold tracking-tight">Marketing Dashboard</h1>
-              <p className="text-muted-foreground">Welcome back {userName} 👋 Track and optimize your marketing performance across platforms.</p>
+              <div className="flex flex-col sm:flex-row sm:items-center gap-1.5">
+                <div className="bg-primary/5 text-primary font-medium px-3 py-1 rounded-md inline-flex items-center">
+                  <span>👋 Welcome back, {userName}!</span>
+                </div>
+                <p className="text-muted-foreground">Track and optimize your marketing performance across platforms.</p>
+              </div>
             </div>
             
             <div className="mt-4 sm:mt-0 flex flex-wrap items-center gap-2">
