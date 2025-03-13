@@ -15,6 +15,7 @@ import MetaAds from "./pages/MetaAds";
 import GoogleAds from "./pages/GoogleAds";
 import Account from "./pages/Account";
 import Navbar from "./components/Navbar";
+import { LanguageProvider } from "./hooks/use-language";
 
 const queryClient = new QueryClient();
 
@@ -48,11 +49,13 @@ const AppLayout = () => {
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <AppLayout />
-      </BrowserRouter>
+      <LanguageProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <AppLayout />
+        </BrowserRouter>
+      </LanguageProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

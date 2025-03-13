@@ -1,4 +1,5 @@
-import React from "react";
+
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { 
   Search, 
@@ -20,7 +21,8 @@ import {
   Youtube,
   Twitter,
   Linkedin,
-  Headphones
+  Headphones,
+  Globe
 } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import {
@@ -46,6 +48,7 @@ import { NotificationsDropdown } from "@/components/notifications/NotificationsD
 import { useNotifications } from "@/hooks/use-notifications";
 import { Toaster } from "@/components/ui/toaster";
 import { CommandSearch } from "@/components/CommandSearch";
+import { useLanguage } from "@/hooks/use-language";
 
 export const Navbar: React.FC = () => {
   const isMobile = useIsMobile();
@@ -55,6 +58,7 @@ export const Navbar: React.FC = () => {
     markAllAsRead, 
     dismissNotification 
   } = useNotifications();
+  const { language, setLanguage } = useLanguage();
 
   const mainMenuItems = [
     { icon: PieChart, label: "Dashboard", path: "/" },
@@ -172,6 +176,34 @@ export const Navbar: React.FC = () => {
             <div className="hidden md:block">
               <CommandSearch />
             </div>
+            
+            {/* Language Switcher */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon" className="h-9 w-9">
+                  <Globe className="h-4 w-4" />
+                  <span className="sr-only">Switch language</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem 
+                  onClick={() => setLanguage('en')}
+                  className={language === 'en' ? 'bg-accent' : ''}
+                >
+                  <span className="mr-2">🇺🇸</span>
+                  <span>English</span>
+                  {language === 'en' && <Check className="ml-auto h-4 w-4" />}
+                </DropdownMenuItem>
+                <DropdownMenuItem 
+                  onClick={() => setLanguage('de')}
+                  className={language === 'de' ? 'bg-accent' : ''}
+                >
+                  <span className="mr-2">🇩🇪</span>
+                  <span>Deutsch</span>
+                  {language === 'de' && <Check className="ml-auto h-4 w-4" />}
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
             
             <NotificationsDropdown 
               notifications={notifications}
