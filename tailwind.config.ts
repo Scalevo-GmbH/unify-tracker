@@ -134,9 +134,10 @@ export default {
 				},
 				shake: {
 					'0%': { transform: 'rotate(0deg)' },
-					'25%': { transform: 'rotate(10deg)' },
-					'50%': { transform: 'rotate(0deg)' },
-					'75%': { transform: 'rotate(-10deg)' },
+					'20%': { transform: 'rotate(8deg)' },
+					'40%': { transform: 'rotate(0deg)' },
+					'60%': { transform: 'rotate(-8deg)' },
+					'80%': { transform: 'rotate(0deg)' },
 					'100%': { transform: 'rotate(0deg)' }
 				}
 			},
@@ -148,8 +149,8 @@ export default {
 				'shimmer': 'shimmer 2s infinite linear',
 				'pulse': 'pulse 2s infinite ease-in-out',
 				'float': 'float 3s infinite ease-in-out',
-				'shake': 'shake 2.5s ease-in-out infinite',
-				'delayed-shake': 'shake 2.5s ease-in-out 1s infinite'
+				'shake': 'shake 1.5s ease-in-out infinite',
+				'delayed-shake': 'shake 1.5s ease-in-out 1s infinite'
 			},
 			fontFamily: {
 				sans: ['Inter', 'SF Pro Display', 'system-ui', 'sans-serif'],
