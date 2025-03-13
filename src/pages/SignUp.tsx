@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { z } from "zod";
@@ -189,9 +188,8 @@ const SignUp = () => {
           </Form>
         </CardContent>
         <CardFooter className="flex flex-col space-y-4">
-          <div className="relative flex justify-center text-xs uppercase">
-            <span className="bg-card px-2 text-muted-foreground">Or continue with</span>
-            <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-muted"></div>
+          <div className="text-center text-xs uppercase text-muted-foreground my-2">
+            Or continue with
           </div>
           <div className="grid grid-cols-2 gap-4">
             <Button variant="outline" className="w-full">
