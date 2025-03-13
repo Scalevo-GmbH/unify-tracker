@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { useNavigate, useSearchParams, Link } from "react-router-dom";
 import { z } from "zod";
@@ -41,7 +40,6 @@ const ResetPassword = () => {
     },
   });
 
-  // Verify token on component mount
   useEffect(() => {
     if (!token) {
       toast({
@@ -52,8 +50,6 @@ const ResetPassword = () => {
       return;
     }
     
-    // In a real app, you would verify the token with your backend here
-    // For now, we'll simulate a valid token
     setIsTokenValid(true);
   }, [token, toast]);
 
@@ -71,10 +67,8 @@ const ResetPassword = () => {
     setIsResetting(true);
     
     try {
-      // Here you would call your API to reset the password
       console.log("Resetting password with:", { token, newPassword: values.password });
       
-      // Simulate API call delay
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       toast({
@@ -82,7 +76,6 @@ const ResetPassword = () => {
         description: "Your password has been reset. You can now log in with your new password.",
       });
       
-      // Redirect to login page after successful reset
       setTimeout(() => {
         navigate("/login");
       }, 2000);
@@ -100,22 +93,31 @@ const ResetPassword = () => {
   if (!token) {
     return (
       <div className="container flex items-center justify-center min-h-screen py-12">
-        <Card className="w-full max-w-md border-0 shadow-lg">
-          <CardHeader className="space-y-1">
-            <CardTitle className="text-2xl font-bold text-center">Invalid Reset Link</CardTitle>
-            <CardDescription className="text-center">
-              The password reset link is invalid or has expired.
-            </CardDescription>
-          </CardHeader>
-          <CardFooter className="flex justify-center">
-            <Link to="/forgot-password">
-              <Button variant="secondary">
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Back to Forgot Password
-              </Button>
-            </Link>
-          </CardFooter>
-        </Card>
+        <div className="w-full max-w-md">
+          <div className="flex justify-center mb-6">
+            <img 
+              src="/lovable-uploads/11582caa-2cc6-4bc8-bad9-bf61386d8073.png" 
+              alt="Scalevo Logo" 
+              className="h-4 sm:h-5"
+            />
+          </div>
+          <Card className="w-full max-w-md border-0 shadow-lg">
+            <CardHeader className="space-y-1">
+              <CardTitle className="text-2xl font-bold text-center">Invalid Reset Link</CardTitle>
+              <CardDescription className="text-center">
+                The password reset link is invalid or has expired.
+              </CardDescription>
+            </CardHeader>
+            <CardFooter className="flex justify-center">
+              <Link to="/forgot-password">
+                <Button variant="secondary">
+                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  Back to Forgot Password
+                </Button>
+              </Link>
+            </CardFooter>
+          </Card>
+        </div>
       </div>
     );
   }
@@ -123,6 +125,13 @@ const ResetPassword = () => {
   return (
     <div className="container flex items-center justify-center min-h-screen py-12">
       <div className="w-full max-w-md">
+        <div className="flex justify-center mb-6">
+          <img 
+            src="/lovable-uploads/11582caa-2cc6-4bc8-bad9-bf61386d8073.png" 
+            alt="Scalevo Logo" 
+            className="h-4 sm:h-5"
+          />
+        </div>
         <Card className="border-0 shadow-lg">
           <CardHeader className="space-y-1">
             <CardTitle className="text-2xl font-bold text-center">Reset Your Password</CardTitle>

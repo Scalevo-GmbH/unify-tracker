@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { z } from "zod";
@@ -51,6 +52,13 @@ const Login = () => {
   return (
     <div className="container flex items-center justify-center min-h-screen py-12">
       <div className="w-full max-w-md">
+        <div className="flex justify-center mb-6">
+          <img 
+            src="/lovable-uploads/11582caa-2cc6-4bc8-bad9-bf61386d8073.png" 
+            alt="Scalevo Logo" 
+            className="h-4 sm:h-5"
+          />
+        </div>
         <Card className="border-0 shadow-lg">
           <CardHeader className="space-y-1">
             <CardTitle className="text-2xl font-bold text-center">Sign In</CardTitle>
