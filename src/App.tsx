@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Index from "./pages/Index";
 import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
 import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
 
@@ -14,7 +15,7 @@ const queryClient = new QueryClient();
 // Helper component to conditionally render the Navbar
 const AppLayout = () => {
   const location = useLocation();
-  const isAuthRoute = ['/login', '/register', '/forgot-password'].includes(location.pathname);
+  const isAuthRoute = ['/login', '/register', '/signup', '/forgot-password'].includes(location.pathname);
   
   return (
     <div className="min-h-screen flex flex-col">
@@ -23,6 +24,7 @@ const AppLayout = () => {
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
