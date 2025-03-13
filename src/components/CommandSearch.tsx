@@ -111,24 +111,26 @@ export const CommandSearch: React.FC<SearchInputProps> = ({ isMobile = false }) 
       </Button>
 
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <div className="flex items-center border-b px-3 relative">
+        <div className="flex items-center border-b px-3 relative w-full">
           <Search className="mr-2 h-4 w-4 shrink-0 opacity-50" />
-          <CommandInput
-            placeholder="Search commands, pages, and more..."
-            value={searchQuery}
-            onValueChange={setSearchQuery}
-            className="flex h-11 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
-          />
-          {searchQuery && (
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setSearchQuery("")}
-              className="h-6 w-6 absolute right-3"
-            >
-              <X className="h-4 w-4" />
-            </Button>
-          )}
+          <div className="flex-1 relative">
+            <CommandInput
+              placeholder="Search commands, pages, and more..."
+              value={searchQuery}
+              onValueChange={setSearchQuery}
+              className="pr-8"
+            />
+            {searchQuery && (
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setSearchQuery("")}
+                className="absolute right-0 top-1/2 -translate-y-1/2 h-8 w-8"
+              >
+                <X className="h-4 w-4" />
+              </Button>
+            )}
+          </div>
         </div>
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
