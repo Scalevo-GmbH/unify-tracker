@@ -52,7 +52,7 @@ export const Navbar: React.FC = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
             <PieChart className="h-6 w-6 text-marketing-purple" />
-            <span className="text-lg font-semibold tracking-tight">Unify</span>
+            <span className="text-lg font-semibold tracking-tight">Scalevo</span>
           </Link>
 
           {/* Desktop Navigation */}
