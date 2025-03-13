@@ -98,9 +98,10 @@ export default function MetaAds() {
           <div className="flex flex-col gap-4 sm:gap-6 mb-6">
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between">
               <div className="space-y-2">
-                <div className="inline-flex items-center gap-2">
-                  <Facebook className="h-5 w-5 text-blue-600" />
-                  <span className="font-medium text-blue-600">Meta Ads</span>
+                {/* Updated Meta Ads header styling */}
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800">
+                  <Facebook className="h-4 w-4 text-blue-600 dark:text-blue-400" />
+                  <span className="text-sm font-medium text-blue-700 dark:text-blue-400">Meta Ads</span>
                 </div>
                 <h1 className="text-3xl font-semibold tracking-tight">Ad Performance</h1>
                 <p className="text-muted-foreground">Track and optimize your Facebook and Instagram ad campaigns.</p>
@@ -109,7 +110,7 @@ export default function MetaAds() {
               <div className="mt-4 sm:mt-0 flex flex-wrap items-center gap-2">
                 <DateRangeSelector 
                   value={dateRange} 
-                  onChange={setDateRange} 
+                  onChange={(value) => setDateRange(value)} 
                 />
                 <Button variant="outline">
                   Export
@@ -218,7 +219,7 @@ export default function MetaAds() {
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <Card className="lg:col-span-2">
                   <CardHeader>
-                    <CardTitle>Ad Performance Over Time</CardTitle>
+                    <CardTitle>Reach vs. Clicks Over Time</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <PerformanceChart dateRange={dateRange} />

@@ -15,19 +15,20 @@ import {
 } from "recharts";
 import { DateRange } from "@/components/DateRangeSelector";
 
+// Updated data to emphasize reach and clicks
 const data = [
-  { name: "Jan", reach: 8000, impressions: 12000, customers: 240 },
-  { name: "Feb", reach: 7500, impressions: 11500, customers: 210 },
-  { name: "Mar", reach: 9000, impressions: 14000, customers: 290 },
-  { name: "Apr", reach: 9800, impressions: 15200, customers: 350 },
-  { name: "May", reach: 10500, impressions: 16500, customers: 320 },
-  { name: "Jun", reach: 11000, impressions: 17200, customers: 310 },
-  { name: "Jul", reach: 12400, impressions: 19000, customers: 390 },
-  { name: "Aug", reach: 12800, impressions: 20100, customers: 240 },
-  { name: "Sep", reach: 13200, impressions: 21500, customers: 210 },
-  { name: "Oct", reach: 14500, impressions: 23800, customers: 290 },
-  { name: "Nov", reach: 15200, impressions: 25000, customers: 350 },
-  { name: "Dec", reach: 16000, impressions: 27000, customers: 390 },
+  { name: "Jan", reach: 8000, clicks: 420, customers: 240 },
+  { name: "Feb", reach: 7500, clicks: 380, customers: 210 },
+  { name: "Mar", reach: 9000, clicks: 520, customers: 290 },
+  { name: "Apr", reach: 9800, clicks: 620, customers: 350 },
+  { name: "May", reach: 10500, clicks: 680, customers: 320 },
+  { name: "Jun", reach: 11000, clicks: 710, customers: 310 },
+  { name: "Jul", reach: 12400, clicks: 840, customers: 390 },
+  { name: "Aug", reach: 12800, clicks: 790, customers: 240 },
+  { name: "Sep", reach: 13200, clicks: 860, customers: 210 },
+  { name: "Oct", reach: 14500, clicks: 920, customers: 290 },
+  { name: "Nov", reach: 15200, clicks: 980, customers: 350 },
+  { name: "Dec", reach: 16000, clicks: 1050, customers: 390 },
 ];
 
 type ChartType = "area" | "bar" | "line";
@@ -61,9 +62,9 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
                 <stop offset="5%" stopColor="#3B82F6" stopOpacity={0.8} />
                 <stop offset="95%" stopColor="#3B82F6" stopOpacity={0} />
               </linearGradient>
-              <linearGradient id="colorImpressions" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#8B5CF6" stopOpacity={0.8} />
-                <stop offset="95%" stopColor="#8B5CF6" stopOpacity={0} />
+              <linearGradient id="colorClicks" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="#F97316" stopOpacity={0.8} />
+                <stop offset="95%" stopColor="#F97316" stopOpacity={0} />
               </linearGradient>
             </defs>
             <XAxis 
@@ -99,10 +100,10 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
             />
             <Area 
               type="monotone" 
-              dataKey="impressions" 
-              stroke="#8B5CF6" 
+              dataKey="clicks" 
+              stroke="#F97316" 
               fillOpacity={1} 
-              fill="url(#colorImpressions)" 
+              fill="url(#colorClicks)" 
               strokeWidth={2}
             />
           </AreaChart>
@@ -134,7 +135,7 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
               formatter={(value: number) => [`${value.toLocaleString()}`, undefined]}
             />
             <Bar dataKey="reach" fill="#3B82F6" radius={[4, 4, 0, 0]} />
-            <Bar dataKey="impressions" fill="#8B5CF6" radius={[4, 4, 0, 0]} />
+            <Bar dataKey="clicks" fill="#F97316" radius={[4, 4, 0, 0]} />
           </BarChart>
         );
       case "line":
@@ -173,8 +174,8 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
             />
             <Line 
               type="monotone" 
-              dataKey="impressions" 
-              stroke="#8B5CF6" 
+              dataKey="clicks" 
+              stroke="#F97316" 
               strokeWidth={2}
               dot={{ r: 3 }}
               activeDot={{ r: 5 }}
@@ -190,8 +191,8 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
     <div className={`bg-card rounded-xl shadow-subtle p-6 ${className}`}>
       <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6">
         <div>
-          <h3 className="text-lg font-semibold">Platform Performance</h3>
-          <p className="text-sm text-muted-foreground">Combined Reach & Impressions Across All Tools</p>
+          <h3 className="text-lg font-semibold">Ad Performance Metrics</h3>
+          <p className="text-sm text-muted-foreground">Comparing Reach and Click Performance</p>
         </div>
         
         <div className="flex flex-wrap mt-4 sm:mt-0 space-x-2">
@@ -265,12 +266,12 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
       
       <div className="flex items-center gap-4 mb-4">
         <div className="flex items-center">
-          <div className="h-3 w-3 rounded-full bg-marketing-blue mr-2"></div>
+          <div className="h-3 w-3 rounded-full bg-blue-500 mr-2"></div>
           <span className="text-sm font-medium">Reach</span>
         </div>
         <div className="flex items-center">
-          <div className="h-3 w-3 rounded-full bg-marketing-purple mr-2"></div>
-          <span className="text-sm font-medium">Impressions</span>
+          <div className="h-3 w-3 rounded-full bg-orange-500 mr-2"></div>
+          <span className="text-sm font-medium">Clicks</span>
         </div>
       </div>
       
