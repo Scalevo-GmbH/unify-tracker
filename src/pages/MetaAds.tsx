@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { FadeInSection } from "@/components/animations/FadeInSection";
 import { MetricCard } from "@/components/MetricCard";
@@ -10,6 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const metaAdsData = [
   {
@@ -70,8 +70,6 @@ const metaAdsData = [
     adPreview: "/placeholder.svg",
   }
 ];
-
-// Remove the local DateRange type declaration here
 
 export default function MetaAds() {
   const [dateRange, setDateRange] = useState<DateRange>("this-month");
@@ -155,22 +153,23 @@ export default function MetaAds() {
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="col-span-1">
-                  <div className="aspect-video w-full rounded-lg overflow-hidden bg-muted flex items-center justify-center">
+                  <AspectRatio ratio={16/9} className="bg-muted rounded-lg overflow-hidden">
                     <img 
                       src={currentAd.adPreview} 
                       alt={`Preview of ${currentAd.name}`} 
                       className="w-full h-full object-cover"
                     />
-                  </div>
+                  </AspectRatio>
                 </div>
                 <div className="md:col-span-2">
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 h-full">
                     <MetricCard
                       title="Impressions"
                       value={currentAd.impressions.toLocaleString()}
                       change={12.5}
                       icon={<Eye className="h-4 w-4" />}
                       description="Total number of times your ad was displayed"
+                      className="h-full flex flex-col"
                     />
                     <MetricCard
                       title="Reach"
@@ -178,6 +177,7 @@ export default function MetaAds() {
                       change={8.3}
                       icon={<Users className="h-4 w-4" />}
                       description="Unique users who saw your ad"
+                      className="h-full flex flex-col"
                     />
                     <MetricCard
                       title="Clicks"
@@ -185,6 +185,7 @@ export default function MetaAds() {
                       change={15.2}
                       icon={<MousePointerClick className="h-4 w-4" />}
                       description="Number of clicks on your ad"
+                      className="h-full flex flex-col"
                     />
                     <MetricCard
                       title="CTR"
@@ -192,6 +193,7 @@ export default function MetaAds() {
                       change={2.1}
                       icon={<TrendingUp className="h-4 w-4" />}
                       description="Click-through rate (clicks ÷ impressions)"
+                      className="h-full flex flex-col"
                     />
                   </div>
                 </div>
