@@ -22,7 +22,8 @@ import {
   Twitter,
   Linkedin,
   Headphones,
-  Globe
+  Globe,
+  Check
 } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import {
