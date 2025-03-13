@@ -1,7 +1,8 @@
 
 import React from "react";
-import { ArrowDown, ArrowUp } from "lucide-react";
+import { ArrowDown, ArrowUp, HelpCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Tooltip, TooltipProvider, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 
 interface MetricCardProps {
   title: string;
@@ -9,6 +10,7 @@ interface MetricCardProps {
   change?: number;
   icon?: React.ReactNode;
   className?: string;
+  description?: string;
 }
 
 export const MetricCard: React.FC<MetricCardProps> = ({
@@ -17,6 +19,7 @@ export const MetricCard: React.FC<MetricCardProps> = ({
   change,
   icon,
   className,
+  description,
 }) => {
   const isPositive = change && change > 0;
   const isNegative = change && change < 0;
@@ -28,7 +31,23 @@ export const MetricCard: React.FC<MetricCardProps> = ({
     )}>
       <div className="flex items-start justify-between">
         <div>
-          <p className="text-sm font-medium text-muted-foreground">{title}</p>
+          <div className="flex items-center gap-1.5">
+            <p className="text-sm font-medium text-muted-foreground">{title}</p>
+            {description && (
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <span className="cursor-help">
+                      <HelpCircle className="h-3.5 w-3.5 text-muted-foreground" />
+                    </span>
+                  </TooltipTrigger>
+                  <TooltipContent side="top" className="max-w-xs text-xs">
+                    {description}
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            )}
+          </div>
           <h3 className="mt-2 text-2xl font-semibold tracking-tight">{value}</h3>
           
           {typeof change !== "undefined" && (

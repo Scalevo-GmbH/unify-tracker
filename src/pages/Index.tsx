@@ -14,8 +14,10 @@ import {
   Search, 
   LineChart, 
   BarChart3,
-  PieChart
+  PieChart,
+  HelpCircle
 } from "lucide-react";
+import { Tooltip, TooltipProvider, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 
 const Index = () => {
   const [selectedPlatform, setSelectedPlatform] = useState<{
@@ -65,7 +67,21 @@ const Index = () => {
         
         <FadeInSection className="h-full">
           <div className="bg-card rounded-xl shadow-subtle p-6 h-full flex flex-col">
-            <h3 className="text-lg font-semibold mb-4">Top Channels</h3>
+            <div className="flex items-center gap-2 mb-4">
+              <h3 className="text-lg font-semibold">Top Channels</h3>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <span className="cursor-help">
+                      <HelpCircle className="h-4 w-4 text-muted-foreground" />
+                    </span>
+                  </TooltipTrigger>
+                  <TooltipContent side="top" className="max-w-xs text-sm">
+                    Top channels are ranked based on their contribution to your overall traffic and conversion metrics. Percentages represent the proportion of total traffic coming from each source.
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </div>
             
             <div className="space-y-6 flex-grow flex flex-col justify-between">
               <div className="space-y-6 flex-grow">
