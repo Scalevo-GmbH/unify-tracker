@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -133,14 +134,19 @@ export default {
 				},
 				shake: {
 					'0%': { transform: 'rotate(0deg)' },
-					'10%': { transform: 'rotate(14deg)' },
-					'20%': { transform: 'rotate(8deg)' },
-					'30%': { transform: 'rotate(14deg)' },
-					'40%': { transform: 'rotate(0deg)' },
-					'50%': { transform: 'rotate(-8deg)' },
-					'60%': { transform: 'rotate(-14deg)' },
-					'70%': { transform: 'rotate(-8deg)' },
-					'80%': { transform: 'rotate(0deg)' },
+					'5%': { transform: 'rotate(5deg)' },
+					'10%': { transform: 'rotate(10deg)' },
+					'15%': { transform: 'rotate(15deg)' },
+					'20%': { transform: 'rotate(12deg)' },
+					'25%': { transform: 'rotate(8deg)' },
+					'30%': { transform: 'rotate(5deg)' },
+					'35%': { transform: 'rotate(0deg)' },
+					'40%': { transform: 'rotate(-5deg)' },
+					'45%': { transform: 'rotate(-8deg)' },
+					'50%': { transform: 'rotate(-10deg)' },
+					'55%': { transform: 'rotate(-8deg)' },
+					'60%': { transform: 'rotate(-5deg)' },
+					'65%': { transform: 'rotate(0deg)' },
 					'100%': { transform: 'rotate(0deg)' }
 				}
 			},
