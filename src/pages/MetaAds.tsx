@@ -1,9 +1,8 @@
-
 import React, { useState } from "react";
 import { FadeInSection } from "@/components/animations/FadeInSection";
 import { MetricCard } from "@/components/MetricCard";
 import { PerformanceChart } from "@/components/PerformanceChart";
-import { DateRangeSelector, DateRange } from "@/components/DateRangeSelector"; // Import DateRange type from the component
+import { DateRangeSelector, DateRange } from "@/components/DateRangeSelector";
 import { ArrowLeft, ArrowRight, Facebook, Users, Eye, MousePointerClick, Target, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -11,7 +10,6 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
 
-// Sample data for Meta Ads
 const metaAdsData = [
   {
     id: 1,
@@ -75,7 +73,6 @@ const metaAdsData = [
 type DateRange = "today" | "yesterday" | "this-week" | "last-week" | "this-month" | "last-month" | "custom";
 
 export default function MetaAds() {
-  // Updated to use the imported DateRange type
   const [dateRange, setDateRange] = useState<DateRange>("this-month");
   const [currentAdIndex, setCurrentAdIndex] = useState(0);
   const currentAd = metaAdsData[currentAdIndex];
@@ -99,7 +96,6 @@ export default function MetaAds() {
           <div className="flex flex-col gap-4 sm:gap-6 mb-6">
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between">
               <div className="space-y-2">
-                {/* Updated Meta Ads header styling */}
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800">
                   <Facebook className="h-4 w-4 text-blue-600 dark:text-blue-400" />
                   <span className="text-sm font-medium text-blue-700 dark:text-blue-400">Meta Ads</span>
@@ -125,7 +121,6 @@ export default function MetaAds() {
         </FadeInSection>
       </section>
 
-      {/* Ad Navigation */}
       <section className="mb-8">
         <FadeInSection>
           <Card>
@@ -205,7 +200,6 @@ export default function MetaAds() {
         </FadeInSection>
       </section>
 
-      {/* Detailed Analytics Tabs */}
       <section className="mb-8">
         <FadeInSection>
           <Tabs defaultValue="performance">
@@ -406,7 +400,6 @@ export default function MetaAds() {
         </FadeInSection>
       </section>
 
-      {/* All Ads Table */}
       <section>
         <FadeInSection>
           <div className="flex justify-between items-center mb-4">
