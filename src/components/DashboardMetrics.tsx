@@ -29,7 +29,7 @@ export const DashboardMetrics: React.FC = () => {
         <MetricCard
           title="Conversion Rate"
           value="3.8%"
-          change={0.5}
+          change={-2.5}
           icon={<Percent className="h-5 w-5" />}
         />
       </FadeInSection>
