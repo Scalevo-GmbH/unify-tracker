@@ -18,6 +18,7 @@ const formSchema = z.object({
   country: z.string().min(1, { message: "Please select a country." }),
   city: z.string().min(1, { message: "Please enter a city." }),
   street: z.string().min(2, { message: "Please enter a valid street address." }),
+  zipCode: z.string().min(4, { message: "Please enter a valid postal code/PLZ." }),
   email: z.string().email({ message: "Please enter a valid email address." }),
   password: z.string().min(8, { message: "Password must be at least 8 characters." }),
 });
@@ -37,6 +38,7 @@ const SignUp = () => {
       country: "",
       city: "",
       street: "",
+      zipCode: "",
       email: "",
       password: "",
     },
@@ -163,26 +165,49 @@ const SignUp = () => {
                 />
               </div>
 
-              <FormField
-                control={form.control}
-                name="street"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Street Address</FormLabel>
-                    <FormControl>
-                      <div className="relative">
-                        <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 h-4 w-4" />
-                        <Input
-                          className="pl-10"
-                          placeholder="123 Main St"
-                          {...field}
-                        />
-                      </div>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+              <div className="grid grid-cols-2 gap-4">
+                <FormField
+                  control={form.control}
+                  name="street"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Street Address</FormLabel>
+                      <FormControl>
+                        <div className="relative">
+                          <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 h-4 w-4" />
+                          <Input
+                            className="pl-10"
+                            placeholder="123 Main St"
+                            {...field}
+                          />
+                        </div>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="zipCode"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Postal Code / PLZ</FormLabel>
+                      <FormControl>
+                        <div className="relative">
+                          <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 h-4 w-4" />
+                          <Input
+                            className="pl-10"
+                            placeholder="10115"
+                            {...field}
+                          />
+                        </div>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
 
               <FormField
                 control={form.control}
