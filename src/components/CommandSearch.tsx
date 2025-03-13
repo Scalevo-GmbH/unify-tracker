@@ -1,6 +1,5 @@
-
 import React, { useState } from "react";
-import { Search, Command, X, BarChart3, Users, FileText, ImageIcon, Calendar, CircleX } from "lucide-react";
+import { Search, Command, X, BarChart3, Users, FileText, ImageIcon, Calendar, Trash2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import {
   CommandDialog,
@@ -13,7 +12,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 
-// Define search result categories and items
 const searchCategories = [
   {
     category: "Pages",
@@ -53,7 +51,6 @@ export const CommandSearch: React.FC<SearchInputProps> = ({ isMobile = false }) 
   const navigate = useNavigate();
   const { toast } = useToast();
 
-  // Filter search results based on query
   const getFilteredResults = () => {
     if (!searchQuery) return searchCategories;
 
@@ -71,17 +68,14 @@ export const CommandSearch: React.FC<SearchInputProps> = ({ isMobile = false }) 
     setOpen(false);
     setSearchQuery("");
     
-    // Navigate to the selected path
     navigate(path);
     
-    // Show a toast notification
     toast({
       title: "Navigating",
       description: `Going to ${path}`,
     });
   };
 
-  // Open command dialog with keyboard shortcut
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
@@ -127,7 +121,7 @@ export const CommandSearch: React.FC<SearchInputProps> = ({ isMobile = false }) 
                 onClick={() => setSearchQuery("")}
                 className="absolute right-4 top-1/2 -translate-y-1/2 h-7 w-7"
               >
-                <CircleX className="h-3.5 w-3.5" />
+                <Trash2 className="h-3.5 w-3.5" />
               </Button>
             )}
           </div>
