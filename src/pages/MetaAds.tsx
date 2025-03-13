@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { FadeInSection } from "@/components/animations/FadeInSection";
 import { MetricCard } from "@/components/MetricCard";
@@ -70,7 +71,7 @@ const metaAdsData = [
   }
 ];
 
-type DateRange = "today" | "yesterday" | "this-week" | "last-week" | "this-month" | "last-month" | "custom";
+// Remove the local DateRange type declaration here
 
 export default function MetaAds() {
   const [dateRange, setDateRange] = useState<DateRange>("this-month");
