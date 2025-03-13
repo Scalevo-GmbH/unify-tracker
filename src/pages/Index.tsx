@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { DashboardMetrics } from "@/components/DashboardMetrics";
 import { PerformanceChart } from "@/components/PerformanceChart";
@@ -56,85 +57,91 @@ const Index = () => {
           <PerformanceChart />
         </FadeInSection>
         
-        <FadeInSection className="space-y-6">
-          <div className="bg-card rounded-xl shadow-subtle p-6">
+        <FadeInSection className="h-full">
+          <div className="bg-card rounded-xl shadow-subtle p-6 h-full flex flex-col">
             <h3 className="text-lg font-semibold mb-4">Top Channels</h3>
             
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <div className="h-8 w-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mr-3">
-                    <Facebook className="h-4 w-4" />
+            <div className="space-y-6 flex-grow flex flex-col justify-between">
+              <div className="space-y-6 flex-grow">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <div className="h-10 w-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mr-3">
+                      <Facebook className="h-5 w-5" />
+                    </div>
+                    <span className="font-medium">Facebook</span>
                   </div>
-                  <span className="font-medium">Facebook</span>
+                  <div className="flex items-center">
+                    <span className="font-medium">38%</span>
+                    <div className="w-24 h-2 bg-secondary ml-3 rounded-full overflow-hidden">
+                      <div className="h-full bg-marketing-blue rounded-full" style={{ width: "38%" }}></div>
+                    </div>
+                  </div>
                 </div>
-                <div className="flex items-center">
-                  <span className="font-medium">38%</span>
-                  <div className="w-20 h-2 bg-secondary ml-3 rounded-full overflow-hidden">
-                    <div className="h-full bg-marketing-blue rounded-full" style={{ width: "38%" }}></div>
+                
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <div className="h-10 w-10 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center mr-3">
+                      <Instagram className="h-5 w-5" />
+                    </div>
+                    <span className="font-medium">Instagram</span>
+                  </div>
+                  <div className="flex items-center">
+                    <span className="font-medium">24%</span>
+                    <div className="w-24 h-2 bg-secondary ml-3 rounded-full overflow-hidden">
+                      <div className="h-full bg-marketing-pink rounded-full" style={{ width: "24%" }}></div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <div className="h-10 w-10 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mr-3">
+                      <Twitter className="h-5 w-5" />
+                    </div>
+                    <span className="font-medium">Twitter</span>
+                  </div>
+                  <div className="flex items-center">
+                    <span className="font-medium">18%</span>
+                    <div className="w-24 h-2 bg-secondary ml-3 rounded-full overflow-hidden">
+                      <div className="h-full bg-marketing-blue rounded-full" style={{ width: "18%" }}></div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <div className="h-10 w-10 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center mr-3">
+                      <Mail className="h-5 w-5" />
+                    </div>
+                    <span className="font-medium">Email</span>
+                  </div>
+                  <div className="flex items-center">
+                    <span className="font-medium">12%</span>
+                    <div className="w-24 h-2 bg-secondary ml-3 rounded-full overflow-hidden">
+                      <div className="h-full bg-marketing-yellow rounded-full" style={{ width: "12%" }}></div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <div className="h-10 w-10 rounded-full bg-green-100 text-green-600 flex items-center justify-center mr-3">
+                      <Search className="h-5 w-5" />
+                    </div>
+                    <span className="font-medium">Organic</span>
+                  </div>
+                  <div className="flex items-center">
+                    <span className="font-medium">8%</span>
+                    <div className="w-24 h-2 bg-secondary ml-3 rounded-full overflow-hidden">
+                      <div className="h-full bg-marketing-green rounded-full" style={{ width: "8%" }}></div>
+                    </div>
                   </div>
                 </div>
               </div>
               
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <div className="h-8 w-8 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center mr-3">
-                    <Instagram className="h-4 w-4" />
-                  </div>
-                  <span className="font-medium">Instagram</span>
-                </div>
-                <div className="flex items-center">
-                  <span className="font-medium">24%</span>
-                  <div className="w-20 h-2 bg-secondary ml-3 rounded-full overflow-hidden">
-                    <div className="h-full bg-marketing-pink rounded-full" style={{ width: "24%" }}></div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <div className="h-8 w-8 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mr-3">
-                    <Twitter className="h-4 w-4" />
-                  </div>
-                  <span className="font-medium">Twitter</span>
-                </div>
-                <div className="flex items-center">
-                  <span className="font-medium">18%</span>
-                  <div className="w-20 h-2 bg-secondary ml-3 rounded-full overflow-hidden">
-                    <div className="h-full bg-marketing-blue rounded-full" style={{ width: "18%" }}></div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <div className="h-8 w-8 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center mr-3">
-                    <Mail className="h-4 w-4" />
-                  </div>
-                  <span className="font-medium">Email</span>
-                </div>
-                <div className="flex items-center">
-                  <span className="font-medium">12%</span>
-                  <div className="w-20 h-2 bg-secondary ml-3 rounded-full overflow-hidden">
-                    <div className="h-full bg-marketing-yellow rounded-full" style={{ width: "12%" }}></div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <div className="h-8 w-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center mr-3">
-                    <Search className="h-4 w-4" />
-                  </div>
-                  <span className="font-medium">Organic</span>
-                </div>
-                <div className="flex items-center">
-                  <span className="font-medium">8%</span>
-                  <div className="w-20 h-2 bg-secondary ml-3 rounded-full overflow-hidden">
-                    <div className="h-full bg-marketing-green rounded-full" style={{ width: "8%" }}></div>
-                  </div>
-                </div>
-              </div>
+              <button className="mt-4 w-full py-2 px-4 text-sm font-medium text-primary border border-primary rounded-md hover:bg-primary/5 transition-colors">
+                View All Channels
+              </button>
             </div>
           </div>
         </FadeInSection>
