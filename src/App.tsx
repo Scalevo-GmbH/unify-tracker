@@ -13,6 +13,7 @@ import NotFound from "./pages/NotFound";
 import Integrations from "./pages/Integrations";
 import MetaAds from "./pages/MetaAds";
 import GoogleAds from "./pages/GoogleAds";
+import Account from "./pages/Account";
 import Navbar from "./components/Navbar";
 
 const queryClient = new QueryClient();
@@ -35,6 +36,7 @@ const AppLayout = () => {
           <Route path="/integrations" element={<Integrations />} />
           <Route path="/meta-ads" element={<MetaAds />} />
           <Route path="/google-ads" element={<GoogleAds />} />
+          <Route path="/account" element={<Account />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
