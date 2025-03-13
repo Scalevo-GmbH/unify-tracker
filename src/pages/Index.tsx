@@ -26,6 +26,9 @@ const Index = () => {
   } | null>(null);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [dateRange, setDateRange] = useState<DateRange>("this-month");
+  
+  // Mock user name - in a real app, this would come from authentication
+  const userName = "Pascal";
 
   const handleOpenModal = (name: string, icon: React.ReactNode) => {
     setSelectedPlatform({ name, icon });
@@ -39,7 +42,7 @@ const Index = () => {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6">
             <div>
               <h1 className="text-2xl font-semibold tracking-tight">Marketing Dashboard</h1>
-              <p className="text-muted-foreground">Track and optimize your marketing performance across platforms.</p>
+              <p className="text-muted-foreground">Welcome back {userName} 👋 Track and optimize your marketing performance across platforms.</p>
             </div>
             
             <div className="mt-4 sm:mt-0 flex flex-wrap items-center gap-2">
