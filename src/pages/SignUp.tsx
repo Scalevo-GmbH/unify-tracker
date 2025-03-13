@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { z } from "zod";
@@ -8,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Eye, EyeOff, UserPlus, Mail, User, Building, MapPin, Lock, Globe, Flag } from "lucide-react";
+import { Eye, EyeOff, UserPlus, Mail, User, Building, MapPin, Lock, Globe } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
@@ -23,14 +22,14 @@ const formSchema = z.object({
   password: z.string().min(8, { message: "Password must be at least 8 characters." }),
 });
 
-// Country data with flags (using Lucide icons)
+// Country data with emoji flags
 const countries = [
-  { value: "us", label: "United States", icon: <Flag className="h-4 w-4 text-blue-600" /> },
-  { value: "uk", label: "United Kingdom", icon: <Flag className="h-4 w-4 text-red-600" /> },
-  { value: "ca", label: "Canada", icon: <Flag className="h-4 w-4 text-red-600" /> },
-  { value: "au", label: "Australia", icon: <Flag className="h-4 w-4 text-blue-800" /> },
-  { value: "de", label: "Germany", icon: <Flag className="h-4 w-4 text-yellow-500" /> },
-  { value: "fr", label: "France", icon: <Flag className="h-4 w-4 text-blue-700" /> },
+  { value: "us", label: "United States", flag: "🇺🇸" },
+  { value: "uk", label: "United Kingdom", flag: "🇬🇧" },
+  { value: "ca", label: "Canada", flag: "🇨🇦" },
+  { value: "au", label: "Australia", flag: "🇦🇺" },
+  { value: "de", label: "Germany", flag: "🇩🇪" },
+  { value: "fr", label: "France", flag: "🇫🇷" },
 ];
 
 type FormValues = z.infer<typeof formSchema>;
@@ -146,12 +145,9 @@ const SignUp = () => {
                             <SelectItem 
                               key={country.value} 
                               value={country.value}
-                              className="flex items-center gap-2"
+                              iconLeft={<span className="text-lg">{country.flag}</span>}
                             >
-                              <span className="flex items-center gap-2">
-                                {country.icon}
-                                {country.label}
-                              </span>
+                              {country.label}
                             </SelectItem>
                           ))}
                         </SelectContent>
