@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Sparkles } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface IntegrationCardProps {
   name: string;
@@ -10,6 +11,7 @@ interface IntegrationCardProps {
   connected?: boolean;
   popular?: boolean;
   className?: string;
+  route?: string;
   onClick?: () => void;
 }
 
@@ -20,9 +22,19 @@ export const IntegrationCard: React.FC<IntegrationCardProps> = ({
   connected = false,
   popular = false,
   className,
+  route,
   onClick,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    if (route) {
+      navigate(route);
+    } else if (onClick) {
+      onClick();
+    }
+  };
 
   return (
     <div
@@ -34,7 +46,8 @@ export const IntegrationCard: React.FC<IntegrationCardProps> = ({
       )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      onClick={onClick}
+      onClick={handleClick}
+      style={{ cursor: route || onClick ? 'pointer' : 'default' }}
     >
       {popular && (
         <div className="absolute top-3 right-3 flex items-center bg-marketing-purple/10 px-2 py-1 rounded-full">
@@ -60,7 +73,7 @@ export const IntegrationCard: React.FC<IntegrationCardProps> = ({
               : "bg-primary text-primary-foreground hover:bg-primary/90"
           )}
         >
-          {connected ? "Manage Connection" : "Connect"}
+          {route && connected ? "View Dashboard" : connected ? "Manage Connection" : "Connect"}
         </button>
       </div>
       
