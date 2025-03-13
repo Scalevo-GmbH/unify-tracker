@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { 
@@ -43,6 +44,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator"; 
 import { NotificationsDropdown } from "@/components/notifications/NotificationsDropdown";
@@ -182,40 +190,33 @@ export const Navbar: React.FC = () => {
               <CommandSearch />
             </div>
             
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" className="relative h-9 w-9 text-lg">
-                  <span className="text-xl">{getCurrentLanguageFlag()}</span>
-                  <span className="sr-only">Switch language</span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-32 bg-popover">
-                <DropdownMenuItem 
-                  onClick={() => setLanguage('en')}
-                  className={cn("flex justify-between items-center", 
-                    language === 'en' ? 'bg-accent' : ''
-                  )}
-                >
+            <Select
+              value={language}
+              onValueChange={(value) => setLanguage(value as 'en' | 'de')}
+            >
+              <SelectTrigger className="w-[85px] h-9 border-none focus:ring-0">
+                <SelectValue placeholder="Language">
                   <div className="flex items-center gap-2">
-                    <span className="text-lg">🇺🇸</span>
+                    <span className="text-base">{language === 'en' ? '🇺🇸' : '🇩🇪'}</span>
+                    <span>{language === 'en' ? 'EN' : 'DE'}</span>
+                  </div>
+                </SelectValue>
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="en" className="flex items-center gap-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-base">🇺🇸</span>
                     <span>English</span>
                   </div>
-                  {language === 'en' && <Check className="h-4 w-4" />}
-                </DropdownMenuItem>
-                <DropdownMenuItem 
-                  onClick={() => setLanguage('de')}
-                  className={cn("flex justify-between items-center", 
-                    language === 'de' ? 'bg-accent' : ''
-                  )}
-                >
+                </SelectItem>
+                <SelectItem value="de" className="flex items-center gap-2">
                   <div className="flex items-center gap-2">
-                    <span className="text-lg">🇩🇪</span>
+                    <span className="text-base">🇩🇪</span>
                     <span>Deutsch</span>
                   </div>
-                  {language === 'de' && <Check className="h-4 w-4" />}
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+                </SelectItem>
+              </SelectContent>
+            </Select>
             
             <NotificationsDropdown 
               notifications={notifications}
