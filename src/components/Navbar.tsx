@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
 import { 
@@ -94,7 +95,7 @@ export const Navbar: React.FC = () => {
             <img 
               src="/lovable-uploads/11582caa-2cc6-4bc8-bad9-bf61386d8073.png" 
               alt="Scalevo Logo" 
-              className="h-6 sm:h-7" 
+              className="h-5 sm:h-6" 
             />
           </Link>
 
@@ -215,7 +216,7 @@ export const Navbar: React.FC = () => {
                   <img 
                     src="/lovable-uploads/11582caa-2cc6-4bc8-bad9-bf61386d8073.png" 
                     alt="Scalevo Logo" 
-                    className="h-6" 
+                    className="h-5" 
                   />
                 </Link>
                 
