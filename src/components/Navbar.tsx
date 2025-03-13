@@ -11,7 +11,18 @@ import {
   Settings,
   HelpCircle,
   PieChart,
-  Menu
+  Menu,
+  LayoutGrid,
+  ImageIcon,
+  FileText,
+  Mail,
+  Phone,
+  CreditCard,
+  Github,
+  Youtube,
+  Twitter,
+  Linkedin,
+  Headphones
 } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import {
@@ -32,6 +43,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Separator } from "@/components/ui/separator"; 
 
 export const Navbar: React.FC = () => {
   const isMobile = useIsMobile();
@@ -43,6 +55,36 @@ export const Navbar: React.FC = () => {
     { icon: Calendar, label: "Calendar", path: "/calendar" },
     { icon: Users, label: "Audience", path: "/audience" },
     { icon: Layers, label: "Integrations", path: "/integrations" },
+  ];
+
+  const megaMenuSections = [
+    {
+      title: "Products",
+      items: [
+        { icon: LayoutGrid, label: "Marketing Suite", description: "Automated campaign management", path: "/products/suite" },
+        { icon: BarChart3, label: "Analytics Pro", description: "Advanced data insights", path: "/products/analytics" },
+        { icon: Users, label: "CRM Connect", description: "Customer relationship tools", path: "/products/crm" },
+        { icon: Layers, label: "Integration Hub", description: "Connect your workflow", path: "/products/hub" },
+      ]
+    },
+    {
+      title: "Resources",
+      items: [
+        { icon: FileText, label: "Documentation", description: "Guides and API docs", path: "/resources/docs" },
+        { icon: Youtube, label: "Tutorials", description: "Step-by-step videos", path: "/resources/tutorials" },
+        { icon: Github, label: "Developer API", description: "Integration resources", path: "/resources/api" },
+        { icon: Headphones, label: "Webinars", description: "Live learning sessions", path: "/resources/webinars" },
+      ]
+    },
+    {
+      title: "Company",
+      items: [
+        { icon: Users, label: "About Us", description: "Our story and mission", path: "/company/about" },
+        { icon: Mail, label: "Contact", description: "Get in touch with us", path: "/company/contact" },
+        { icon: CreditCard, label: "Pricing", description: "Plans and subscriptions", path: "/company/pricing" },
+        { icon: Phone, label: "Support", description: "Help and resources", path: "/company/support" },
+      ]
+    }
   ];
 
   return (
@@ -73,23 +115,42 @@ export const Navbar: React.FC = () => {
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="h-9">More</NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[200px] gap-2 p-2">
-                      {mainMenuItems.slice(4).map((item) => (
-                        <li key={item.label}>
-                          <NavigationMenuLink asChild>
-                            <Link 
-                              to={item.path}
-                              className={cn(
-                                "flex items-center gap-2 select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground"
-                              )}
-                            >
-                              <item.icon className="h-4 w-4" />
-                              <span>{item.label}</span>
-                            </Link>
-                          </NavigationMenuLink>
-                        </li>
+                    <div className="grid w-[750px] grid-cols-3 gap-3 p-6">
+                      {megaMenuSections.map((section) => (
+                        <div key={section.title} className="space-y-3">
+                          <h3 className="text-sm font-semibold text-foreground">{section.title}</h3>
+                          <Separator className="my-1" />
+                          
+                          <div className="space-y-2">
+                            {section.items.map((item) => (
+                              <NavigationMenuLink key={item.label} asChild>
+                                <Link 
+                                  to={item.path}
+                                  className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground"
+                                >
+                                  <div className="flex items-center gap-2">
+                                    <item.icon className="h-5 w-5 text-marketing-purple" />
+                                    <span className="text-sm font-medium">{item.label}</span>
+                                  </div>
+                                  <p className="line-clamp-1 text-xs text-muted-foreground pt-1">{item.description}</p>
+                                </Link>
+                              </NavigationMenuLink>
+                            ))}
+                          </div>
+                        </div>
                       ))}
-                    </ul>
+                    </div>
+                    
+                    <div className="bg-muted/50 p-4 flex justify-between items-center">
+                      <div>
+                        <h4 className="text-sm font-medium">Need help getting started?</h4>
+                        <p className="text-xs text-muted-foreground">Check our comprehensive documentation</p>
+                      </div>
+                      <Button size="sm" variant="outline" className="gap-1">
+                        <FileText className="h-3.5 w-3.5" />
+                        <span>Documentation</span>
+                      </Button>
+                    </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
               </NavigationMenuList>
