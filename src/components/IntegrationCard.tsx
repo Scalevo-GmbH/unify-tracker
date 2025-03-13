@@ -27,7 +27,7 @@ export const IntegrationCard: React.FC<IntegrationCardProps> = ({
   return (
     <div
       className={cn(
-        "group relative flex flex-col overflow-hidden rounded-xl border border-border bg-card p-6 shadow-subtle transition-all duration-300",
+        "group relative flex flex-col h-full overflow-hidden rounded-xl border border-border bg-card p-6 shadow-subtle transition-all duration-300",
         connected ? "bg-card/50" : "", 
         isHovered ? "shadow-card transform translate-y-[-2px]" : "",
         className
@@ -49,7 +49,7 @@ export const IntegrationCard: React.FC<IntegrationCardProps> = ({
       
       <h3 className="mb-2 text-base font-semibold tracking-tight">{name}</h3>
       
-      <p className="mb-4 text-sm text-muted-foreground">{description}</p>
+      <p className="mb-4 text-sm text-muted-foreground flex-grow">{description}</p>
       
       <div className="mt-auto">
         <button
