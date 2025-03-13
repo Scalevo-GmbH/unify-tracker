@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { FadeInSection } from "@/components/animations/FadeInSection";
 import { MetricCard } from "@/components/MetricCard";
 import { PerformanceChart } from "@/components/PerformanceChart";
-import { DateRangeSelector } from "@/components/DateRangeSelector";
+import { DateRangeSelector, DateRange } from "@/components/DateRangeSelector"; // Import DateRange type from the component
 import { ArrowLeft, ArrowRight, Facebook, Users, Eye, MousePointerClick, Target, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -75,6 +75,7 @@ const metaAdsData = [
 type DateRange = "today" | "yesterday" | "this-week" | "last-week" | "this-month" | "last-month" | "custom";
 
 export default function MetaAds() {
+  // Updated to use the imported DateRange type
   const [dateRange, setDateRange] = useState<DateRange>("this-month");
   const [currentAdIndex, setCurrentAdIndex] = useState(0);
   const currentAd = metaAdsData[currentAdIndex];
