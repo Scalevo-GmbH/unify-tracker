@@ -52,6 +52,10 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
 
   const filteredData = getFilteredData();
 
+  // Updated brand colors
+  const reachColor = "#8B5CF6"; // Purple from our brand colors
+  const clicksColor = "#F97316"; // Orange from our brand colors
+
   const renderChart = () => {
     switch (chartType) {
       case "area":
@@ -59,12 +63,12 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
           <AreaChart data={filteredData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
             <defs>
               <linearGradient id="colorReach" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#3B82F6" stopOpacity={0.8} />
-                <stop offset="95%" stopColor="#3B82F6" stopOpacity={0} />
+                <stop offset="5%" stopColor={reachColor} stopOpacity={0.8} />
+                <stop offset="95%" stopColor={reachColor} stopOpacity={0} />
               </linearGradient>
               <linearGradient id="colorClicks" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#F97316" stopOpacity={0.8} />
-                <stop offset="95%" stopColor="#F97316" stopOpacity={0} />
+                <stop offset="5%" stopColor={clicksColor} stopOpacity={0.8} />
+                <stop offset="95%" stopColor={clicksColor} stopOpacity={0} />
               </linearGradient>
             </defs>
             <XAxis 
@@ -93,7 +97,7 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
             <Area 
               type="monotone" 
               dataKey="reach" 
-              stroke="#3B82F6" 
+              stroke={reachColor} 
               fillOpacity={1} 
               fill="url(#colorReach)" 
               strokeWidth={2}
@@ -101,7 +105,7 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
             <Area 
               type="monotone" 
               dataKey="clicks" 
-              stroke="#F97316" 
+              stroke={clicksColor} 
               fillOpacity={1} 
               fill="url(#colorClicks)" 
               strokeWidth={2}
@@ -134,8 +138,8 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
               }}
               formatter={(value: number) => [`${value.toLocaleString()}`, undefined]}
             />
-            <Bar dataKey="reach" fill="#3B82F6" radius={[4, 4, 0, 0]} />
-            <Bar dataKey="clicks" fill="#F97316" radius={[4, 4, 0, 0]} />
+            <Bar dataKey="reach" fill={reachColor} radius={[4, 4, 0, 0]} />
+            <Bar dataKey="clicks" fill={clicksColor} radius={[4, 4, 0, 0]} />
           </BarChart>
         );
       case "line":
@@ -167,7 +171,7 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
             <Line 
               type="monotone" 
               dataKey="reach" 
-              stroke="#3B82F6" 
+              stroke={reachColor} 
               strokeWidth={2}
               dot={{ r: 3 }}
               activeDot={{ r: 5 }}
@@ -175,7 +179,7 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
             <Line 
               type="monotone" 
               dataKey="clicks" 
-              stroke="#F97316" 
+              stroke={clicksColor} 
               strokeWidth={2}
               dot={{ r: 3 }}
               activeDot={{ r: 5 }}
@@ -266,11 +270,11 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
       
       <div className="flex items-center gap-4 mb-4">
         <div className="flex items-center">
-          <div className="h-3 w-3 rounded-full bg-blue-500 mr-2"></div>
+          <div className="h-3 w-3 rounded-full bg-[#8B5CF6] mr-2"></div>
           <span className="text-sm font-medium">Reach</span>
         </div>
         <div className="flex items-center">
-          <div className="h-3 w-3 rounded-full bg-orange-500 mr-2"></div>
+          <div className="h-3 w-3 rounded-full bg-[#F97316] mr-2"></div>
           <span className="text-sm font-medium">Clicks</span>
         </div>
       </div>
