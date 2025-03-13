@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Eye, EyeOff, UserPlus, Mail, User, Building, MapPin, Lock } from "lucide-react";
+import { Eye, EyeOff, UserPlus, Mail, User, Building, MapPin, Lock, Globe, Flag } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
@@ -22,6 +22,16 @@ const formSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email address." }),
   password: z.string().min(8, { message: "Password must be at least 8 characters." }),
 });
+
+// Country data with flags (using Lucide icons)
+const countries = [
+  { value: "us", label: "United States", icon: <Flag className="h-4 w-4 text-blue-600" /> },
+  { value: "uk", label: "United Kingdom", icon: <Flag className="h-4 w-4 text-red-600" /> },
+  { value: "ca", label: "Canada", icon: <Flag className="h-4 w-4 text-red-600" /> },
+  { value: "au", label: "Australia", icon: <Flag className="h-4 w-4 text-blue-800" /> },
+  { value: "de", label: "Germany", icon: <Flag className="h-4 w-4 text-yellow-500" /> },
+  { value: "fr", label: "France", icon: <Flag className="h-4 w-4 text-blue-700" /> },
+];
 
 type FormValues = z.infer<typeof formSchema>;
 
@@ -124,18 +134,26 @@ const SignUp = () => {
                       <FormLabel>Country</FormLabel>
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
-                          <SelectTrigger className="pl-10">
-                            <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 h-4 w-4" />
-                            <SelectValue placeholder="Select Country" />
-                          </SelectTrigger>
+                          <div className="relative">
+                            <Globe className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 h-4 w-4 z-10" />
+                            <SelectTrigger className="pl-10">
+                              <SelectValue placeholder="Select Country" />
+                            </SelectTrigger>
+                          </div>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="us">United States</SelectItem>
-                          <SelectItem value="uk">United Kingdom</SelectItem>
-                          <SelectItem value="ca">Canada</SelectItem>
-                          <SelectItem value="au">Australia</SelectItem>
-                          <SelectItem value="de">Germany</SelectItem>
-                          <SelectItem value="fr">France</SelectItem>
+                          {countries.map((country) => (
+                            <SelectItem 
+                              key={country.value} 
+                              value={country.value}
+                              className="flex items-center gap-2"
+                            >
+                              <span className="flex items-center gap-2">
+                                {country.icon}
+                                {country.label}
+                              </span>
+                            </SelectItem>
+                          ))}
                         </SelectContent>
                       </Select>
                       <FormMessage />
