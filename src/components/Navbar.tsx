@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { 
@@ -91,13 +90,14 @@ export const Navbar: React.FC = () => {
     <header className="w-full border-b border-border sticky top-0 z-40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <div className="flex items-center gap-6">
-          {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <PieChart className="h-6 w-6 text-marketing-purple" />
-            <span className="text-lg font-semibold tracking-tight">Scalevo</span>
+            <img 
+              src="/lovable-uploads/11582caa-2cc6-4bc8-bad9-bf61386d8073.png" 
+              alt="Scalevo Logo" 
+              className="h-6 sm:h-7" 
+            />
           </Link>
 
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-1">
             <NavigationMenu>
               <NavigationMenuList>
@@ -159,7 +159,6 @@ export const Navbar: React.FC = () => {
         </div>
 
         <div className="flex items-center gap-2 sm:gap-4">
-          {/* Search on desktop */}
           <div className="relative hidden md:flex items-center">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <input 
@@ -169,13 +168,11 @@ export const Navbar: React.FC = () => {
             />
           </div>
           
-          {/* Notifications */}
           <Button variant="ghost" size="icon" className="relative">
             <Bell className="h-5 w-5" />
             <span className="absolute top-1 right-1 h-2 w-2 rounded-full bg-marketing-red"></span>
           </Button>
           
-          {/* User profile */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="flex items-center gap-2">
@@ -206,7 +203,6 @@ export const Navbar: React.FC = () => {
             </DropdownMenuContent>
           </DropdownMenu>
           
-          {/* Mobile menu trigger */}
           <Sheet>
             <SheetTrigger asChild className="md:hidden">
               <Button variant="ghost" size="icon">
@@ -216,8 +212,11 @@ export const Navbar: React.FC = () => {
             <SheetContent side="right">
               <div className="flex flex-col gap-6 mt-6">
                 <Link to="/" className="flex items-center gap-2">
-                  <PieChart className="h-6 w-6 text-marketing-purple" />
-                  <span className="text-lg font-semibold tracking-tight">Unify</span>
+                  <img 
+                    src="/lovable-uploads/11582caa-2cc6-4bc8-bad9-bf61386d8073.png" 
+                    alt="Scalevo Logo" 
+                    className="h-6" 
+                  />
                 </Link>
                 
                 <div className="relative">
