@@ -72,6 +72,22 @@ export default {
 					orange: '#F97316',
 					yellow: '#EAB308',
 					green: '#22C55E'
+				},
+				chart: {
+					purple: '#9b87f5',
+					'purple-light': '#e5deff',
+					'purple-dark': '#6E59A5',
+					blue: '#0EA5E9',
+					'blue-light': '#D3E4FD',
+					green: '#22C55E',
+					'green-light': '#F2FCE2',
+					orange: '#F97316',
+					'orange-light': '#FEC6A1',
+					pink: '#D946EF',
+					'pink-light': '#FFDEE2',
+					yellow: '#EAB308',
+					'yellow-light': '#FEF7CD',
+					peach: '#FDE1D3'
 				}
 			},
 			borderRadius: {
@@ -144,3 +160,4 @@ export default {
 	},
 	plugins: [require("tailwindcss-animate")],
 } satisfies Config;
+

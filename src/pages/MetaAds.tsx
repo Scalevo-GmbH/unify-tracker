@@ -1,8 +1,9 @@
+
 import React, { useState } from "react";
 import { FadeInSection } from "@/components/animations/FadeInSection";
 import { MetricCard } from "@/components/MetricCard";
 import { PerformanceChart } from "@/components/PerformanceChart";
-import { DateRangeSelector, DateRange } from "@/components/DateRangeSelector";
+import { DateRangeSelector } from "@/components/DateRangeSelector";
 import { ArrowLeft, ArrowRight, Facebook, Users, Eye, MousePointerClick, Target, TrendingUp, User, MapPin, BarChart3, Globe, Users2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -11,7 +12,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
-import { BarChart, PieChart, Pie, Bar, Cell, XAxis, YAxis, ResponsiveContainer, Tooltip, Legend } from "recharts";
+import { BarChart, PieChart, Pie, Bar, Cell, XAxis, YAxis, ResponsiveContainer, Tooltip, Legend, LineChart, Line, CartesianGrid, Area, AreaChart } from "recharts";
 
 const metaAdsData = [
   {
@@ -75,30 +76,30 @@ const metaAdsData = [
 
 const demographicsData = {
   ageGroups: [
-    { name: "18-24", value: 15, fill: "#8884d8" },
-    { name: "25-34", value: 35, fill: "#83a6ed" },
-    { name: "35-44", value: 25, fill: "#8dd1e1" },
-    { name: "45-54", value: 15, fill: "#82ca9d" },
-    { name: "55-64", value: 8, fill: "#a4de6c" },
-    { name: "65+", value: 2, fill: "#d0ed57" }
+    { name: "18-24", value: 15, fill: "#9b87f5" },
+    { name: "25-34", value: 35, fill: "#0EA5E9" },
+    { name: "35-44", value: 25, fill: "#22C55E" },
+    { name: "45-54", value: 15, fill: "#F97316" },
+    { name: "55-64", value: 8, fill: "#D946EF" },
+    { name: "65+", value: 2, fill: "#EAB308" }
   ],
   genderData: [
-    { name: "Male", value: 42, fill: "#0088FE" },
-    { name: "Female", value: 56, fill: "#FF8042" },
-    { name: "Other", value: 2, fill: "#FFBB28" }
+    { name: "Male", value: 42, fill: "#9b87f5" },
+    { name: "Female", value: 56, fill: "#D946EF" },
+    { name: "Other", value: 2, fill: "#0EA5E9" }
   ],
   locationData: [
-    { name: "United States", value: 58, fill: "#8884d8" },
-    { name: "Canada", value: 12, fill: "#83a6ed" },
-    { name: "United Kingdom", value: 10, fill: "#8dd1e1" },
-    { name: "Australia", value: 7, fill: "#82ca9d" },
-    { name: "Germany", value: 5, fill: "#a4de6c" },
-    { name: "Other", value: 8, fill: "#d0ed57" }
+    { name: "United States", value: 58, fill: "#9b87f5" },
+    { name: "Canada", value: 12, fill: "#0EA5E9" },
+    { name: "United Kingdom", value: 10, fill: "#22C55E" },
+    { name: "Australia", value: 7, fill: "#F97316" },
+    { name: "Germany", value: 5, fill: "#D946EF" },
+    { name: "Other", value: 8, fill: "#EAB308" }
   ],
   deviceData: [
-    { name: "Mobile", value: 68, fill: "#8884d8" },
-    { name: "Desktop", value: 28, fill: "#83a6ed" },
-    { name: "Tablet", value: 4, fill: "#82ca9d" }
+    { name: "Mobile", value: 68, fill: "#9b87f5" },
+    { name: "Desktop", value: 28, fill: "#0EA5E9" },
+    { name: "Tablet", value: 4, fill: "#22C55E" }
   ],
   engagementByAge: [
     { age: "18-24", clicks: 320, impressions: 5400, ctr: 5.9 },
@@ -116,14 +117,29 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
   const y = cy + radius * Math.sin(-midAngle * Math.PI / 180);
 
   return (
-    <text x={x} y={y} fill="white" textAnchor="middle" dominantBaseline="central">
+    <text x={x} y={y} fill="white" textAnchor="middle" dominantBaseline="central" className="text-xs font-medium">
       {`${(percent * 100).toFixed(0)}%`}
     </text>
   );
 };
 
+const chartConfig = {
+  clicks: {
+    label: "Clicks",
+    color: "#9b87f5",
+  },
+  impressions: {
+    label: "Impressions",
+    color: "#0EA5E9",
+  },
+  ctr: {
+    label: "CTR",
+    color: "#22C55E",
+  },
+};
+
 export default function MetaAds() {
-  const [dateRange, setDateRange] = useState<DateRange>("this-month");
+  const [dateRange, setDateRange] = useState("this-month");
   const [currentAdIndex, setCurrentAdIndex] = useState(0);
   const currentAd = metaAdsData[currentAdIndex];
   
@@ -357,21 +373,42 @@ export default function MetaAds() {
                     </CardHeader>
                     <CardContent>
                       <div className="h-[300px]">
-                        <ResponsiveContainer width="100%" height="100%">
+                        <ChartContainer config={chartConfig} className="w-full h-full">
                           <BarChart
                             data={demographicsData.ageGroups}
                             margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
                           >
                             <XAxis dataKey="name" />
                             <YAxis />
-                            <Tooltip />
-                            <Bar dataKey="value" name="Percentage" label={{ position: 'top' }}>
+                            <Tooltip 
+                              content={({ active, payload }) => {
+                                if (active && payload && payload.length) {
+                                  return (
+                                    <div className="bg-background border border-border/50 p-2 rounded-md shadow-lg">
+                                      <p className="font-medium">{payload[0].name}</p>
+                                      <p className="text-sm text-muted-foreground">{`${payload[0].value}%`}</p>
+                                    </div>
+                                  );
+                                }
+                                return null;
+                              }}
+                            />
+                            <Bar 
+                              dataKey="value" 
+                              name="Percentage" 
+                              radius={[4, 4, 0, 0]}
+                              label={{ 
+                                position: 'top', 
+                                className: 'text-xs font-medium',
+                                formatter: (value) => `${value}%`
+                              }}
+                            >
                               {demographicsData.ageGroups.map((entry, index) => (
                                 <Cell key={`cell-${index}`} fill={entry.fill} />
                               ))}
                             </Bar>
                           </BarChart>
-                        </ResponsiveContainer>
+                        </ChartContainer>
                       </div>
                     </CardContent>
                   </Card>
@@ -388,7 +425,7 @@ export default function MetaAds() {
                     </CardHeader>
                     <CardContent>
                       <div className="h-[300px]">
-                        <ResponsiveContainer width="100%" height="100%">
+                        <ChartContainer config={chartConfig} className="w-full h-full">
                           <PieChart>
                             <Pie
                               data={demographicsData.genderData}
@@ -397,17 +434,41 @@ export default function MetaAds() {
                               labelLine={false}
                               label={renderCustomizedLabel}
                               outerRadius={100}
+                              innerRadius={60}
                               fill="#8884d8"
                               dataKey="value"
+                              paddingAngle={2}
                             >
                               {demographicsData.genderData.map((entry, index) => (
-                                <Cell key={`cell-${index}`} fill={entry.fill} />
+                                <Cell 
+                                  key={`cell-${index}`} 
+                                  fill={entry.fill} 
+                                  stroke="transparent"
+                                  className="hover:opacity-90 transition-opacity"
+                                />
                               ))}
                             </Pie>
-                            <Tooltip />
-                            <Legend />
+                            <Tooltip 
+                              content={({ active, payload }) => {
+                                if (active && payload && payload.length) {
+                                  return (
+                                    <div className="bg-background border border-border/50 p-2 rounded-md shadow-lg">
+                                      <p className="font-medium">{payload[0].name}</p>
+                                      <p className="text-sm text-muted-foreground">{`${payload[0].value}%`}</p>
+                                    </div>
+                                  );
+                                }
+                                return null;
+                              }}
+                            />
+                            <Legend 
+                              layout="horizontal" 
+                              verticalAlign="bottom" 
+                              align="center"
+                              wrapperStyle={{ paddingTop: "20px" }}
+                            />
                           </PieChart>
-                        </ResponsiveContainer>
+                        </ChartContainer>
                       </div>
                     </CardContent>
                   </Card>
@@ -442,8 +503,8 @@ export default function MetaAds() {
                                 <div className="flex items-center gap-2">
                                   <div className="w-full max-w-24 bg-muted rounded-full h-2.5">
                                     <div 
-                                      className="bg-primary h-2.5 rounded-full" 
-                                      style={{ width: `${Math.min(location.value * 1.5, 100)}%` }}
+                                      className="rounded-full h-2.5" 
+                                      style={{ width: `${Math.min(location.value * 1.5, 100)}%`, backgroundColor: location.fill }}
                                     ></div>
                                   </div>
                                   <span className="text-xs">{(location.value * 0.1 + 2).toFixed(1)}%</span>
@@ -468,18 +529,43 @@ export default function MetaAds() {
                     </CardHeader>
                     <CardContent>
                       <div className="h-[300px]">
-                        <ResponsiveContainer width="100%" height="100%">
-                          <BarChart
+                        <ChartContainer config={chartConfig} className="w-full h-full">
+                          <AreaChart
                             data={demographicsData.engagementByAge}
                             margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
                           >
+                            <defs>
+                              <linearGradient id="ctrGradient" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="5%" stopColor="#22C55E" stopOpacity={0.8}/>
+                                <stop offset="95%" stopColor="#22C55E" stopOpacity={0.1}/>
+                              </linearGradient>
+                            </defs>
+                            <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" opacity={0.3} />
                             <XAxis dataKey="age" />
                             <YAxis />
-                            <Tooltip />
-                            <Legend />
-                            <Bar dataKey="ctr" name="CTR %" fill="#82ca9d" />
-                          </BarChart>
-                        </ResponsiveContainer>
+                            <Tooltip 
+                              content={({ active, payload }) => {
+                                if (active && payload && payload.length) {
+                                  return (
+                                    <div className="bg-background border border-border/50 p-2 rounded-md shadow-lg">
+                                      <p className="font-medium">{payload[0].payload.age}</p>
+                                      <p className="text-sm text-muted-foreground">CTR: {payload[0].value}%</p>
+                                    </div>
+                                  );
+                                }
+                                return null;
+                              }}
+                            />
+                            <Area 
+                              type="monotone" 
+                              dataKey="ctr" 
+                              name="CTR %" 
+                              stroke="#22C55E" 
+                              fillOpacity={1} 
+                              fill="url(#ctrGradient)" 
+                            />
+                          </AreaChart>
+                        </ChartContainer>
                       </div>
                     </CardContent>
                   </Card>
@@ -705,3 +791,4 @@ export default function MetaAds() {
     </div>
   );
 }
+
