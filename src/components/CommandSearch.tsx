@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Search, Command, X, BarChart3, Users, FileText, ImageIcon, Calendar, Trash2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -91,12 +92,12 @@ export const CommandSearch: React.FC<SearchInputProps> = ({ isMobile = false }) 
   return (
     <>
       <Button
-        variant="ghost"
+        variant="outline"
         onClick={() => setOpen(true)}
-        className={`relative ${isMobile ? "w-full" : "w-60"} justify-start text-sm text-muted-foreground`}
+        className={`relative ${isMobile ? "w-full" : "w-full"} justify-start text-sm text-muted-foreground border border-input rounded-md bg-background hover:bg-accent h-10`}
       >
-        <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-        <span className="ml-8">Search...</span>
+        <Search className="absolute left-3 h-4 w-4 text-muted-foreground" />
+        <span className="ml-8">Insert command</span>
         {!isMobile && (
           <kbd className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 bg-muted text-[10px] font-medium px-1.5 py-0.5 rounded text-muted-foreground">
             ⌘K

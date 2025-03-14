@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
 import { 
@@ -8,12 +9,19 @@ import {
   Settings, 
   PieChart, 
   Layers, 
-  Search,
-  ChevronRight,
   LogOut,
   HelpCircle,
   FileText,
-  Grid3X3
+  Grid3X3,
+  Mail,
+  ClipboardList,
+  LineChart,
+  Package,
+  Building2,
+  UserPlus,
+  Target,
+  Clock,
+  ChevronDown
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
@@ -28,7 +36,6 @@ import {
   SidebarGroupLabel,
   SidebarGroupContent,
 } from "@/components/ui/sidebar";
-import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface SidebarProps {
@@ -39,18 +46,39 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
   // Define menu items
   const mainMenuItems = [
     { icon: Home, label: "Dashboard", active: true, path: "/" },
-    { icon: BarChart3, label: "Analytics", path: "/analytics" },
-    { icon: PieChart, label: "Campaigns", path: "/campaigns" },
-    { icon: Layers, label: "Integrations", path: "/integrations" },
-    { icon: Calendar, label: "Calendar", path: "/calendar" },
-    { icon: Grid3X3, label: "Products", path: "/products" },
-    { icon: FileText, label: "Resources", path: "/resources" },
+    { icon: ClipboardList, label: "Task List", path: "/tasks" },
+    { icon: Mail, label: "Emails", path: "/emails" },
+    { icon: FileText, label: "Reporting", path: "/reporting" },
+  ];
+
+  const reportsItems = [
+    { icon: UserPlus, label: "Recruiting", path: "/reports/recruiting" },
+    { icon: LineChart, label: "Startup sales", path: "/reports/startup-sales" },
+    { icon: PieChart, label: "Fundraising", path: "/reports/fundraising" },
+    { icon: BarChart3, label: "Revenue", path: "/reports/revenue" },
+    { icon: Layers, label: "Integrations", path: "/reports/integrations" },
+    { icon: Package, label: "Deal progress", path: "/reports/deals" },
+  ];
+
+  const recordsItems = [
+    { icon: Building2, label: "Companies", path: "/records/companies" },
+    { icon: Users, label: "Teams", path: "/records/teams" },
+  ];
+
+  const goalsItems = [
+    { icon: Target, label: "Active", path: "/goals/active" },
+    { icon: Clock, label: "Past", path: "/goals/past" },
   ];
 
   const settingsItems = [
     { icon: Settings, label: "Settings", path: "/settings" },
     { icon: HelpCircle, label: "Help & Support", path: "/help" },
   ];
+
+  // State for collapsible sections
+  const [reportsOpen, setReportsOpen] = React.useState(true);
+  const [recordsOpen, setRecordsOpen] = React.useState(false);
+  const [goalsOpen, setGoalsOpen] = React.useState(false);
 
   return (
     <ShadcnSidebar className={cn("bg-sidebar border-r border-border", className)}>
@@ -91,6 +119,81 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
           </SidebarGroup>
 
           <SidebarGroup>
+            <SidebarGroupLabel>
+              <div className="flex items-center justify-between w-full" onClick={() => setReportsOpen(!reportsOpen)}>
+                <span>Reports</span>
+                <ChevronDown className={`h-4 w-4 transition-transform ${reportsOpen ? 'rotate-180' : ''}`} />
+              </div>
+            </SidebarGroupLabel>
+            {reportsOpen && (
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  {reportsItems.map((item) => (
+                    <SidebarMenuItem key={item.label}>
+                      <SidebarMenuButton className="flex gap-3 py-2" asChild>
+                        <Link to={item.path}>
+                          <item.icon className="h-5 w-5" />
+                          <span>{item.label}</span>
+                        </Link>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  ))}
+                </SidebarMenu>
+              </SidebarGroupContent>
+            )}
+          </SidebarGroup>
+
+          <SidebarGroup>
+            <SidebarGroupLabel>
+              <div className="flex items-center justify-between w-full" onClick={() => setRecordsOpen(!recordsOpen)}>
+                <span>Records</span>
+                <ChevronDown className={`h-4 w-4 transition-transform ${recordsOpen ? 'rotate-180' : ''}`} />
+              </div>
+            </SidebarGroupLabel>
+            {recordsOpen && (
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  {recordsItems.map((item) => (
+                    <SidebarMenuItem key={item.label}>
+                      <SidebarMenuButton className="flex gap-3 py-2" asChild>
+                        <Link to={item.path}>
+                          <item.icon className="h-5 w-5" />
+                          <span>{item.label}</span>
+                        </Link>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  ))}
+                </SidebarMenu>
+              </SidebarGroupContent>
+            )}
+          </SidebarGroup>
+
+          <SidebarGroup>
+            <SidebarGroupLabel>
+              <div className="flex items-center justify-between w-full" onClick={() => setGoalsOpen(!goalsOpen)}>
+                <span>Goals</span>
+                <ChevronDown className={`h-4 w-4 transition-transform ${goalsOpen ? 'rotate-180' : ''}`} />
+              </div>
+            </SidebarGroupLabel>
+            {goalsOpen && (
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  {goalsItems.map((item) => (
+                    <SidebarMenuItem key={item.label}>
+                      <SidebarMenuButton className="flex gap-3 py-2" asChild>
+                        <Link to={item.path}>
+                          <item.icon className="h-5 w-5" />
+                          <span>{item.label}</span>
+                        </Link>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  ))}
+                </SidebarMenu>
+              </SidebarGroupContent>
+            )}
+          </SidebarGroup>
+
+          <SidebarGroup>
             <SidebarGroupLabel>Settings</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
@@ -100,7 +203,6 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
                       <Link to={item.path}>
                         <item.icon className="h-5 w-5" />
                         <span>{item.label}</span>
-                        <ChevronRight className="ml-auto h-4 w-4 text-muted-foreground" />
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
