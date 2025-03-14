@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { 
   Search, 
   BarChart3,
-  Calendar,
   Users,
   Layers,
   Settings,
@@ -73,7 +72,6 @@ export const Navbar: React.FC = () => {
     { icon: PieChart, label: "Dashboard", path: "/" },
     { icon: BarChart3, label: "Analytics", path: "/analytics" },
     { icon: PieChart, label: "Campaigns", path: "/campaigns" },
-    { icon: Calendar, label: "Calendar", path: "/calendar" },
     { icon: Users, label: "Audience", path: "/audience" },
     { icon: Layers, label: "Integrations", path: "/integrations" },
   ];
@@ -236,9 +234,11 @@ export const Navbar: React.FC = () => {
                   <p className="text-xs text-muted-foreground">Admin</p>
                 </div>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>
-                  <Settings className="mr-2 h-4 w-4" />
-                  <span>Settings</span>
+                <DropdownMenuItem asChild>
+                  <Link to="/account">
+                    <Settings className="mr-2 h-4 w-4" />
+                    <span>Account Settings</span>
+                  </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <HelpCircle className="mr-2 h-4 w-4" />
