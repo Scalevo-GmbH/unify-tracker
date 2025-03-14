@@ -57,6 +57,7 @@ import { useNotifications } from "@/hooks/use-notifications";
 import { Toaster } from "@/components/ui/toaster";
 import { CommandSearch } from "@/components/CommandSearch";
 import { useLanguage } from "@/hooks/use-language";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export const Navbar: React.FC = () => {
   const isMobile = useIsMobile();
@@ -72,7 +73,6 @@ export const Navbar: React.FC = () => {
     { icon: PieChart, label: "Dashboard", path: "/" },
     { icon: BarChart3, label: "Analytics", path: "/analytics" },
     { icon: PieChart, label: "Campaigns", path: "/campaigns" },
-    { icon: Users, label: "Audience", path: "/audience" },
     { icon: Layers, label: "Integrations", path: "/integrations" },
   ];
 
@@ -224,8 +224,11 @@ export const Navbar: React.FC = () => {
             
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Menu className="h-5 w-5" />
+                <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+                  <Avatar className="h-8 w-8">
+                    <AvatarImage src="https://github.com/shadcn.png" alt="@user" />
+                    <AvatarFallback>JD</AvatarFallback>
+                  </Avatar>
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-56">
