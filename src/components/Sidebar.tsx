@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { 
@@ -55,7 +54,7 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
 
   return (
     <ShadcnSidebar className={cn("bg-sidebar border-r border-border", className)}>
-      <SidebarHeader className="flex py-4 px-4 justify-start">
+      <SidebarHeader className="flex py-5 px-4 justify-start">
         <Link to="/" className="flex items-center">
           <img 
             src="/lovable-uploads/11582caa-2cc6-4bc8-bad9-bf61386d8073.png" 
