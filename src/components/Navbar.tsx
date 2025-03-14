@@ -1,7 +1,7 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, LogOut, Settings, HelpCircle } from "lucide-react";
+import { Menu, LogOut, Settings, HelpCircle, Search } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Button } from "@/components/ui/button";
 import {
@@ -20,6 +20,7 @@ import { useLanguage } from "@/hooks/use-language";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useSidebar, SidebarTrigger } from "@/components/ui/sidebar";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Input } from "@/components/ui/input";
 import { 
   mainMenuItems, 
   reportsItems, 
@@ -38,6 +39,23 @@ export const Navbar: React.FC = () => {
   } = useNotifications();
   const { language, setLanguage } = useLanguage();
   const { state } = useSidebar();
+  const [menuFilter, setMenuFilter] = useState("");
+
+  // Filter menu items based on search input
+  const filterItems = (items: any[]) => {
+    if (!menuFilter) return items;
+    const filter = menuFilter.toLowerCase();
+    return items.filter(item => 
+      item.label.toLowerCase().includes(filter) || 
+      (item.emoji && item.emoji.toLowerCase().includes(filter))
+    );
+  };
+
+  const filteredMainMenu = filterItems(mainMenuItems);
+  const filteredReports = filterItems(reportsItems);
+  const filteredRecords = filterItems(recordsItems);
+  const filteredGoals = filterItems(goalsItems);
+  const filteredSettings = filterItems(settingsItems);
 
   return (
     <>
@@ -68,84 +86,121 @@ export const Navbar: React.FC = () => {
                     </Link>
                   </div>
                   
+                  {/* Menu Search Bar */}
+                  <div className="p-4 border-b">
+                    <div className="relative">
+                      <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                      <Input
+                        type="text"
+                        placeholder="Search menu..."
+                        value={menuFilter}
+                        onChange={(e) => setMenuFilter(e.target.value)}
+                        className="pl-9 h-9 text-sm"
+                      />
+                    </div>
+                  </div>
+                  
                   <ScrollArea className="flex-1 overflow-auto">
                     {/* Main menu items */}
-                    <div className="px-2 py-2">
-                      <p className="px-4 text-xs font-medium text-muted-foreground mb-2">Navigation</p>
-                      {mainMenuItems.map((item) => (
-                        <Link 
-                          key={item.label}
-                          to={item.path} 
-                          className="flex items-center gap-3 px-4 py-2 rounded-md hover:bg-accent text-sm text-[#8E9196] hover:text-sidebar-foreground"
-                        >
-                          <span className="mr-1">{item.emoji}</span>
-                          <span>{item.label}</span>
-                          {item.active && (
-                            <span className="ml-auto h-2 w-2 rounded-full bg-marketing-purple"></span>
-                          )}
-                        </Link>
-                      ))}
-                    </div>
+                    {filteredMainMenu.length > 0 && (
+                      <div className="px-2 py-2">
+                        <p className="px-4 text-xs font-medium text-muted-foreground mb-2">Navigation</p>
+                        {filteredMainMenu.map((item) => (
+                          <Link 
+                            key={item.label}
+                            to={item.path} 
+                            className="flex items-center gap-3 px-4 py-2 rounded-md hover:bg-accent text-sm text-[#8E9196] hover:text-sidebar-foreground"
+                          >
+                            <span className="mr-1">{item.emoji}</span>
+                            <span>{item.label}</span>
+                            {item.active && (
+                              <span className="ml-auto h-2 w-2 rounded-full bg-marketing-purple"></span>
+                            )}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
 
                     {/* Reports section */}
-                    <div className="px-2 py-2">
-                      <p className="px-4 text-xs font-medium text-muted-foreground mb-2">Reports</p>
-                      {reportsItems.map((item) => (
-                        <Link 
-                          key={item.label}
-                          to={item.path} 
-                          className="flex items-center gap-3 px-4 py-2 rounded-md hover:bg-accent text-sm text-[#8E9196] hover:text-sidebar-foreground"
-                        >
-                          <span className="mr-1">{item.emoji}</span>
-                          <span>{item.label}</span>
-                        </Link>
-                      ))}
-                    </div>
+                    {filteredReports.length > 0 && (
+                      <div className="px-2 py-2">
+                        <p className="px-4 text-xs font-medium text-muted-foreground mb-2">Reports</p>
+                        {filteredReports.map((item) => (
+                          <Link 
+                            key={item.label}
+                            to={item.path} 
+                            className="flex items-center gap-3 px-4 py-2 rounded-md hover:bg-accent text-sm text-[#8E9196] hover:text-sidebar-foreground"
+                          >
+                            <span className="mr-1">{item.emoji}</span>
+                            <span>{item.label}</span>
+                          </Link>
+                        ))}
+                      </div>
+                    )}
 
                     {/* Records section */}
-                    <div className="px-2 py-2">
-                      <p className="px-4 text-xs font-medium text-muted-foreground mb-2">Records</p>
-                      {recordsItems.map((item) => (
-                        <Link 
-                          key={item.label}
-                          to={item.path} 
-                          className="flex items-center gap-3 px-4 py-2 rounded-md hover:bg-accent text-sm text-[#8E9196] hover:text-sidebar-foreground"
-                        >
-                          <span className="mr-1">{item.emoji}</span>
-                          <span>{item.label}</span>
-                        </Link>
-                      ))}
-                    </div>
+                    {filteredRecords.length > 0 && (
+                      <div className="px-2 py-2">
+                        <p className="px-4 text-xs font-medium text-muted-foreground mb-2">Records</p>
+                        {filteredRecords.map((item) => (
+                          <Link 
+                            key={item.label}
+                            to={item.path} 
+                            className="flex items-center gap-3 px-4 py-2 rounded-md hover:bg-accent text-sm text-[#8E9196] hover:text-sidebar-foreground"
+                          >
+                            <span className="mr-1">{item.emoji}</span>
+                            <span>{item.label}</span>
+                          </Link>
+                        ))}
+                      </div>
+                    )}
 
                     {/* Goals section */}
-                    <div className="px-2 py-2">
-                      <p className="px-4 text-xs font-medium text-muted-foreground mb-2">Goals</p>
-                      {goalsItems.map((item) => (
-                        <Link 
-                          key={item.label}
-                          to={item.path} 
-                          className="flex items-center gap-3 px-4 py-2 rounded-md hover:bg-accent text-sm text-[#8E9196] hover:text-sidebar-foreground"
-                        >
-                          <span className="mr-1">{item.emoji}</span>
-                          <span>{item.label}</span>
-                        </Link>
-                      ))}
-                    </div>
+                    {filteredGoals.length > 0 && (
+                      <div className="px-2 py-2">
+                        <p className="px-4 text-xs font-medium text-muted-foreground mb-2">Goals</p>
+                        {filteredGoals.map((item) => (
+                          <Link 
+                            key={item.label}
+                            to={item.path} 
+                            className="flex items-center gap-3 px-4 py-2 rounded-md hover:bg-accent text-sm text-[#8E9196] hover:text-sidebar-foreground"
+                          >
+                            <span className="mr-1">{item.emoji}</span>
+                            <span>{item.label}</span>
+                          </Link>
+                        ))}
+                      </div>
+                    )}
 
                     {/* Settings section */}
-                    <div className="px-2 py-2">
-                      <p className="px-4 text-xs font-medium text-muted-foreground mb-2">Settings</p>
-                      {settingsItems.map((item) => (
-                        <Link 
-                          key={item.label}
-                          to={item.path} 
-                          className="flex items-center gap-3 px-4 py-2 rounded-md hover:bg-accent text-sm text-[#8E9196] hover:text-sidebar-foreground"
-                        >
-                          <span className="mr-1">{item.emoji}</span>
-                          <span>{item.label}</span>
-                        </Link>
-                      ))}
-                    </div>
+                    {filteredSettings.length > 0 && (
+                      <div className="px-2 py-2">
+                        <p className="px-4 text-xs font-medium text-muted-foreground mb-2">Settings</p>
+                        {filteredSettings.map((item) => (
+                          <Link 
+                            key={item.label}
+                            to={item.path} 
+                            className="flex items-center gap-3 px-4 py-2 rounded-md hover:bg-accent text-sm text-[#8E9196] hover:text-sidebar-foreground"
+                          >
+                            <span className="mr-1">{item.emoji}</span>
+                            <span>{item.label}</span>
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* No results message */}
+                    {menuFilter && 
+                      filteredMainMenu.length === 0 && 
+                      filteredReports.length === 0 && 
+                      filteredRecords.length === 0 && 
+                      filteredGoals.length === 0 && 
+                      filteredSettings.length === 0 && (
+                        <div className="p-4 text-center text-muted-foreground">
+                          No menu items found
+                        </div>
+                      )
+                    }
                   </ScrollArea>
                   
                   <div className="p-4 border-t">
