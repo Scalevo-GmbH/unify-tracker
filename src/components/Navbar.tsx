@@ -1,13 +1,8 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { 
   Search, 
   BarChart3,
-  Users,
-  Layers,
-  Settings,
-  HelpCircle,
   PieChart,
   Menu,
   LayoutGrid,
@@ -23,7 +18,11 @@ import {
   Headphones,
   Globe,
   Check,
-  ChevronDown
+  ChevronDown,
+  Users,
+  Layers,
+  Settings,
+  HelpCircle
 } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import {
@@ -43,13 +42,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator"; 
 import { NotificationsDropdown } from "@/components/notifications/NotificationsDropdown";
@@ -99,7 +91,6 @@ export const Navbar: React.FC = () => {
     {
       title: "Features",
       items: [
-        { icon: Users, label: "Audience", description: "Manage your audience", path: "/audience" },
         { icon: Layers, label: "Integrations", description: "Connect with platforms", path: "/integrations" },
         { icon: Globe, label: "Calendar", description: "Scheduling and planning", path: "/calendar" },
         { icon: Phone, label: "Support", description: "Help and resources", path: "/company/support" },
@@ -141,6 +132,7 @@ export const Navbar: React.FC = () => {
                   </div>
                   
                   <div className="flex-1 overflow-auto">
+                    {/* Mobile navigation menu items */}
                     <div className="px-2 py-4">
                       <p className="px-4 text-xs font-medium text-muted-foreground mb-2">Main</p>
                       {mainMenuItems.map((item) => (
@@ -187,13 +179,16 @@ export const Navbar: React.FC = () => {
               </SheetContent>
             </Sheet>
             
-            <Link to="/" className="flex items-center gap-2">
-              <img 
-                src="/lovable-uploads/11582caa-2cc6-4bc8-bad9-bf61386d8073.png" 
-                alt="Scalevo Logo" 
-                className="h-4 sm:h-5" 
-              />
-            </Link>
+            {/* Show logo only on mobile */}
+            {isMobile && (
+              <Link to="/" className="flex items-center gap-2">
+                <img 
+                  src="/lovable-uploads/11582caa-2cc6-4bc8-bad9-bf61386d8073.png" 
+                  alt="Scalevo Logo" 
+                  className="h-4 sm:h-5" 
+                />
+              </Link>
+            )}
 
             <nav className="hidden md:flex items-center space-x-1">
               <NavigationMenu>
@@ -338,3 +333,4 @@ export const Navbar: React.FC = () => {
 };
 
 export default Navbar;
+

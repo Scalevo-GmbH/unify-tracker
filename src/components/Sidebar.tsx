@@ -42,7 +42,6 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
     { icon: Home, label: "Dashboard", active: true, path: "/" },
     { icon: BarChart3, label: "Analytics", path: "/analytics" },
     { icon: PieChart, label: "Campaigns", path: "/campaigns" },
-    { icon: Users, label: "Audience", path: "/audience" },
     { icon: Layers, label: "Integrations", path: "/integrations" },
     { icon: Calendar, label: "Calendar", path: "/calendar" },
     { icon: Grid3X3, label: "Products", path: "/products" },
@@ -56,8 +55,17 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
 
   return (
     <ShadcnSidebar className={cn("bg-sidebar border-r border-border", className)}>
+      <SidebarHeader className="flex justify-center items-center p-4 border-b border-border">
+        <Link to="/" className="flex items-center justify-center">
+          <img 
+            src="/lovable-uploads/11582caa-2cc6-4bc8-bad9-bf61386d8073.png" 
+            alt="Scalevo Logo" 
+            className="h-5" 
+          />
+        </Link>
+      </SidebarHeader>
       <SidebarContent>
-        <ScrollArea className="h-[calc(100vh-4rem)]">
+        <ScrollArea className="h-[calc(100vh-8rem)]">
           <SidebarGroup>
             <SidebarGroupLabel>Navigation</SidebarGroupLabel>
             <SidebarGroupContent>
