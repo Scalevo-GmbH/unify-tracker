@@ -67,10 +67,6 @@ export const Navbar: React.FC = () => {
                       />
                     </Link>
                   </div>
-
-                  <div className="p-4">
-                    <CommandSearch isMobile={true} />
-                  </div>
                   
                   <ScrollArea className="flex-1 overflow-auto">
                     {/* Main menu items */}
