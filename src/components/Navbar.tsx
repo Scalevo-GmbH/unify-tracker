@@ -73,7 +73,6 @@ export const Navbar: React.FC = () => {
     { icon: PieChart, label: "Dashboard", path: "/" },
     { icon: BarChart3, label: "Analytics", path: "/analytics" },
     { icon: PieChart, label: "Campaigns", path: "/campaigns" },
-    { icon: Layers, label: "Integrations", path: "/integrations" },
   ];
 
   const megaMenuSections = [
@@ -96,11 +95,11 @@ export const Navbar: React.FC = () => {
       ]
     },
     {
-      title: "Company",
+      title: "Features",
       items: [
-        { icon: Users, label: "About Us", description: "Our story and mission", path: "/company/about" },
-        { icon: Mail, label: "Contact", description: "Get in touch with us", path: "/company/contact" },
-        { icon: CreditCard, label: "Pricing", description: "Plans and subscriptions", path: "/company/pricing" },
+        { icon: Users, label: "Audience", description: "Manage your audience", path: "/audience" },
+        { icon: Layers, label: "Integrations", description: "Connect with platforms", path: "/integrations" },
+        { icon: Globe, label: "Calendar", description: "Scheduling and planning", path: "/calendar" },
         { icon: Phone, label: "Support", description: "Help and resources", path: "/company/support" },
       ]
     }
@@ -122,7 +121,7 @@ export const Navbar: React.FC = () => {
             <nav className="hidden md:flex items-center space-x-1">
               <NavigationMenu>
                 <NavigationMenuList>
-                  {mainMenuItems.slice(0, 4).map((item) => (
+                  {mainMenuItems.map((item) => (
                     <NavigationMenuItem key={item.label}>
                       <Link to={item.path}>
                         <Button variant="ghost" className="h-9 gap-1.5">
