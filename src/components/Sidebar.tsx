@@ -55,8 +55,8 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
 
   return (
     <ShadcnSidebar className={cn("bg-sidebar border-r border-border", className)}>
-      <SidebarHeader className="flex justify-center items-center p-4 border-b border-border">
-        <Link to="/" className="flex items-center justify-center">
+      <SidebarHeader className="flex items-center border-b border-border py-3.5 px-4">
+        <Link to="/" className="flex items-center">
           <img 
             src="/lovable-uploads/11582caa-2cc6-4bc8-bad9-bf61386d8073.png" 
             alt="Scalevo Logo" 
