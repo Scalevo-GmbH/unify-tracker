@@ -94,14 +94,14 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
       <SidebarContent>
         <ScrollArea className="h-[calc(100vh-8rem)]">
           <SidebarGroup>
-            <SidebarGroupLabel className="text-[#9F9EA1]">Navigation</SidebarGroupLabel>
+            <SidebarGroupLabel className="text-[#B4B3B5]">Navigation</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
                 {mainMenuItems.map((item) => (
                   <SidebarMenuItem key={item.label}>
                     <SidebarMenuButton 
                       isActive={item.active}
-                      className="flex gap-3 py-2 text-[#8E9196] hover:text-sidebar-foreground"
+                      className="flex gap-3 py-2 text-[#A6A9AE] hover:text-sidebar-foreground"
                       asChild
                     >
                       <Link to={item.path}>
@@ -119,7 +119,7 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
           </SidebarGroup>
 
           <SidebarGroup>
-            <SidebarGroupLabel className="text-[#9F9EA1]">
+            <SidebarGroupLabel className="text-[#B4B3B5]">
               <div className="flex items-center justify-between w-full" onClick={() => setReportsOpen(!reportsOpen)}>
                 <span>Reports</span>
                 <ChevronDown className={`h-4 w-4 transition-transform ${reportsOpen ? 'rotate-180' : ''}`} />
@@ -130,7 +130,7 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
                 <SidebarMenu>
                   {reportsItems.map((item) => (
                     <SidebarMenuItem key={item.label}>
-                      <SidebarMenuButton className="flex gap-3 py-2 text-[#8E9196] hover:text-sidebar-foreground" asChild>
+                      <SidebarMenuButton className="flex gap-3 py-2 text-[#A6A9AE] hover:text-sidebar-foreground" asChild>
                         <Link to={item.path}>
                           <span className="mr-1">{item.emoji}</span>
                           <span>{item.label}</span>
@@ -144,7 +144,7 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
           </SidebarGroup>
 
           <SidebarGroup>
-            <SidebarGroupLabel className="text-[#9F9EA1]">
+            <SidebarGroupLabel className="text-[#B4B3B5]">
               <div className="flex items-center justify-between w-full" onClick={() => setRecordsOpen(!recordsOpen)}>
                 <span>Records</span>
                 <ChevronDown className={`h-4 w-4 transition-transform ${recordsOpen ? 'rotate-180' : ''}`} />
@@ -155,7 +155,7 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
                 <SidebarMenu>
                   {recordsItems.map((item) => (
                     <SidebarMenuItem key={item.label}>
-                      <SidebarMenuButton className="flex gap-3 py-2 text-[#8E9196] hover:text-sidebar-foreground" asChild>
+                      <SidebarMenuButton className="flex gap-3 py-2 text-[#A6A9AE] hover:text-sidebar-foreground" asChild>
                         <Link to={item.path}>
                           <span className="mr-1">{item.emoji}</span>
                           <span>{item.label}</span>
@@ -169,7 +169,7 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
           </SidebarGroup>
 
           <SidebarGroup>
-            <SidebarGroupLabel className="text-[#9F9EA1]">
+            <SidebarGroupLabel className="text-[#B4B3B5]">
               <div className="flex items-center justify-between w-full" onClick={() => setGoalsOpen(!goalsOpen)}>
                 <span>Goals</span>
                 <ChevronDown className={`h-4 w-4 transition-transform ${goalsOpen ? 'rotate-180' : ''}`} />
@@ -180,7 +180,7 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
                 <SidebarMenu>
                   {goalsItems.map((item) => (
                     <SidebarMenuItem key={item.label}>
-                      <SidebarMenuButton className="flex gap-3 py-2 text-[#8E9196] hover:text-sidebar-foreground" asChild>
+                      <SidebarMenuButton className="flex gap-3 py-2 text-[#A6A9AE] hover:text-sidebar-foreground" asChild>
                         <Link to={item.path}>
                           <span className="mr-1">{item.emoji}</span>
                           <span>{item.label}</span>
@@ -194,12 +194,12 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
           </SidebarGroup>
 
           <SidebarGroup>
-            <SidebarGroupLabel className="text-[#9F9EA1]">Settings</SidebarGroupLabel>
+            <SidebarGroupLabel className="text-[#B4B3B5]">Settings</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
                 {settingsItems.map((item) => (
                   <SidebarMenuItem key={item.label}>
-                    <SidebarMenuButton className="flex gap-3 py-2 text-[#8E9196] hover:text-sidebar-foreground" asChild>
+                    <SidebarMenuButton className="flex gap-3 py-2 text-[#A6A9AE] hover:text-sidebar-foreground" asChild>
                       <Link to={item.path}>
                         <span className="mr-1">{item.emoji}</span>
                         <span>{item.label}</span>

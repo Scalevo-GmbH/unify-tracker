@@ -1,7 +1,7 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { Command, LogOut, Settings, HelpCircle } from "lucide-react";
+import { Menu, LogOut, Settings, HelpCircle } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Button } from "@/components/ui/button";
 import {
@@ -53,7 +53,7 @@ export const Navbar: React.FC = () => {
             <Sheet>
               <SheetTrigger asChild className="md:hidden">
                 <Button variant="ghost" size="icon">
-                  <Command className="h-5 w-5" />
+                  <Menu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
               <SheetContent side="left" className="p-0 w-[280px]">
@@ -173,7 +173,7 @@ export const Navbar: React.FC = () => {
 
           {/* Centered Search Bar */}
           <div className="flex-1 max-w-2xl mx-auto px-4">
-            <CommandSearch />
+            <CommandSearch isMobile={isMobile} />
           </div>
 
           <div className="flex items-center gap-2 sm:gap-4">
