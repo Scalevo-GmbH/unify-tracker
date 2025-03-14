@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
 import { Command, LogOut, Settings, HelpCircle } from "lucide-react";
@@ -91,8 +92,8 @@ export const Navbar: React.FC = () => {
               </SheetContent>
             </Sheet>
             
-            {/* Logo */}
-            <Link to="/" className="flex items-center gap-2">
+            {/* Logo - Only show on mobile */}
+            <Link to="/" className="flex md:hidden items-center gap-2">
               <img 
                 src="/lovable-uploads/11582caa-2cc6-4bc8-bad9-bf61386d8073.png" 
                 alt="Scalevo Logo" 
