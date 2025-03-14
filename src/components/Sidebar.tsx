@@ -38,43 +38,43 @@ import {
 } from "@/components/ui/sidebar";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
+// Define menu items with emojis - exported for use in Navbar mobile menu
+export const mainMenuItems = [
+  { icon: Home, label: "Dashboard", emoji: "🏠", active: true, path: "/" },
+  { icon: ClipboardList, label: "Task List", emoji: "📋", path: "/tasks" },
+  { icon: Mail, label: "Emails", emoji: "📧", path: "/emails" },
+  { icon: FileText, label: "Reporting", emoji: "📊", path: "/reporting" },
+];
+
+export const reportsItems = [
+  { icon: UserPlus, label: "Recruiting", emoji: "👥", path: "/reports/recruiting" },
+  { icon: LineChart, label: "Startup sales", emoji: "📈", path: "/reports/startup-sales" },
+  { icon: PieChart, label: "Fundraising", emoji: "💰", path: "/reports/fundraising" },
+  { icon: BarChart3, label: "Revenue", emoji: "💵", path: "/reports/revenue" },
+  { icon: Layers, label: "Integrations", emoji: "🔄", path: "/reports/integrations" },
+  { icon: Package, label: "Deal progress", emoji: "🤝", path: "/reports/deals" },
+];
+
+export const recordsItems = [
+  { icon: Building2, label: "Companies", emoji: "🏢", path: "/records/companies" },
+  { icon: Users, label: "Teams", emoji: "👪", path: "/records/teams" },
+];
+
+export const goalsItems = [
+  { icon: Target, label: "Active", emoji: "🎯", path: "/goals/active" },
+  { icon: Clock, label: "Past", emoji: "⏱️", path: "/goals/past" },
+];
+
+export const settingsItems = [
+  { icon: Settings, label: "Settings", emoji: "⚙️", path: "/settings" },
+  { icon: HelpCircle, label: "Help & Support", emoji: "❓", path: "/help" },
+];
+
 interface SidebarProps {
   className?: string;
 }
 
 export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
-  // Define menu items with emojis
-  const mainMenuItems = [
-    { icon: Home, label: "Dashboard", emoji: "🏠", active: true, path: "/" },
-    { icon: ClipboardList, label: "Task List", emoji: "📋", path: "/tasks" },
-    { icon: Mail, label: "Emails", emoji: "📧", path: "/emails" },
-    { icon: FileText, label: "Reporting", emoji: "📊", path: "/reporting" },
-  ];
-
-  const reportsItems = [
-    { icon: UserPlus, label: "Recruiting", emoji: "👥", path: "/reports/recruiting" },
-    { icon: LineChart, label: "Startup sales", emoji: "📈", path: "/reports/startup-sales" },
-    { icon: PieChart, label: "Fundraising", emoji: "💰", path: "/reports/fundraising" },
-    { icon: BarChart3, label: "Revenue", emoji: "💵", path: "/reports/revenue" },
-    { icon: Layers, label: "Integrations", emoji: "🔄", path: "/reports/integrations" },
-    { icon: Package, label: "Deal progress", emoji: "🤝", path: "/reports/deals" },
-  ];
-
-  const recordsItems = [
-    { icon: Building2, label: "Companies", emoji: "🏢", path: "/records/companies" },
-    { icon: Users, label: "Teams", emoji: "👪", path: "/records/teams" },
-  ];
-
-  const goalsItems = [
-    { icon: Target, label: "Active", emoji: "🎯", path: "/goals/active" },
-    { icon: Clock, label: "Past", emoji: "⏱️", path: "/goals/past" },
-  ];
-
-  const settingsItems = [
-    { icon: Settings, label: "Settings", emoji: "⚙️", path: "/settings" },
-    { icon: HelpCircle, label: "Help & Support", emoji: "❓", path: "/help" },
-  ];
-
   // State for collapsible sections
   const [reportsOpen, setReportsOpen] = React.useState(true);
   const [recordsOpen, setRecordsOpen] = React.useState(false);

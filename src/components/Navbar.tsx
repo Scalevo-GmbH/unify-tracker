@@ -19,6 +19,14 @@ import { CommandSearch } from "@/components/CommandSearch";
 import { useLanguage } from "@/hooks/use-language";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useSidebar, SidebarTrigger } from "@/components/ui/sidebar";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { 
+  mainMenuItems, 
+  reportsItems, 
+  recordsItems, 
+  goalsItems, 
+  settingsItems 
+} from "@/components/Sidebar";
 
 export const Navbar: React.FC = () => {
   const isMobile = useIsMobile();
@@ -64,18 +72,85 @@ export const Navbar: React.FC = () => {
                     <CommandSearch isMobile={true} />
                   </div>
                   
-                  <div className="flex-1 overflow-auto">
-                    {/* Mobile navigation menu items */}
-                    <div className="px-2 py-4">
-                      <p className="px-4 text-xs font-medium text-muted-foreground mb-2">Main</p>
-                      <Link 
-                        to="/" 
-                        className="flex items-center gap-3 px-4 py-2 rounded-md hover:bg-accent text-sm"
-                      >
-                        Dashboard
-                      </Link>
+                  <ScrollArea className="flex-1 overflow-auto">
+                    {/* Main menu items */}
+                    <div className="px-2 py-2">
+                      <p className="px-4 text-xs font-medium text-muted-foreground mb-2">Navigation</p>
+                      {mainMenuItems.map((item) => (
+                        <Link 
+                          key={item.label}
+                          to={item.path} 
+                          className="flex items-center gap-3 px-4 py-2 rounded-md hover:bg-accent text-sm text-[#8E9196] hover:text-sidebar-foreground"
+                        >
+                          <span className="mr-1">{item.emoji}</span>
+                          <span>{item.label}</span>
+                          {item.active && (
+                            <span className="ml-auto h-2 w-2 rounded-full bg-marketing-purple"></span>
+                          )}
+                        </Link>
+                      ))}
                     </div>
-                  </div>
+
+                    {/* Reports section */}
+                    <div className="px-2 py-2">
+                      <p className="px-4 text-xs font-medium text-muted-foreground mb-2">Reports</p>
+                      {reportsItems.map((item) => (
+                        <Link 
+                          key={item.label}
+                          to={item.path} 
+                          className="flex items-center gap-3 px-4 py-2 rounded-md hover:bg-accent text-sm text-[#8E9196] hover:text-sidebar-foreground"
+                        >
+                          <span className="mr-1">{item.emoji}</span>
+                          <span>{item.label}</span>
+                        </Link>
+                      ))}
+                    </div>
+
+                    {/* Records section */}
+                    <div className="px-2 py-2">
+                      <p className="px-4 text-xs font-medium text-muted-foreground mb-2">Records</p>
+                      {recordsItems.map((item) => (
+                        <Link 
+                          key={item.label}
+                          to={item.path} 
+                          className="flex items-center gap-3 px-4 py-2 rounded-md hover:bg-accent text-sm text-[#8E9196] hover:text-sidebar-foreground"
+                        >
+                          <span className="mr-1">{item.emoji}</span>
+                          <span>{item.label}</span>
+                        </Link>
+                      ))}
+                    </div>
+
+                    {/* Goals section */}
+                    <div className="px-2 py-2">
+                      <p className="px-4 text-xs font-medium text-muted-foreground mb-2">Goals</p>
+                      {goalsItems.map((item) => (
+                        <Link 
+                          key={item.label}
+                          to={item.path} 
+                          className="flex items-center gap-3 px-4 py-2 rounded-md hover:bg-accent text-sm text-[#8E9196] hover:text-sidebar-foreground"
+                        >
+                          <span className="mr-1">{item.emoji}</span>
+                          <span>{item.label}</span>
+                        </Link>
+                      ))}
+                    </div>
+
+                    {/* Settings section */}
+                    <div className="px-2 py-2">
+                      <p className="px-4 text-xs font-medium text-muted-foreground mb-2">Settings</p>
+                      {settingsItems.map((item) => (
+                        <Link 
+                          key={item.label}
+                          to={item.path} 
+                          className="flex items-center gap-3 px-4 py-2 rounded-md hover:bg-accent text-sm text-[#8E9196] hover:text-sidebar-foreground"
+                        >
+                          <span className="mr-1">{item.emoji}</span>
+                          <span>{item.label}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  </ScrollArea>
                   
                   <div className="p-4 border-t">
                     <div className="flex items-center">
@@ -86,20 +161,14 @@ export const Navbar: React.FC = () => {
                         <p className="text-sm font-medium">John Doe</p>
                         <p className="text-xs text-muted-foreground">Admin</p>
                       </div>
+                      <button className="ml-auto rounded-full p-1.5 text-muted-foreground hover:bg-accent">
+                        <LogOut className="h-4 w-4" />
+                      </button>
                     </div>
                   </div>
                 </div>
               </SheetContent>
             </Sheet>
-            
-            {/* Logo - Only show on mobile */}
-            <Link to="/" className="flex md:hidden items-center gap-2">
-              <img 
-                src="/lovable-uploads/11582caa-2cc6-4bc8-bad9-bf61386d8073.png" 
-                alt="Scalevo Logo" 
-                className="h-4 sm:h-5" 
-              />
-            </Link>
           </div>
 
           {/* Centered Search Bar */}
