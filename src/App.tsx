@@ -15,34 +15,59 @@ import MetaAds from "./pages/MetaAds";
 import GoogleAds from "./pages/GoogleAds";
 import Account from "./pages/Account";
 import Navbar from "./components/Navbar";
+import MainSidebar from "./components/Sidebar";
 import { LanguageProvider } from "./hooks/use-language";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const queryClient = new QueryClient();
 
-// Helper component to conditionally render the Navbar
+// Helper component to conditionally render the Navbar and Sidebar
 const AppLayout = () => {
   const location = useLocation();
+  const isMobile = useIsMobile();
   const isAuthRoute = ['/login', '/register', '/signup', '/forgot-password', '/reset-password'].includes(location.pathname);
   
   return (
-    <div className="min-h-screen flex flex-col">
-      {!isAuthRoute && <Navbar />}
-      <main className="flex-1">
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/reset-password" element={<ResetPassword />} />
-          <Route path="/integrations" element={<Integrations />} />
-          <Route path="/meta-ads" element={<MetaAds />} />
-          <Route path="/google-ads" element={<GoogleAds />} />
-          <Route path="/account" element={<Account />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </main>
-    </div>
+    <SidebarProvider>
+      <div className="min-h-screen flex w-full">
+        {!isAuthRoute && (
+          <>
+            <MainSidebar className="hidden md:block" />
+            <div className="flex flex-col flex-1">
+              <Navbar />
+              <main className="flex-1">
+                <Routes>
+                  <Route path="/" element={<Index />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/signup" element={<SignUp />} />
+                  <Route path="/forgot-password" element={<ForgotPassword />} />
+                  <Route path="/reset-password" element={<ResetPassword />} />
+                  <Route path="/integrations" element={<Integrations />} />
+                  <Route path="/meta-ads" element={<MetaAds />} />
+                  <Route path="/google-ads" element={<GoogleAds />} />
+                  <Route path="/account" element={<Account />} />
+                  {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </main>
+            </div>
+          </>
+        )}
+        
+        {isAuthRoute && (
+          <main className="flex-1">
+            <Routes>
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="/forgot-password" element={<ForgotPassword />} />
+              <Route path="/reset-password" element={<ResetPassword />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
+        )}
+      </div>
+    </SidebarProvider>
   );
 };
 

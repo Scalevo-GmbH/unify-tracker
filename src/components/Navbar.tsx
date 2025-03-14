@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { 
   Search, 
@@ -58,6 +58,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { CommandSearch } from "@/components/CommandSearch";
 import { useLanguage } from "@/hooks/use-language";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useSidebar, SidebarTrigger } from "@/components/ui/sidebar";
 
 export const Navbar: React.FC = () => {
   const isMobile = useIsMobile();
@@ -68,6 +69,7 @@ export const Navbar: React.FC = () => {
     dismissNotification 
   } = useNotifications();
   const { language, setLanguage } = useLanguage();
+  const { state } = useSidebar();
 
   const mainMenuItems = [
     { icon: PieChart, label: "Dashboard", path: "/" },
@@ -109,7 +111,82 @@ export const Navbar: React.FC = () => {
     <>
       <header className="w-full border-b border-border sticky top-0 z-40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4">
+            {/* Sidebar Toggle for desktop */}
+            <div className="hidden md:block">
+              <SidebarTrigger className="h-8 w-8" />
+            </div>
+            
+            {/* Mobile Menu Button */}
+            <Sheet>
+              <SheetTrigger asChild className="md:hidden">
+                <Button variant="ghost" size="icon">
+                  <Menu className="h-5 w-5" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="left" className="p-0 w-[280px]">
+                <div className="flex flex-col h-full">
+                  <div className="p-4 border-b">
+                    <Link to="/" className="flex items-center gap-2">
+                      <img 
+                        src="/lovable-uploads/11582caa-2cc6-4bc8-bad9-bf61386d8073.png" 
+                        alt="Scalevo Logo" 
+                        className="h-4" 
+                      />
+                    </Link>
+                  </div>
+
+                  <div className="p-4">
+                    <CommandSearch isMobile={true} />
+                  </div>
+                  
+                  <div className="flex-1 overflow-auto">
+                    <div className="px-2 py-4">
+                      <p className="px-4 text-xs font-medium text-muted-foreground mb-2">Main</p>
+                      {mainMenuItems.map((item) => (
+                        <Link 
+                          key={item.label}
+                          to={item.path} 
+                          className="flex items-center gap-3 px-4 py-2 rounded-md hover:bg-accent text-sm"
+                        >
+                          <item.icon className="h-5 w-5" />
+                          <span>{item.label}</span>
+                        </Link>
+                      ))}
+                    </div>
+                    
+                    {megaMenuSections.map((section) => (
+                      <div className="px-2 py-4" key={section.title}>
+                        <p className="px-4 text-xs font-medium text-muted-foreground mb-2">{section.title}</p>
+                        {section.items.map((item) => (
+                          <Link 
+                            key={item.label}
+                            to={item.path} 
+                            className="flex items-center gap-3 px-4 py-2 rounded-md hover:bg-accent text-sm"
+                          >
+                            <item.icon className="h-5 w-5" />
+                            <span>{item.label}</span>
+                          </Link>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                  
+                  <div className="p-4 border-t">
+                    <div className="flex items-center">
+                      <div className="size-9 rounded-full bg-gradient-to-r from-marketing-blue to-marketing-purple flex items-center justify-center text-white font-medium">
+                        JD
+                      </div>
+                      <div className="ml-3">
+                        <p className="text-sm font-medium">John Doe</p>
+                        <p className="text-xs text-muted-foreground">Admin</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </SheetContent>
+            </Sheet>
+            
             <Link to="/" className="flex items-center gap-2">
               <img 
                 src="/lovable-uploads/11582caa-2cc6-4bc8-bad9-bf61386d8073.png" 
@@ -252,40 +329,6 @@ export const Navbar: React.FC = () => {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-            
-            <Sheet>
-              <SheetTrigger asChild className="md:hidden">
-                <Button variant="ghost" size="icon">
-                  <Menu className="h-5 w-5" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right">
-                <div className="flex flex-col gap-6 mt-6">
-                  <Link to="/" className="flex items-center gap-2">
-                    <img 
-                      src="/lovable-uploads/11582caa-2cc6-4bc8-bad9-bf61386d8073.png" 
-                      alt="Scalevo Logo" 
-                      className="h-4" 
-                    />
-                  </Link>
-                  
-                  <CommandSearch isMobile={true} />
-                  
-                  <nav className="grid gap-2">
-                    {mainMenuItems.map((item) => (
-                      <Link 
-                        key={item.label}
-                        to={item.path} 
-                        className="flex items-center gap-3 px-2 py-2 rounded-md hover:bg-accent"
-                      >
-                        <item.icon className="h-5 w-5" />
-                        <span>{item.label}</span>
-                      </Link>
-                    ))}
-                  </nav>
-                </div>
-              </SheetContent>
-            </Sheet>
           </div>
         </div>
       </header>

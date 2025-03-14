@@ -1,5 +1,6 @@
 
 import React from "react";
+import { Link } from "react-router-dom";
 import { 
   Home, 
   BarChart3, 
@@ -11,7 +12,9 @@ import {
   Search,
   ChevronRight,
   LogOut,
-  HelpCircle
+  HelpCircle,
+  FileText,
+  Grid3X3
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
@@ -22,7 +25,6 @@ import {
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
-  SidebarTrigger,
   SidebarGroup,
   SidebarGroupLabel,
   SidebarGroupContent,
@@ -40,9 +42,11 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
     { icon: Home, label: "Dashboard", active: true, path: "/" },
     { icon: BarChart3, label: "Analytics", path: "/analytics" },
     { icon: PieChart, label: "Campaigns", path: "/campaigns" },
-    { icon: Calendar, label: "Calendar", path: "/calendar" },
     { icon: Users, label: "Audience", path: "/audience" },
     { icon: Layers, label: "Integrations", path: "/integrations" },
+    { icon: Calendar, label: "Calendar", path: "/calendar" },
+    { icon: Grid3X3, label: "Products", path: "/products" },
+    { icon: FileText, label: "Resources", path: "/resources" },
   ];
 
   const settingsItems = [
@@ -52,25 +56,10 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
 
   return (
     <ShadcnSidebar className={cn("bg-sidebar border-r border-border", className)}>
-      <SidebarHeader className="flex flex-col space-y-2 p-4">
-        <div className="flex items-center gap-2 px-2">
-          <PieChart className="h-6 w-6 text-marketing-purple" />
-          <span className="text-lg font-semibold">Unify</span>
-          <SidebarTrigger className="ml-auto h-8 w-8" />
-        </div>
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-          <Input 
-            placeholder="Search..." 
-            className="pl-9 h-9 bg-background/80 text-sm" 
-          />
-        </div>
-      </SidebarHeader>
-
       <SidebarContent>
-        <ScrollArea className="h-[calc(100vh-13rem)]">
+        <ScrollArea className="h-[calc(100vh-4rem)]">
           <SidebarGroup>
-            <SidebarGroupLabel>Main</SidebarGroupLabel>
+            <SidebarGroupLabel>Navigation</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
                 {mainMenuItems.map((item) => (
@@ -80,13 +69,13 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
                       className="flex gap-3 py-2"
                       asChild
                     >
-                      <a href={item.path}>
+                      <Link to={item.path}>
                         <item.icon className="h-5 w-5" />
                         <span>{item.label}</span>
                         {item.active && (
                           <span className="ml-auto h-2 w-2 rounded-full bg-marketing-purple"></span>
                         )}
-                      </a>
+                      </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
@@ -101,11 +90,11 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
                 {settingsItems.map((item) => (
                   <SidebarMenuItem key={item.label}>
                     <SidebarMenuButton className="flex gap-3 py-2" asChild>
-                      <a href={item.path}>
+                      <Link to={item.path}>
                         <item.icon className="h-5 w-5" />
                         <span>{item.label}</span>
                         <ChevronRight className="ml-auto h-4 w-4 text-muted-foreground" />
-                      </a>
+                      </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
