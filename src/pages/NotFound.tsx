@@ -1,9 +1,9 @@
 
 import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
-import { AlertTriangle, ArrowLeft, Home, Search } from "lucide-react";
+import { AlertTriangle, ArrowLeft, Home } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import FadeInSection from "@/components/animations/FadeInSection";
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 
 const NotFound = () => {
   const location = useLocation();
@@ -16,70 +16,37 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 p-4">
-      <div className="max-w-2xl w-full rounded-xl overflow-hidden shadow-elevated bg-white">
-        <div className="p-6 md:p-10">
-          <FadeInSection>
-            <div className="flex items-center justify-center mb-6">
-              <div className="size-16 rounded-full flex items-center justify-center bg-amber-100 text-amber-600 animate-pulse">
-                <AlertTriangle className="size-8" />
-              </div>
-            </div>
-          </FadeInSection>
-          
-          <FadeInSection delay={200}>
-            <h1 className="text-5xl md:text-7xl font-bold text-center mb-4 bg-gradient-to-r from-marketing-purple to-marketing-blue bg-clip-text text-transparent">
-              404
-            </h1>
-          </FadeInSection>
-          
-          <FadeInSection delay={400}>
-            <p className="text-xl text-center text-gray-600 mb-8">
-              Oops! We couldn't find the page you're looking for.
-            </p>
-          </FadeInSection>
-          
-          <FadeInSection delay={600}>
-            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
-              <Button asChild variant="default" className="gap-2">
-                <Link to="/">
-                  <Home className="size-4" />
-                  Back to Home
-                </Link>
-              </Button>
-              <Button asChild variant="outline" className="gap-2">
-                <Link to="/">
-                  <ArrowLeft className="size-4" />
-                  Go Back
-                </Link>
-              </Button>
-            </div>
-          </FadeInSection>
-          
-          <FadeInSection delay={800}>
-            <div className="relative">
-              <div className="relative max-w-lg mx-auto">
-                <div className="p-6 rounded-xl border border-gray-100 bg-gray-50">
-                  <div className="flex items-start gap-4">
-                    <div className="mt-1 text-gray-400">
-                      <Search className="size-5" />
-                    </div>
-                    <div>
-                      <h3 className="font-medium text-gray-900 mb-1">
-                        Looking for something?
-                      </h3>
-                      <p className="text-sm text-gray-500">
-                        The page "{location.pathname}" doesn't exist. Check the URL or navigate 
-                        back to the homepage to find what you're looking for.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </FadeInSection>
-        </div>
-      </div>
+    <div className="min-h-screen flex items-center justify-center bg-background p-4">
+      <Card className="max-w-md w-full shadow-sm border-border">
+        <CardHeader className="text-center pb-0">
+          <div className="mx-auto mb-4 size-14 rounded-full flex items-center justify-center bg-amber-50 text-amber-500">
+            <AlertTriangle className="size-7" />
+          </div>
+          <h1 className="text-4xl font-bold text-foreground mb-2">404</h1>
+          <p className="text-muted-foreground">Page not found</p>
+        </CardHeader>
+        
+        <CardContent className="text-center pt-6">
+          <p className="text-sm text-muted-foreground mb-6">
+            The page <span className="font-medium text-foreground">"{location.pathname}"</span> doesn't exist.
+          </p>
+        </CardContent>
+        
+        <CardFooter className="flex justify-center gap-4 pb-6">
+          <Button asChild variant="default" size="sm" className="gap-2">
+            <Link to="/">
+              <Home className="size-4" />
+              Home
+            </Link>
+          </Button>
+          <Button asChild variant="outline" size="sm" className="gap-2">
+            <Link to="javascript:history.back()">
+              <ArrowLeft className="size-4" />
+              Back
+            </Link>
+          </Button>
+        </CardFooter>
+      </Card>
     </div>
   );
 };
