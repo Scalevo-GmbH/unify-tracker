@@ -16,9 +16,11 @@ body {
   letter-spacing: -0.015em;
 }
 
-/* General text elements that should use Cal Sans */
+/* Apply Cal Sans to specific HTML elements */
 h1, h2, h3, h4, h5, h6,
-button, a, nav, .sidebar-item, .menu-item, .navigation-item, .metric-title,
+button, a, p, span, div, li, ul, ol,
+input, select, textarea, label,
+nav, .sidebar-item, .menu-item, .navigation-item, .metric-title,
 .badge, .tab, .dialog-title, .dropdown-item, .metric-value,
 .sidebar-label, .sidebar-link, .menubar-item, .navigation-link,
 .card-title, .card-heading {
@@ -192,6 +194,13 @@ legend,
   font-weight: 600;
 }
 
+/* Target standard paragraphs, links, and div text */
+p, a, div, span, li {
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif;
+  letter-spacing: var(--cal-letter-spacing);
+  font-weight: 600;
+}
+
 /* Ensure all direct text in cards and metrics use Cal Sans */
 .metric-card p,
 .metric-card span:not(.icon),
@@ -214,6 +223,52 @@ legend,
 .performance-chart-title,
 .channel-name,
 .channel-percentage {
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif;
+  letter-spacing: var(--cal-letter-spacing);
+  font-weight: 600;
+}
+
+/* Ensure the main text contents of components use Cal Sans */
+.text-content, 
+.text-paragraph, 
+.description,
+.summary, 
+.content-text, 
+.content-body,
+.text-body {
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif;
+  letter-spacing: var(--cal-letter-spacing);
+  font-weight: 600;
+}
+
+/* Specifically target any text that might be in lists */
+ul li, ol li,
+ul span, ol span,
+ul a, ol a,
+.list-item, 
+.list-content {
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif;
+  letter-spacing: var(--cal-letter-spacing);
+  font-weight: 600;
+}
+
+/* Table elements */
+table, th, td, 
+.table-cell, 
+.table-header, 
+.table-data {
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif;
+  letter-spacing: var(--cal-letter-spacing);
+  font-weight: 600;
+}
+
+/* Dashboard and data visualization elements */
+.dashboard-item,
+.chart-label,
+.legend-item,
+.tooltip-label,
+.data-label,
+.axis-label {
   font-family: 'Cal Sans', 'Inter', system-ui, sans-serif;
   letter-spacing: var(--cal-letter-spacing);
   font-weight: 600;
