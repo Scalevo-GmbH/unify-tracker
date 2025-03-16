@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { Facebook, Instagram, Twitter, Search, LineChart, Mail } from "lucide-react";
 import FadeInSection from "./animations/FadeInSection";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 // Mock campaign data - in a real app, this would come from an API
 const activeCampaigns = [
@@ -105,16 +106,18 @@ const getPerformanceBadge = (performance: string) => {
 };
 
 export const ActiveCampaigns: React.FC = () => {
+  const isMobile = useIsMobile();
+  
   return (
     <FadeInSection>
-      <Card>
+      <Card className="overflow-hidden">
         <CardHeader>
           <CardTitle>Active Campaigns</CardTitle>
           <CardDescription>
             Currently running campaigns across all connected platforms
           </CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className={isMobile ? "px-0 pb-0" : ""}>
           <Table>
             <TableHeader>
               <TableRow>

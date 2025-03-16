@@ -3,6 +3,7 @@ import React from "react";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface Ad {
   id: number;
@@ -35,9 +36,11 @@ export const AdsTable: React.FC<AdsTableProps> = ({
   currentAdIndex, 
   onSelectAd 
 }) => {
+  const isMobile = useIsMobile();
+  
   return (
-    <Card>
-      <CardContent className="p-0">
+    <Card className="overflow-hidden">
+      <CardContent className={isMobile ? "px-0 pb-0" : "p-0"}>
         <Table>
           <TableHeader>
             <TableRow>

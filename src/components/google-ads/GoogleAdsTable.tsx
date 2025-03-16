@@ -4,6 +4,7 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
 import { Button } from "@/components/ui/button";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface Ad {
   id: number;
@@ -34,6 +35,8 @@ export const GoogleAdsTable: React.FC<GoogleAdsTableProps> = ({
   currentAdIndex,
   onSelectAd,
 }) => {
+  const isMobile = useIsMobile();
+  
   return (
     <section>
       <div className="flex justify-between items-center mb-4">
@@ -43,8 +46,8 @@ export const GoogleAdsTable: React.FC<GoogleAdsTableProps> = ({
         </Button>
       </div>
       
-      <Card>
-        <CardContent className="p-0">
+      <Card className="overflow-hidden">
+        <CardContent className={isMobile ? "px-0 pb-0" : "p-0"}>
           <Table>
             <TableHeader>
               <TableRow>

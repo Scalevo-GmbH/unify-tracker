@@ -1,22 +1,39 @@
 
 import * as React from "react"
-
 import { cn } from "@/lib/utils"
+import { ScrollArea } from "@/components/ui/scroll-area"
+import { useIsMobile } from "@/hooks/use-mobile"
 
 const Table = React.forwardRef<
   HTMLTableElement,
   React.HTMLAttributes<HTMLTableElement>
->(({ className, ...props }, ref) => (
-  <div className="w-full overflow-hidden">
-    <div className="responsive-table-container">
-      <table
-        ref={ref}
-        className={cn("w-full caption-bottom text-sm", className)}
-        {...props}
-      />
+>(({ className, ...props }, ref) => {
+  const isMobile = useIsMobile();
+  
+  return (
+    <div className="w-full">
+      {isMobile ? (
+        <ScrollArea className="w-full whitespace-nowrap">
+          <div className="w-full">
+            <table
+              ref={ref}
+              className={cn("w-full caption-bottom text-sm", className)}
+              {...props}
+            />
+          </div>
+        </ScrollArea>
+      ) : (
+        <div className="responsive-table-container">
+          <table
+            ref={ref}
+            className={cn("w-full caption-bottom text-sm", className)}
+            {...props}
+          />
+        </div>
+      )}
     </div>
-  </div>
-))
+  )
+})
 Table.displayName = "Table"
 
 const TableHeader = React.forwardRef<
