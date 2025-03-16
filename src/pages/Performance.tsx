@@ -107,7 +107,7 @@ const Performance = () => {
         onValueChange={(value) => setActiveTab(value)}
         className="w-full"
       >
-        <TabsList className="dashboard-tabs mb-8">
+        <TabsList className="dashboard-tabs mb-8 w-full justify-start">
           <TabsTrigger
             value="paid-search"
             className="dashboard-tab"
