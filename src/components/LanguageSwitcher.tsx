@@ -8,16 +8,20 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { Globe } from "lucide-react";
 
 export const LanguageSwitcher: React.FC = () => {
   const { language, setLanguage } = useLanguage();
+
+  // Get the flag emoji based on the current language
+  const getLanguageFlag = (lang: string) => {
+    return lang === "en" ? "🇬🇧" : "🇩🇪";
+  };
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full">
-          <Globe className="h-4 w-4" />
+          <span className="text-sm">{getLanguageFlag(language)}</span>
           <span className="sr-only">Toggle language</span>
         </Button>
       </DropdownMenuTrigger>
