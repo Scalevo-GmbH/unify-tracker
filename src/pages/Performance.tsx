@@ -146,25 +146,22 @@ const Performance = () => {
           </TabsTrigger>
         </TabsList>
 
-        <div className="mb-6">
-          <div className="flex items-center gap-2">
-            <label className="text-sm font-medium">Selected Tool:</label>
-            <Select 
-              value={selectedTool[activeTab]} 
-              onValueChange={handleToolChange}
-            >
-              <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Select a tool" />
-              </SelectTrigger>
-              <SelectContent>
-                {toolsByCategory[activeTab as keyof typeof toolsByCategory]?.map(tool => (
-                  <SelectItem key={tool.id} value={tool.id}>
-                    {tool.name}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
+        <div className="mb-6 flex justify-end">
+          <Select 
+            value={selectedTool[activeTab]} 
+            onValueChange={handleToolChange}
+          >
+            <SelectTrigger className="w-[200px] bg-white border-gray-200 shadow-sm">
+              <SelectValue placeholder="Select platform" />
+            </SelectTrigger>
+            <SelectContent className="bg-white">
+              {toolsByCategory[activeTab as keyof typeof toolsByCategory]?.map(tool => (
+                <SelectItem key={tool.id} value={tool.id}>
+                  {tool.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
 
         <Card>
