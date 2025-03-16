@@ -1,112 +1,133 @@
 
-import React from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { MessageCircleQuestion, Mail, BookOpenText, Info } from "lucide-react";
-import FadeInSection from "@/components/animations/FadeInSection";
-import { useTranslation } from "@/hooks/use-translation";
+import React, { useState } from "react";
+import { 
+  Card, 
+  CardContent, 
+  CardHeader, 
+  CardTitle, 
+  CardDescription 
+} from "@/components/ui/card";
+import { 
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { BookOpen, HelpCircle, LifeBuoy, Mail, MessageSquare, Search } from "lucide-react";
 
 const HelpSupport: React.FC = () => {
-  const { t } = useTranslation();
-  
-  return (
-    <div className="container py-6 space-y-8">
-      <FadeInSection>
-        <div className="flex flex-col gap-2">
-          <h1 className="text-3xl font-bold tracking-tight">Help & Support</h1>
-          <p className="text-muted-foreground">
-            Find help resources, documentation and contact our support team
-          </p>
-        </div>
-      </FadeInSection>
+  const [activeTab, setActiveTab] = useState("faq");
 
-      <FadeInSection delay={0.1}>
-        <Tabs defaultValue="faq" className="w-full">
-          <TabsList className="bg-card border mb-6 w-full justify-start rounded-lg p-1 h-auto flex-wrap gap-1">
-            <TabsTrigger value="faq" className="rounded data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-              <BookOpenText className="mr-2 h-4 w-4" />
-              <span>FAQs</span>
-            </TabsTrigger>
-            <TabsTrigger value="guides" className="rounded data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-              <Info className="mr-2 h-4 w-4" />
-              <span>User Guides</span>
-            </TabsTrigger>
-            <TabsTrigger value="tickets" className="rounded data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-              <MessageCircleQuestion className="mr-2 h-4 w-4" />
-              <span>Support Tickets</span>
-            </TabsTrigger>
-            <TabsTrigger value="contact" className="rounded data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-              <Mail className="mr-2 h-4 w-4" />
-              <span>Contact Us</span>
-            </TabsTrigger>
-          </TabsList>
-          
-          <TabsContent value="faq" className="space-y-6">
-            <FaqSection />
-          </TabsContent>
-          
-          <TabsContent value="guides" className="space-y-6">
-            <GuidesSection />
-          </TabsContent>
-          
-          <TabsContent value="tickets" className="space-y-6">
-            <TicketsSection />
-          </TabsContent>
-          
-          <TabsContent value="contact" className="space-y-6">
-            <ContactSection />
-          </TabsContent>
-        </Tabs>
-      </FadeInSection>
+  const renderTabContent = () => {
+    switch (activeTab) {
+      case "faq":
+        return <FAQSection />;
+      case "guides":
+        return <GuidesSection />;
+      case "tickets":
+        return <SupportTicketsSection />;
+      case "contact":
+        return <ContactSection />;
+      default:
+        return <FAQSection />;
+    }
+  };
+
+  return (
+    <div className="container mx-auto py-8 px-4 md:px-6">
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold mb-2">Help & Support</h1>
+        <p className="text-muted-foreground">Find answers to your questions or get in touch with our support team</p>
+      </div>
+
+      <div className="dashboard-tabs mb-8">
+        <button
+          className={`dashboard-tab ${activeTab === "faq" ? "data-[state=active]" : "data-[state=inactive]"}`}
+          data-state={activeTab === "faq" ? "active" : "inactive"}
+          onClick={() => setActiveTab("faq")}
+        >
+          <HelpCircle className="mr-2 h-4 w-4" />
+          FAQs
+        </button>
+        <button
+          className={`dashboard-tab ${activeTab === "guides" ? "data-[state=active]" : "data-[state=inactive]"}`}
+          data-state={activeTab === "guides" ? "active" : "inactive"}
+          onClick={() => setActiveTab("guides")}
+        >
+          <BookOpen className="mr-2 h-4 w-4" />
+          User Guides
+        </button>
+        <button
+          className={`dashboard-tab ${activeTab === "tickets" ? "data-[state=active]" : "data-[state=inactive]"}`}
+          data-state={activeTab === "tickets" ? "active" : "inactive"}
+          onClick={() => setActiveTab("tickets")}
+        >
+          <MessageSquare className="mr-2 h-4 w-4" />
+          Support Tickets
+        </button>
+        <button
+          className={`dashboard-tab ${activeTab === "contact" ? "data-[state=active]" : "data-[state=inactive]"}`}
+          data-state={activeTab === "contact" ? "active" : "inactive"}
+          onClick={() => setActiveTab("contact")}
+        >
+          <Mail className="mr-2 h-4 w-4" />
+          Contact Us
+        </button>
+      </div>
+
+      {renderTabContent()}
     </div>
   );
 };
 
-const FaqSection: React.FC = () => {
-  const faqs = [
-    {
-      question: "How do I connect my advertising accounts?",
-      answer: "Navigate to the Integrations page and select the platform you want to connect. Follow the authentication process to grant the necessary permissions. Once connected, your data will automatically sync to your dashboard."
-    },
-    {
-      question: "How often is campaign data updated?",
-      answer: "Campaign data is synced every 6 hours by default. For Premium and Enterprise plans, you can adjust this to hourly updates in your account settings."
-    },
-    {
-      question: "Can I export reports?",
-      answer: "Yes, you can export reports in various formats including PDF, CSV, and Excel. Look for the export button in the top-right corner of any report view."
-    },
-    {
-      question: "How do I change my subscription plan?",
-      answer: "You can change your subscription plan in the Account settings under Subscription Management. Changes take effect at the start of your next billing cycle."
-    },
-    {
-      question: "What permissions are required for integrations?",
-      answer: "We request read-only access to your advertising accounts by default. For automation features, additional write permissions may be required. You can review all requested permissions during the connection process."
-    },
-  ];
-  
+const FAQSection: React.FC = () => {
   return (
-    <div className="grid gap-6">
+    <div className="space-y-6">
       <Card>
         <CardHeader>
           <CardTitle>Frequently Asked Questions</CardTitle>
-          <CardDescription>
-            Common questions and answers about our platform
-          </CardDescription>
+          <CardDescription>Find answers to common questions about our platform and services</CardDescription>
         </CardHeader>
         <CardContent>
-          <ScrollArea className="h-[500px] pr-4">
-            <div className="space-y-6">
-              {faqs.map((faq, index) => (
-                <div key={index} className="pb-6 border-b last:border-b-0 last:pb-0">
-                  <h3 className="font-medium text-lg mb-2">{faq.question}</h3>
-                  <p className="text-muted-foreground">{faq.answer}</p>
-                </div>
-              ))}
-            </div>
-          </ScrollArea>
+          <div className="relative mb-6">
+            <Search className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
+            <Input className="pl-10" placeholder="Search for answers..." />
+          </div>
+          <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="item-1">
+              <AccordionTrigger>How do I connect my Meta Ads account?</AccordionTrigger>
+              <AccordionContent>
+                To connect your Meta Ads account, navigate to the Integrations page, find the Meta Ads card, and click on "Connect". You'll be prompted to log in to your Facebook account and grant necessary permissions.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-2">
+              <AccordionTrigger>How can I upgrade my subscription plan?</AccordionTrigger>
+              <AccordionContent>
+                You can upgrade your subscription plan by going to the Account page, selecting the "Subscriptions" tab, and choosing a new plan that meets your needs. Your billing will be prorated for the remainder of your current billing cycle.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-3">
+              <AccordionTrigger>How do I create a new campaign?</AccordionTrigger>
+              <AccordionContent>
+                To create a new campaign, go to the Campaigns page and click on the "Create Campaign" button. Follow the step-by-step wizard to set up your campaign objectives, target audience, budget, and creative assets.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-4">
+              <AccordionTrigger>Can I manage multiple ad accounts?</AccordionTrigger>
+              <AccordionContent>
+                Yes, you can manage multiple ad accounts from different platforms. Connect each account through the Integrations page, and you'll be able to switch between them when viewing performance data or creating campaigns.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-5">
+              <AccordionTrigger>How often is the performance data updated?</AccordionTrigger>
+              <AccordionContent>
+                Performance data is typically updated every 6 hours. However, some metrics from certain platforms may have different refresh rates. You can see the last update time on each dashboard widget.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </CardContent>
       </Card>
     </div>
@@ -116,126 +137,111 @@ const FaqSection: React.FC = () => {
 const GuidesSection: React.FC = () => {
   const guides = [
     {
-      title: "Getting Started Guide",
-      description: "Learn the basics of using the platform and set up your first dashboard",
-      icon: BookOpenText,
-      link: "#"
+      title: "Getting Started with Scalevo",
+      description: "Learn the basics of navigating and using the Scalevo platform",
+      icon: <BookOpen className="h-8 w-8 text-primary" />,
     },
     {
-      title: "Campaign Optimization",
-      description: "Discover how to optimize your campaigns using our analytics tools",
-      icon: BookOpenText,
-      link: "#"
+      title: "Setting Up Your First Campaign",
+      description: "A step-by-step guide to creating and launching your first ad campaign",
+      icon: <MessageSquare className="h-8 w-8 text-primary" />,
     },
     {
-      title: "Advanced Reporting",
-      description: "Create custom reports and visualizations with our advanced tools",
-      icon: BookOpenText,
-      link: "#"
+      title: "Understanding Performance Metrics",
+      description: "Learn how to interpret and act on campaign performance data",
+      icon: <HelpCircle className="h-8 w-8 text-primary" />,
     },
     {
-      title: "Integration Setup",
-      description: "Step-by-step guide to connecting your advertising platforms",
-      icon: BookOpenText,
-      link: "#"
+      title: "Optimizing Ad Campaigns",
+      description: "Advanced techniques to improve your campaign performance",
+      icon: <LifeBuoy className="h-8 w-8 text-primary" />,
     },
   ];
-  
+
   return (
-    <div className="grid gap-6 md:grid-cols-2">
-      {guides.map((guide, index) => (
-        <Card key={index} className="overflow-hidden transition-all hover:shadow-md">
-          <CardContent className="p-6">
-            <div className="flex items-start gap-4">
-              <div className="rounded-full bg-primary/10 p-3">
-                <guide.icon className="h-6 w-6 text-primary" />
-              </div>
-              <div>
-                <h3 className="font-medium text-lg mb-1">{guide.title}</h3>
-                <p className="text-muted-foreground text-sm mb-4">{guide.description}</p>
-                <a 
-                  href={guide.link} 
-                  className="text-primary font-medium text-sm inline-flex items-center hover:underline"
-                >
-                  Read guide
-                </a>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      ))}
+    <div className="space-y-6">
+      <Card>
+        <CardHeader>
+          <CardTitle>User Guides</CardTitle>
+          <CardDescription>Detailed guides to help you get the most out of our platform</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {guides.map((guide, index) => (
+              <Card key={index} className="cursor-pointer hover:shadow-md transition-shadow">
+                <CardContent className="flex items-start p-6 gap-4">
+                  <div className="mt-1">{guide.icon}</div>
+                  <div>
+                    <h3 className="font-medium text-lg mb-1">{guide.title}</h3>
+                    <p className="text-muted-foreground text-sm">{guide.description}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 };
 
-const TicketsSection: React.FC = () => {
+const SupportTicketsSection: React.FC = () => {
   const tickets = [
     {
-      id: "TKT-2023-06-12",
-      subject: "Integration with Facebook Ads",
+      id: "TCK-2023-06-12",
+      subject: "Issue with Google Ads Integration",
       status: "Open",
-      created: "June 12, 2023",
-      lastUpdate: "June 14, 2023",
+      lastUpdate: "2 hours ago",
     },
     {
-      id: "TKT-2023-05-28",
-      subject: "Dashboard loading issue",
+      id: "TCK-2023-06-10",
+      subject: "Campaign Report Export Problem",
       status: "Closed",
-      created: "May 28, 2023",
-      lastUpdate: "May 30, 2023",
-    }
+      lastUpdate: "2 days ago",
+    },
   ];
-  
+
   return (
     <div className="space-y-6">
       <Card>
         <CardHeader>
           <CardTitle>Support Tickets</CardTitle>
-          <CardDescription>
-            View and manage your support requests
-          </CardDescription>
+          <CardDescription>View and manage your support requests</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="space-y-4">
-            <div className="border rounded-lg">
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b bg-muted/50">
-                    <th className="text-left py-3 px-4 font-medium text-sm">ID</th>
-                    <th className="text-left py-3 px-4 font-medium text-sm">Subject</th>
-                    <th className="text-left py-3 px-4 font-medium text-sm">Status</th>
-                    <th className="text-left py-3 px-4 font-medium text-sm">Created</th>
-                    <th className="text-left py-3 px-4 font-medium text-sm">Last Update</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {tickets.map((ticket) => (
-                    <tr key={ticket.id} className="border-b last:border-b-0 hover:bg-muted/50 cursor-pointer">
-                      <td className="py-3 px-4 text-sm">{ticket.id}</td>
-                      <td className="py-3 px-4 text-sm">{ticket.subject}</td>
-                      <td className="py-3 px-4 text-sm">
-                        <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                          ticket.status === "Open" 
-                            ? "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400" 
-                            : "bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-400"
-                        }`}>
-                          {ticket.status}
-                        </span>
-                      </td>
-                      <td className="py-3 px-4 text-sm">{ticket.created}</td>
-                      <td className="py-3 px-4 text-sm">{ticket.lastUpdate}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            
-            <div className="flex justify-center">
-              <button className="text-primary font-medium text-sm hover:underline">
-                Create New Ticket
-              </button>
-            </div>
+          <div className="mb-6 flex items-center justify-between">
+            <h3 className="font-medium">Your Tickets</h3>
+            <Button>Create New Ticket</Button>
           </div>
+          
+          {tickets.length > 0 ? (
+            <div className="space-y-4">
+              {tickets.map((ticket) => (
+                <div 
+                  key={ticket.id} 
+                  className="border rounded-lg p-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+                >
+                  <div>
+                    <p className="font-medium">{ticket.subject}</p>
+                    <p className="text-sm text-muted-foreground">ID: {ticket.id} • Last updated: {ticket.lastUpdate}</p>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                      ticket.status === "Open" ? "bg-green-100 text-green-800" : "bg-gray-100 text-gray-800"
+                    }`}>
+                      {ticket.status}
+                    </span>
+                    <Button variant="outline" size="sm">View</Button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-8">
+              <p className="text-muted-foreground mb-4">You don't have any support tickets yet</p>
+              <Button>Create Your First Ticket</Button>
+            </div>
+          )}
         </CardContent>
       </Card>
     </div>
@@ -244,90 +250,64 @@ const TicketsSection: React.FC = () => {
 
 const ContactSection: React.FC = () => {
   return (
-    <div className="grid gap-6 md:grid-cols-2">
+    <div className="space-y-6">
       <Card>
         <CardHeader>
-          <CardTitle>Send us a message</CardTitle>
-          <CardDescription>
-            Fill out the form below and we'll get back to you as soon as possible
-          </CardDescription>
+          <CardTitle>Contact Us</CardTitle>
+          <CardDescription>Get in touch with our support team</CardDescription>
         </CardHeader>
         <CardContent>
           <form className="space-y-4">
-            <div className="grid gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <label htmlFor="name" className="text-sm font-medium">Name</label>
-                <input
-                  id="name"
-                  placeholder="Your name"
-                  className="w-full border rounded-md px-3 py-2 text-sm"
-                />
+                <Input id="name" placeholder="Your name" />
               </div>
               <div className="space-y-2">
                 <label htmlFor="email" className="text-sm font-medium">Email</label>
-                <input
-                  id="email"
-                  type="email"
-                  placeholder="Your email address"
-                  className="w-full border rounded-md px-3 py-2 text-sm"
-                />
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="subject" className="text-sm font-medium">Subject</label>
-                <input
-                  id="subject"
-                  placeholder="What is your message about?"
-                  className="w-full border rounded-md px-3 py-2 text-sm"
-                />
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="message" className="text-sm font-medium">Message</label>
-                <textarea
-                  id="message"
-                  rows={4}
-                  placeholder="How can we help you?"
-                  className="w-full border rounded-md px-3 py-2 text-sm"
-                />
+                <Input id="email" type="email" placeholder="your.email@example.com" />
               </div>
             </div>
-            <button
-              type="submit"
-              className="bg-primary text-primary-foreground px-4 py-2 rounded font-medium text-sm"
-            >
-              Send Message
-            </button>
+            <div className="space-y-2">
+              <label htmlFor="subject" className="text-sm font-medium">Subject</label>
+              <Input id="subject" placeholder="How can we help you?" />
+            </div>
+            <div className="space-y-2">
+              <label htmlFor="message" className="text-sm font-medium">Message</label>
+              <Textarea 
+                id="message" 
+                placeholder="Describe your issue or question in detail" 
+                rows={5} 
+              />
+            </div>
+            <div className="flex justify-end">
+              <Button type="submit">Send Message</Button>
+            </div>
           </form>
         </CardContent>
       </Card>
-      
+
       <Card>
         <CardHeader>
-          <CardTitle>Contact Information</CardTitle>
-          <CardDescription>
-            Alternative ways to get in touch with our team
-          </CardDescription>
+          <CardTitle>Other Ways to Reach Us</CardTitle>
         </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="space-y-2">
-            <h3 className="font-medium">Email</h3>
-            <p className="text-muted-foreground">support@scalevo.com</p>
-          </div>
-          <div className="space-y-2">
-            <h3 className="font-medium">Phone</h3>
-            <p className="text-muted-foreground">+1 (555) 123-4567</p>
-          </div>
-          <div className="space-y-2">
-            <h3 className="font-medium">Business Hours</h3>
-            <p className="text-muted-foreground">Monday - Friday: 9am - 5pm EST</p>
-          </div>
-          <div className="space-y-2">
-            <h3 className="font-medium">Address</h3>
-            <p className="text-muted-foreground">
-              123 Marketing Avenue<br />
-              Suite 456<br />
-              New York, NY 10001<br />
-              United States
-            </p>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="flex flex-col items-center text-center p-4">
+              <Mail className="h-8 w-8 text-primary mb-2" />
+              <h3 className="font-medium">Email</h3>
+              <p className="text-muted-foreground">support@scalevo.com</p>
+            </div>
+            <div className="flex flex-col items-center text-center p-4">
+              <MessageSquare className="h-8 w-8 text-primary mb-2" />
+              <h3 className="font-medium">Live Chat</h3>
+              <p className="text-muted-foreground">Available Mon-Fri, 9am-6pm UTC</p>
+            </div>
+            <div className="flex flex-col items-center text-center p-4">
+              <LifeBuoy className="h-8 w-8 text-primary mb-2" />
+              <h3 className="font-medium">Phone Support</h3>
+              <p className="text-muted-foreground">+1 (800) 123-4567</p>
+            </div>
           </div>
         </CardContent>
       </Card>
