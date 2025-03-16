@@ -1,5 +1,4 @@
 
-
 /* Import modular CSS files */
 @import './typography.css';
 @import './components.css';
@@ -10,23 +9,57 @@
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  position: relative;
-  border-radius: 0.5rem;
 }
 
-/* Ensure tables take full width within their container but don't force overflow */
-.responsive-table-container table {
+/* Table reset and base styles */
+table {
   width: 100%;
-  margin: 0;
+  border-spacing: 0;
+  border-collapse: separate;
 }
 
-/* Remove double scrollbars that appear with nested scroll areas */
-.responsive-table-container .scrollbar-hide::-webkit-scrollbar {
-  display: none;
+/* Ensure tables don't force page width */
+.responsive-table-container table {
+  table-layout: auto;
+  min-width: 100%;
+  /* Ensure the table expands to fit its content but doesn't force overflow */
+  width: 1px; 
 }
 
-.responsive-table-container .scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+/* Custom scrollbar styling */
+.responsive-table-container::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
 }
 
+.responsive-table-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.responsive-table-container::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+}
+
+/* Dark mode scrollbar */
+.dark .responsive-table-container::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Ensure table cell content doesn't break layout */
+th, td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Ensure non-critical cells can shrink on smaller screens */
+.responsive-cell-shrink {
+  max-width: 120px;
+}
+
+@media (max-width: 640px) {
+  .responsive-cell-shrink {
+    max-width: 80px;
+  }
+}
