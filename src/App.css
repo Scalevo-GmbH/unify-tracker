@@ -11,3 +11,19 @@
 .font-cal {
   font-family: 'Cal Sans', 'Inter', sans-serif;
 }
+
+/* Additional utility classes for Cal Sans */
+.text-cal {
+  font-family: 'Cal Sans', 'Inter', sans-serif;
+}
+
+.cal-heading {
+  font-family: 'Cal Sans', 'Inter', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Button styles with Cal Sans */
+.btn-cal {
+  font-family: 'Cal Sans', 'Inter', sans-serif;
+  font-weight: 600;
+}

@@ -94,6 +94,31 @@
     @apply font-cal tracking-tight;
   }
 
+  /* Add specific styles for different heading levels */
+  h1 {
+    @apply text-4xl font-cal tracking-tight;
+  }
+  
+  h2 {
+    @apply text-3xl font-cal tracking-tight;
+  }
+  
+  h3 {
+    @apply text-2xl font-cal tracking-tight;
+  }
+  
+  h4 {
+    @apply text-xl font-cal tracking-tight;
+  }
+  
+  h5 {
+    @apply text-lg font-cal tracking-tight;
+  }
+  
+  h6 {
+    @apply font-cal tracking-tight;
+  }
+
   /* For blurred glass effects */
   .glassmorphism {
     @apply bg-white bg-opacity-70 backdrop-blur-lg border border-white border-opacity-20;
@@ -156,4 +181,21 @@
 
 .dashboard-tab[data-state="inactive"] {
   @apply text-muted-foreground hover:text-foreground;
+}
+
+/* Cal Sans specific components */
+.cal-button {
+  @apply font-cal tracking-tight;
+}
+
+.cal-badge {
+  @apply font-cal text-xs tracking-tight;
+}
+
+.cal-card-title {
+  @apply font-cal text-lg tracking-tight;
+}
+
+.cal-tab {
+  @apply font-cal tracking-tight;
 }
