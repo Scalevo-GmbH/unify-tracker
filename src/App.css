@@ -1,5 +1,13 @@
 
 /* Additional font-related styles */
+@font-face {
+  font-family: 'Cal Sans';
+  src: url('/cal-sans.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 .font-cal {
   font-family: 'Cal Sans', 'Inter', sans-serif;
 }
