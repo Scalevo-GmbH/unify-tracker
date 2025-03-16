@@ -21,16 +21,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useSidebar, SidebarTrigger } from "@/components/ui/sidebar";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Input } from "@/components/ui/input";
-import { 
-  mainMenuItems, 
-  paidSocialItems, 
-  paidSearchItems, 
-  organicSocialItems, 
-  websiteAnalyticsItems,
-  emailMarketingItems,
-  formsAndSurveyItems,
-  settingsItems 
-} from "@/components/Sidebar";
+import { mainMenuItems, settingsItems } from "@/components/Sidebar";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { useTranslation } from "@/hooks/use-translation";
 
@@ -58,12 +49,6 @@ export const Navbar: React.FC = () => {
   };
 
   const filteredMainMenu = filterItems(mainMenuItems);
-  const filteredPaidSocial = filterItems(paidSocialItems);
-  const filteredPaidSearch = filterItems(paidSearchItems);
-  const filteredOrganicSocial = filterItems(organicSocialItems);
-  const filteredWebsiteAnalytics = filterItems(websiteAnalyticsItems);
-  const filteredEmailMarketing = filterItems(emailMarketingItems);
-  const filteredFormsAndSurvey = filterItems(formsAndSurveyItems);
   const filteredSettings = filterItems(settingsItems);
 
   return (
@@ -130,108 +115,6 @@ export const Navbar: React.FC = () => {
                       </div>
                     )}
 
-                    {/* Paid Social section */}
-                    {filteredPaidSocial.length > 0 && (
-                      <div className="px-2 py-2">
-                        <p className="px-4 text-xs font-medium text-muted-foreground mb-2">Paid Social</p>
-                        {filteredPaidSocial.map((item) => (
-                          <Link 
-                            key={item.label}
-                            to={item.path} 
-                            className="flex items-center gap-3 px-4 py-2 rounded-md hover:bg-accent text-sm text-[#8E9196] hover:text-sidebar-foreground"
-                          >
-                            <span className="mr-1">{item.emoji}</span>
-                            <span>{item.label}</span>
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-
-                    {/* Paid Search section */}
-                    {filteredPaidSearch.length > 0 && (
-                      <div className="px-2 py-2">
-                        <p className="px-4 text-xs font-medium text-muted-foreground mb-2">Paid Search</p>
-                        {filteredPaidSearch.map((item) => (
-                          <Link 
-                            key={item.label}
-                            to={item.path} 
-                            className="flex items-center gap-3 px-4 py-2 rounded-md hover:bg-accent text-sm text-[#8E9196] hover:text-sidebar-foreground"
-                          >
-                            <span className="mr-1">{item.emoji}</span>
-                            <span>{item.label}</span>
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-
-                    {/* Organic Social section */}
-                    {filteredOrganicSocial.length > 0 && (
-                      <div className="px-2 py-2">
-                        <p className="px-4 text-xs font-medium text-muted-foreground mb-2">Organic Social</p>
-                        {filteredOrganicSocial.map((item) => (
-                          <Link 
-                            key={item.label}
-                            to={item.path} 
-                            className="flex items-center gap-3 px-4 py-2 rounded-md hover:bg-accent text-sm text-[#8E9196] hover:text-sidebar-foreground"
-                          >
-                            <span className="mr-1">{item.emoji}</span>
-                            <span>{item.label}</span>
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-
-                    {/* Website Analytics section */}
-                    {filteredWebsiteAnalytics.length > 0 && (
-                      <div className="px-2 py-2">
-                        <p className="px-4 text-xs font-medium text-muted-foreground mb-2">Website Analytics</p>
-                        {filteredWebsiteAnalytics.map((item) => (
-                          <Link 
-                            key={item.label}
-                            to={item.path} 
-                            className="flex items-center gap-3 px-4 py-2 rounded-md hover:bg-accent text-sm text-[#8E9196] hover:text-sidebar-foreground"
-                          >
-                            <span className="mr-1">{item.emoji}</span>
-                            <span>{item.label}</span>
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-
-                    {/* Email Marketing section */}
-                    {filteredEmailMarketing.length > 0 && (
-                      <div className="px-2 py-2">
-                        <p className="px-4 text-xs font-medium text-muted-foreground mb-2">Email Marketing</p>
-                        {filteredEmailMarketing.map((item) => (
-                          <Link 
-                            key={item.label}
-                            to={item.path} 
-                            className="flex items-center gap-3 px-4 py-2 rounded-md hover:bg-accent text-sm text-[#8E9196] hover:text-sidebar-foreground"
-                          >
-                            <span className="mr-1">{item.emoji}</span>
-                            <span>{item.label}</span>
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-
-                    {/* Forms & Survey section */}
-                    {filteredFormsAndSurvey.length > 0 && (
-                      <div className="px-2 py-2">
-                        <p className="px-4 text-xs font-medium text-muted-foreground mb-2">Forms & Survey</p>
-                        {filteredFormsAndSurvey.map((item) => (
-                          <Link 
-                            key={item.label}
-                            to={item.path} 
-                            className="flex items-center gap-3 px-4 py-2 rounded-md hover:bg-accent text-sm text-[#8E9196] hover:text-sidebar-foreground"
-                          >
-                            <span className="mr-1">{item.emoji}</span>
-                            <span>{item.label}</span>
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-
                     {/* Settings section */}
                     {filteredSettings.length > 0 && (
                       <div className="px-2 py-2">
@@ -252,12 +135,6 @@ export const Navbar: React.FC = () => {
                     {/* No results message */}
                     {menuFilter && 
                       !filteredMainMenu.length &&
-                      !filteredPaidSocial.length &&
-                      !filteredPaidSearch.length &&
-                      !filteredOrganicSocial.length &&
-                      !filteredWebsiteAnalytics.length &&
-                      !filteredEmailMarketing.length &&
-                      !filteredFormsAndSurvey.length &&
                       !filteredSettings.length && (
                         <div className="p-4 text-center text-muted-foreground">
                           No menu items found

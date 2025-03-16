@@ -7,7 +7,6 @@ import {
   HelpCircle,
   LogOut,
   BarChart3,
-  LineChart,
   Lightbulb,
   Megaphone,
   Plug,
