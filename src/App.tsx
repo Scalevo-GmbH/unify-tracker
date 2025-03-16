@@ -15,6 +15,7 @@ import MetaAds from "./pages/MetaAds";
 import GoogleAds from "./pages/GoogleAds";
 import Account from "./pages/Account";
 import HelpSupport from "./pages/HelpSupport";
+import Campaigns from "./pages/Campaigns";
 import Navbar from "./components/Navbar";
 import MainSidebar from "./components/Sidebar";
 import { LanguageProvider } from "./hooks/use-language";
@@ -47,6 +48,7 @@ const AppLayout = () => {
                   <Route path="/integrations" element={<Integrations />} />
                   <Route path="/meta-ads" element={<MetaAds />} />
                   <Route path="/google-ads" element={<GoogleAds />} />
+                  <Route path="/campaigns" element={<Campaigns />} />
                   <Route path="/account" element={<Account />} />
                   <Route path="/help" element={<HelpSupport />} />
                   <Route path="*" element={<NotFound />} />
