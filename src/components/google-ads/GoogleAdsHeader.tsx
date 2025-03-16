@@ -5,6 +5,7 @@ import { DateRangeSelector, DateRange } from "@/components/DateRangeSelector";
 import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CreateAdModal } from "./CreateAdModal";
+import { useTranslation } from "@/hooks/use-translation";
 
 interface GoogleAdsHeaderProps {
   dateRange: DateRange;
@@ -15,6 +16,8 @@ export const GoogleAdsHeader: React.FC<GoogleAdsHeaderProps> = ({
   dateRange,
   onDateRangeChange,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <section className="mb-8">
       <FadeInSection>
@@ -25,8 +28,8 @@ export const GoogleAdsHeader: React.FC<GoogleAdsHeaderProps> = ({
                 <Search className="h-4 w-4 text-red-600 dark:text-red-400" />
                 <span className="text-sm font-medium text-red-700 dark:text-red-400">Google Ads</span>
               </div>
-              <h1 className="text-3xl font-semibold tracking-tight">Ad Performance</h1>
-              <p className="text-muted-foreground">Track and optimize your Google Search and Display ad campaigns.</p>
+              <h1 className="text-3xl font-semibold tracking-tight">{t('adPerformance')}</h1>
+              <p className="text-muted-foreground">{t('trackOptimize')}</p>
             </div>
             
             <div className="mt-4 sm:mt-0 flex flex-wrap items-center gap-2">
@@ -35,7 +38,7 @@ export const GoogleAdsHeader: React.FC<GoogleAdsHeaderProps> = ({
                 onChange={onDateRangeChange} 
               />
               <Button variant="outline">
-                Export
+                {t('export')}
               </Button>
               <CreateAdModal />
             </div>

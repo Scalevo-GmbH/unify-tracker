@@ -31,6 +31,8 @@ import {
   formsAndSurveyItems,
   settingsItems 
 } from "@/components/Sidebar";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { useTranslation } from "@/hooks/use-translation";
 
 export const Navbar: React.FC = () => {
   const isMobile = useIsMobile();
@@ -43,6 +45,7 @@ export const Navbar: React.FC = () => {
   const { language, setLanguage } = useLanguage();
   const { state } = useSidebar();
   const [menuFilter, setMenuFilter] = useState("");
+  const { t } = useTranslation();
 
   // Filter menu items based on search input
   const filterItems = (items: any[]) => {
@@ -98,7 +101,7 @@ export const Navbar: React.FC = () => {
                       <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
                       <Input
                         type="text"
-                        placeholder="Search menu..."
+                        placeholder={t('searchMenu')}
                         value={menuFilter}
                         onChange={(e) => setMenuFilter(e.target.value)}
                         className="pl-9 h-9 text-sm"
@@ -288,6 +291,9 @@ export const Navbar: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-2 sm:gap-4">
+            {/* Language Switcher */}
+            <LanguageSwitcher />
+            
             <NotificationsDropdown 
               notifications={notifications}
               onMarkAsRead={markAsRead}
@@ -313,17 +319,17 @@ export const Navbar: React.FC = () => {
                 <DropdownMenuItem asChild>
                   <Link to="/account">
                     <Settings className="mr-2 h-4 w-4" />
-                    <span>Account Settings</span>
+                    <span>{t('accountSettings')}</span>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <HelpCircle className="mr-2 h-4 w-4" />
-                  <span>Help & Support</span>
+                  <span>{t('helpSupport')}</span>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
                   <LogOut className="mr-2 h-4 w-4" />
-                  <span>Log out</span>
+                  <span>{t('logout')}</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
