@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -19,10 +18,10 @@ import MainSidebar from "./components/Sidebar";
 import { LanguageProvider } from "./hooks/use-language";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { useIsMobile } from "@/hooks/use-mobile";
+import "./App.css";
 
 const queryClient = new QueryClient();
 
-// Helper component to conditionally render the Navbar and Sidebar
 const AppLayout = () => {
   const location = useLocation();
   const isMobile = useIsMobile();
@@ -47,7 +46,6 @@ const AppLayout = () => {
                   <Route path="/meta-ads" element={<MetaAds />} />
                   <Route path="/google-ads" element={<GoogleAds />} />
                   <Route path="/account" element={<Account />} />
-                  {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>

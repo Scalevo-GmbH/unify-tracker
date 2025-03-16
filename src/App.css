@@ -1,2 +1,5 @@
 
-/* Cleaned up empty CSS file */
+/* Additional font-related styles */
+.font-cal {
+  font-family: 'Cal Sans', 'Inter', sans-serif;
+}
