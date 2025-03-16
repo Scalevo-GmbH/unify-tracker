@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -13,6 +14,7 @@ import Integrations from "./pages/Integrations";
 import MetaAds from "./pages/MetaAds";
 import GoogleAds from "./pages/GoogleAds";
 import Account from "./pages/Account";
+import HelpSupport from "./pages/HelpSupport";
 import Navbar from "./components/Navbar";
 import MainSidebar from "./components/Sidebar";
 import { LanguageProvider } from "./hooks/use-language";
@@ -46,6 +48,7 @@ const AppLayout = () => {
                   <Route path="/meta-ads" element={<MetaAds />} />
                   <Route path="/google-ads" element={<GoogleAds />} />
                   <Route path="/account" element={<Account />} />
+                  <Route path="/help" element={<HelpSupport />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>

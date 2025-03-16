@@ -91,10 +91,17 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
               <SidebarMenu>
                 {settingsItems.map((item) => (
                   <SidebarMenuItem key={item.label}>
-                    <SidebarMenuButton className="flex gap-3 py-2 text-[#A6A9AE] hover:text-sidebar-foreground" asChild>
+                    <SidebarMenuButton 
+                      isActive={location.pathname === item.path}
+                      className="flex gap-3 py-2 text-[#A6A9AE] hover:text-sidebar-foreground" 
+                      asChild
+                    >
                       <Link to={item.path}>
                         <span className="mr-1">{item.emoji}</span>
                         <span>{item.label}</span>
+                        {location.pathname === item.path && (
+                          <span className="ml-auto h-2 w-2 rounded-full bg-marketing-purple"></span>
+                        )}
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
