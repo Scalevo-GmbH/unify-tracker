@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, LogOut, Settings, HelpCircle, Search } from "lucide-react";
+import { Menu, LogOut, Settings, HelpCircle, Search, Globe } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Button } from "@/components/ui/button";
 import {
@@ -22,7 +22,6 @@ import { useSidebar, SidebarTrigger } from "@/components/ui/sidebar";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Input } from "@/components/ui/input";
 import { mainMenuItems, settingsItems } from "@/components/Sidebar";
-import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { useTranslation } from "@/hooks/use-translation";
 
 export const Navbar: React.FC = () => {
@@ -46,6 +45,11 @@ export const Navbar: React.FC = () => {
       item.label.toLowerCase().includes(filter) || 
       (item.emoji && item.emoji.toLowerCase().includes(filter))
     );
+  };
+
+  // Get the flag emoji based on the current language
+  const getLanguageFlag = (lang: string) => {
+    return lang === "en" ? "🇬🇧" : "🇩🇪";
   };
 
   const filteredMainMenu = filterItems(mainMenuItems);
@@ -168,9 +172,6 @@ export const Navbar: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-2 sm:gap-4">
-            {/* Language Switcher */}
-            <LanguageSwitcher />
-            
             <NotificationsDropdown 
               notifications={notifications}
               onMarkAsRead={markAsRead}
@@ -192,6 +193,26 @@ export const Navbar: React.FC = () => {
                   <p className="text-sm font-medium">John Doe</p>
                   <p className="text-xs text-muted-foreground">Admin</p>
                 </div>
+                <DropdownMenuSeparator />
+                
+                {/* Language Switcher */}
+                <DropdownMenuItem 
+                  onClick={() => setLanguage("en")}
+                  className={language === "en" ? "bg-accent" : ""}
+                >
+                  <Globe className="mr-2 h-4 w-4" />
+                  <span>English</span>
+                  {language === "en" && <span className="ml-auto">🇬🇧</span>}
+                </DropdownMenuItem>
+                <DropdownMenuItem 
+                  onClick={() => setLanguage("de")}
+                  className={language === "de" ? "bg-accent" : ""}
+                >
+                  <Globe className="mr-2 h-4 w-4" />
+                  <span>Deutsch</span>
+                  {language === "de" && <span className="ml-auto">🇩🇪</span>}
+                </DropdownMenuItem>
+                
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
                   <Link to="/account">
