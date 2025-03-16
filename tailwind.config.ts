@@ -90,6 +90,11 @@ export default {
 					peach: '#FDE1D3'
 				}
 			},
+			fontFamily: {
+				sans: ['Inter', 'SF Pro Display', 'system-ui', 'sans-serif'],
+				display: ['SF Pro Display', 'Inter', 'system-ui', 'sans-serif'],
+				cal: ['Cal Sans', 'Inter', 'SF Pro Display', 'system-ui', 'sans-serif']
+			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
@@ -160,10 +165,6 @@ export default {
 				'float': 'float 3s infinite ease-in-out',
 				'shake': 'shake 1.5s ease-in-out infinite',
 				'delayed-shake': 'shake 1.5s ease-in-out 1s infinite'
-			},
-			fontFamily: {
-				sans: ['Inter', 'SF Pro Display', 'system-ui', 'sans-serif'],
-				display: ['SF Pro Display', 'Inter', 'system-ui', 'sans-serif']
 			},
 			boxShadow: {
 				subtle: '0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.1)',
