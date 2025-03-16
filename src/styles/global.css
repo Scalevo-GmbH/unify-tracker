@@ -1,4 +1,5 @@
 
+
 /* Import modular CSS files */
 @import './typography.css';
 @import './components.css';
@@ -8,4 +9,24 @@
 .responsive-table-container {
   width: 100%;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+  border-radius: 0.5rem;
 }
+
+/* Ensure tables take full width within their container but don't force overflow */
+.responsive-table-container table {
+  width: 100%;
+  margin: 0;
+}
+
+/* Remove double scrollbars that appear with nested scroll areas */
+.responsive-table-container .scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.responsive-table-container .scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+

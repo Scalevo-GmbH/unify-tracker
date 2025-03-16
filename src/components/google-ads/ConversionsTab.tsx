@@ -60,40 +60,42 @@ export const ConversionsTab: React.FC<ConversionsTabProps> = ({
             />
           </div>
           
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Conversion Type</TableHead>
-                <TableHead>Conversions</TableHead>
-                <TableHead>Value</TableHead>
-                <TableHead>Conv. Rate</TableHead>
-                <TableHead>Cost Per Conv.</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              <TableRow>
-                <TableCell>Purchase</TableCell>
-                <TableCell>53</TableCell>
-                <TableCell>$2,650</TableCell>
-                <TableCell>2.44%</TableCell>
-                <TableCell>$4.12</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>Add to Cart</TableCell>
-                <TableCell>108</TableCell>
-                <TableCell>$540</TableCell>
-                <TableCell>4.98%</TableCell>
-                <TableCell>$2.01</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>Newsletter Signup</TableCell>
-                <TableCell>64</TableCell>
-                <TableCell>-</TableCell>
-                <TableCell>2.95%</TableCell>
-                <TableCell>$3.38</TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
+          <div className="responsive-table-container">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Conversion Type</TableHead>
+                  <TableHead>Conversions</TableHead>
+                  <TableHead>Value</TableHead>
+                  <TableHead>Conv. Rate</TableHead>
+                  <TableHead>Cost Per Conv.</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell>Purchase</TableCell>
+                  <TableCell>53</TableCell>
+                  <TableCell>$2,650</TableCell>
+                  <TableCell>2.44%</TableCell>
+                  <TableCell>$4.12</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Add to Cart</TableCell>
+                  <TableCell>108</TableCell>
+                  <TableCell>$540</TableCell>
+                  <TableCell>4.98%</TableCell>
+                  <TableCell>$2.01</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Newsletter Signup</TableCell>
+                  <TableCell>64</TableCell>
+                  <TableCell>-</TableCell>
+                  <TableCell>2.95%</TableCell>
+                  <TableCell>$3.38</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </div>
         </div>
       </CardContent>
     </Card>

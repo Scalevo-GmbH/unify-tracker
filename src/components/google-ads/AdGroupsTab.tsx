@@ -2,7 +2,6 @@
 import React from "react";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { ScrollArea } from "@/components/ui/scroll-area";
 
 export const AdGroupsTab: React.FC = () => {
   return (
@@ -12,7 +11,7 @@ export const AdGroupsTab: React.FC = () => {
         <CardDescription>Performance metrics by ad group</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="w-full overflow-auto">
+        <div className="responsive-table-container">
           <Table>
             <TableHeader>
               <TableRow>
