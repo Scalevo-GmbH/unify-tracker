@@ -2,12 +2,12 @@
 import React from "react";
 import { Facebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { DateRangeSelector } from "@/components/DateRangeSelector";
+import { DateRangeSelector, DateRange } from "@/components/DateRangeSelector";
 import { CreateAdModal } from "@/components/meta-ads/CreateAdModal";
 
 interface MetaAdsHeaderProps {
-  dateRange: string;
-  onDateRangeChange: (range: string) => void;
+  dateRange: DateRange;
+  onDateRangeChange: (range: DateRange) => void;
 }
 
 export const MetaAdsHeader: React.FC<MetaAdsHeaderProps> = ({ 

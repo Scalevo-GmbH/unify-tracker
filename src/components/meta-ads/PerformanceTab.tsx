@@ -3,6 +3,7 @@ import React from "react";
 import { MetricCard } from "@/components/MetricCard";
 import { PerformanceChart } from "@/components/PerformanceChart";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { DateRange } from "@/components/DateRangeSelector";
 
 interface Ad {
   id: number;
@@ -26,7 +27,7 @@ interface Ad {
 
 interface PerformanceTabProps {
   currentAd: Ad;
-  dateRange: string;
+  dateRange: DateRange;
 }
 
 export const PerformanceTab: React.FC<PerformanceTabProps> = ({ currentAd, dateRange }) => {

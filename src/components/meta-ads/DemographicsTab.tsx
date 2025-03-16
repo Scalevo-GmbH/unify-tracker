@@ -1,4 +1,3 @@
-
 import React from "react";
 import { User, Users2, MapPin, BarChart3, Globe } from "lucide-react";
 import { MetricCard } from "@/components/MetricCard";
@@ -79,7 +78,7 @@ export const DemographicsTab: React.FC<{ currentAd: any }> = ({ currentAd }) => 
         <MetricCard
           title="Total Reach"
           value={currentAd.reach.toLocaleString()}
-          icon={<Users className="h-4 w-4" />}
+          icon={<User className="h-4 w-4" />}
           description="Unique users who saw your ad"
           className="h-full"
         />
