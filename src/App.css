@@ -2,8 +2,8 @@
 /* Additional font-related styles */
 @font-face {
   font-family: 'Cal Sans';
-  src: url('/cal-sans.woff2') format('woff2');
-  font-weight: normal;
+  src: url('https://raw.githubusercontent.com/calcom/font/main/fonts/webfonts/CalSans-SemiBold.woff2') format('woff2');
+  font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
