@@ -60,9 +60,9 @@ export const IntegrationCard: React.FC<IntegrationCardProps> = ({
         {icon}
       </div>
       
-      <h3 className="mb-2 text-base cal-card-title">{name}</h3>
+      <h3 className="mb-2 text-base cal-card-title font-cal tracking-tight">{name}</h3>
       
-      <p className="mb-4 text-sm text-muted-foreground flex-grow">{description}</p>
+      <p className="mb-4 text-sm text-muted-foreground flex-grow font-cal tracking-tight">{description}</p>
       
       <div className="mt-auto">
         <button

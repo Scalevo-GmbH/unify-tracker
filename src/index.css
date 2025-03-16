@@ -87,11 +87,13 @@
     @apply bg-background text-foreground antialiased;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.015em;
   }
 
-  /* Typography */
+  /* Typography - Apply Cal Sans to all headings and other elements by default */
   h1, h2, h3, h4, h5, h6 {
     @apply font-cal tracking-tight font-semibold;
+    letter-spacing: -0.025em;
   }
 
   /* Make buttons and interactive elements use Cal Sans by default */
@@ -103,40 +105,74 @@
   input[type="submit"],
   input[type="reset"] {
     @apply font-cal tracking-tight font-semibold;
+    letter-spacing: -0.025em;
   }
 
   /* Sidebar menu items and navigation */
+  nav,
   nav a,
+  .sidebar a,
   .sidebar-menu-item,
   .navigation-item,
   .menu-label,
-  .dashboard-tab {
+  .dashboard-tab,
+  .menubar-item {
     @apply font-cal tracking-tight font-semibold;
+    letter-spacing: -0.025em;
+  }
+
+  /* Standard text elements that should use Cal Sans */
+  p.cal-text,
+  span.cal-text,
+  div.cal-text,
+  label.cal-text {
+    @apply font-cal tracking-tight font-semibold;
+    letter-spacing: -0.025em;
+  }
+
+  /* Menu items specifically */
+  .menubar-trigger,
+  .menubar-item,
+  .dropdown-menu-item,
+  .context-menu-item,
+  .dialog-title,
+  .sidebar-label,
+  .tab-trigger,
+  .navigation-menu-trigger,
+  .navigation-menu-link {
+    @apply font-cal tracking-tight font-semibold;
+    letter-spacing: -0.025em;
   }
 
   /* Add specific styles for different heading levels */
   h1 {
     @apply text-4xl font-cal tracking-tight font-semibold;
+    letter-spacing: -0.03em;
   }
   
   h2 {
     @apply text-3xl font-cal tracking-tight font-semibold;
+    letter-spacing: -0.03em;
   }
   
   h3 {
     @apply text-2xl font-cal tracking-tight font-semibold;
+    letter-spacing: -0.025em;
   }
   
   h4 {
     @apply text-xl font-cal tracking-tight font-semibold;
+    letter-spacing: -0.025em;
   }
   
   h5 {
     @apply text-lg font-cal tracking-tight font-semibold;
+    letter-spacing: -0.025em;
   }
   
   h6 {
     @apply font-cal tracking-tight font-semibold;
+    letter-spacing: -0.025em;
   }
 
   /* For blurred glass effects */
@@ -189,10 +225,12 @@
 /* Tab styling like the awork design */
 .dashboard-tabs {
   @apply flex space-x-1 rounded-md bg-slate-100 p-1 font-cal;
+  letter-spacing: -0.025em;
 }
 
 .dashboard-tab {
   @apply flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium transition-all font-cal tracking-tight font-semibold;
+  letter-spacing: -0.025em;
 }
 
 .dashboard-tab[data-state="active"] {
@@ -206,18 +244,22 @@
 /* Cal Sans specific components */
 .cal-button {
   @apply font-cal tracking-tight font-semibold;
+  letter-spacing: -0.025em;
 }
 
 .cal-badge {
   @apply font-cal text-xs tracking-tight font-semibold;
+  letter-spacing: -0.02em;
 }
 
 .cal-card-title {
   @apply font-cal text-lg tracking-tight font-semibold;
+  letter-spacing: -0.025em;
 }
 
 .cal-tab {
   @apply font-cal tracking-tight font-semibold;
+  letter-spacing: -0.025em;
 }
 
 /* Apply Cal Sans to more general UI elements */
@@ -226,6 +268,32 @@
 .navigation-link,
 .dropdown-item,
 .modal-title,
-.card-title {
+.card-title,
+.menu-item,
+.menubar-trigger,
+.menubar-content,
+.navigation-menu-trigger,
+.navigation-menu-link,
+.navigation-menu-content {
   @apply font-cal tracking-tight font-semibold;
+  letter-spacing: -0.025em;
+}
+
+/* Apply Cal Sans to text elements in specific components */
+.metric-card-title,
+.metric-card-value,
+.metric-card-label,
+.table-header,
+.table-cell,
+.form-label,
+.chart-label,
+.chart-legend,
+.notification-title,
+.sidebar-item-text,
+.dropdown-menu-item,
+.dashboard-card-title,
+.dashboard-card-value,
+.dashboard-card-label {
+  @apply font-cal tracking-tight font-semibold;
+  letter-spacing: -0.025em;
 }

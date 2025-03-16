@@ -16,11 +16,12 @@
 .text-cal {
   font-family: 'Cal Sans', 'Inter', sans-serif;
   font-weight: 600;
+  letter-spacing: -0.025em;
 }
 
 .cal-heading {
   font-family: 'Cal Sans', 'Inter', sans-serif;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   font-weight: 600;
 }
 
@@ -28,6 +29,7 @@
 .btn-cal {
   font-family: 'Cal Sans', 'Inter', sans-serif;
   font-weight: 600;
+  letter-spacing: -0.025em;
 }
 
 /* Global classes to apply Cal Sans to various elements */
@@ -39,8 +41,12 @@
 .tab,
 .card-heading,
 .badge,
-.nav-link {
+.nav-link,
+p.cal-text,
+span.cal-text,
+label.cal-text,
+.text-cal {
   font-family: 'Cal Sans', 'Inter', sans-serif;
   font-weight: 600;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
 }
