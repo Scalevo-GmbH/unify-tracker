@@ -1,0 +1,41 @@
+
+/* Utility classes for Cal Sans font styling */
+
+/* Button-specific utility classes */
+.cal-button {
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
+  letter-spacing: var(--cal-letter-spacing);
+  font-weight: var(--cal-heading-weight);
+}
+
+/* Badge-specific utility classes */
+.cal-badge {
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
+  letter-spacing: var(--cal-letter-spacing);
+  font-weight: var(--cal-heading-weight);
+}
+
+/* Card title utility class */
+.cal-card-title {
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
+  letter-spacing: var(--cal-letter-spacing);
+  font-weight: var(--cal-heading-weight);
+}
+
+/* Tab utility class */
+.cal-tab {
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
+  letter-spacing: var(--cal-letter-spacing);
+  font-weight: var(--cal-heading-weight);
+}
+
+/* Specifically target any text that might be in lists */
+ul li, ol li,
+ul span, ol span,
+ul a, ol a,
+.list-item, 
+.list-content {
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif;
+  letter-spacing: var(--cal-body-spacing);
+  font-weight: var(--cal-body-weight);
+}
