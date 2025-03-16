@@ -3,3 +3,9 @@
 @import './typography.css';
 @import './components.css';
 @import './utilities.css';
+
+/* Global responsive table styles */
+.responsive-table-container {
+  width: 100%;
+  overflow-x: auto;
+}
