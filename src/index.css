@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
@@ -91,32 +90,32 @@
 
   /* Typography */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-cal tracking-tight;
+    @apply font-cal tracking-tight font-semibold;
   }
 
   /* Add specific styles for different heading levels */
   h1 {
-    @apply text-4xl font-cal tracking-tight;
+    @apply text-4xl font-cal tracking-tight font-semibold;
   }
   
   h2 {
-    @apply text-3xl font-cal tracking-tight;
+    @apply text-3xl font-cal tracking-tight font-semibold;
   }
   
   h3 {
-    @apply text-2xl font-cal tracking-tight;
+    @apply text-2xl font-cal tracking-tight font-semibold;
   }
   
   h4 {
-    @apply text-xl font-cal tracking-tight;
+    @apply text-xl font-cal tracking-tight font-semibold;
   }
   
   h5 {
-    @apply text-lg font-cal tracking-tight;
+    @apply text-lg font-cal tracking-tight font-semibold;
   }
   
   h6 {
-    @apply font-cal tracking-tight;
+    @apply font-cal tracking-tight font-semibold;
   }
 
   /* For blurred glass effects */
@@ -185,17 +184,17 @@
 
 /* Cal Sans specific components */
 .cal-button {
-  @apply font-cal tracking-tight;
+  @apply font-cal tracking-tight font-semibold;
 }
 
 .cal-badge {
-  @apply font-cal text-xs tracking-tight;
+  @apply font-cal text-xs tracking-tight font-semibold;
 }
 
 .cal-card-title {
-  @apply font-cal text-lg tracking-tight;
+  @apply font-cal text-lg tracking-tight font-semibold;
 }
 
 .cal-tab {
-  @apply font-cal tracking-tight;
+  @apply font-cal tracking-tight font-semibold;
 }
