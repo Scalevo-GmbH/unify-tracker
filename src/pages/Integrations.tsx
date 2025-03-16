@@ -38,7 +38,6 @@ const Integrations = () => {
     setIsModalOpen(true);
   };
 
-  // Sample integration data
   const integrations = {
     advertising: [
       {
@@ -187,10 +186,8 @@ const Integrations = () => {
     ],
   };
 
-  // Prepare an "all" category with all integrations combined
   const allIntegrations = Object.values(integrations).flat();
 
-  // Filter integrations based on search term
   const filterIntegrations = (integrations: any) => {
     if (!searchTerm) return integrations;
     
@@ -208,14 +205,12 @@ const Integrations = () => {
   
   const filteredIntegrations = filterIntegrations(integrations);
   
-  // Filter all integrations for the "all" tab
   const filteredAllIntegrations = searchTerm 
     ? allIntegrations.filter(integration => 
         integration.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         integration.description.toLowerCase().includes(searchTerm.toLowerCase()))
     : allIntegrations;
   
-  // Check if we have any results after filtering
   const hasResults = Object.values(filteredIntegrations).some(
     (category: any) => (category as any[]).length > 0
   ) || filteredAllIntegrations.length > 0;
@@ -243,29 +238,52 @@ const Integrations = () => {
 
       <Tabs defaultValue="all" className="space-y-4">
         <FadeInSection>
-          <TabsList className="flex flex-wrap h-auto space-x-2 p-1 bg-transparent">
-            <TabsTrigger value="all" className="text-sm px-3 py-1.5 rounded-md">
-              All
-            </TabsTrigger>
-            <TabsTrigger value="advertising" className="text-sm px-3 py-1.5 rounded-md">
-              Advertising
-            </TabsTrigger>
-            <TabsTrigger value="social" className="text-sm px-3 py-1.5 rounded-md">
-              Social Media
-            </TabsTrigger>
-            <TabsTrigger value="email" className="text-sm px-3 py-1.5 rounded-md">
-              Email Marketing
-            </TabsTrigger>
-            <TabsTrigger value="analytics" className="text-sm px-3 py-1.5 rounded-md">
-              Analytics
-            </TabsTrigger>
-            <TabsTrigger value="ecommerce" className="text-sm px-3 py-1.5 rounded-md">
-              E-commerce
-            </TabsTrigger>
-            <TabsTrigger value="other" className="text-sm px-3 py-1.5 rounded-md">
-              Other Tools
-            </TabsTrigger>
-          </TabsList>
+          <div className="dashboard-tabs mb-6">
+            <TabsList className="flex items-center space-x-1 bg-transparent h-auto p-0">
+              <TabsTrigger 
+                value="all" 
+                className="dashboard-tab cal-tab data-[state=active]:bg-white data-[state=active]:shadow-sm"
+              >
+                All
+              </TabsTrigger>
+              <TabsTrigger 
+                value="advertising" 
+                className="dashboard-tab cal-tab data-[state=active]:bg-white data-[state=active]:shadow-sm"
+              >
+                Advertising
+              </TabsTrigger>
+              <TabsTrigger 
+                value="social" 
+                className="dashboard-tab cal-tab data-[state=active]:bg-white data-[state=active]:shadow-sm"
+              >
+                Social Media
+              </TabsTrigger>
+              <TabsTrigger 
+                value="email" 
+                className="dashboard-tab cal-tab data-[state=active]:bg-white data-[state=active]:shadow-sm"
+              >
+                Email Marketing
+              </TabsTrigger>
+              <TabsTrigger 
+                value="analytics" 
+                className="dashboard-tab cal-tab data-[state=active]:bg-white data-[state=active]:shadow-sm"
+              >
+                Analytics
+              </TabsTrigger>
+              <TabsTrigger 
+                value="ecommerce" 
+                className="dashboard-tab cal-tab data-[state=active]:bg-white data-[state=active]:shadow-sm"
+              >
+                E-commerce
+              </TabsTrigger>
+              <TabsTrigger 
+                value="other" 
+                className="dashboard-tab cal-tab data-[state=active]:bg-white data-[state=active]:shadow-sm"
+              >
+                Other Tools
+              </TabsTrigger>
+            </TabsList>
+          </div>
         </FadeInSection>
 
         {!hasResults && searchTerm ? (
@@ -289,7 +307,6 @@ const Integrations = () => {
           </FadeInSection>
         ) : (
           <>
-            {/* New "All" tab content */}
             <TabsContent value="all" className="space-y-4">
               {filteredAllIntegrations.length === 0 ? (
                 <FadeInSection>
@@ -335,7 +352,6 @@ const Integrations = () => {
               )}
             </TabsContent>
 
-            {/* Existing category tabs */}
             {Object.keys(integrations).map((category) => (
               <TabsContent key={category} value={category} className="space-y-4">
                 {filteredIntegrations[category].length === 0 ? (
@@ -399,4 +415,3 @@ const Integrations = () => {
 };
 
 export default Integrations;
-
