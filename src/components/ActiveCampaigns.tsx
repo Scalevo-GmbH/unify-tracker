@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { Facebook, Instagram, Twitter, Search, LineChart, Mail } from "lucide-react";
 import FadeInSection from "./animations/FadeInSection";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 // Mock campaign data - in a real app, this would come from an API
 const activeCampaigns = [
@@ -115,52 +116,58 @@ export const ActiveCampaigns: React.FC = () => {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Campaign</TableHead>
-                <TableHead>Platform</TableHead>
-                <TableHead>Type</TableHead>
-                <TableHead>Budget</TableHead>
-                <TableHead>Spent</TableHead>
-                <TableHead>Remaining</TableHead>
-                <TableHead>End Date</TableHead>
-                <TableHead>Performance</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {activeCampaigns.map((campaign) => (
-                <TableRow key={campaign.id}>
-                  <TableCell className="font-medium">
-                    <div className="flex items-center space-x-2">
-                      <div className="h-8 w-8 rounded-full bg-slate-100 flex items-center justify-center">
-                        {campaign.icon}
-                      </div>
-                      <span>{campaign.name}</span>
-                    </div>
-                  </TableCell>
-                  <TableCell>{campaign.platform}</TableCell>
-                  <TableCell>{campaign.type}</TableCell>
-                  <TableCell>{campaign.budget}</TableCell>
-                  <TableCell>{campaign.spent}</TableCell>
-                  <TableCell>{campaign.remaining}</TableCell>
-                  <TableCell>{new Date(campaign.endDate).toLocaleDateString()}</TableCell>
-                  <TableCell>
-                    <TooltipProvider>
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <div>{getPerformanceBadge(campaign.performance)}</div>
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p>Based on ROI and engagement metrics</p>
-                        </TooltipContent>
-                      </Tooltip>
-                    </TooltipProvider>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+          <div className="overflow-x-auto">
+            <ScrollArea className="w-full">
+              <div className="min-w-[900px]">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Campaign</TableHead>
+                      <TableHead>Platform</TableHead>
+                      <TableHead>Type</TableHead>
+                      <TableHead>Budget</TableHead>
+                      <TableHead>Spent</TableHead>
+                      <TableHead>Remaining</TableHead>
+                      <TableHead>End Date</TableHead>
+                      <TableHead>Performance</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {activeCampaigns.map((campaign) => (
+                      <TableRow key={campaign.id}>
+                        <TableCell className="font-medium">
+                          <div className="flex items-center space-x-2">
+                            <div className="h-8 w-8 rounded-full bg-slate-100 flex items-center justify-center">
+                              {campaign.icon}
+                            </div>
+                            <span className="line-clamp-1">{campaign.name}</span>
+                          </div>
+                        </TableCell>
+                        <TableCell>{campaign.platform}</TableCell>
+                        <TableCell>{campaign.type}</TableCell>
+                        <TableCell>{campaign.budget}</TableCell>
+                        <TableCell>{campaign.spent}</TableCell>
+                        <TableCell>{campaign.remaining}</TableCell>
+                        <TableCell>{new Date(campaign.endDate).toLocaleDateString()}</TableCell>
+                        <TableCell>
+                          <TooltipProvider>
+                            <Tooltip>
+                              <TooltipTrigger asChild>
+                                <div>{getPerformanceBadge(campaign.performance)}</div>
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                <p>Based on ROI and engagement metrics</p>
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+            </ScrollArea>
+          </div>
         </CardContent>
       </Card>
     </FadeInSection>
