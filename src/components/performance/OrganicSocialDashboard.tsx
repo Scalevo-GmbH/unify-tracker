@@ -85,6 +85,9 @@ const OrganicSocialDashboard: React.FC<OrganicSocialDashboardProps> = ({ toolId 
   
   const dateRange: DateRange = "this-month";
 
+  // Calculate the follower growth percentage as a number
+  const followerGrowthPercent = parseFloat(((currentMetrics.followersGrowth / currentMetrics.followers * 100).toFixed(1)));
+
   return (
     <div className="space-y-6">
       <h2 className="text-2xl font-bold">{toolName} Dashboard</h2>
@@ -93,7 +96,7 @@ const OrganicSocialDashboard: React.FC<OrganicSocialDashboardProps> = ({ toolId 
         <MetricCard 
           title="Followers" 
           value={currentMetrics.followers.toLocaleString()} 
-          change={(currentMetrics.followersGrowth / currentMetrics.followers * 100).toFixed(1)} 
+          change={followerGrowthPercent} 
           description="Total followers"
         />
         <MetricCard 

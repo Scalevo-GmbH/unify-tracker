@@ -107,50 +107,44 @@ const Performance = () => {
         onValueChange={(value) => setActiveTab(value)}
         className="w-full"
       >
-        <div className="dashboard-tabs mb-8">
+        <TabsList className="dashboard-tabs mb-8">
           <TabsTrigger
             value="paid-search"
-            className={`dashboard-tab ${activeTab === "paid-search" ? "data-[state=active]" : "data-[state=inactive]"}`}
-            data-state={activeTab === "paid-search" ? "active" : "inactive"}
+            className="dashboard-tab"
           >
             Paid Search
           </TabsTrigger>
           <TabsTrigger
             value="paid-socials"
-            className={`dashboard-tab ${activeTab === "paid-socials" ? "data-[state=active]" : "data-[state=inactive]"}`}
-            data-state={activeTab === "paid-socials" ? "active" : "inactive"}
+            className="dashboard-tab"
           >
             Paid Socials
           </TabsTrigger>
           <TabsTrigger
             value="organic-social"
-            className={`dashboard-tab ${activeTab === "organic-social" ? "data-[state=active]" : "data-[state=inactive]"}`}
-            data-state={activeTab === "organic-social" ? "active" : "inactive"}
+            className="dashboard-tab"
           >
             Organic Social
           </TabsTrigger>
           <TabsTrigger
             value="website"
-            className={`dashboard-tab ${activeTab === "website" ? "data-[state=active]" : "data-[state=inactive]"}`}
-            data-state={activeTab === "website" ? "active" : "inactive"}
+            className="dashboard-tab"
           >
             Website
           </TabsTrigger>
           <TabsTrigger
             value="email"
-            className={`dashboard-tab ${activeTab === "email" ? "data-[state=active]" : "data-[state=inactive]"}`}
-            data-state={activeTab === "email" ? "active" : "inactive"}
+            className="dashboard-tab"
           >
             E-Mail
           </TabsTrigger>
           <TabsTrigger
             value="forms"
-            className={`dashboard-tab ${activeTab === "forms" ? "data-[state=active]" : "data-[state=inactive]"}`}
-            data-state={activeTab === "forms" ? "active" : "inactive"}
+            className="dashboard-tab"
           >
             Forms
           </TabsTrigger>
-        </div>
+        </TabsList>
 
         <div className="mb-6">
           <div className="flex items-center gap-2">

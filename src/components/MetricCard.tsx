@@ -11,6 +11,7 @@ interface MetricCardProps {
   icon?: React.ReactNode;
   className?: string;
   description?: string;
+  invertedChange?: boolean;
 }
 
 export const MetricCard: React.FC<MetricCardProps> = ({
@@ -20,9 +21,16 @@ export const MetricCard: React.FC<MetricCardProps> = ({
   icon,
   className,
   description,
+  invertedChange,
 }) => {
-  const isPositive = change && change > 0;
-  const isNegative = change && change < 0;
+  // For some metrics like bounce rate, a decrease is positive and should be shown in green
+  // invertedChange flips the color logic for metrics where lower is better
+  const isPositive = invertedChange 
+    ? (change && change < 0) 
+    : (change && change > 0);
+  const isNegative = invertedChange 
+    ? (change && change > 0) 
+    : (change && change < 0);
 
   return (
     <div className={cn(
