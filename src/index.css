@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
@@ -93,6 +94,26 @@
     @apply font-cal tracking-tight font-semibold;
   }
 
+  /* Make buttons and interactive elements use Cal Sans by default */
+  button, 
+  .button,
+  a.button,
+  [role="button"],
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"] {
+    @apply font-cal tracking-tight font-semibold;
+  }
+
+  /* Sidebar menu items and navigation */
+  nav a,
+  .sidebar-menu-item,
+  .navigation-item,
+  .menu-label,
+  .dashboard-tab {
+    @apply font-cal tracking-tight font-semibold;
+  }
+
   /* Add specific styles for different heading levels */
   h1 {
     @apply text-4xl font-cal tracking-tight font-semibold;
@@ -167,11 +188,11 @@
 
 /* Tab styling like the awork design */
 .dashboard-tabs {
-  @apply flex space-x-1 rounded-md bg-slate-100 p-1;
+  @apply flex space-x-1 rounded-md bg-slate-100 p-1 font-cal;
 }
 
 .dashboard-tab {
-  @apply flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium transition-all;
+  @apply flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium transition-all font-cal tracking-tight font-semibold;
 }
 
 .dashboard-tab[data-state="active"] {
@@ -196,5 +217,15 @@
 }
 
 .cal-tab {
+  @apply font-cal tracking-tight font-semibold;
+}
+
+/* Apply Cal Sans to more general UI elements */
+.sidebar-group-label,
+.sidebar-menu-button,
+.navigation-link,
+.dropdown-item,
+.modal-title,
+.card-title {
   @apply font-cal tracking-tight font-semibold;
 }

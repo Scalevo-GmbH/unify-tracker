@@ -15,15 +15,32 @@
 /* Additional utility classes for Cal Sans */
 .text-cal {
   font-family: 'Cal Sans', 'Inter', sans-serif;
+  font-weight: 600;
 }
 
 .cal-heading {
   font-family: 'Cal Sans', 'Inter', sans-serif;
   letter-spacing: -0.02em;
+  font-weight: 600;
 }
 
 /* Button styles with Cal Sans */
 .btn-cal {
   font-family: 'Cal Sans', 'Inter', sans-serif;
   font-weight: 600;
+}
+
+/* Global classes to apply Cal Sans to various elements */
+.sidebar-content a,
+.navigation-menu a,
+.menu-item,
+.dropdown-item,
+.button,
+.tab,
+.card-heading,
+.badge,
+.nav-link {
+  font-family: 'Cal Sans', 'Inter', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
