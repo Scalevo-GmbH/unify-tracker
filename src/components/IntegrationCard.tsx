@@ -52,7 +52,7 @@ export const IntegrationCard: React.FC<IntegrationCardProps> = ({
       {popular && (
         <div className="absolute top-3 right-3 flex items-center bg-marketing-purple/10 px-2 py-1 rounded-full">
           <Sparkles className="h-3 w-3 text-marketing-purple mr-1" />
-          <span className="text-xs cal-badge text-marketing-purple">Popular</span>
+          <span className="text-xs text-marketing-purple cal-badge">Popular</span>
         </div>
       )}
       
@@ -60,14 +60,14 @@ export const IntegrationCard: React.FC<IntegrationCardProps> = ({
         {icon}
       </div>
       
-      <h3 className="mb-2 text-base cal-card-title font-cal tracking-tight">{name}</h3>
+      <h3 className="mb-2 text-base font-semibold cal-card-title">{name}</h3>
       
-      <p className="mb-4 text-sm text-muted-foreground flex-grow font-cal tracking-tight">{description}</p>
+      <p className="mb-4 text-sm text-muted-foreground flex-grow">{description}</p>
       
       <div className="mt-auto">
         <button
           className={cn(
-            "inline-flex items-center justify-center rounded-md px-4 py-2 text-sm cal-button transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 w-full font-cal tracking-tight font-semibold",
+            "inline-flex items-center justify-center rounded-md px-4 py-2 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 w-full cal-button",
             connected
               ? "bg-secondary text-secondary-foreground hover:bg-secondary/80"
               : "bg-primary text-primary-foreground hover:bg-primary/90"

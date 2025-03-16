@@ -1,5 +1,8 @@
 
-/* Additional font-related styles */
+/* Import the global font styles */
+@import './styles/global.css';
+
+/* Base font loading */
 @font-face {
   font-family: 'Cal Sans';
   src: url('https://raw.githubusercontent.com/calcom/font/main/fonts/webfonts/CalSans-SemiBold.woff2') format('woff2');
@@ -8,11 +11,11 @@
   font-display: swap;
 }
 
+/* Legacy classes - keeping these for backward compatibility */
 .font-cal {
   font-family: 'Cal Sans', 'Inter', sans-serif;
 }
 
-/* Additional utility classes for Cal Sans */
 .text-cal {
   font-family: 'Cal Sans', 'Inter', sans-serif;
   font-weight: 600;
@@ -25,27 +28,7 @@
   font-weight: 600;
 }
 
-/* Button styles with Cal Sans */
 .btn-cal {
-  font-family: 'Cal Sans', 'Inter', sans-serif;
-  font-weight: 600;
-  letter-spacing: -0.025em;
-}
-
-/* Global classes to apply Cal Sans to various elements */
-.sidebar-content a,
-.navigation-menu a,
-.menu-item,
-.dropdown-item,
-.button,
-.tab,
-.card-heading,
-.badge,
-.nav-link,
-p.cal-text,
-span.cal-text,
-label.cal-text,
-.text-cal {
   font-family: 'Cal Sans', 'Inter', sans-serif;
   font-weight: 600;
   letter-spacing: -0.025em;

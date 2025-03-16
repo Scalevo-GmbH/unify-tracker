@@ -1,5 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import './styles/global.css';
 
 @tailwind base;
 @tailwind components;
@@ -89,137 +90,6 @@
     -moz-osx-font-smoothing: grayscale;
     letter-spacing: -0.015em;
   }
-
-  /* Typography - Apply Cal Sans to all headings and other elements by default */
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-cal tracking-tight font-semibold;
-    letter-spacing: -0.025em;
-  }
-
-  /* Make buttons and interactive elements use Cal Sans by default */
-  button, 
-  .button,
-  a.button,
-  [role="button"],
-  input[type="button"],
-  input[type="submit"],
-  input[type="reset"] {
-    @apply font-cal tracking-tight font-semibold;
-    letter-spacing: -0.025em;
-  }
-
-  /* Sidebar menu items and navigation */
-  nav,
-  nav a,
-  .sidebar a,
-  .sidebar-menu-item,
-  .navigation-item,
-  .menu-label,
-  .dashboard-tab,
-  .menubar-item {
-    @apply font-cal tracking-tight font-semibold;
-    letter-spacing: -0.025em;
-  }
-
-  /* Standard text elements that should use Cal Sans */
-  p.cal-text,
-  span.cal-text,
-  div.cal-text,
-  label.cal-text {
-    @apply font-cal tracking-tight font-semibold;
-    letter-spacing: -0.025em;
-  }
-
-  /* Menu items specifically */
-  .menubar-trigger,
-  .menubar-item,
-  .dropdown-menu-item,
-  .context-menu-item,
-  .dialog-title,
-  .sidebar-label,
-  .tab-trigger,
-  .navigation-menu-trigger,
-  .navigation-menu-link {
-    @apply font-cal tracking-tight font-semibold;
-    letter-spacing: -0.025em;
-  }
-
-  /* Add specific styles for different heading levels */
-  h1 {
-    @apply text-4xl font-cal tracking-tight font-semibold;
-    letter-spacing: -0.03em;
-  }
-  
-  h2 {
-    @apply text-3xl font-cal tracking-tight font-semibold;
-    letter-spacing: -0.03em;
-  }
-  
-  h3 {
-    @apply text-2xl font-cal tracking-tight font-semibold;
-    letter-spacing: -0.025em;
-  }
-  
-  h4 {
-    @apply text-xl font-cal tracking-tight font-semibold;
-    letter-spacing: -0.025em;
-  }
-  
-  h5 {
-    @apply text-lg font-cal tracking-tight font-semibold;
-    letter-spacing: -0.025em;
-  }
-  
-  h6 {
-    @apply font-cal tracking-tight font-semibold;
-    letter-spacing: -0.025em;
-  }
-
-  /* For blurred glass effects */
-  .glassmorphism {
-    @apply bg-white bg-opacity-70 backdrop-blur-lg border border-white border-opacity-20;
-  }
-
-  .dark .glassmorphism {
-    @apply bg-gray-900 bg-opacity-70 backdrop-blur-lg border-gray-800 border-opacity-20;
-  }
-
-  /* Scrollbar styling */
-  ::-webkit-scrollbar {
-    @apply w-2;
-  }
-  
-  ::-webkit-scrollbar-track {
-    @apply bg-transparent;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    @apply bg-gray-300 rounded-full;
-  }
-  
-  .dark ::-webkit-scrollbar-thumb {
-    @apply bg-gray-700;
-  }
-
-  /* Animation delay utilities */
-  .animation-delay-100 {
-    animation-delay: 100ms;
-  }
-  .animation-delay-200 {
-    animation-delay: 200ms;
-  }
-  .animation-delay-300 {
-    animation-delay: 300ms;
-  }
-  .animation-delay-400 {
-    animation-delay: 400ms;
-  }
-  .animation-delay-500 {
-    animation-delay: 500ms;
-  }
-  .animation-delay-600 {
-    animation-delay: 600ms;
-  }
 }
 
 /* Tab styling like the awork design */
@@ -241,59 +111,48 @@
   @apply text-muted-foreground hover:text-foreground;
 }
 
-/* Cal Sans specific components */
-.cal-button {
-  @apply font-cal tracking-tight font-semibold;
-  letter-spacing: -0.025em;
+/* Animation delay utilities */
+.animation-delay-100 {
+  animation-delay: 100ms;
+}
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+.animation-delay-500 {
+  animation-delay: 500ms;
+}
+.animation-delay-600 {
+  animation-delay: 600ms;
 }
 
-.cal-badge {
-  @apply font-cal text-xs tracking-tight font-semibold;
-  letter-spacing: -0.02em;
+/* For blurred glass effects */
+.glassmorphism {
+  @apply bg-white bg-opacity-70 backdrop-blur-lg border border-white border-opacity-20;
 }
 
-.cal-card-title {
-  @apply font-cal text-lg tracking-tight font-semibold;
-  letter-spacing: -0.025em;
+.dark .glassmorphism {
+  @apply bg-gray-900 bg-opacity-70 backdrop-blur-lg border-gray-800 border-opacity-20;
 }
 
-.cal-tab {
-  @apply font-cal tracking-tight font-semibold;
-  letter-spacing: -0.025em;
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  @apply w-2;
 }
 
-/* Apply Cal Sans to more general UI elements */
-.sidebar-group-label,
-.sidebar-menu-button,
-.navigation-link,
-.dropdown-item,
-.modal-title,
-.card-title,
-.menu-item,
-.menubar-trigger,
-.menubar-content,
-.navigation-menu-trigger,
-.navigation-menu-link,
-.navigation-menu-content {
-  @apply font-cal tracking-tight font-semibold;
-  letter-spacing: -0.025em;
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
 }
 
-/* Apply Cal Sans to text elements in specific components */
-.metric-card-title,
-.metric-card-value,
-.metric-card-label,
-.table-header,
-.table-cell,
-.form-label,
-.chart-label,
-.chart-legend,
-.notification-title,
-.sidebar-item-text,
-.dropdown-menu-item,
-.dashboard-card-title,
-.dashboard-card-value,
-.dashboard-card-label {
-  @apply font-cal tracking-tight font-semibold;
-  letter-spacing: -0.025em;
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  @apply bg-gray-700;
 }
