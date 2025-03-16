@@ -21,6 +21,7 @@ import {
   ListPlus
 } from "lucide-react";
 import { Tooltip, TooltipProvider, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
+import { Button } from "@/components/ui/button";
 
 const Index = () => {
   const [selectedPlatform, setSelectedPlatform] = useState<{
@@ -47,9 +48,9 @@ const Index = () => {
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between">
               <div className="space-y-2">
                 <div className="inline-flex items-center gap-2 bg-primary/5 text-primary font-medium px-3 py-1 rounded-full text-sm">
-                  <span className="text-lg animate-delayed-shake inline-block">👋</span> Welcome back, {userName}!
+                  <span className="text-lg animate-delayed-shake inline-block">👋</span> Welcome back, <span className="font-cal">{userName}</span>!
                 </div>
-                <h1 className="text-3xl font-semibold tracking-tight">Marketing Dashboard</h1>
+                <h1 className="text-3xl font-cal font-semibold tracking-tight">Marketing Dashboard</h1>
                 <p className="text-muted-foreground">Track and optimize your marketing performance across platforms.</p>
               </div>
               
@@ -58,12 +59,12 @@ const Index = () => {
                   value={dateRange} 
                   onChange={setDateRange} 
                 />
-                <button className="inline-flex items-center justify-center rounded-md px-4 h-9 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 border border-input bg-background hover:bg-accent hover:text-accent-foreground">
+                <Button variant="outline" className="cal-button">
                   Export
-                </button>
-                <button className="inline-flex items-center justify-center rounded-md px-4 h-9 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 bg-primary text-primary-foreground hover:bg-primary/90">
+                </Button>
+                <Button className="cal-button">
                   New Campaign
-                </button>
+                </Button>
               </div>
             </div>
           </div>
@@ -71,7 +72,7 @@ const Index = () => {
         
         <div className="dashboard-tabs mb-6">
           <button 
-            className={`dashboard-tab ${activeTab === "overview" ? "data-[state=active]" : "data-[state=inactive]"}`}
+            className={`dashboard-tab cal-tab ${activeTab === "overview" ? "data-[state=active]" : "data-[state=inactive]"}`}
             data-state={activeTab === "overview" ? "active" : "inactive"}
             onClick={() => setActiveTab("overview")}
           >
@@ -79,7 +80,7 @@ const Index = () => {
             Overview
           </button>
           <button 
-            className={`dashboard-tab ${activeTab === "campaigns" ? "data-[state=active]" : "data-[state=inactive]"}`}
+            className={`dashboard-tab cal-tab ${activeTab === "campaigns" ? "data-[state=active]" : "data-[state=inactive]"}`}
             data-state={activeTab === "campaigns" ? "active" : "inactive"}
             onClick={() => setActiveTab("campaigns")}
           >
@@ -100,7 +101,7 @@ const Index = () => {
               <FadeInSection className="h-full">
                 <div className="bg-card rounded-xl shadow-subtle p-6 h-full flex flex-col">
                   <div className="flex items-center gap-2 mb-4">
-                    <h3 className="text-lg font-semibold">Top Channels</h3>
+                    <h3 className="text-lg font-cal font-semibold">Top Channels</h3>
                     <TooltipProvider>
                       <Tooltip>
                         <TooltipTrigger asChild>
@@ -193,7 +194,7 @@ const Index = () => {
                       </div>
                     </div>
                     
-                    <button className="mt-4 w-full py-2 px-4 text-sm font-medium text-primary border border-primary rounded-md hover:bg-primary/5 transition-colors">
+                    <button className="mt-4 w-full py-2 px-4 text-sm cal-button font-semibold text-primary border border-primary rounded-md hover:bg-primary/5 transition-colors">
                       View All Channels
                     </button>
                   </div>
@@ -204,7 +205,7 @@ const Index = () => {
             <section>
               <div className="flex items-center justify-between mb-6">
                 <FadeInSection>
-                  <h2 className="text-xl font-semibold">Connect Platforms</h2>
+                  <h2 className="text-xl font-cal font-semibold">Connect Platforms</h2>
                   <p className="text-muted-foreground">Connect your marketing tools to see all your data in one place.</p>
                 </FadeInSection>
               </div>
@@ -279,9 +280,9 @@ const Index = () => {
                 <FadeInSection delay={800}>
                   <div className="relative flex h-full flex-col items-center justify-center rounded-xl border border-dashed border-border bg-card/50 p-6 shadow-subtle transition-all duration-300 hover:bg-card hover:shadow-card cursor-pointer">
                     <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/5 mb-4">
-                      <span className="text-lg font-semibold">+</span>
+                      <span className="text-lg font-cal font-semibold">+</span>
                     </div>
-                    <h3 className="text-base font-medium mb-2">More Platforms</h3>
+                    <h3 className="text-base cal-card-title mb-2">More Platforms</h3>
                     <p className="text-sm text-muted-foreground text-center flex-grow">
                       Connect to 50+ other marketing platforms and tools.
                     </p>
