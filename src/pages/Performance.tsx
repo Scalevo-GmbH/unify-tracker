@@ -7,7 +7,6 @@ import {
   SelectTrigger, 
   SelectValue 
 } from "@/components/ui/select";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AlertCircle, BarChart3, LineChart, Users, TrendingUp, MousePointerClick, Eye, Share2, Award, Zap, ChevronRight } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
@@ -316,88 +315,93 @@ const Performance = () => {
         </p>
       </div>
 
-      <Tabs
-        defaultValue="paid-search"
-        onValueChange={(value) => setActiveTab(value)}
-        className="w-full"
-      >
-        <TabsList className="dashboard-tabs mb-8 w-full">
-          <TabsTrigger
-            value="paid-search"
-            className="dashboard-tab"
-            isFirst
-          >
-            Paid Search
-          </TabsTrigger>
-          <TabsTrigger
-            value="paid-socials"
-            className="dashboard-tab"
-          >
-            Paid Socials
-          </TabsTrigger>
-          <TabsTrigger
-            value="organic-social"
-            className="dashboard-tab"
-          >
-            Organic Social
-          </TabsTrigger>
-          <TabsTrigger
-            value="website"
-            className="dashboard-tab"
-          >
-            Website
-          </TabsTrigger>
-          <TabsTrigger
-            value="email"
-            className="dashboard-tab"
-          >
-            E-Mail
-          </TabsTrigger>
-          <TabsTrigger
-            value="forms"
-            className="dashboard-tab"
-          >
-            Forms
-          </TabsTrigger>
-        </TabsList>
+      <div className="dashboard-tabs mb-8">
+        <button
+          className={`dashboard-tab ${activeTab === "paid-search" ? "data-[state=active]" : "data-[state=inactive]"}`}
+          data-state={activeTab === "paid-search" ? "active" : "inactive"}
+          onClick={() => setActiveTab("paid-search")}
+        >
+          Paid Search
+        </button>
+        <button
+          className={`dashboard-tab ${activeTab === "paid-socials" ? "data-[state=active]" : "data-[state=inactive]"}`}
+          data-state={activeTab === "paid-socials" ? "active" : "inactive"}
+          onClick={() => setActiveTab("paid-socials")}
+        >
+          Paid Socials
+        </button>
+        <button
+          className={`dashboard-tab ${activeTab === "organic-social" ? "data-[state=active]" : "data-[state=inactive]"}`}
+          data-state={activeTab === "organic-social" ? "active" : "inactive"}
+          onClick={() => setActiveTab("organic-social")}
+        >
+          Organic Social
+        </button>
+        <button
+          className={`dashboard-tab ${activeTab === "website" ? "data-[state=active]" : "data-[state=inactive]"}`}
+          data-state={activeTab === "website" ? "active" : "inactive"}
+          onClick={() => setActiveTab("website")}
+        >
+          Website
+        </button>
+        <button
+          className={`dashboard-tab ${activeTab === "email" ? "data-[state=active]" : "data-[state=inactive]"}`}
+          data-state={activeTab === "email" ? "active" : "inactive"}
+          onClick={() => setActiveTab("email")}
+        >
+          E-Mail
+        </button>
+        <button
+          className={`dashboard-tab ${activeTab === "forms" ? "data-[state=active]" : "data-[state=inactive]"}`}
+          data-state={activeTab === "forms" ? "active" : "inactive"}
+          onClick={() => setActiveTab("forms")}
+        >
+          Forms
+        </button>
+      </div>
 
-        <div className="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-          <Tabs
-            value={activeSubTab[activeTab]}
-            onValueChange={handleSubTabChange}
-            className="w-full sm:w-auto"
+      <div className="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div className="dashboard-tabs w-full sm:w-auto">
+          <button
+            className={`dashboard-tab ${activeSubTab[activeTab] === "overview" ? "data-[state=active]" : "data-[state=inactive]"}`}
+            data-state={activeSubTab[activeTab] === "overview" ? "active" : "inactive"}
+            onClick={() => handleSubTabChange("overview")}
           >
-            <TabsList className="w-full sm:w-auto">
-              <TabsTrigger value="overview" isFirst>Overview</TabsTrigger>
-              <TabsTrigger value="details">Details</TabsTrigger>
-            </TabsList>
-          </Tabs>
-
-          {activeSubTab[activeTab] === "details" && (
-            <Select 
-              value={selectedTool[activeTab]} 
-              onValueChange={handleToolChange}
-            >
-              <SelectTrigger className="w-[200px] bg-white border-gray-200 shadow-sm">
-                <SelectValue placeholder="Select platform" />
-              </SelectTrigger>
-              <SelectContent className="bg-white">
-                {toolsByCategory[activeTab as keyof typeof toolsByCategory]?.map(tool => (
-                  <SelectItem key={tool.id} value={tool.id}>
-                    {tool.name}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          )}
+            Overview
+          </button>
+          <button
+            className={`dashboard-tab ${activeSubTab[activeTab] === "details" ? "data-[state=active]" : "data-[state=inactive]"}`}
+            data-state={activeSubTab[activeTab] === "details" ? "active" : "inactive"}
+            onClick={() => handleSubTabChange("details")}
+          >
+            Details
+          </button>
         </div>
 
-        <Card>
-          <CardContent className="pt-6">
-            {renderDashboard(activeTab, selectedTool[activeTab])}
-          </CardContent>
-        </Card>
-      </Tabs>
+        {activeSubTab[activeTab] === "details" && (
+          <Select 
+            value={selectedTool[activeTab]} 
+            onValueChange={handleToolChange}
+          >
+            <SelectTrigger className="w-[200px] bg-white border-gray-200 shadow-sm">
+              <SelectValue placeholder="Select platform" />
+            </SelectTrigger>
+            <SelectContent className="bg-white">
+              {toolsByCategory[activeTab as keyof typeof toolsByCategory]?.map(tool => (
+                <SelectItem key={tool.id} value={tool.id}>
+                  {tool.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        )}
+      </div>
+
+      <Card>
+        <CardContent className="pt-6">
+          {renderDashboard(activeTab, selectedTool[activeTab])}
+        </CardContent>
+      </Card>
     </div>
   );
 };
