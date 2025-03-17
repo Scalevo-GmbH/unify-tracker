@@ -69,7 +69,7 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
                       isActive={location.pathname === item.path}
                       className={cn(
                         "flex gap-3 py-4 px-8 text-[#A6A9AE] hover:text-sidebar-foreground text-base",
-                        location.pathname === item.path && "bg-[#E5DEFF] text-sidebar-foreground rounded-md"
+                        location.pathname === item.path && "!bg-[#E5DEFF] text-sidebar-foreground rounded-md"
                       )}
                       asChild
                     >
@@ -94,7 +94,7 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
                       isActive={location.pathname === item.path}
                       className={cn(
                         "flex gap-3 py-4 px-8 text-[#A6A9AE] hover:text-sidebar-foreground text-base",
-                        location.pathname === item.path && "bg-[#E5DEFF] text-sidebar-foreground rounded-md"
+                        location.pathname === item.path && "!bg-[#E5DEFF] text-sidebar-foreground rounded-md"
                       )}
                       asChild
                     >
