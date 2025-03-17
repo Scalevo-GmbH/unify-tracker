@@ -94,7 +94,7 @@
 
 /* Tab styling like the awork design */
 .dashboard-tabs {
-  @apply flex rounded-md bg-slate-100 p-1 font-cal w-full justify-between;
+  @apply flex rounded-md bg-slate-100 p-1 font-cal w-full;
   letter-spacing: -0.025em;
 }
 
