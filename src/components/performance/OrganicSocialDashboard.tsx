@@ -4,6 +4,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MetricCard } from "@/components/MetricCard";
 import { PerformanceChart } from "@/components/PerformanceChart";
 import { DateRange } from "@/components/DateRangeSelector";
+import { Button } from "@/components/ui/button";
+import { Download } from "lucide-react";
 
 interface OrganicSocialDashboardProps {
   toolId: string;
@@ -88,9 +90,20 @@ const OrganicSocialDashboard: React.FC<OrganicSocialDashboardProps> = ({ toolId 
   // Calculate the follower growth percentage as a number
   const followerGrowthPercent = parseFloat(((currentMetrics.followersGrowth / currentMetrics.followers * 100).toFixed(1)));
 
+  const handleExport = () => {
+    // This would handle the export functionality in a real implementation
+    console.log(`Exporting ${toolName} data...`);
+  };
+
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold">{toolName} Dashboard</h2>
+      <div className="flex justify-between items-center">
+        <h2 className="text-2xl font-bold">{toolName} Dashboard</h2>
+        <Button variant="outline" size="sm" onClick={handleExport} className="gap-2">
+          <Download className="h-4 w-4" />
+          Export
+        </Button>
+      </div>
       
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4">
         <MetricCard 
