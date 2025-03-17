@@ -1,3 +1,4 @@
+
 /* Tabs styling - consistent across all pages */
 .dashboard-tabs {
   display: flex;
@@ -40,9 +41,10 @@
 .ios-switch {
   font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
   letter-spacing: var(--cal-letter-spacing);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
+  background-color: #F6F6F7 !important;
 }
 
 .ios-switch button {
@@ -51,6 +53,11 @@
   font-weight: 500;
   transition: all 0.2s ease;
   user-select: none;
+  min-width: 80px;
+}
+
+.ios-switch div {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Force Cal Sans on all text elements */

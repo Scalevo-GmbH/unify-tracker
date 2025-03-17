@@ -15,15 +15,15 @@ const IosSwitch = ({ options, value, onChange, className }: IosSwitchProps) => {
   
   return (
     <div className={cn(
-      "relative bg-slate-100 rounded-full p-1 flex items-center h-10 w-fit transition-all duration-200 ease-in-out", 
+      "relative bg-gray-100 rounded-full p-1 flex items-center h-9 w-fit transition-all duration-200 ease-in-out", 
       className
     )}>
       {/* Sliding background element */}
       <div
-        className="absolute h-8 bg-white rounded-full shadow-md transition-all duration-300 ease-in-out z-0"
+        className="absolute h-7 bg-white rounded-full shadow-md transition-all duration-300 ease-in-out z-0"
         style={{
-          width: `calc(${100 / options.length}% - 4px)`,
-          left: `calc(${activeIndex * (100 / options.length)}% + 2px)`,
+          width: `calc(${100 / options.length}% - 6px)`,
+          left: `calc(${activeIndex * (100 / options.length)}% + 3px)`,
           transform: `translateX(0)`,
         }}
       />
@@ -34,11 +34,11 @@ const IosSwitch = ({ options, value, onChange, className }: IosSwitchProps) => {
           key={option.value}
           onClick={() => onChange(option.value)}
           className={cn(
-            "relative z-10 px-4 py-1 text-sm font-medium rounded-full transition-colors duration-200 min-w-20 text-center",
+            "relative z-10 px-4 py-1 text-sm font-medium rounded-full transition-colors duration-200 flex-1 text-center",
             "font-cal tracking-tight",
             value === option.value 
-              ? "text-slate-900 font-semibold" 
-              : "text-slate-500 hover:text-slate-700"
+              ? "text-gray-800 font-semibold" 
+              : "text-gray-400 hover:text-gray-600"
           )}
         >
           {option.label}
