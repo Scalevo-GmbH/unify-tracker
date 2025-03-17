@@ -37,31 +37,33 @@ const Campaigns = () => {
   const hasActiveFilters = platformFilters.length > 0;
 
   return (
-    <div className="p-6">
-      <div className="mb-6">
+    <div>
+      <div className="mb-6 p-6">
         <h1 className="text-3xl font-bold mb-2">Campaigns</h1>
         <p className="text-muted-foreground">Manage all your marketing campaigns across different platforms</p>
       </div>
 
-      <div className="dashboard-tabs mb-8">
-        <button
-          className={`dashboard-tab ${activeTab === "all-campaigns" ? "data-[state=active]" : "data-[state=inactive]"}`}
-          data-state={activeTab === "all-campaigns" ? "active" : "inactive"}
-          onClick={() => setActiveTab("all-campaigns")}
-        >
-          All Campaigns
-        </button>
-        <button
-          className={`dashboard-tab ${activeTab === "new-campaign" ? "data-[state=active]" : "data-[state=inactive]"}`}
-          data-state={activeTab === "new-campaign" ? "active" : "inactive"}
-          onClick={() => setActiveTab("new-campaign")}
-        >
-          New Campaign
-        </button>
+      <div className="px-6">
+        <div className="dashboard-tabs mb-8">
+          <button
+            className={`dashboard-tab ${activeTab === "all-campaigns" ? "data-[state=active]" : "data-[state=inactive]"}`}
+            data-state={activeTab === "all-campaigns" ? "active" : "inactive"}
+            onClick={() => setActiveTab("all-campaigns")}
+          >
+            All Campaigns
+          </button>
+          <button
+            className={`dashboard-tab ${activeTab === "new-campaign" ? "data-[state=active]" : "data-[state=inactive]"}`}
+            data-state={activeTab === "new-campaign" ? "active" : "inactive"}
+            onClick={() => setActiveTab("new-campaign")}
+          >
+            New Campaign
+          </button>
+        </div>
       </div>
 
       {activeTab === "all-campaigns" && (
-        <>
+        <div className="px-6">
           <div className="flex justify-between items-center mb-6">
             <div className="flex items-center space-x-4">
               <Button
@@ -147,16 +149,20 @@ const Campaigns = () => {
               </PopoverContent>
             </Popover>
           </div>
-          <CampaignsTable filterStatus={filterStatus} platformFilters={platformFilters} />
-        </>
+          <div className="bg-white p-4 rounded-lg">
+            <CampaignsTable filterStatus={filterStatus} platformFilters={platformFilters} />
+          </div>
+        </div>
       )}
 
       {activeTab === "new-campaign" && (
-        <Card>
-          <CardContent className="pt-6">
-            <NewCampaignForm />
-          </CardContent>
-        </Card>
+        <div className="px-6">
+          <Card className="bg-white">
+            <CardContent className="pt-6">
+              <NewCampaignForm />
+            </CardContent>
+          </Card>
+        </div>
       )}
     </div>
   );
