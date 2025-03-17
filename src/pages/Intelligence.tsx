@@ -2,7 +2,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Brain, Zap, Robot, Sparkles, MessageSquareCode, Network } from "lucide-react";
+import { Brain, Zap, Bot, Sparkles, MessageSquareCode, Network } from "lucide-react";
 import FadeInSection from "@/components/animations/FadeInSection";
 
 const Intelligence = () => {
@@ -87,7 +87,7 @@ const Intelligence = () => {
           <Card className="border-0 shadow-md hover:shadow-lg transition-shadow">
             <CardContent className="p-6">
               <div className="mb-4 w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
-                <Robot className="h-6 w-6 text-blue-600" />
+                <Bot className="h-6 w-6 text-blue-600" />
               </div>
               <h3 className="text-xl font-bold mb-2">Automation</h3>
               <p className="text-muted-foreground">
