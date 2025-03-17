@@ -11,7 +11,7 @@
   background-color: transparent;
   padding: 0;
   width: 100%;
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif;
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
 }
 
 .dashboard-tab {
