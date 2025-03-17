@@ -1,13 +1,19 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Facebook, Instagram, Twitter, Search, LineChart, Mail, MoreHorizontal, Edit, Trash2, Copy, PauseCircle, PlayCircle } from "lucide-react";
+import { Facebook, Instagram, Twitter, Search, LineChart, Mail, MoreHorizontal, Edit, Trash2, Copy, PauseCircle, PlayCircle, Filter, X } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { useIsMobile } from "@/hooks/use-mobile";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Checkbox } from "@/components/ui/checkbox";
 
 // Types
 interface Campaign {
@@ -24,6 +30,13 @@ interface Campaign {
   performance: "Excellent" | "Good" | "Average" | "Poor";
   icon: React.ReactNode;
 }
+
+// Platform categories
+const platformCategories = {
+  search: ["Google Ads", "Bing Ads"],
+  social: ["Facebook", "Instagram", "LinkedIn", "Twitter"],
+  email: ["Mailchimp", "Klaviyo", "HubSpot"]
+};
 
 // Sample campaigns data
 const campaignsData: Campaign[] = [
@@ -165,17 +178,67 @@ interface CampaignsTableProps {
 
 const CampaignsTable: React.FC<CampaignsTableProps> = ({ filterStatus }) => {
   const isMobile = useIsMobile();
+  const [platformFilters, setPlatformFilters] = useState<string[]>([]);
+  const [filtersOpen, setFiltersOpen] = useState(false);
   
-  // Filter campaigns based on the selected status
+  // Filter campaigns based on the selected status and platform categories
   const filteredCampaigns = campaignsData.filter(campaign => {
-    if (filterStatus === "all") return true;
-    if (filterStatus === "active") return campaign.status === "Active" || campaign.status === "Paused" || campaign.status === "Scheduled";
-    if (filterStatus === "completed") return campaign.status === "Completed";
-    return true;
+    // First filter by status
+    const statusMatch = 
+      filterStatus === "all" ? true :
+      filterStatus === "active" ? (campaign.status === "Active" || campaign.status === "Paused" || campaign.status === "Scheduled") :
+      filterStatus === "completed" ? campaign.status === "Completed" : true;
+    
+    // Then filter by platform category if any are selected
+    if (platformFilters.length === 0) {
+      return statusMatch;
+    }
+    
+    // Check if campaign platform is in any of the selected categories
+    const platformMatch = platformFilters.some(category => {
+      const platforms = platformCategories[category as keyof typeof platformCategories];
+      return platforms.includes(campaign.platform);
+    });
+    
+    return statusMatch && platformMatch;
   });
+
+  const handlePlatformFilterChange = (category: string) => {
+    setPlatformFilters(current => {
+      if (current.includes(category)) {
+        return current.filter(item => item !== category);
+      } else {
+        return [...current, category];
+      }
+    });
+  };
+
+  const clearFilters = () => {
+    setPlatformFilters([]);
+    setFiltersOpen(false);
+  };
   
   return (
     <Card className="overflow-hidden">
+      {platformFilters.length > 0 && (
+        <div className="bg-slate-50 p-3 border-b border-slate-200 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="text-sm font-medium">Filtered by:</span>
+            {platformFilters.map(filter => (
+              <Badge key={filter} variant="outline" className="flex items-center gap-1 px-2 py-1">
+                {filter === 'search' ? 'Search' : filter === 'social' ? 'Social Media' : 'Email'}
+                <X 
+                  className="h-3 w-3 cursor-pointer" 
+                  onClick={() => handlePlatformFilterChange(filter)}
+                />
+              </Badge>
+            ))}
+          </div>
+          <Button variant="ghost" size="sm" onClick={clearFilters}>
+            Clear filters
+          </Button>
+        </div>
+      )}
       <CardContent className={isMobile ? "px-0 pb-0" : "p-0"}>
         <Table>
           <TableHeader>
@@ -257,7 +320,7 @@ const CampaignsTable: React.FC<CampaignsTableProps> = ({ filterStatus }) => {
           </TableBody>
         </Table>
       </CardContent>
-      <CardFooter className="border-t border-border px-6 py-3">
+      <CardFooter className="border-t border-border px-6 py-3 flex justify-between items-center">
         <Pagination>
           <PaginationContent>
             <PaginationItem>
