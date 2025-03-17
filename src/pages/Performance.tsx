@@ -8,9 +8,10 @@ import {
   SelectValue 
 } from "@/components/ui/select";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Card, CardContent } from "@/components/ui/card";
-import { AlertCircle, BarChart3, LineChart, Users, TrendingUp, MousePointerClick, Eye, Share2, Award, Zap } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { AlertCircle, BarChart3, LineChart, Users, TrendingUp, MousePointerClick, Eye, Share2, Award, Zap, ChevronRight } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
 import PaidSearchDashboard from "@/components/performance/PaidSearchDashboard";
 import PaidSocialsDashboard from "@/components/performance/PaidSocialsDashboard";
 import OrganicSocialDashboard from "@/components/performance/OrganicSocialDashboard";
@@ -183,11 +184,13 @@ const Performance = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <Card className="col-span-1 md:col-span-2">
-            <CardContent className="pt-6">
-              <h3 className="text-lg font-medium mb-2 flex items-center">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-lg flex items-center">
                 <Zap className="h-5 w-5 mr-2 text-amber-500" />
                 Performance Summary
-              </h3>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
               <p className="text-muted-foreground mb-6">{data.summary}</p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
@@ -211,38 +214,41 @@ const Performance = () => {
           </Card>
           
           <Card>
-            <CardContent className="pt-6">
-              <h3 className="text-lg font-medium mb-4">Channel Selection</h3>
+            <CardHeader className="pb-2">
+              <CardTitle className="text-lg">Channel Details</CardTitle>
+            </CardHeader>
+            <CardContent>
               <p className="text-sm text-muted-foreground mb-4">
-                This overview shows the aggregate performance of all your {getCategoryName(activeTab)}.
-              </p>
-              <p className="text-sm text-muted-foreground">
-                Select a specific channel below for more detailed analytics.
+                This overview shows aggregate performance across all your {getCategoryName(activeTab)}.
               </p>
               
-              <div className="mt-4">
-                <Select 
-                  value={selectedTool[activeTab]} 
-                  onValueChange={handleToolChange}
-                >
-                  <SelectTrigger className="w-full bg-white border-gray-200 shadow-sm">
-                    <SelectValue placeholder="Select platform" />
-                  </SelectTrigger>
-                  <SelectContent className="bg-white">
-                    {toolsByCategory[activeTab as keyof typeof toolsByCategory]?.map(tool => (
-                      <SelectItem key={tool.id} value={tool.id}>
-                        {tool.name}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+              <div className="mt-4 space-y-4">
+                <div>
+                  <label className="text-sm font-medium mb-1.5 block">Select channel</label>
+                  <Select 
+                    value={selectedTool[activeTab]} 
+                    onValueChange={handleToolChange}
+                  >
+                    <SelectTrigger className="w-full bg-white border-gray-200 shadow-sm">
+                      <SelectValue placeholder="Select platform" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-white">
+                      {toolsByCategory[activeTab as keyof typeof toolsByCategory]?.map(tool => (
+                        <SelectItem key={tool.id} value={tool.id}>
+                          {tool.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
                 
-                <button 
-                  className="w-full mt-3 text-center py-2 px-4 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+                <Button 
+                  className="w-full flex items-center justify-center gap-1"
                   onClick={() => handleSubTabChange("details")}
                 >
-                  View Details
-                </button>
+                  View Detailed Analytics
+                  <ChevronRight className="h-4 w-4" />
+                </Button>
               </div>
             </CardContent>
           </Card>
@@ -315,7 +321,7 @@ const Performance = () => {
         onValueChange={(value) => setActiveTab(value)}
         className="w-full"
       >
-        <TabsList className="dashboard-tabs mb-8 w-full justify-start">
+        <TabsList className="dashboard-tabs mb-8 w-full">
           <TabsTrigger
             value="paid-search"
             className="dashboard-tab"
