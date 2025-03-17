@@ -57,7 +57,7 @@ export const Navbar: React.FC = () => {
 
   return (
     <>
-      <header className="w-full border-b border-border sticky top-0 z-40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <header className="w-full sticky top-0 z-40 bg-white">
         <div className="container px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-4">
             {/* Sidebar Toggle for desktop */}

@@ -34,13 +34,13 @@ const AppLayout = () => {
   
   return (
     <SidebarProvider>
-      <div className="min-h-screen flex w-full bg-[#F6F6F7]">
+      <div className="min-h-screen flex w-full">
         {!isAuthRoute && (
           <>
             <MainSidebar className="hidden md:block" />
             <div className="flex flex-col flex-1">
               <Navbar />
-              <main className="flex-1 p-6">
+              <main className="flex-1 p-6 bg-[#F6F6F7] rounded-tl-2xl overflow-auto">
                 <Routes>
                   <Route path="/" element={<Index />} />
                   <Route path="/login" element={<Login />} />
