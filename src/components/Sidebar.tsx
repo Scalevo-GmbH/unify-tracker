@@ -48,7 +48,7 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
   const location = useLocation();
 
   return (
-    <ShadcnSidebar className={cn("bg-white border-none", className)}>
+    <ShadcnSidebar className={cn("bg-white border-none shadow-none", className)}>
       <SidebarHeader className="flex py-5 px-4 justify-start">
         <Link to="/" className="flex items-center">
           <img 
