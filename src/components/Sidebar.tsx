@@ -63,12 +63,12 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
           <SidebarGroup>
             <SidebarGroupLabel className="text-[#B4B3B5]">Navigation</SidebarGroupLabel>
             <SidebarGroupContent>
-              <SidebarMenu>
+              <SidebarMenu className="space-y-2">
                 {mainMenuItems.map((item) => (
                   <SidebarMenuItem key={item.label}>
                     <SidebarMenuButton 
                       isActive={location.pathname === item.path}
-                      className="flex gap-3 py-3 text-[#A6A9AE] hover:text-sidebar-foreground text-base"
+                      className="flex gap-3 py-4 text-[#A6A9AE] hover:text-sidebar-foreground text-base"
                       asChild
                     >
                       <Link to={item.path}>
@@ -88,12 +88,12 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
           <SidebarGroup>
             <SidebarGroupLabel className="text-[#B4B3B5]">Support</SidebarGroupLabel>
             <SidebarGroupContent>
-              <SidebarMenu>
+              <SidebarMenu className="space-y-2">
                 {settingsItems.map((item) => (
                   <SidebarMenuItem key={item.label}>
                     <SidebarMenuButton 
                       isActive={location.pathname === item.path}
-                      className="flex gap-3 py-3 text-[#A6A9AE] hover:text-sidebar-foreground text-base" 
+                      className="flex gap-3 py-4 text-[#A6A9AE] hover:text-sidebar-foreground text-base" 
                       asChild
                     >
                       <Link to={item.path}>
