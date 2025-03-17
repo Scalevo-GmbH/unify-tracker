@@ -33,7 +33,7 @@ export default function MetaAds() {
   };
 
   return (
-    <div className="container px-4 sm:px-6 lg:px-8 py-8">
+    <div className="container px-4 sm:px-6 lg:px-8 py-8 font-cal">
       <section className="mb-8">
         <FadeInSection>
           <MetaAdsHeader 
@@ -85,8 +85,8 @@ export default function MetaAds() {
       <section>
         <FadeInSection>
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-xl font-semibold">All Meta Ads</h2>
-            <Button variant="outline" size="sm">
+            <h2 className="text-xl font-semibold font-cal">All Meta Ads</h2>
+            <Button variant="outline" size="sm" className="font-cal">
               Manage All Ads
             </Button>
           </div>

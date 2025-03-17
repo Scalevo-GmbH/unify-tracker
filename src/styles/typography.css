@@ -13,7 +13,7 @@
 
 /* Global Cal Sans application */
 body {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   letter-spacing: var(--cal-body-spacing);
@@ -22,14 +22,14 @@ body {
 /* Apply Cal Sans to specific HTML elements */
 h1, h2, h3, h4, h5, h6,
 button, input, select, textarea, label {
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif;
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
   letter-spacing: var(--cal-letter-spacing);
   font-weight: var(--cal-heading-weight);
 }
 
 /* Body text elements with thinner font weight */
 p, a, div, span, li, ul, ol {
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif;
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
   letter-spacing: var(--cal-body-spacing);
   font-weight: var(--cal-body-weight);
 }
@@ -48,7 +48,7 @@ h1, h2 {
 .content-text, 
 .content-body,
 .text-body {
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif;
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
   letter-spacing: var(--cal-body-spacing);
   font-weight: var(--cal-body-weight);
 }
@@ -57,13 +57,14 @@ h1, h2 {
 table, td, 
 .table-cell, 
 .table-data {
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif;
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
   letter-spacing: var(--cal-body-spacing);
   font-weight: var(--cal-body-weight);
 }
 
 /* Table headers should be bold */
 th, .table-header {
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
   font-weight: var(--cal-heading-weight);
   letter-spacing: var(--cal-letter-spacing);
 }

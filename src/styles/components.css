@@ -13,7 +13,7 @@
 .sidebar-footer,
 .sidebar-menu,
 .sidebar-submenu-item a {
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif;
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
   letter-spacing: var(--cal-letter-spacing);
   font-weight: var(--cal-heading-weight);
 }
@@ -21,7 +21,7 @@
 /* All text in the sidebar */
 .sidebar, 
 .sidebar * {
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif;
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
   letter-spacing: var(--cal-letter-spacing);
   font-weight: var(--cal-heading-weight);
 }
@@ -36,7 +36,7 @@
 .menu-label,
 .menu-title,
 .submenu-item {
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif;
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
   letter-spacing: var(--cal-letter-spacing);
   font-weight: var(--cal-heading-weight);
 }
@@ -52,7 +52,7 @@ input[type="submit"],
 input[type="reset"],
 a.button,
 .action-button {
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif;
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
   letter-spacing: var(--cal-letter-spacing);
   font-weight: var(--cal-heading-weight);
 }
@@ -66,7 +66,7 @@ a.button,
 .metric-value,
 .dashboard-card-title,
 .dashboard-card-value {
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif;
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
   letter-spacing: var(--cal-letter-spacing);
   font-weight: var(--cal-heading-weight);
 }
@@ -82,7 +82,7 @@ a.button,
 .navigation-menu-item,
 .navigation-menu-link,
 .navigation-menu-trigger {
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif;
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
   letter-spacing: var(--cal-letter-spacing);
   font-weight: var(--cal-heading-weight);
 }
@@ -94,7 +94,7 @@ a.button,
 .modal-header,
 .popover-title,
 .tooltip-content {
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif;
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
   letter-spacing: var(--cal-letter-spacing);
   font-weight: var(--cal-heading-weight);
 }
@@ -107,7 +107,7 @@ legend,
 .checkbox-label,
 .radio-label,
 .select-label {
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif;
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
   letter-spacing: var(--cal-letter-spacing);
   font-weight: var(--cal-heading-weight);
 }
@@ -124,7 +124,7 @@ legend,
 .performance-chart-title,
 .channel-name,
 .channel-percentage {
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif;
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
   letter-spacing: var(--cal-letter-spacing);
   font-weight: var(--cal-heading-weight);
 }
@@ -134,7 +134,7 @@ legend,
 .metric-card span:not(.icon),
 .dashboard-card p,
 .dashboard-card span:not(.icon) {
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif;
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
   letter-spacing: var(--cal-body-spacing);
   font-weight: var(--cal-body-weight);
 }
@@ -146,7 +146,7 @@ legend,
 .tooltip-label,
 .data-label,
 .axis-label {
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif;
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
   letter-spacing: var(--cal-body-spacing);
   font-weight: var(--cal-body-weight);
 }

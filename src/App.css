@@ -12,6 +12,7 @@
   padding: 0;
   width: 100%;
   font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
+  letter-spacing: var(--cal-letter-spacing);
 }
 
 .dashboard-tab {
