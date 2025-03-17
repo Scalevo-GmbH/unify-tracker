@@ -67,15 +67,15 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
                   <SidebarMenuItem key={item.label}>
                     <SidebarMenuButton 
                       isActive={location.pathname === item.path}
-                      className="flex gap-3 py-4 text-[#A6A9AE] hover:text-sidebar-foreground text-base"
+                      className={cn(
+                        "flex gap-3 py-4 px-6 text-[#A6A9AE] hover:text-sidebar-foreground text-base",
+                        location.pathname === item.path && "bg-[#E5DEFF] text-sidebar-foreground"
+                      )}
                       asChild
                     >
                       <Link to={item.path}>
                         <item.icon className="h-5 w-5" />
                         <span>{item.label}</span>
-                        {location.pathname === item.path && (
-                          <span className="ml-auto h-2 w-2 rounded-full bg-marketing-purple"></span>
-                        )}
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -92,15 +92,15 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
                   <SidebarMenuItem key={item.label}>
                     <SidebarMenuButton 
                       isActive={location.pathname === item.path}
-                      className="flex gap-3 py-4 text-[#A6A9AE] hover:text-sidebar-foreground text-base" 
+                      className={cn(
+                        "flex gap-3 py-4 px-6 text-[#A6A9AE] hover:text-sidebar-foreground text-base",
+                        location.pathname === item.path && "bg-[#E5DEFF] text-sidebar-foreground"
+                      )}
                       asChild
                     >
                       <Link to={item.path}>
                         <item.icon className="h-5 w-5" />
                         <span>{item.label}</span>
-                        {location.pathname === item.path && (
-                          <span className="ml-auto h-2 w-2 rounded-full bg-marketing-purple"></span>
-                        )}
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
