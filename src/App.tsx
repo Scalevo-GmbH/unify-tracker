@@ -30,21 +30,21 @@ const queryClient = new QueryClient();
 const AppContent = () => {
   const location = useLocation();
   const isMobile = useIsMobile();
-  const { isOpen } = useSidebar();
+  const { open } = useSidebar(); // Changed from isOpen to open to match the actual property name
   const isAuthRoute = ['/login', '/register', '/signup', '/forgot-password', '/reset-password'].includes(location.pathname);
   
   return (
     <>
       {!isAuthRoute ? (
         <div className="app-container">
-          <div className={`sidebar-container ${isOpen ? 'block' : 'hidden md:block'}`}>
+          <div className={`sidebar-container ${open ? 'block' : 'hidden md:block'}`}>
             <MainSidebar className="hidden md:block" />
           </div>
           <div className="content-area">
             <div className="top-nav">
               <Navbar />
             </div>
-            <div className={`content-area-inner ${!isOpen && !isMobile ? 'border-top-left-radius-0' : ''}`}>
+            <div className={`content-area-inner ${!open && !isMobile ? 'border-top-left-radius-0' : ''}`}>
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/integrations" element={<Integrations />} />
