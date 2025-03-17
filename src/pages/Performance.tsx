@@ -17,6 +17,7 @@ import WebsiteDashboard from "@/components/performance/WebsiteDashboard";
 import EmailDashboard from "@/components/performance/EmailDashboard";
 import FormsDashboard from "@/components/performance/FormsDashboard";
 import { MetricCard } from "@/components/MetricCard";
+import { IosSwitch } from "@/components/ui/ios-switch";
 
 const overviewData = {
   "paid-search": {
@@ -360,22 +361,15 @@ const Performance = () => {
       </div>
 
       <div className="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        <div className="dashboard-tabs w-full sm:w-auto">
-          <button
-            className={`dashboard-tab ${activeSubTab[activeTab] === "overview" ? "data-[state=active]" : "data-[state=inactive]"}`}
-            data-state={activeSubTab[activeTab] === "overview" ? "active" : "inactive"}
-            onClick={() => handleSubTabChange("overview")}
-          >
-            Overview
-          </button>
-          <button
-            className={`dashboard-tab ${activeSubTab[activeTab] === "details" ? "data-[state=active]" : "data-[state=inactive]"}`}
-            data-state={activeSubTab[activeTab] === "details" ? "active" : "inactive"}
-            onClick={() => handleSubTabChange("details")}
-          >
-            Details
-          </button>
-        </div>
+        <IosSwitch
+          options={[
+            { value: "overview", label: "Overview" },
+            { value: "details", label: "Details" }
+          ]}
+          value={activeSubTab[activeTab]}
+          onChange={handleSubTabChange}
+          className="shadow-sm border border-slate-200 bg-white"
+        />
 
         {activeSubTab[activeTab] === "details" && (
           <Select 

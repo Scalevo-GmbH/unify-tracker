@@ -39,6 +39,18 @@
   color: var(--foreground);
 }
 
+/* iOS Switch styling */
+.ios-switch {
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
+  letter-spacing: var(--cal-letter-spacing);
+}
+
+.ios-switch button {
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
+  letter-spacing: var(--cal-letter-spacing);
+  font-weight: 500;
+}
+
 /* Force Cal Sans on all text elements */
 * {
   font-family: 'Cal Sans', 'Inter', system-ui, sans-serif;
