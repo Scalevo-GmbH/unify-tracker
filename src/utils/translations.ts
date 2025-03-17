@@ -15,7 +15,10 @@ type TranslationKey =
   | 'logout'
   | 'searchMenu'
   | 'metaAds'
-  | 'googleAds';
+  | 'googleAds'
+  | 'adPerformance'   // Added this key
+  | 'trackOptimize'   // Added this key
+  | 'export';         // Added this key
 
 // Define the translations object
 const translations: Record<TranslationKey, Record<Language, string>> = {
@@ -70,6 +73,19 @@ const translations: Record<TranslationKey, Record<Language, string>> = {
   googleAds: {
     en: 'Google Ads',
     de: 'Google Anzeigen'
+  },
+  // Added new translations
+  adPerformance: {
+    en: 'Ad Performance',
+    de: 'Anzeigenleistung'
+  },
+  trackOptimize: {
+    en: 'Track and optimize your ad campaigns',
+    de: 'Verfolgen und optimieren Sie Ihre Werbekampagnen'
+  },
+  export: {
+    en: 'Export',
+    de: 'Exportieren'
   }
 };
 
