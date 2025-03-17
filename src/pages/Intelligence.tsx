@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -28,33 +27,17 @@ const Intelligence = () => {
         </p>
       </div>
 
-      <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-8 text-white mb-12">
-        <div className="absolute top-0 left-0 w-full h-full opacity-10">
-          {Array.from({ length: 20 }).map((_, i) => (
-            <div 
-              key={i}
-              className="absolute rounded-full bg-white"
-              style={{
-                width: `${Math.random() * 10 + 5}px`,
-                height: `${Math.random() * 10 + 5}px`,
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                opacity: Math.random() * 0.5 + 0.1,
-              }}
-            />
-          ))}
-        </div>
-        
+      <div className="relative overflow-hidden rounded-xl bg-card border shadow-sm p-8 mb-12">
         <div className="relative z-10 flex flex-col md:flex-row items-center">
           <div className="md:w-3/5 mb-6 md:mb-0 md:mr-8">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 font-cal">
               Meet Your Marketing AI Assistant
             </h2>
-            <p className="text-lg opacity-90 mb-4">
+            <p className="text-lg text-muted-foreground mb-4">
               We're building a powerful AI tool that analyzes your marketing data, provides 
               actionable insights, and helps you make data-driven decisions with confidence.
             </p>
-            <p className="opacity-90 mb-6">
+            <p className="text-muted-foreground mb-6">
               Our AI assistant uses advanced machine learning algorithms to identify patterns, 
               predict trends, and recommend optimizations across all your marketing channels.
             </p>
@@ -62,19 +45,19 @@ const Intelligence = () => {
               <input 
                 type="email" 
                 placeholder="Enter your email for early access" 
-                className="px-4 py-2 rounded-md text-gray-800 w-full sm:w-auto flex-grow" 
+                className="px-4 py-2 rounded-md border border-input bg-background w-full sm:w-auto flex-grow" 
               />
-              <Button variant="default" className="bg-white text-purple-600 hover:bg-gray-100">
+              <Button variant="default">
                 Join Waitlist
               </Button>
             </form>
           </div>
           <div className="md:w-2/5 flex justify-center">
             <div className="relative w-64 h-64">
-              <div className="absolute inset-0 animate-spin-slow blur-sm bg-gradient-to-r from-purple-400 to-pink-400 rounded-full" style={{ animationDuration: '15s' }}></div>
-              <div className="absolute inset-4 animate-spin-reverse-slow bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full" style={{ animationDuration: '10s' }}></div>
+              <div className="absolute inset-0 bg-slate-100 rounded-full"></div>
+              <div className="absolute inset-4 bg-slate-200 rounded-full"></div>
               <div className="absolute inset-0 w-full h-full flex items-center justify-center">
-                <Brain className="h-24 w-24 text-white" />
+                <Brain className="h-24 w-24 text-primary" />
               </div>
             </div>
           </div>
