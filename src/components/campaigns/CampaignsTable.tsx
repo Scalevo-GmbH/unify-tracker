@@ -1,19 +1,12 @@
-
-import React, { useState } from "react";
+import React from "react";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Facebook, Instagram, Twitter, Search, LineChart, Mail, MoreHorizontal, Edit, Trash2, Copy, PauseCircle, PlayCircle, Filter, X } from "lucide-react";
+import { Facebook, Instagram, Twitter, Search, LineChart, Mail, MoreHorizontal, Edit, Trash2, Copy, PauseCircle, PlayCircle, X } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { useIsMobile } from "@/hooks/use-mobile";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { Checkbox } from "@/components/ui/checkbox";
 
 // Types
 interface Campaign {
@@ -174,12 +167,11 @@ const getPerformanceBadge = (performance: Campaign["performance"]) => {
 
 interface CampaignsTableProps {
   filterStatus: "all" | "active" | "completed";
+  platformFilters: string[];
 }
 
-const CampaignsTable: React.FC<CampaignsTableProps> = ({ filterStatus }) => {
+const CampaignsTable: React.FC<CampaignsTableProps> = ({ filterStatus, platformFilters }) => {
   const isMobile = useIsMobile();
-  const [platformFilters, setPlatformFilters] = useState<string[]>([]);
-  const [filtersOpen, setFiltersOpen] = useState(false);
   
   // Filter campaigns based on the selected status and platform categories
   const filteredCampaigns = campaignsData.filter(campaign => {
@@ -203,21 +195,6 @@ const CampaignsTable: React.FC<CampaignsTableProps> = ({ filterStatus }) => {
     return statusMatch && platformMatch;
   });
 
-  const handlePlatformFilterChange = (category: string) => {
-    setPlatformFilters(current => {
-      if (current.includes(category)) {
-        return current.filter(item => item !== category);
-      } else {
-        return [...current, category];
-      }
-    });
-  };
-
-  const clearFilters = () => {
-    setPlatformFilters([]);
-    setFiltersOpen(false);
-  };
-  
   return (
     <Card className="overflow-hidden">
       {platformFilters.length > 0 && (
@@ -227,16 +204,9 @@ const CampaignsTable: React.FC<CampaignsTableProps> = ({ filterStatus }) => {
             {platformFilters.map(filter => (
               <Badge key={filter} variant="outline" className="flex items-center gap-1 px-2 py-1">
                 {filter === 'search' ? 'Search' : filter === 'social' ? 'Social Media' : 'Email'}
-                <X 
-                  className="h-3 w-3 cursor-pointer" 
-                  onClick={() => handlePlatformFilterChange(filter)}
-                />
               </Badge>
             ))}
           </div>
-          <Button variant="ghost" size="sm" onClick={clearFilters}>
-            Clear filters
-          </Button>
         </div>
       )}
       <CardContent className={isMobile ? "px-0 pb-0" : "p-0"}>
@@ -255,68 +225,76 @@ const CampaignsTable: React.FC<CampaignsTableProps> = ({ filterStatus }) => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {filteredCampaigns.map((campaign) => (
-              <TableRow key={campaign.id}>
-                <TableCell className="font-medium">
-                  <div className="flex items-center space-x-2">
-                    <div className="h-8 w-8 rounded-full bg-slate-100 flex items-center justify-center">
-                      {campaign.icon}
+            {filteredCampaigns.length > 0 ? (
+              filteredCampaigns.map((campaign) => (
+                <TableRow key={campaign.id}>
+                  <TableCell className="font-medium">
+                    <div className="flex items-center space-x-2">
+                      <div className="h-8 w-8 rounded-full bg-slate-100 flex items-center justify-center">
+                        {campaign.icon}
+                      </div>
+                      <span className="line-clamp-1">{campaign.name}</span>
                     </div>
-                    <span className="line-clamp-1">{campaign.name}</span>
-                  </div>
-                </TableCell>
-                <TableCell>{campaign.platform}</TableCell>
-                <TableCell>{campaign.type}</TableCell>
-                <TableCell>{getStatusBadge(campaign.status)}</TableCell>
-                <TableCell>{campaign.budget}</TableCell>
-                <TableCell>{campaign.spent}</TableCell>
-                <TableCell>
-                  <div className="text-xs">
-                    <div>Start: {new Date(campaign.startDate).toLocaleDateString()}</div>
-                    <div>End: {new Date(campaign.endDate).toLocaleDateString()}</div>
-                  </div>
-                </TableCell>
-                <TableCell>{getPerformanceBadge(campaign.performance)}</TableCell>
-                <TableCell className="text-right">
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
-                        <MoreHorizontal className="h-4 w-4" />
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                      <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem className="cursor-pointer">
-                        <Edit className="mr-2 h-4 w-4" />
-                        Edit
-                      </DropdownMenuItem>
-                      <DropdownMenuItem className="cursor-pointer">
-                        <Copy className="mr-2 h-4 w-4" />
-                        Duplicate
-                      </DropdownMenuItem>
-                      {campaign.status === "Active" && (
+                  </TableCell>
+                  <TableCell>{campaign.platform}</TableCell>
+                  <TableCell>{campaign.type}</TableCell>
+                  <TableCell>{getStatusBadge(campaign.status)}</TableCell>
+                  <TableCell>{campaign.budget}</TableCell>
+                  <TableCell>{campaign.spent}</TableCell>
+                  <TableCell>
+                    <div className="text-xs">
+                      <div>Start: {new Date(campaign.startDate).toLocaleDateString()}</div>
+                      <div>End: {new Date(campaign.endDate).toLocaleDateString()}</div>
+                    </div>
+                  </TableCell>
+                  <TableCell>{getPerformanceBadge(campaign.performance)}</TableCell>
+                  <TableCell className="text-right">
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+                          <MoreHorizontal className="h-4 w-4" />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end">
+                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                        <DropdownMenuSeparator />
                         <DropdownMenuItem className="cursor-pointer">
-                          <PauseCircle className="mr-2 h-4 w-4" />
-                          Pause
+                          <Edit className="mr-2 h-4 w-4" />
+                          Edit
                         </DropdownMenuItem>
-                      )}
-                      {campaign.status === "Paused" && (
                         <DropdownMenuItem className="cursor-pointer">
-                          <PlayCircle className="mr-2 h-4 w-4" />
-                          Resume
+                          <Copy className="mr-2 h-4 w-4" />
+                          Duplicate
                         </DropdownMenuItem>
-                      )}
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem className="cursor-pointer text-red-600">
-                        <Trash2 className="mr-2 h-4 w-4" />
-                        Delete
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+                        {campaign.status === "Active" && (
+                          <DropdownMenuItem className="cursor-pointer">
+                            <PauseCircle className="mr-2 h-4 w-4" />
+                            Pause
+                          </DropdownMenuItem>
+                        )}
+                        {campaign.status === "Paused" && (
+                          <DropdownMenuItem className="cursor-pointer">
+                            <PlayCircle className="mr-2 h-4 w-4" />
+                            Resume
+                          </DropdownMenuItem>
+                        )}
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem className="cursor-pointer text-red-600">
+                          <Trash2 className="mr-2 h-4 w-4" />
+                          Delete
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </TableCell>
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell colSpan={9} className="text-center py-6 text-muted-foreground">
+                  No campaigns found matching your filters.
                 </TableCell>
               </TableRow>
-            ))}
+            )}
           </TableBody>
         </Table>
       </CardContent>

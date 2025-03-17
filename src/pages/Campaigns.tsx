@@ -147,7 +147,7 @@ const Campaigns = () => {
               </PopoverContent>
             </Popover>
           </div>
-          <CampaignsTable filterStatus={filterStatus} />
+          <CampaignsTable filterStatus={filterStatus} platformFilters={platformFilters} />
         </>
       )}
 
