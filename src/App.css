@@ -1,42 +1,4 @@
 
-/* Tabs styling - consistent across all pages */
-.dashboard-tabs {
-  display: flex;
-  overflow-x: auto;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 1rem;
-  gap: 1rem;
-  background-color: transparent;
-  padding: 0;
-  width: 100%;
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
-  letter-spacing: var(--cal-letter-spacing);
-}
-
-.dashboard-tab {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--muted-foreground);
-  border-bottom: 2px solid transparent;
-  transition: all 0.2s ease;
-  white-space: nowrap;
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
-  letter-spacing: var(--cal-letter-spacing);
-}
-
-.dashboard-tab[data-state=active] {
-  color: var(--foreground);
-  border-bottom-color: var(--primary);
-}
-
-.dashboard-tab:hover {
-  color: var(--foreground);
-}
-
 /* iOS Switch styling */
 .ios-switch {
   font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
@@ -64,11 +26,6 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
 }
 
-/* Force Cal Sans on all text elements */
-* {
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif;
-}
-
 /* Content card styling */
 .content-card {
   background-color: white;
@@ -92,7 +49,7 @@
 
 /* Content area with rounded top-left corner */
 .content-area {
-  background-color: white; /* Change this to white to match the navbar */
+  background-color: white;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -102,10 +59,10 @@
 .content-area-inner {
   flex-grow: 1;
   background-color: #F6F6F7;
-  border-top-left-radius: 0; /* Default to no rounded corner */
+  border-top-left-radius: 0;
   padding: 24px;
   overflow: auto;
-  margin-top: -16px; /* Pull the content up to create the overlapping effect */
+  margin-top: -16px;
   position: relative;
   z-index: 1;
 }
@@ -125,5 +82,5 @@
   top: 0;
   z-index: 10;
   padding: 0;
-  margin-bottom: 16px; /* Add space between nav and content */
+  margin-bottom: 16px;
 }

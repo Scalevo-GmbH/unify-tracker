@@ -1,112 +1,79 @@
 
+import type { Language } from "@/hooks/use-language";
+
+// Define a type for the translations
 type TranslationKey = 
+  | 'welcome'
   | 'dashboard'
-  | 'overview'
-  | 'adPerformance'
-  | 'trackOptimize'
-  | 'export'
-  | 'createAd'
-  | 'accountSettings'
+  | 'campaigns'
+  | 'performance'
+  | 'intelligence'
+  | 'integrations'
+  | 'settings'
   | 'helpSupport'
+  | 'accountSettings'
   | 'logout'
   | 'searchMenu'
-  | 'navigation'
-  | 'paidSocial'
-  | 'paidSearch'
-  | 'organicSocial'
-  | 'websiteAnalytics'
-  | 'emailMarketing'
-  | 'formsAndSurvey'
-  | 'settings'
-  | 'noMenuItems';
+  | 'metaAds'
+  | 'googleAds';
 
-type Translations = {
-  [key in TranslationKey]: {
-    en: string;
-    de: string;
-  };
-};
-
-export const translations: Translations = {
+// Define the translations object
+const translations: Record<TranslationKey, Record<Language, string>> = {
+  welcome: {
+    en: 'Welcome',
+    de: 'Willkommen'
+  },
   dashboard: {
     en: 'Dashboard',
-    de: 'Übersicht'
+    de: 'Dashboard'
   },
-  overview: {
-    en: 'Overview',
-    de: 'Überblick'
+  campaigns: {
+    en: 'Campaigns',
+    de: 'Kampagnen'
   },
-  adPerformance: {
-    en: 'Ad Performance',
-    de: 'Werbeleistung'
+  performance: {
+    en: 'Performance',
+    de: 'Leistung'
   },
-  trackOptimize: {
-    en: 'Track and optimize your Google Search and Display ad campaigns.',
-    de: 'Verfolgen und optimieren Sie Ihre Google Such- und Display-Werbekampagnen.'
+  intelligence: {
+    en: 'Intelligence',
+    de: 'Intelligenz'
   },
-  export: {
-    en: 'Export',
-    de: 'Exportieren'
+  integrations: {
+    en: 'Integrations',
+    de: 'Integrationen'
   },
-  createAd: {
-    en: 'Create Ad',
-    de: 'Anzeige erstellen'
-  },
-  accountSettings: {
-    en: 'Account Settings',
-    de: 'Kontoeinstellungen'
+  settings: {
+    en: 'Settings',
+    de: 'Einstellungen'
   },
   helpSupport: {
     en: 'Help & Support',
     de: 'Hilfe & Support'
   },
+  accountSettings: {
+    en: 'Account Settings',
+    de: 'Kontoeinstellungen'
+  },
   logout: {
-    en: 'Log out',
+    en: 'Logout',
     de: 'Abmelden'
   },
   searchMenu: {
     en: 'Search menu...',
     de: 'Menü durchsuchen...'
   },
-  navigation: {
-    en: 'Navigation',
-    de: 'Navigation'
+  metaAds: {
+    en: 'Meta Ads',
+    de: 'Meta Anzeigen'
   },
-  paidSocial: {
-    en: 'Paid Social',
-    de: 'Bezahlte Soziale Medien'
-  },
-  paidSearch: {
-    en: 'Paid Search',
-    de: 'Bezahlte Suche'
-  },
-  organicSocial: {
-    en: 'Organic Social',
-    de: 'Organische Soziale Medien'
-  },
-  websiteAnalytics: {
-    en: 'Website Analytics',
-    de: 'Website-Analyse'
-  },
-  emailMarketing: {
-    en: 'Email Marketing',
-    de: 'E-Mail-Marketing'
-  },
-  formsAndSurvey: {
-    en: 'Forms & Survey',
-    de: 'Formulare & Umfragen'
-  },
-  settings: {
-    en: 'Settings',
-    de: 'Einstellungen'
-  },
-  noMenuItems: {
-    en: 'No menu items found',
-    de: 'Keine Menüpunkte gefunden'
+  googleAds: {
+    en: 'Google Ads',
+    de: 'Google Anzeigen'
   }
 };
 
-// Helper function to get translation
-export const getTranslation = (key: TranslationKey, language: 'en' | 'de'): string => {
-  return translations[key][language];
-};
+// Get a translation by key and language
+export function getTranslation(key: TranslationKey, language: Language): string {
+  return translations[key]?.[language] || key;
+}

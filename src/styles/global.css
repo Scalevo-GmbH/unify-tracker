@@ -26,22 +26,30 @@ table {
 }
 
 /* Custom scrollbar styling */
-.responsive-table-container::-webkit-scrollbar {
+.responsive-table-container::-webkit-scrollbar,
+.sidebar-content::-webkit-scrollbar,
+.main-content::-webkit-scrollbar {
   height: 6px;
   width: 6px;
 }
 
-.responsive-table-container::-webkit-scrollbar-track {
+.responsive-table-container::-webkit-scrollbar-track,
+.sidebar-content::-webkit-scrollbar-track,
+.main-content::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.responsive-table-container::-webkit-scrollbar-thumb {
+.responsive-table-container::-webkit-scrollbar-thumb,
+.sidebar-content::-webkit-scrollbar-thumb,
+.main-content::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 20px;
 }
 
 /* Dark mode scrollbar */
-.dark .responsive-table-container::-webkit-scrollbar-thumb {
+.dark .responsive-table-container::-webkit-scrollbar-thumb,
+.dark .sidebar-content::-webkit-scrollbar-thumb,
+.dark .main-content::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
@@ -87,4 +95,42 @@ th, td {
     padding-right: 1rem;
     width: calc(100% + 2rem);
   }
+}
+
+/* Tabs styling - consistent across all pages */
+.dashboard-tabs {
+  display: flex;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1rem;
+  gap: 1rem;
+  background-color: transparent;
+  padding: 0;
+  width: 100%;
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
+  letter-spacing: var(--cal-letter-spacing);
+}
+
+.dashboard-tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
+  letter-spacing: var(--cal-letter-spacing);
+}
+
+.dashboard-tab[data-state=active] {
+  color: var(--foreground);
+  border-bottom-color: var(--primary);
+}
+
+.dashboard-tab:hover {
+  color: var(--foreground);
 }

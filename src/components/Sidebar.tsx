@@ -25,6 +25,7 @@ import {
   SidebarGroupContent,
 } from "@/components/ui/sidebar";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Avatar } from "@/components/ui/avatar";
 
 export const mainMenuItems = [
   { icon: Home, label: "Dashboard", path: "/" },
@@ -43,9 +44,41 @@ interface SidebarProps {
   className?: string;
 }
 
-export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
+const SidebarMenuGroup: React.FC<{
+  items: typeof mainMenuItems;
+  label: string;
+}> = ({ items, label }) => {
   const location = useLocation();
+  
+  return (
+    <SidebarGroup>
+      <SidebarGroupLabel className="text-[#B4B3B5]">{label}</SidebarGroupLabel>
+      <SidebarGroupContent>
+        <SidebarMenu className="space-y-3">
+          {items.map((item) => (
+            <SidebarMenuItem key={item.label}>
+              <SidebarMenuButton 
+                isActive={location.pathname === item.path}
+                className={cn(
+                  "flex gap-3 py-4 px-8 text-[#A6A9AE] hover:text-sidebar-foreground text-base",
+                  location.pathname === item.path && "!bg-[#E5DEFF] text-sidebar-foreground rounded-md"
+                )}
+                asChild
+              >
+                <Link to={item.path}>
+                  <item.icon className="h-5 w-5" />
+                  <span>{item.label}</span>
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          ))}
+        </SidebarMenu>
+      </SidebarGroupContent>
+    </SidebarGroup>
+  );
+};
 
+export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
   return (
     <ShadcnSidebar className={cn("bg-white border-r-0 shadow-none", className)}>
       <SidebarHeader className="flex py-5 px-4 justify-start">
@@ -59,63 +92,16 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
       </SidebarHeader>
       <SidebarContent>
         <ScrollArea className="h-[calc(100vh-8rem)]">
-          <SidebarGroup>
-            <SidebarGroupLabel className="text-[#B4B3B5]">Navigation</SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu className="space-y-3">
-                {mainMenuItems.map((item) => (
-                  <SidebarMenuItem key={item.label}>
-                    <SidebarMenuButton 
-                      isActive={location.pathname === item.path}
-                      className={cn(
-                        "flex gap-3 py-4 px-8 text-[#A6A9AE] hover:text-sidebar-foreground text-base",
-                        location.pathname === item.path && "!bg-[#E5DEFF] text-sidebar-foreground rounded-md"
-                      )}
-                      asChild
-                    >
-                      <Link to={item.path}>
-                        <item.icon className="h-5 w-5" />
-                        <span>{item.label}</span>
-                      </Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-
-          <SidebarGroup>
-            <SidebarGroupLabel className="text-[#B4B3B5]">Support</SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu className="space-y-3">
-                {settingsItems.map((item) => (
-                  <SidebarMenuItem key={item.label}>
-                    <SidebarMenuButton 
-                      isActive={location.pathname === item.path}
-                      className={cn(
-                        "flex gap-3 py-4 px-8 text-[#A6A9AE] hover:text-sidebar-foreground text-base",
-                        location.pathname === item.path && "!bg-[#E5DEFF] text-sidebar-foreground rounded-md"
-                      )}
-                      asChild
-                    >
-                      <Link to={item.path}>
-                        <item.icon className="h-5 w-5" />
-                        <span>{item.label}</span>
-                      </Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
+          <SidebarMenuGroup items={mainMenuItems} label="Navigation" />
+          <SidebarMenuGroup items={settingsItems} label="Support" />
         </ScrollArea>
       </SidebarContent>
 
       <SidebarFooter className="border-t p-4">
         <div className="flex items-center">
-          <div className="size-9 rounded-full bg-gradient-to-r from-marketing-blue to-marketing-purple flex items-center justify-center text-white font-medium">
-            JD
-          </div>
+          <Avatar className="size-9 rounded-full bg-gradient-to-r from-marketing-blue to-marketing-purple flex items-center justify-center text-white font-medium">
+            <span>JD</span>
+          </Avatar>
           <div className="ml-3">
             <p className="text-sm font-medium">John Doe</p>
             <p className="text-xs text-muted-foreground">Admin</p>
