@@ -68,8 +68,8 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
                     <SidebarMenuButton 
                       isActive={location.pathname === item.path}
                       className={cn(
-                        "flex gap-3 py-4 px-6 text-[#A6A9AE] hover:text-sidebar-foreground text-base",
-                        location.pathname === item.path && "bg-[#E5DEFF] text-sidebar-foreground"
+                        "flex gap-3 py-4 px-8 text-[#A6A9AE] hover:text-sidebar-foreground text-base",
+                        location.pathname === item.path && "bg-[#E5DEFF] text-sidebar-foreground rounded-md"
                       )}
                       asChild
                     >
@@ -93,8 +93,8 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
                     <SidebarMenuButton 
                       isActive={location.pathname === item.path}
                       className={cn(
-                        "flex gap-3 py-4 px-6 text-[#A6A9AE] hover:text-sidebar-foreground text-base",
-                        location.pathname === item.path && "bg-[#E5DEFF] text-sidebar-foreground"
+                        "flex gap-3 py-4 px-8 text-[#A6A9AE] hover:text-sidebar-foreground text-base",
+                        location.pathname === item.path && "bg-[#E5DEFF] text-sidebar-foreground rounded-md"
                       )}
                       asChild
                     >
