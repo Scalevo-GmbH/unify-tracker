@@ -105,11 +105,18 @@
   border-top-left-radius: 16px;
   padding: 24px;
   overflow: auto;
+  margin-top: -16px; /* Pull the content up to create the overlapping effect */
+  position: relative;
+  z-index: 1;
 }
 
 /* Fix for the top navigation area */
 .top-nav {
-  background-color: transparent;
+  background-color: white;
   border-bottom: none;
+  position: sticky;
+  top: 0;
   z-index: 10;
+  padding: 0;
+  margin-bottom: 16px; /* Add space between nav and content */
 }
