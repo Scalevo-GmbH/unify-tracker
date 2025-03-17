@@ -37,8 +37,8 @@ const Campaigns = () => {
   const hasActiveFilters = platformFilters.length > 0;
 
   return (
-    <div className="container mx-auto py-8 px-4 md:px-6">
-      <div className="mb-8">
+    <div className="p-6">
+      <div className="mb-6">
         <h1 className="text-3xl font-bold mb-2">Campaigns</h1>
         <p className="text-muted-foreground">Manage all your marketing campaigns across different platforms</p>
       </div>

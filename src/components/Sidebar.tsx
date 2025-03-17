@@ -48,7 +48,7 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
   const location = useLocation();
 
   return (
-    <ShadcnSidebar className={cn("bg-sidebar border-r border-border", className)}>
+    <ShadcnSidebar className={cn("bg-sidebar border-r border-slate-100", className)}>
       <SidebarHeader className="flex py-5 px-4 justify-start">
         <Link to="/" className="flex items-center">
           <img 
@@ -63,7 +63,7 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
           <SidebarGroup>
             <SidebarGroupLabel className="text-[#B4B3B5]">Navigation</SidebarGroupLabel>
             <SidebarGroupContent>
-              <SidebarMenu className="space-y-2">
+              <SidebarMenu className="space-y-3">
                 {mainMenuItems.map((item) => (
                   <SidebarMenuItem key={item.label}>
                     <SidebarMenuButton 
@@ -88,7 +88,7 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
           <SidebarGroup>
             <SidebarGroupLabel className="text-[#B4B3B5]">Support</SidebarGroupLabel>
             <SidebarGroupContent>
-              <SidebarMenu className="space-y-2">
+              <SidebarMenu className="space-y-3">
                 {settingsItems.map((item) => (
                   <SidebarMenuItem key={item.label}>
                     <SidebarMenuButton 

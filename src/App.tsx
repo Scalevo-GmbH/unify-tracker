@@ -34,29 +34,31 @@ const AppLayout = () => {
   
   return (
     <SidebarProvider>
-      <div className="min-h-screen flex w-full">
+      <div className="min-h-screen flex w-full bg-slate-50">
         {!isAuthRoute && (
           <>
             <MainSidebar className="hidden md:block" />
             <div className="flex flex-col flex-1">
               <Navbar />
-              <main className="flex-1">
-                <Routes>
-                  <Route path="/" element={<Index />} />
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/signup" element={<SignUp />} />
-                  <Route path="/forgot-password" element={<ForgotPassword />} />
-                  <Route path="/reset-password" element={<ResetPassword />} />
-                  <Route path="/integrations" element={<Integrations />} />
-                  <Route path="/meta-ads" element={<MetaAds />} />
-                  <Route path="/google-ads" element={<GoogleAds />} />
-                  <Route path="/campaigns" element={<Campaigns />} />
-                  <Route path="/performance" element={<Performance />} />
-                  <Route path="/intelligence" element={<Intelligence />} />
-                  <Route path="/account" element={<Account />} />
-                  <Route path="/help" element={<HelpSupport />} />
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
+              <main className="flex-1 p-6">
+                <div className="bg-white rounded-xl shadow-sm h-full">
+                  <Routes>
+                    <Route path="/" element={<Index />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/signup" element={<SignUp />} />
+                    <Route path="/forgot-password" element={<ForgotPassword />} />
+                    <Route path="/reset-password" element={<ResetPassword />} />
+                    <Route path="/integrations" element={<Integrations />} />
+                    <Route path="/meta-ads" element={<MetaAds />} />
+                    <Route path="/google-ads" element={<GoogleAds />} />
+                    <Route path="/campaigns" element={<Campaigns />} />
+                    <Route path="/performance" element={<Performance />} />
+                    <Route path="/intelligence" element={<Intelligence />} />
+                    <Route path="/account" element={<Account />} />
+                    <Route path="/help" element={<HelpSupport />} />
+                    <Route path="*" element={<NotFound />} />
+                  </Routes>
+                </div>
               </main>
             </div>
           </>
