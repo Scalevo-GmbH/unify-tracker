@@ -26,18 +26,18 @@ import {
 } from "@/components/ui/sidebar";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
-// Define menu items with emojis - exported for use in Navbar mobile menu
+// Define menu items with icons instead of emojis
 export const mainMenuItems = [
-  { icon: Home, label: "Dashboard", emoji: "🏠", path: "/" },
-  { icon: Megaphone, label: "Campaigns", emoji: "📣", path: "/campaigns" },
-  { icon: BarChart3, label: "Performance", emoji: "📊", path: "/performance" },
-  { icon: Lightbulb, label: "Intelligence", emoji: "💡", path: "/intelligence" },
-  { icon: Plug, label: "Integrations", emoji: "🔌", path: "/integrations" },
-  { icon: Settings, label: "Settings", emoji: "⚙️", path: "/account" },
+  { icon: Home, label: "Dashboard", path: "/" },
+  { icon: Megaphone, label: "Campaigns", path: "/campaigns" },
+  { icon: BarChart3, label: "Performance", path: "/performance" },
+  { icon: Lightbulb, label: "Intelligence", path: "/intelligence" },
+  { icon: Plug, label: "Integrations", path: "/integrations" },
+  { icon: Settings, label: "Settings", path: "/account" },
 ];
 
 export const settingsItems = [
-  { icon: HelpCircle, label: "Help & Support", emoji: "❓", path: "/help" },
+  { icon: HelpCircle, label: "Help & Support", path: "/help" },
 ];
 
 interface SidebarProps {
@@ -68,11 +68,11 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
                   <SidebarMenuItem key={item.label}>
                     <SidebarMenuButton 
                       isActive={location.pathname === item.path}
-                      className="flex gap-3 py-2 text-[#A6A9AE] hover:text-sidebar-foreground"
+                      className="flex gap-3 py-3 text-[#A6A9AE] hover:text-sidebar-foreground text-base"
                       asChild
                     >
                       <Link to={item.path}>
-                        <span className="mr-1">{item.emoji}</span>
+                        <item.icon className="h-5 w-5" />
                         <span>{item.label}</span>
                         {location.pathname === item.path && (
                           <span className="ml-auto h-2 w-2 rounded-full bg-marketing-purple"></span>
@@ -93,11 +93,11 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
                   <SidebarMenuItem key={item.label}>
                     <SidebarMenuButton 
                       isActive={location.pathname === item.path}
-                      className="flex gap-3 py-2 text-[#A6A9AE] hover:text-sidebar-foreground" 
+                      className="flex gap-3 py-3 text-[#A6A9AE] hover:text-sidebar-foreground text-base" 
                       asChild
                     >
                       <Link to={item.path}>
-                        <span className="mr-1">{item.emoji}</span>
+                        <item.icon className="h-5 w-5" />
                         <span>{item.label}</span>
                         {location.pathname === item.path && (
                           <span className="ml-auto h-2 w-2 rounded-full bg-marketing-purple"></span>
