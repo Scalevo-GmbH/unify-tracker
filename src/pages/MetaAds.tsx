@@ -56,11 +56,11 @@ export default function MetaAds() {
       <section className="mb-8">
         <FadeInSection>
           <Tabs defaultValue="performance">
-            <TabsList className="mb-4">
-              <TabsTrigger value="performance">Performance</TabsTrigger>
-              <TabsTrigger value="demographics">Demographics</TabsTrigger>
-              <TabsTrigger value="placements">Placements</TabsTrigger>
-              <TabsTrigger value="conversions">Conversions</TabsTrigger>
+            <TabsList className="mb-4 dashboard-tabs">
+              <TabsTrigger value="performance" className="dashboard-tab">Performance</TabsTrigger>
+              <TabsTrigger value="demographics" className="dashboard-tab">Demographics</TabsTrigger>
+              <TabsTrigger value="placements" className="dashboard-tab">Placements</TabsTrigger>
+              <TabsTrigger value="conversions" className="dashboard-tab">Conversions</TabsTrigger>
             </TabsList>
 
             <TabsContent value="performance">

@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { DashboardMetrics } from "@/components/DashboardMetrics";
 import { PerformanceChart } from "@/components/PerformanceChart";
@@ -32,7 +31,6 @@ const Index = () => {
   const [dateRange, setDateRange] = useState<DateRange>("this-month");
   const [activeTab, setActiveTab] = useState<"overview" | "campaigns">("overview");
   
-  // Mock user name - in a real app, this would come from authentication
   const userName = "Pascal";
 
   const handleOpenModal = (name: string, icon: React.ReactNode) => {
@@ -72,7 +70,7 @@ const Index = () => {
         
         <div className="dashboard-tabs mb-6">
           <button 
-            className={`dashboard-tab cal-tab ${activeTab === "overview" ? "data-[state=active]" : "data-[state=inactive]"}`}
+            className={`dashboard-tab ${activeTab === "overview" ? "data-[state=active]" : "data-[state=inactive]"}`}
             data-state={activeTab === "overview" ? "active" : "inactive"}
             onClick={() => setActiveTab("overview")}
           >
@@ -80,7 +78,7 @@ const Index = () => {
             Overview
           </button>
           <button 
-            className={`dashboard-tab cal-tab ${activeTab === "campaigns" ? "data-[state=active]" : "data-[state=inactive]"}`}
+            className={`dashboard-tab ${activeTab === "campaigns" ? "data-[state=active]" : "data-[state=inactive]"}`}
             data-state={activeTab === "campaigns" ? "active" : "inactive"}
             onClick={() => setActiveTab("campaigns")}
           >

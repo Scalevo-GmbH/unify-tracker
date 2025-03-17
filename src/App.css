@@ -1,35 +1,35 @@
 
-/* Import the global font styles */
-@import './styles/global.css';
+/* ... keep existing code */
 
-/* Base font loading */
-@font-face {
-  font-family: 'Cal Sans';
-  src: url('https://raw.githubusercontent.com/calcom/font/main/fonts/webfonts/CalSans-SemiBold.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
+/* Tabs styling - consistent across all pages */
+.dashboard-tabs {
+  display: flex;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1rem;
+  gap: 1rem;
 }
 
-/* Legacy classes - keeping these for backward compatibility */
-.font-cal {
-  font-family: 'Cal Sans', 'Inter', sans-serif;
+.dashboard-tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
-.text-cal {
-  font-family: 'Cal Sans', 'Inter', sans-serif;
-  font-weight: 600;
-  letter-spacing: -0.025em;
+.dashboard-tab[data-state=active] {
+  color: var(--foreground);
+  border-bottom-color: var(--primary);
 }
 
-.cal-heading {
-  font-family: 'Cal Sans', 'Inter', sans-serif;
-  letter-spacing: -0.03em;
-  font-weight: 600;
+.dashboard-tab:hover {
+  color: var(--foreground);
 }
 
-.btn-cal {
-  font-family: 'Cal Sans', 'Inter', sans-serif;
-  font-weight: 600;
-  letter-spacing: -0.025em;
-}
+/* ... keep existing code */
