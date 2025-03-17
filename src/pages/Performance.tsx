@@ -368,7 +368,7 @@ const Performance = () => {
           ]}
           value={activeSubTab[activeTab]}
           onChange={handleSubTabChange}
-          className="shadow-sm border border-slate-200 bg-white"
+          className="ios-switch shadow-sm border-slate-200 bg-white/95"
         />
 
         {activeSubTab[activeTab] === "details" && (

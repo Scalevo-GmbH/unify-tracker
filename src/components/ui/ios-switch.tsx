@@ -10,22 +10,35 @@ interface IosSwitchProps {
 }
 
 const IosSwitch = ({ options, value, onChange, className }: IosSwitchProps) => {
+  // Calculate the active index
+  const activeIndex = options.findIndex(opt => opt.value === value);
+  
   return (
-    <div className={cn("relative bg-slate-100 rounded-full p-0.5 flex items-center h-9 w-fit", className)}>
+    <div className={cn(
+      "relative bg-slate-100 rounded-full p-1 flex items-center h-10 w-fit transition-all duration-200 ease-in-out", 
+      className
+    )}>
+      {/* Sliding background element */}
       <div
-        className="absolute h-8 bg-white rounded-full shadow-sm transition-all duration-200 ease-in-out z-0"
+        className="absolute h-8 bg-white rounded-full shadow-md transition-all duration-300 ease-in-out z-0"
         style={{
-          width: `calc(${100 / options.length}% - 2px)`,
-          left: `calc(${options.findIndex(opt => opt.value === value) * (100 / options.length)}% + 1px)`,
+          width: `calc(${100 / options.length}% - 4px)`,
+          left: `calc(${activeIndex * (100 / options.length)}% + 2px)`,
+          transform: `translateX(0)`,
         }}
       />
-      {options.map((option) => (
+      
+      {/* Option buttons */}
+      {options.map((option, index) => (
         <button
           key={option.value}
           onClick={() => onChange(option.value)}
           className={cn(
             "relative z-10 px-4 py-1 text-sm font-medium rounded-full transition-colors duration-200 min-w-20 text-center",
-            value === option.value ? "text-slate-900" : "text-slate-500 hover:text-slate-900"
+            "font-cal tracking-tight",
+            value === option.value 
+              ? "text-slate-900 font-semibold" 
+              : "text-slate-500 hover:text-slate-700"
           )}
         >
           {option.label}
