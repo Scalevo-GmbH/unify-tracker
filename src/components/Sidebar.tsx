@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { 
@@ -26,7 +25,6 @@ import {
 } from "@/components/ui/sidebar";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
-// Define menu items with icons instead of emojis
 export const mainMenuItems = [
   { icon: Home, label: "Dashboard", path: "/" },
   { icon: Megaphone, label: "Campaigns", path: "/campaigns" },
@@ -48,7 +46,7 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
   const location = useLocation();
 
   return (
-    <ShadcnSidebar className={cn("bg-white border-none shadow-none", className)}>
+    <ShadcnSidebar className={cn("bg-white border-0 shadow-none", className)}>
       <SidebarHeader className="flex py-5 px-4 justify-start">
         <Link to="/" className="flex items-center">
           <img 
