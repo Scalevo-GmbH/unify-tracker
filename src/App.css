@@ -39,4 +39,9 @@
   color: var(--foreground);
 }
 
+/* Force Cal Sans on all text elements */
+* {
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif;
+}
+
 /* ... keep existing code */

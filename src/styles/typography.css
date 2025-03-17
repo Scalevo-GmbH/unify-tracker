@@ -3,85 +3,44 @@
 
 /* Base font settings */
 :root {
-  --cal-letter-spacing: -0.015em;  /* Slightly increased letter spacing */
-  --cal-tracking-tight: -0.01em;   /* Tighter tracking for some elements */
-  --cal-heading-spacing: -0.03em;  /* Keep headings tighter */
-  --cal-body-spacing: -0.005em;    /* More open spacing for body text */
-  --cal-heading-weight: 600;       /* Bold for headings */
-  --cal-body-weight: 400;          /* Thinner for body text */
+  --cal-letter-spacing: -0.015em;
+  --cal-tracking-tight: -0.01em;
+  --cal-heading-spacing: -0.03em;
+  --cal-body-spacing: -0.005em;
+  --cal-heading-weight: 600;
+  --cal-body-weight: 400;
 }
 
-/* Global Cal Sans application */
+/* Global Cal Sans application - using !important to override any conflicting styles */
 body {
   font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  letter-spacing: var(--cal-body-spacing);
+  letter-spacing: var(--cal-body-spacing) !important;
 }
 
 /* Apply Cal Sans to specific HTML elements */
 h1, h2, h3, h4, h5, h6,
 button, input, select, textarea, label {
   font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
-  letter-spacing: var(--cal-letter-spacing);
-  font-weight: var(--cal-heading-weight);
+  letter-spacing: var(--cal-letter-spacing) !important;
+  font-weight: var(--cal-heading-weight) !important;
 }
 
 /* Body text elements with thinner font weight */
 p, a, div, span, li, ul, ol {
   font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
-  letter-spacing: var(--cal-body-spacing);
-  font-weight: var(--cal-body-weight);
+  letter-spacing: var(--cal-body-spacing) !important;
 }
 
-/* Specific headings with tighter letter spacing */
+/* Headings with tighter letter spacing */
 h1, h2 {
-  letter-spacing: var(--cal-heading-spacing);
-  font-weight: var(--cal-heading-weight);
+  letter-spacing: var(--cal-heading-spacing) !important;
+  font-weight: var(--cal-heading-weight) !important;
 }
 
-/* Descriptive text with lighter weight */
-.text-content, 
-.text-paragraph, 
-.description,
-.summary, 
-.content-text, 
-.content-body,
-.text-body {
+/* Utility class for Cal Sans text */
+.cal-sans {
   font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
-  letter-spacing: var(--cal-body-spacing);
-  font-weight: var(--cal-body-weight);
-}
-
-/* Table content should use body styling */
-table, td, 
-.table-cell, 
-.table-data {
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
-  letter-spacing: var(--cal-body-spacing);
-  font-weight: var(--cal-body-weight);
-}
-
-/* Table headers should be bold */
-th, .table-header {
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
-  font-weight: var(--cal-heading-weight);
-  letter-spacing: var(--cal-letter-spacing);
-}
-
-/* Special utility classes */
-.text-cal,
-.cal-text,
-.cal-sans,
-.cal-font,
-.font-cal {
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
-  letter-spacing: var(--cal-letter-spacing);
-  font-weight: var(--cal-heading-weight);
-}
-
-.cal-heading {
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
-  letter-spacing: var(--cal-heading-spacing);
-  font-weight: var(--cal-heading-weight);
+  letter-spacing: var(--cal-letter-spacing) !important;
 }
