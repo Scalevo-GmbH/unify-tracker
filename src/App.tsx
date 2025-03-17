@@ -21,29 +21,30 @@ import Intelligence from "./pages/Intelligence";
 import Navbar from "./components/Navbar";
 import MainSidebar from "./components/Sidebar";
 import { LanguageProvider } from "./hooks/use-language";
-import { SidebarProvider } from "@/components/ui/sidebar";
+import { SidebarProvider, useSidebar } from "@/components/ui/sidebar";
 import { useIsMobile } from "@/hooks/use-mobile";
 import "./App.css";
 
 const queryClient = new QueryClient();
 
-const AppLayout = () => {
+const AppContent = () => {
   const location = useLocation();
   const isMobile = useIsMobile();
+  const { isOpen } = useSidebar();
   const isAuthRoute = ['/login', '/register', '/signup', '/forgot-password', '/reset-password'].includes(location.pathname);
   
   return (
-    <SidebarProvider>
+    <>
       {!isAuthRoute ? (
         <div className="app-container">
-          <div className="sidebar-container">
+          <div className={`sidebar-container ${isOpen ? 'block' : 'hidden md:block'}`}>
             <MainSidebar className="hidden md:block" />
           </div>
           <div className="content-area">
             <div className="top-nav">
               <Navbar />
             </div>
-            <div className="content-area-inner">
+            <div className={`content-area-inner ${!isOpen && !isMobile ? 'border-top-left-radius-0' : ''}`}>
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/integrations" element={<Integrations />} />
@@ -70,6 +71,14 @@ const AppLayout = () => {
           </Routes>
         </main>
       )}
+    </>
+  );
+};
+
+const AppLayout = () => {
+  return (
+    <SidebarProvider>
+      <AppContent />
     </SidebarProvider>
   );
 };

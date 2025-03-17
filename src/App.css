@@ -102,12 +102,19 @@
 .content-area-inner {
   flex-grow: 1;
   background-color: #F6F6F7;
-  border-top-left-radius: 60px; /* Increased from 16px to 60px */
+  border-top-left-radius: 0; /* Default to no rounded corner */
   padding: 24px;
   overflow: auto;
   margin-top: -16px; /* Pull the content up to create the overlapping effect */
   position: relative;
   z-index: 1;
+}
+
+/* Apply the rounded corner only when the sidebar is visible */
+@media (min-width: 768px) {
+  .content-area-inner {
+    border-top-left-radius: 60px;
+  }
 }
 
 /* Fix for the top navigation area */
