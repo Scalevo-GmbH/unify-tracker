@@ -40,7 +40,7 @@ const AppLayout = () => {
             <MainSidebar className="hidden md:block" />
             <div className="flex flex-col flex-1">
               <Navbar />
-              <main className="flex-1 p-6 bg-[#F6F6F7] rounded-tl-2xl overflow-auto">
+              <main className="flex-1 p-6 bg-[#F6F6F7] rounded-tl-[1rem] overflow-auto">
                 <Routes>
                   <Route path="/" element={<Index />} />
                   <Route path="/login" element={<Login />} />
