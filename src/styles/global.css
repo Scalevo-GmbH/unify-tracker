@@ -1,8 +1,52 @@
 
-/* Import modular CSS files */
+/* Global styles */
 @import './typography.css';
 @import './components.css';
 @import './utilities.css';
+
+/* Common styles */
+:root {
+  --cal-letter-spacing: -0.015em;
+  --cal-tracking-tight: -0.01em;
+  --cal-heading-spacing: -0.03em;
+  --cal-body-spacing: -0.005em;
+  --cal-heading-weight: 600;
+  --cal-body-weight: 400;
+}
+
+/* iOS Switch styling */
+.ios-switch {
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
+  letter-spacing: var(--cal-letter-spacing);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  background-color: #F6F6F7 !important;
+}
+
+.ios-switch button {
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
+  letter-spacing: var(--cal-letter-spacing);
+  font-weight: 500;
+  transition: all 0.2s ease;
+  user-select: none;
+  min-width: 80px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ios-switch div {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Content card styling */
+.content-card {
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
 
 /* Global responsive table styles */
 .responsive-table-container {
@@ -133,4 +177,78 @@ th, td {
 
 .dashboard-tab:hover {
   color: var(--foreground);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Animation utilities */
+.animation-delay-100 {
+  animation-delay: 100ms;
+}
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+.animation-delay-500 {
+  animation-delay: 500ms;
+}
+.animation-delay-600 {
+  animation-delay: 600ms;
+}
+
+/* Glassmorphism effects */
+.glassmorphism {
+  @apply bg-white bg-opacity-70 backdrop-blur-lg border border-white border-opacity-20;
+}
+
+.dark .glassmorphism {
+  @apply bg-gray-900 bg-opacity-70 backdrop-blur-lg border-gray-800 border-opacity-20;
+}
+
+/* Custom animations */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-reverse-slow {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+.animate-spin-reverse-slow {
+  animation: spin-reverse-slow 15s linear infinite;
 }

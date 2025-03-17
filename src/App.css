@@ -1,39 +1,5 @@
 
-/* iOS Switch styling */
-.ios-switch {
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
-  letter-spacing: var(--cal-letter-spacing);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-  background-color: #F6F6F7 !important;
-}
-
-.ios-switch button {
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
-  letter-spacing: var(--cal-letter-spacing);
-  font-weight: 500;
-  transition: all 0.2s ease;
-  user-select: none;
-  min-width: 80px;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.ios-switch div {
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
-}
-
-/* Content card styling */
-.content-card {
-  background-color: white;
-  border-radius: 0.75rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-}
-
-/* Main layout styling */
+/* App-specific styling */
 .app-container {
   display: flex;
   min-height: 100vh;
