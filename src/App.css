@@ -92,7 +92,7 @@
 
 /* Content area with rounded top-left corner */
 .content-area {
-  background-color: #F6F6F7;
+  background-color: white; /* Change this to white to match the navbar */
   flex-grow: 1;
   display: flex;
   flex-direction: column;
