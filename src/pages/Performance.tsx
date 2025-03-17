@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { 
   Select, 
@@ -8,7 +9,7 @@ import {
 } from "@/components/ui/select";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
-import { AlertCircle, BarChart3, LineChart, Users, TrendingUp, MousePointerClick, Eye, Share2 } from "lucide-react";
+import { AlertCircle, BarChart3, LineChart, Users, TrendingUp, MousePointerClick, Eye, Share2, Award, Zap } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import PaidSearchDashboard from "@/components/performance/PaidSearchDashboard";
 import PaidSocialsDashboard from "@/components/performance/PaidSocialsDashboard";
@@ -25,7 +26,10 @@ const overviewData = {
       { title: "Total Clicks", value: "42,890", change: 8.7, icon: <MousePointerClick className="h-4 w-4" /> },
       { title: "Average CTR", value: "5.45%", change: -2.1, icon: <TrendingUp className="h-4 w-4" /> },
       { title: "Total Spend", value: "€14,568", change: 15.2, icon: <BarChart3 className="h-4 w-4" /> }
-    ]
+    ],
+    summary: "Your paid search campaigns are performing well with a 12.3% increase in impressions and 8.7% increase in clicks compared to the previous period. Consider optimizing campaigns with lower CTR to improve overall performance.",
+    topPerformer: "Google Ads - Summer Sale Campaign",
+    recommendation: "Increase budget allocation for high CTR keywords and pause underperforming ad groups to improve ROI."
   },
   "paid-socials": {
     metrics: [
@@ -33,7 +37,10 @@ const overviewData = {
       { title: "Engagement Rate", value: "3.87%", change: 1.2, icon: <Share2 className="h-4 w-4" /> },
       { title: "Total Impressions", value: "2,458,900", change: 18.4, icon: <Eye className="h-4 w-4" /> },
       { title: "Total Spend", value: "€12,340", change: 9.7, icon: <BarChart3 className="h-4 w-4" /> }
-    ]
+    ],
+    summary: "Your paid social campaigns are showing strong performance with a significant 24.5% increase in reach. Engagement is slightly up by 1.2%, suggesting content is resonating well with audiences.",
+    topPerformer: "Meta Ads - Product Launch Video Campaign",
+    recommendation: "Test new creative formats on Meta platforms where engagement rates are highest."
   },
   "organic-social": {
     metrics: [
@@ -41,7 +48,10 @@ const overviewData = {
       { title: "Total Engagement", value: "45,670", change: 7.2, icon: <Share2 className="h-4 w-4" /> },
       { title: "Engagement Rate", value: "4.12%", change: 0.5, icon: <TrendingUp className="h-4 w-4" /> },
       { title: "Reach Growth", value: "12.8%", change: 3.4, icon: <LineChart className="h-4 w-4" /> }
-    ]
+    ],
+    summary: "Your organic social channels are growing steadily with a 5.8% increase in followers. Engagement metrics show healthy growth at 7.2%, suggesting your content strategy is effective.",
+    topPerformer: "Instagram - User-Generated Content Series",
+    recommendation: "Increase posting frequency on Instagram where engagement rates are highest."
   },
   "website": {
     metrics: [
@@ -49,7 +59,10 @@ const overviewData = {
       { title: "Avg. Session Duration", value: "3m 42s", change: 5.3, icon: <TrendingUp className="h-4 w-4" /> },
       { title: "Bounce Rate", value: "42.5%", change: -3.8, icon: <TrendingUp className="h-4 w-4" />, invertedChange: true },
       { title: "Conversion Rate", value: "3.24%", change: 1.5, icon: <BarChart3 className="h-4 w-4" /> }
-    ]
+    ],
+    summary: "Website performance shows strong improvement with visitor growth of 16.7% and decreased bounce rates. The conversion rate increase of 1.5% indicates visitors are finding what they need.",
+    topPerformer: "Product Pages - Especially Mobile Experience",
+    recommendation: "Optimize checkout flow to further improve the conversion rate."
   },
   "email": {
     metrics: [
@@ -57,7 +70,10 @@ const overviewData = {
       { title: "Open Rate", value: "22.4%", change: 3.2, icon: <TrendingUp className="h-4 w-4" /> },
       { title: "Click Rate", value: "3.85%", change: 1.7, icon: <MousePointerClick className="h-4 w-4" /> },
       { title: "Conversion Rate", value: "1.24%", change: 0.6, icon: <BarChart3 className="h-4 w-4" /> }
-    ]
+    ],
+    summary: "Email campaigns are reaching more subscribers with a 28.4% increase in volume. Engagement metrics are improving with open rates up 3.2% and click rates up 1.7%.",
+    topPerformer: "New Product Announcement Newsletter",
+    recommendation: "Implement A/B testing on subject lines to further improve open rates."
   },
   "forms": {
     metrics: [
@@ -65,7 +81,10 @@ const overviewData = {
       { title: "Completion Rate", value: "68.7%", change: 4.5, icon: <BarChart3 className="h-4 w-4" /> },
       { title: "Avg. Completion Time", value: "2m 15s", change: -12.4, icon: <TrendingUp className="h-4 w-4" />, invertedChange: true },
       { title: "Conversion Rate", value: "2.87%", change: 1.2, icon: <BarChart3 className="h-4 w-4" /> }
-    ]
+    ],
+    summary: "Form performance has improved significantly with 18.3% more submissions and faster completion times. The increased completion rate of 4.5% indicates form optimizations are working well.",
+    topPerformer: "Newsletter Signup Form",
+    recommendation: "Reduce form fields on the contact form to improve completion rates further."
   }
 };
 
@@ -148,7 +167,7 @@ const Performance = () => {
     }
 
     return (
-      <div className="space-y-6">
+      <div className="space-y-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {data.metrics.map((metric, index) => (
             <MetricCard
@@ -162,33 +181,92 @@ const Performance = () => {
           ))}
         </div>
         
-        <div className="bg-muted/30 rounded-lg p-6 text-center">
-          <h3 className="text-lg font-medium mb-3">Gesamtüberblick</h3>
-          <p className="text-muted-foreground mb-4">
-            Diese Übersicht zeigt die Gesamtleistung aller {getChannelNameInGerman(activeTab)}.
-            Wählen Sie einen spezifischen Kanal unten, um detailliertere Analysen zu sehen.
-          </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <Card className="col-span-1 md:col-span-2">
+            <CardContent className="pt-6">
+              <h3 className="text-lg font-medium mb-2 flex items-center">
+                <Zap className="h-5 w-5 mr-2 text-amber-500" />
+                Performance Summary
+              </h3>
+              <p className="text-muted-foreground mb-6">{data.summary}</p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                <div className="bg-slate-50 p-4 rounded-lg border border-slate-100">
+                  <h4 className="text-sm font-medium text-slate-700 mb-2 flex items-center">
+                    <Award className="h-4 w-4 mr-2 text-emerald-500" />
+                    Top Performer
+                  </h4>
+                  <p className="text-sm">{data.topPerformer}</p>
+                </div>
+                
+                <div className="bg-slate-50 p-4 rounded-lg border border-slate-100">
+                  <h4 className="text-sm font-medium text-slate-700 mb-2 flex items-center">
+                    <TrendingUp className="h-4 w-4 mr-2 text-blue-500" />
+                    Recommendation
+                  </h4>
+                  <p className="text-sm">{data.recommendation}</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          
+          <Card>
+            <CardContent className="pt-6">
+              <h3 className="text-lg font-medium mb-4">Channel Selection</h3>
+              <p className="text-sm text-muted-foreground mb-4">
+                This overview shows the aggregate performance of all your {getCategoryName(activeTab)}.
+              </p>
+              <p className="text-sm text-muted-foreground">
+                Select a specific channel below for more detailed analytics.
+              </p>
+              
+              <div className="mt-4">
+                <Select 
+                  value={selectedTool[activeTab]} 
+                  onValueChange={handleToolChange}
+                >
+                  <SelectTrigger className="w-full bg-white border-gray-200 shadow-sm">
+                    <SelectValue placeholder="Select platform" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-white">
+                    {toolsByCategory[activeTab as keyof typeof toolsByCategory]?.map(tool => (
+                      <SelectItem key={tool.id} value={tool.id}>
+                        {tool.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                
+                <button 
+                  className="w-full mt-3 text-center py-2 px-4 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+                  onClick={() => handleSubTabChange("details")}
+                >
+                  View Details
+                </button>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     );
   };
 
-  const getChannelNameInGerman = (category: string) => {
+  const getCategoryName = (category: string) => {
     switch (category) {
       case "paid-search":
-        return "bezahlten Suchanzeigen";
+        return "paid search campaigns";
       case "paid-socials":
-        return "bezahlten Social-Media-Kampagnen";
+        return "paid social media campaigns";
       case "organic-social":
-        return "organischen Social-Media-Kanäle";
+        return "organic social media channels";
       case "website":
-        return "Website-Aktivitäten";
+        return "website activities";
       case "email":
-        return "E-Mail-Kampagnen";
+        return "email campaigns";
       case "forms":
-        return "Formulare";
+        return "forms";
       default:
-        return "Kanäle";
+        return "channels";
     }
   };
 
@@ -284,7 +362,7 @@ const Performance = () => {
             className="w-full sm:w-auto"
           >
             <TabsList className="w-full sm:w-auto">
-              <TabsTrigger value="overview" isFirst>Überblick</TabsTrigger>
+              <TabsTrigger value="overview" isFirst>Overview</TabsTrigger>
               <TabsTrigger value="details">Details</TabsTrigger>
             </TabsList>
           </Tabs>

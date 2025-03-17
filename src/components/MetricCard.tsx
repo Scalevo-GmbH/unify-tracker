@@ -32,6 +32,19 @@ export const MetricCard: React.FC<MetricCardProps> = ({
     ? (change && change > 0) 
     : (change && change < 0);
 
+  // Get background color based on metric type to add subtle variation
+  const getSubtleBackground = () => {
+    if (title.toLowerCase().includes("click") || title.toLowerCase().includes("conversion")) 
+      return "bg-blue-50";
+    if (title.toLowerCase().includes("impression") || title.toLowerCase().includes("reach") || title.toLowerCase().includes("view")) 
+      return "bg-indigo-50";
+    if (title.toLowerCase().includes("rate") || title.toLowerCase().includes("duration")) 
+      return "bg-purple-50";
+    if (title.toLowerCase().includes("spend") || title.toLowerCase().includes("cost")) 
+      return "bg-amber-50";
+    return "bg-slate-50";
+  };
+
   return (
     <div className={cn(
       "relative overflow-hidden rounded-xl bg-card p-6 shadow-subtle transition-all duration-200 hover:shadow-card",
@@ -76,7 +89,10 @@ export const MetricCard: React.FC<MetricCardProps> = ({
         </div>
         
         {icon && (
-          <div className="rounded-full p-2 bg-primary/5 text-primary">
+          <div className={cn(
+            "rounded-full p-2.5 text-primary",
+            getSubtleBackground()
+          )}>
             {icon}
           </div>
         )}
