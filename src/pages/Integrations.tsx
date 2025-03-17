@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { IntegrationCard } from "@/components/IntegrationCard";
 import { ConnectPlatformModal } from "@/components/ConnectPlatformModal";
-import FadeInSection from "@/components/animations/FadeInSection";
+import { FadeInSection } from "@/components/animations/FadeInSection";
 import { Search, Grid } from "lucide-react";
 import { 
   Facebook, 
@@ -238,52 +238,29 @@ const Integrations = () => {
 
       <Tabs defaultValue="all" className="space-y-4">
         <FadeInSection>
-          <div className="dashboard-tabs mb-6">
-            <TabsList className="flex items-center space-x-1 bg-transparent h-auto p-0">
-              <TabsTrigger 
-                value="all" 
-                className="dashboard-tab cal-tab data-[state=active]:bg-white data-[state=active]:shadow-sm"
-              >
-                All
-              </TabsTrigger>
-              <TabsTrigger 
-                value="advertising" 
-                className="dashboard-tab cal-tab data-[state=active]:bg-white data-[state=active]:shadow-sm"
-              >
-                Advertising
-              </TabsTrigger>
-              <TabsTrigger 
-                value="social" 
-                className="dashboard-tab cal-tab data-[state=active]:bg-white data-[state=active]:shadow-sm"
-              >
-                Social Media
-              </TabsTrigger>
-              <TabsTrigger 
-                value="email" 
-                className="dashboard-tab cal-tab data-[state=active]:bg-white data-[state=active]:shadow-sm"
-              >
-                Email Marketing
-              </TabsTrigger>
-              <TabsTrigger 
-                value="analytics" 
-                className="dashboard-tab cal-tab data-[state=active]:bg-white data-[state=active]:shadow-sm"
-              >
-                Analytics
-              </TabsTrigger>
-              <TabsTrigger 
-                value="ecommerce" 
-                className="dashboard-tab cal-tab data-[state=active]:bg-white data-[state=active]:shadow-sm"
-              >
-                E-commerce
-              </TabsTrigger>
-              <TabsTrigger 
-                value="other" 
-                className="dashboard-tab cal-tab data-[state=active]:bg-white data-[state=active]:shadow-sm"
-              >
-                Other Tools
-              </TabsTrigger>
-            </TabsList>
-          </div>
+          <TabsList className="dashboard-tabs">
+            <TabsTrigger value="all" className="dashboard-tab">
+              All
+            </TabsTrigger>
+            <TabsTrigger value="advertising" className="dashboard-tab">
+              Advertising
+            </TabsTrigger>
+            <TabsTrigger value="social" className="dashboard-tab">
+              Social Media
+            </TabsTrigger>
+            <TabsTrigger value="email" className="dashboard-tab">
+              Email Marketing
+            </TabsTrigger>
+            <TabsTrigger value="analytics" className="dashboard-tab">
+              Analytics
+            </TabsTrigger>
+            <TabsTrigger value="ecommerce" className="dashboard-tab">
+              E-commerce
+            </TabsTrigger>
+            <TabsTrigger value="other" className="dashboard-tab">
+              Other Tools
+            </TabsTrigger>
+          </TabsList>
         </FadeInSection>
 
         {!hasResults && searchTerm ? (

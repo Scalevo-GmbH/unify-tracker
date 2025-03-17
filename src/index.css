@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import './styles/global.css';
 
@@ -99,7 +98,7 @@
 }
 
 .dashboard-tab {
-  @apply flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium transition-all font-cal tracking-tight font-semibold flex-1;
+  @apply flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium transition-all font-cal tracking-tight font-semibold;
   letter-spacing: -0.025em;
 }
 

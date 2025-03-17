@@ -8,6 +8,9 @@
   border-bottom: 1px solid var(--border);
   margin-bottom: 1rem;
   gap: 1rem;
+  background-color: transparent;
+  padding: 0;
+  width: 100%;
 }
 
 .dashboard-tab {
@@ -21,6 +24,8 @@
   border-bottom: 2px solid transparent;
   transition: all 0.2s ease;
   white-space: nowrap;
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
+  letter-spacing: var(--cal-letter-spacing);
 }
 
 .dashboard-tab[data-state=active] {
