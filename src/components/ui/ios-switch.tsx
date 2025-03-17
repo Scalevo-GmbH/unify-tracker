@@ -24,7 +24,6 @@ const IosSwitch = ({ options, value, onChange, className }: IosSwitchProps) => {
         style={{
           width: `calc(${100 / options.length}% - 6px)`,
           left: `calc(${activeIndex * (100 / options.length)}% + 3px)`,
-          transform: `translateX(0)`,
         }}
       />
       
@@ -40,6 +39,11 @@ const IosSwitch = ({ options, value, onChange, className }: IosSwitchProps) => {
               ? "text-gray-800 font-semibold" 
               : "text-gray-400 hover:text-gray-600"
           )}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
         >
           {option.label}
         </button>
