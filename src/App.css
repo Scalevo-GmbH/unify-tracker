@@ -102,7 +102,7 @@
 .content-area-inner {
   flex-grow: 1;
   background-color: #F6F6F7;
-  border-top-left-radius: 16px;
+  border-top-left-radius: 60px; /* Increased from 16px to 60px */
   padding: 24px;
   overflow: auto;
   margin-top: -16px; /* Pull the content up to create the overlapping effect */
