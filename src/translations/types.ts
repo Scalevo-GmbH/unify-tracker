@@ -5,6 +5,7 @@ import { AdsTranslationKey } from './ads';
 import { HelpSupportTranslationKey } from './help-support';
 import { CampaignTranslationKey } from './campaigns';
 import { WebsiteTranslationKey } from './website';
+import { IndexTranslationKey } from './index-page';
 
 // Export a union type of all translation keys
 export type TranslationKey = 
@@ -13,4 +14,5 @@ export type TranslationKey =
   | AdsTranslationKey
   | HelpSupportTranslationKey
   | CampaignTranslationKey
-  | WebsiteTranslationKey;
+  | WebsiteTranslationKey
+  | IndexTranslationKey;
