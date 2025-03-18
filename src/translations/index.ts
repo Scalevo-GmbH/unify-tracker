@@ -10,7 +10,7 @@ import { adsTranslations, AdsTranslationKey } from './ads';
 import { performanceTranslations, PerformanceTranslationKey } from './performance';
 import { intelligenceTranslations, IntelligenceTranslationKey } from './intelligence';
 import { integrationsTranslations, IntegrationsTranslationKey } from './integrations';
-import { accountTranslations, AccountTranslationKey } from './account';
+import { accountTranslations, AccountTranslationKey } from './account/index';
 
 // Combine all translation keys
 export type TranslationKey = 
