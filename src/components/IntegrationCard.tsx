@@ -4,12 +4,13 @@ import { cn } from "@/lib/utils";
 import { Sparkles } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "@/hooks/use-translation";
+import { TranslationKey } from "@/translations/types";
 
 interface IntegrationCardProps {
   name: string;
   icon: React.ReactNode;
   description: string;
-  descriptionKey?: string; // Add optional translation key for description
+  descriptionKey?: TranslationKey; // Change to TranslationKey type
   connected?: boolean;
   popular?: boolean;
   className?: string;

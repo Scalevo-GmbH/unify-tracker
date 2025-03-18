@@ -199,7 +199,7 @@ const Integrations = () => {
     Object.keys(integrations).forEach(category => {
       filtered[category] = integrations[category].filter((integration: any) => 
         integration.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        integration.description.toLowerCase().includes(searchTerm.toLowerCase())
+        (integration.descriptionKey && t(integration.descriptionKey).toLowerCase().includes(searchTerm.toLowerCase()))
       );
     });
     
@@ -211,7 +211,7 @@ const Integrations = () => {
   const filteredAllIntegrations = searchTerm 
     ? allIntegrations.filter(integration => 
         integration.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        integration.description.toLowerCase().includes(searchTerm.toLowerCase()))
+        (integration.descriptionKey && t(integration.descriptionKey).toLowerCase().includes(searchTerm.toLowerCase())))
     : allIntegrations;
   
   const hasResults = Object.values(filteredIntegrations).some(
