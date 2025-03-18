@@ -42,14 +42,9 @@ export const Navbar: React.FC = () => {
     if (!menuFilter) return items;
     const filter = menuFilter.toLowerCase();
     return items.filter(item => 
-      item.label.toLowerCase().includes(filter) || 
+      t(item.labelKey).toLowerCase().includes(filter) || 
       (item.emoji && item.emoji.toLowerCase().includes(filter))
     );
-  };
-
-  // Get the flag emoji based on the current language
-  const getLanguageFlag = (lang: string) => {
-    return lang === "en" ? "🇬🇧" : "🇩🇪";
   };
 
   const filteredMainMenu = filterItems(mainMenuItems);
@@ -102,15 +97,15 @@ export const Navbar: React.FC = () => {
                     {/* Main menu items */}
                     {filteredMainMenu.length > 0 && (
                       <div className="px-2 py-2">
-                        <p className="px-4 text-xs font-medium text-muted-foreground mb-2">Navigation</p>
+                        <p className="px-4 text-xs font-medium text-muted-foreground mb-2">{t('navigation')}</p>
                         {filteredMainMenu.map((item) => (
                           <Link 
-                            key={item.label}
+                            key={item.labelKey}
                             to={item.path} 
                             className="flex items-center gap-3 px-4 py-2 rounded-md hover:bg-accent text-sm text-[#8E9196] hover:text-sidebar-foreground"
                           >
-                            <span className="mr-1">{item.emoji}</span>
-                            <span>{item.label}</span>
+                            <item.icon className="h-4 w-4" />
+                            <span>{t(item.labelKey)}</span>
                             {item.active && (
                               <span className="ml-auto h-2 w-2 rounded-full bg-marketing-purple"></span>
                             )}
@@ -122,15 +117,15 @@ export const Navbar: React.FC = () => {
                     {/* Settings section */}
                     {filteredSettings.length > 0 && (
                       <div className="px-2 py-2">
-                        <p className="px-4 text-xs font-medium text-muted-foreground mb-2">Settings</p>
+                        <p className="px-4 text-xs font-medium text-muted-foreground mb-2">{t('settings')}</p>
                         {filteredSettings.map((item) => (
                           <Link 
-                            key={item.label}
+                            key={item.labelKey}
                             to={item.path} 
                             className="flex items-center gap-3 px-4 py-2 rounded-md hover:bg-accent text-sm text-[#8E9196] hover:text-sidebar-foreground"
                           >
-                            <span className="mr-1">{item.emoji}</span>
-                            <span>{item.label}</span>
+                            <item.icon className="h-4 w-4" />
+                            <span>{t(item.labelKey)}</span>
                           </Link>
                         ))}
                       </div>
@@ -141,7 +136,7 @@ export const Navbar: React.FC = () => {
                       !filteredMainMenu.length &&
                       !filteredSettings.length && (
                         <div className="p-4 text-center text-muted-foreground">
-                          No menu items found
+                          {t('noMenuItemsFound')}
                         </div>
                       )
                     }
@@ -154,7 +149,7 @@ export const Navbar: React.FC = () => {
                       </div>
                       <div className="ml-3">
                         <p className="text-sm font-medium">John Doe</p>
-                        <p className="text-xs text-muted-foreground">Admin</p>
+                        <p className="text-xs text-muted-foreground">{t('admin')}</p>
                       </div>
                       <button className="ml-auto rounded-full p-1.5 text-muted-foreground hover:bg-accent">
                         <LogOut className="h-4 w-4" />
@@ -191,7 +186,7 @@ export const Navbar: React.FC = () => {
               <DropdownMenuContent align="end" className="w-56">
                 <div className="flex flex-col gap-1 p-2">
                   <p className="text-sm font-medium">John Doe</p>
-                  <p className="text-xs text-muted-foreground">Admin</p>
+                  <p className="text-xs text-muted-foreground">{t('admin')}</p>
                 </div>
                 <DropdownMenuSeparator />
                 
@@ -201,7 +196,7 @@ export const Navbar: React.FC = () => {
                   className={language === "en" ? "bg-accent" : ""}
                 >
                   <Globe className="mr-2 h-4 w-4" />
-                  <span>English</span>
+                  <span>{t('english')}</span>
                   {language === "en" && <span className="ml-auto">🇬🇧</span>}
                 </DropdownMenuItem>
                 <DropdownMenuItem 
@@ -209,7 +204,7 @@ export const Navbar: React.FC = () => {
                   className={language === "de" ? "bg-accent" : ""}
                 >
                   <Globe className="mr-2 h-4 w-4" />
-                  <span>Deutsch</span>
+                  <span>{t('german')}</span>
                   {language === "de" && <span className="ml-auto">🇩🇪</span>}
                 </DropdownMenuItem>
                 

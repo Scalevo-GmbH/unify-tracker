@@ -26,18 +26,19 @@ import {
 } from "@/components/ui/sidebar";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Avatar } from "@/components/ui/avatar";
+import { useTranslation } from "@/hooks/use-translation";
 
 export const mainMenuItems = [
-  { icon: Home, label: "Dashboard", path: "/" },
-  { icon: Megaphone, label: "Campaigns", path: "/campaigns" },
-  { icon: BarChart3, label: "Performance", path: "/performance" },
-  { icon: Lightbulb, label: "Intelligence", path: "/intelligence" },
-  { icon: Plug, label: "Integrations", path: "/integrations" },
-  { icon: Settings, label: "Settings", path: "/account" },
+  { icon: Home, labelKey: "dashboard", path: "/" },
+  { icon: Megaphone, labelKey: "campaigns", path: "/campaigns" },
+  { icon: BarChart3, labelKey: "performance", path: "/performance" },
+  { icon: Lightbulb, labelKey: "intelligence", path: "/intelligence" },
+  { icon: Plug, labelKey: "integrations", path: "/integrations" },
+  { icon: Settings, labelKey: "settings", path: "/account" },
 ];
 
 export const settingsItems = [
-  { icon: HelpCircle, label: "Help & Support", path: "/help" },
+  { icon: HelpCircle, labelKey: "helpSupport", path: "/help" },
 ];
 
 interface SidebarProps {
@@ -49,14 +50,15 @@ const SidebarMenuGroup: React.FC<{
   label: string;
 }> = ({ items, label }) => {
   const location = useLocation();
+  const { t } = useTranslation();
   
   return (
     <SidebarGroup>
-      <SidebarGroupLabel className="text-[#B4B3B5]">{label}</SidebarGroupLabel>
+      <SidebarGroupLabel className="text-[#B4B3B5]">{t(label as any)}</SidebarGroupLabel>
       <SidebarGroupContent>
         <SidebarMenu className="space-y-3">
           {items.map((item) => (
-            <SidebarMenuItem key={item.label}>
+            <SidebarMenuItem key={item.labelKey}>
               <SidebarMenuButton 
                 isActive={location.pathname === item.path}
                 className={cn(
@@ -67,7 +69,7 @@ const SidebarMenuGroup: React.FC<{
               >
                 <Link to={item.path}>
                   <item.icon className="h-5 w-5" />
-                  <span>{item.label}</span>
+                  <span>{t(item.labelKey)}</span>
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
@@ -79,6 +81,8 @@ const SidebarMenuGroup: React.FC<{
 };
 
 export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
+  const { t } = useTranslation();
+  
   return (
     <ShadcnSidebar className={cn("bg-white border-r-0 shadow-none", className)}>
       <SidebarHeader className="flex py-5 px-4 justify-start">
@@ -92,8 +96,8 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
       </SidebarHeader>
       <SidebarContent>
         <ScrollArea className="h-[calc(100vh-8rem)]">
-          <SidebarMenuGroup items={mainMenuItems} label="Navigation" />
-          <SidebarMenuGroup items={settingsItems} label="Support" />
+          <SidebarMenuGroup items={mainMenuItems} label="navigation" />
+          <SidebarMenuGroup items={settingsItems} label="support" />
         </ScrollArea>
       </SidebarContent>
 
@@ -104,7 +108,7 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
           </Avatar>
           <div className="ml-3">
             <p className="text-sm font-medium">John Doe</p>
-            <p className="text-xs text-muted-foreground">Admin</p>
+            <p className="text-xs text-muted-foreground">{t('admin')}</p>
           </div>
           <button className="ml-auto rounded-full p-1.5 text-muted-foreground hover:bg-accent">
             <LogOut className="h-4 w-4" />

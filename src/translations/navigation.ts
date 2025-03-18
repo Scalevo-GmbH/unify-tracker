@@ -11,7 +11,19 @@ export type NavigationTranslationKey =
   | 'helpSupport'
   | 'accountSettings'
   | 'logout'
-  | 'searchMenu';
+  | 'searchMenu'
+  | 'dashboard'
+  | 'navigation'
+  | 'support'
+  | 'admin'
+  | 'noMenuItemsFound'
+  | 'markAllAsRead'
+  | 'clearAll'
+  | 'viewAll'
+  | 'notifications'
+  | 'noNotifications'
+  | 'english'
+  | 'german';
 
 // Navigation-related translations
 export const navigationTranslations: Record<NavigationTranslationKey, Record<Language, string>> = {
@@ -50,5 +62,53 @@ export const navigationTranslations: Record<NavigationTranslationKey, Record<Lan
   searchMenu: {
     en: 'Search menu...',
     de: 'Menü durchsuchen...'
+  },
+  dashboard: {
+    en: 'Dashboard',
+    de: 'Dashboard'
+  },
+  navigation: {
+    en: 'Navigation',
+    de: 'Navigation'
+  },
+  support: {
+    en: 'Support',
+    de: 'Support'
+  },
+  admin: {
+    en: 'Admin',
+    de: 'Administrator'
+  },
+  noMenuItemsFound: {
+    en: 'No menu items found',
+    de: 'Keine Menüpunkte gefunden'
+  },
+  markAllAsRead: {
+    en: 'Mark all as read',
+    de: 'Alle als gelesen markieren'
+  },
+  clearAll: {
+    en: 'Clear all',
+    de: 'Alle löschen'
+  },
+  viewAll: {
+    en: 'View all',
+    de: 'Alle anzeigen'
+  },
+  notifications: {
+    en: 'Notifications',
+    de: 'Benachrichtigungen'
+  },
+  noNotifications: {
+    en: 'No notifications',
+    de: 'Keine Benachrichtigungen'
+  },
+  english: {
+    en: 'English',
+    de: 'Englisch'
+  },
+  german: {
+    en: 'German',
+    de: 'Deutsch'
   }
 };
