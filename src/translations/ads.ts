@@ -7,7 +7,18 @@ export type AdsTranslationKey =
   | 'googleAds'
   | 'adPerformance'
   | 'trackOptimize'
-  | 'export';
+  | 'export'
+  | 'performanceMetrics'
+  | 'reachVsClicks'
+  | 'keyMetrics'
+  | 'costPerClick'
+  | 'conversionRate'
+  | 'roas'
+  | 'frequency'
+  | 'avgCostPerClick'
+  | 'clicksToConversions'
+  | 'returnOnAdSpend'
+  | 'avgTimesSeenPerPerson';
 
 // Ads-related translations
 export const adsTranslations: Record<AdsTranslationKey, Record<Language, string>> = {
@@ -30,5 +41,49 @@ export const adsTranslations: Record<AdsTranslationKey, Record<Language, string>
   export: {
     en: 'Export',
     de: 'Exportieren'
+  },
+  performanceMetrics: {
+    en: 'Performance Metrics',
+    de: 'Leistungskennzahlen'
+  },
+  reachVsClicks: {
+    en: 'Reach vs Clicks',
+    de: 'Reichweite vs. Klicks'
+  },
+  keyMetrics: {
+    en: 'Key Metrics',
+    de: 'Wichtige Kennzahlen'
+  },
+  costPerClick: {
+    en: 'Cost Per Click',
+    de: 'Kosten pro Klick'
+  },
+  conversionRate: {
+    en: 'Conversion Rate',
+    de: 'Konversionsrate'
+  },
+  roas: {
+    en: 'ROAS',
+    de: 'ROAS'
+  },
+  frequency: {
+    en: 'Frequency',
+    de: 'Häufigkeit'
+  },
+  avgCostPerClick: {
+    en: 'Average cost for each click',
+    de: 'Durchschnittliche Kosten pro Klick'
+  },
+  clicksToConversions: {
+    en: 'Percentage of clicks that result in conversions',
+    de: 'Prozentsatz der Klicks, die zu Konversionen führen'
+  },
+  returnOnAdSpend: {
+    en: 'Return on ad spend (revenue ÷ cost)',
+    de: 'Werbeausgabenrendite (Umsatz ÷ Kosten)'
+  },
+  avgTimesSeenPerPerson: {
+    en: 'Average number of times each person saw your ad',
+    de: 'Durchschnittliche Anzahl, wie oft eine Person deine Anzeige gesehen hat'
   }
 };

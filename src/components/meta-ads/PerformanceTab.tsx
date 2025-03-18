@@ -68,28 +68,28 @@ export const PerformanceTab: React.FC<PerformanceTabProps> = ({ currentAd, dateR
           <CardContent>
             <div className="space-y-4">
               <MetricCard
-                title="Cost Per Click"
+                title={t('costPerClick')}
                 value={`$${currentAd.cpc}`}
                 change={-5.2}
-                description="Average cost for each click"
+                description={t('avgCostPerClick')}
               />
               <MetricCard
-                title="Conversion Rate"
+                title={t('conversionRate')}
                 value={`${currentAd.conversionRate}%`}
                 change={3.8}
-                description="Percentage of clicks that result in conversions"
+                description={t('clicksToConversions')}
               />
               <MetricCard
-                title="ROAS"
+                title={t('roas')}
                 value={`${currentAd.roas}x`}
                 change={7.2}
-                description="Return on ad spend (revenue ÷ cost)"
+                description={t('returnOnAdSpend')}
               />
               <MetricCard
-                title="Frequency"
+                title={t('frequency')}
                 value={`${currentAd.frequency}`}
                 change={-2.1}
-                description="Average number of times each person saw your ad"
+                description={t('avgTimesSeenPerPerson')}
               />
             </div>
           </CardContent>
