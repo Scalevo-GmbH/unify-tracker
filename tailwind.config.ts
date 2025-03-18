@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -93,7 +92,8 @@ export default {
 			fontFamily: {
 				sans: ['Cal Sans', 'Inter', 'system-ui', 'sans-serif'],
 				display: ['Cal Sans', 'Inter', 'system-ui', 'sans-serif'],
-				cal: ['Cal Sans', 'Inter', 'system-ui', 'sans-serif']
+				cal: ['Cal Sans', 'Inter', 'system-ui', 'sans-serif'],
+				inter: ['Inter', 'system-ui', 'sans-serif']
 			},
 			fontSize: {
 				'display': ['2.25rem', '2.5rem'],

@@ -11,13 +11,13 @@
 .sidebar-footer,
 .sidebar-menu,
 .sidebar-submenu-item a {
-  @apply font-inter;
+  @apply font-sans;
 }
 
 /* All text in the sidebar */
 .sidebar, 
 .sidebar * {
-  @apply font-inter;
+  @apply font-sans;
 }
 
 /* Menu and dropdown elements */
@@ -30,7 +30,7 @@
 .menu-label,
 .menu-title,
 .submenu-item {
-  @apply font-inter;
+  @apply font-sans;
 }
 
 /* Tab and navigation elements */
@@ -44,6 +44,5 @@
 .navigation-menu-item,
 .navigation-menu-link,
 .navigation-menu-trigger {
-  @apply font-inter;
+  @apply font-sans;
 }
-
