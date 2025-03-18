@@ -6,6 +6,7 @@ import { navigationTranslations } from './navigation';
 import { adsTranslations } from './ads';
 import { helpSupportTranslations } from './help-support';
 import { campaignTranslations } from './campaigns';
+import { websiteTranslations } from './website';
 
 // Get a translation by key and language
 export function getTranslation(key: TranslationKey, language: Language): string {
@@ -30,6 +31,10 @@ export function getTranslation(key: TranslationKey, language: Language): string 
     return campaignTranslations[key as keyof typeof campaignTranslations][language] || key;
   }
   
+  if (key in websiteTranslations) {
+    return websiteTranslations[key as keyof typeof websiteTranslations][language] || key;
+  }
+  
   // If not found in any group, return the key itself
   return key;
 }
@@ -40,4 +45,5 @@ export * from './navigation';
 export * from './ads';
 export * from './help-support';
 export * from './campaigns';
+export * from './website';
 export * from './types';
