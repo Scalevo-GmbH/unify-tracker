@@ -3,13 +3,15 @@ import React from "react";
 import { useToast } from "@/hooks/use-toast";
 import PlanCard, { SubscriptionPlan } from "../subscriptions/PlanCard";
 import CurrentSubscription from "../subscriptions/CurrentSubscription";
+import { useTranslation } from "@/hooks/use-translation";
 
 const SubscriptionManagement = () => {
   const { toast } = useToast();
+  const { t } = useTranslation();
   
   // Current plan details
   const currentPlan = {
-    name: "Pro",
+    name: t('pro'),
     renewDate: "November 15, 2023",
     amount: "$29.99"
   };
@@ -18,8 +20,8 @@ const SubscriptionManagement = () => {
   const plans: SubscriptionPlan[] = [
     {
       id: "price_free_monthly",
-      name: "Free",
-      price: "Free",
+      name: t('free'),
+      price: t('free'),
       description: "Basic features for individuals",
       current: false,
       popular: false,
@@ -35,7 +37,7 @@ const SubscriptionManagement = () => {
     },
     {
       id: "price_pro_monthly",
-      name: "Pro",
+      name: t('pro'),
       price: "$29.99",
       description: "Advanced features for professionals",
       current: true,
@@ -52,7 +54,7 @@ const SubscriptionManagement = () => {
     },
     {
       id: "price_enterprise_monthly",
-      name: "Enterprise",
+      name: t('enterprise'),
       price: "$99.99",
       description: "Complete solution for businesses",
       current: false,
@@ -93,7 +95,7 @@ const SubscriptionManagement = () => {
       />
 
       <div>
-        <h2 className="text-xl font-semibold mb-4">Available Plans</h2>
+        <h2 className="text-xl font-semibold mb-4">{t('plansTitle')}</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {plans.map((plan) => (
             <PlanCard 

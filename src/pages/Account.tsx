@@ -1,23 +1,26 @@
 
-import React, { useState } from "react";
+import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import AccountSettings from "@/components/account/AccountSettings";
 import SubscriptionManagement from "@/components/account/SubscriptionManagement";
 import PaymentMethods from "@/components/account/PaymentMethods";
+import { useTranslation } from "@/hooks/use-translation";
 
 const Account = () => {
+  const { t } = useTranslation();
+  
   return (
     <div className="container mx-auto py-8 px-4 md:px-6">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">Account</h1>
-        <p className="text-muted-foreground">Manage your account settings and preferences</p>
+        <h1 className="text-3xl font-bold mb-2">{t('accountTitle')}</h1>
+        <p className="text-muted-foreground">{t('accountSubtitle')}</p>
       </div>
 
       <Tabs defaultValue="settings" className="w-full">
         <TabsList className="mb-6 w-full justify-start">
-          <TabsTrigger value="settings">Settings</TabsTrigger>
-          <TabsTrigger value="subscriptions">Subscriptions</TabsTrigger>
-          <TabsTrigger value="payment">Payment Methods</TabsTrigger>
+          <TabsTrigger value="settings">{t('settingsTab')}</TabsTrigger>
+          <TabsTrigger value="subscriptions">{t('subscriptionsTab')}</TabsTrigger>
+          <TabsTrigger value="payment">{t('paymentTab')}</TabsTrigger>
         </TabsList>
 
         <TabsContent value="settings">
