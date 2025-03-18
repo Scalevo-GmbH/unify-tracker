@@ -1,12 +1,14 @@
+
 import React from "react";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Facebook, Instagram, Twitter, Search, LineChart, Mail, MoreHorizontal, Edit, Trash2, Copy, PauseCircle, PlayCircle, X } from "lucide-react";
+import { Facebook, Instagram, Twitter, Search, LineChart, Mail, MoreHorizontal, Edit, Trash2, Copy, PauseCircle, PlayCircle } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useTranslation } from "@/hooks/use-translation";
 
 // Types
 interface Campaign {
@@ -133,38 +135,6 @@ const campaignsData: Campaign[] = [
   }
 ];
 
-// Helper function to get status badge
-const getStatusBadge = (status: Campaign["status"]) => {
-  switch (status) {
-    case "Active":
-      return <Badge className="bg-green-100 text-green-800 hover:bg-green-200 border-green-200">Active</Badge>;
-    case "Completed":
-      return <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200 border-blue-200">Completed</Badge>;
-    case "Paused":
-      return <Badge className="bg-amber-100 text-amber-800 hover:bg-amber-200 border-amber-200">Paused</Badge>;
-    case "Scheduled":
-      return <Badge className="bg-purple-100 text-purple-800 hover:bg-purple-200 border-purple-200">Scheduled</Badge>;
-    default:
-      return <Badge>{status}</Badge>;
-  }
-};
-
-// Helper function to get performance badge
-const getPerformanceBadge = (performance: Campaign["performance"]) => {
-  switch (performance) {
-    case "Excellent":
-      return <Badge className="bg-green-100 text-green-800 hover:bg-green-200 border-green-200">Excellent</Badge>;
-    case "Good":
-      return <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200 border-blue-200">Good</Badge>;
-    case "Average":
-      return <Badge className="bg-yellow-100 text-yellow-800 hover:bg-yellow-200 border-yellow-200">Average</Badge>;
-    case "Poor":
-      return <Badge className="bg-red-100 text-red-800 hover:bg-red-200 border-red-200">Poor</Badge>;
-    default:
-      return <Badge>{performance}</Badge>;
-  }
-};
-
 interface CampaignsTableProps {
   filterStatus: "all" | "active" | "completed";
   platformFilters: string[];
@@ -172,6 +142,39 @@ interface CampaignsTableProps {
 
 const CampaignsTable: React.FC<CampaignsTableProps> = ({ filterStatus, platformFilters }) => {
   const isMobile = useIsMobile();
+  const { t } = useTranslation();
+  
+  // Helper function to get status badge
+  const getStatusBadge = (status: Campaign["status"]) => {
+    switch (status) {
+      case "Active":
+        return <Badge className="bg-green-100 text-green-800 hover:bg-green-200 border-green-200">{t('active')}</Badge>;
+      case "Completed":
+        return <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200 border-blue-200">{t('completed')}</Badge>;
+      case "Paused":
+        return <Badge className="bg-amber-100 text-amber-800 hover:bg-amber-200 border-amber-200">{t('paused')}</Badge>;
+      case "Scheduled":
+        return <Badge className="bg-purple-100 text-purple-800 hover:bg-purple-200 border-purple-200">{t('scheduled')}</Badge>;
+      default:
+        return <Badge>{status}</Badge>;
+    }
+  };
+
+  // Helper function to get performance badge
+  const getPerformanceBadge = (performance: Campaign["performance"]) => {
+    switch (performance) {
+      case "Excellent":
+        return <Badge className="bg-green-100 text-green-800 hover:bg-green-200 border-green-200">{t('excellent')}</Badge>;
+      case "Good":
+        return <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200 border-blue-200">{t('good')}</Badge>;
+      case "Average":
+        return <Badge className="bg-yellow-100 text-yellow-800 hover:bg-yellow-200 border-yellow-200">{t('average')}</Badge>;
+      case "Poor":
+        return <Badge className="bg-red-100 text-red-800 hover:bg-red-200 border-red-200">{t('poor')}</Badge>;
+      default:
+        return <Badge>{performance}</Badge>;
+    }
+  };
   
   // Filter campaigns based on the selected status and platform categories
   const filteredCampaigns = campaignsData.filter(campaign => {
@@ -203,7 +206,7 @@ const CampaignsTable: React.FC<CampaignsTableProps> = ({ filterStatus, platformF
             <span className="text-sm font-medium">Filtered by:</span>
             {platformFilters.map(filter => (
               <Badge key={filter} variant="outline" className="flex items-center gap-1 px-2 py-1">
-                {filter === 'search' ? 'Search' : filter === 'social' ? 'Social Media' : 'Email'}
+                {filter === 'search' ? t('searchAds') : filter === 'social' ? t('socialMedia') : t('emailMarketing')}
               </Badge>
             ))}
           </div>
@@ -213,15 +216,15 @@ const CampaignsTable: React.FC<CampaignsTableProps> = ({ filterStatus, platformF
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Campaign</TableHead>
-              <TableHead>Platform</TableHead>
-              <TableHead>Type</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead>Budget</TableHead>
-              <TableHead>Spent</TableHead>
-              <TableHead>Dates</TableHead>
-              <TableHead>Performance</TableHead>
-              <TableHead className="text-right">Actions</TableHead>
+              <TableHead>{t('campaignName')}</TableHead>
+              <TableHead>{t('platform')}</TableHead>
+              <TableHead>{t('campaignType')}</TableHead>
+              <TableHead>{t('status')}</TableHead>
+              <TableHead>{t('budget')}</TableHead>
+              <TableHead>{t('spent')}</TableHead>
+              <TableHead>{t('dates')}</TableHead>
+              <TableHead>{t('performance')}</TableHead>
+              <TableHead className="text-right">{t('actions')}</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -243,8 +246,8 @@ const CampaignsTable: React.FC<CampaignsTableProps> = ({ filterStatus, platformF
                   <TableCell>{campaign.spent}</TableCell>
                   <TableCell>
                     <div className="text-xs">
-                      <div>Start: {new Date(campaign.startDate).toLocaleDateString()}</div>
-                      <div>End: {new Date(campaign.endDate).toLocaleDateString()}</div>
+                      <div>{t('start')}: {new Date(campaign.startDate).toLocaleDateString()}</div>
+                      <div>{t('end')}: {new Date(campaign.endDate).toLocaleDateString()}</div>
                     </div>
                   </TableCell>
                   <TableCell>{getPerformanceBadge(campaign.performance)}</TableCell>
@@ -256,32 +259,32 @@ const CampaignsTable: React.FC<CampaignsTableProps> = ({ filterStatus, platformF
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
-                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                        <DropdownMenuLabel>{t('actions')}</DropdownMenuLabel>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem className="cursor-pointer">
                           <Edit className="mr-2 h-4 w-4" />
-                          Edit
+                          {t('edit')}
                         </DropdownMenuItem>
                         <DropdownMenuItem className="cursor-pointer">
                           <Copy className="mr-2 h-4 w-4" />
-                          Duplicate
+                          {t('duplicate')}
                         </DropdownMenuItem>
                         {campaign.status === "Active" && (
                           <DropdownMenuItem className="cursor-pointer">
                             <PauseCircle className="mr-2 h-4 w-4" />
-                            Pause
+                            {t('pause')}
                           </DropdownMenuItem>
                         )}
                         {campaign.status === "Paused" && (
                           <DropdownMenuItem className="cursor-pointer">
                             <PlayCircle className="mr-2 h-4 w-4" />
-                            Resume
+                            {t('resume')}
                           </DropdownMenuItem>
                         )}
                         <DropdownMenuSeparator />
                         <DropdownMenuItem className="cursor-pointer text-red-600">
                           <Trash2 className="mr-2 h-4 w-4" />
-                          Delete
+                          {t('delete')}
                         </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
@@ -291,7 +294,7 @@ const CampaignsTable: React.FC<CampaignsTableProps> = ({ filterStatus, platformF
             ) : (
               <TableRow>
                 <TableCell colSpan={9} className="text-center py-6 text-muted-foreground">
-                  No campaigns found matching your filters.
+                  {t('noCampaignsFound')}
                 </TableCell>
               </TableRow>
             )}

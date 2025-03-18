@@ -78,7 +78,75 @@ type TranslationKey =
   | 'yourName'
   | 'yourEmail'
   | 'howCanWeHelp'
-  | 'describeIssue';
+  | 'describeIssue'
+  // Campaign page translations
+  | 'createCampaign'
+  | 'filterByStatus'
+  | 'filterByPlatform'
+  | 'allCampaigns'
+  | 'activeCampaigns'
+  | 'completedCampaigns'
+  | 'socialMedia'
+  | 'searchAds'
+  | 'emailMarketing'
+  | 'campaignName'
+  | 'campaignType'
+  | 'platform'
+  | 'status'
+  | 'budget'
+  | 'spent'
+  | 'dates'
+  | 'performance'
+  | 'actions'
+  | 'active'
+  | 'completed'
+  | 'paused'
+  | 'scheduled'
+  | 'excellent'
+  | 'good'
+  | 'average'
+  | 'poor'
+  | 'edit'
+  | 'duplicate'
+  | 'pause'
+  | 'resume'
+  | 'delete'
+  | 'start'
+  | 'end'
+  | 'noCampaignsFound'
+  | 'cancel'
+  // New Campaign Form
+  | 'createNewCampaign'
+  | 'campaignNameLabel'
+  | 'campaignNamePlaceholder'
+  | 'campaignNameDescription'
+  | 'platformLabel'
+  | 'selectPlatform'
+  | 'platformDescription'
+  | 'campaignTypeLabel'
+  | 'selectCampaignType'
+  | 'campaignTypeDescription'
+  | 'budgetLabel'
+  | 'budgetPlaceholder'
+  | 'budgetDescription'
+  | 'startDateLabel'
+  | 'endDateLabel'
+  | 'campaignDescriptionLabel'
+  | 'campaignDescriptionPlaceholder'
+  | 'objectivesLabel'
+  | 'objectivesPlaceholder'
+  | 'targetAudienceLabel'
+  | 'targetAudienceDescription'
+  | 'targetAudiencePlaceholder'
+  // Dashboard metrics
+  | 'totalReach'
+  | 'impressions'
+  | 'conversionRate'
+  | 'engagementRate'
+  | 'reachDescription'
+  | 'impressionsDescription'
+  | 'conversionRateDescription'
+  | 'engagementRateDescription';
 
 // Define the translations object
 const translations: Record<TranslationKey, Record<Language, string>> = {
@@ -370,6 +438,269 @@ const translations: Record<TranslationKey, Record<Language, string>> = {
   describeIssue: {
     en: 'Describe your issue or question in detail',
     de: 'Beschreibe dein Problem oder deine Frage im Detail'
+  },
+  // Campaign page translations
+  createCampaign: {
+    en: 'Create Campaign',
+    de: 'Kampagne erstellen'
+  },
+  filterByStatus: {
+    en: 'Filter by Status',
+    de: 'Nach Status filtern'
+  },
+  filterByPlatform: {
+    en: 'Filter by Platform',
+    de: 'Nach Plattform filtern'
+  },
+  allCampaigns: {
+    en: 'All Campaigns',
+    de: 'Alle Kampagnen'
+  },
+  activeCampaigns: {
+    en: 'Active Campaigns',
+    de: 'Aktive Kampagnen'
+  },
+  completedCampaigns: {
+    en: 'Completed Campaigns',
+    de: 'Abgeschlossene Kampagnen'
+  },
+  socialMedia: {
+    en: 'Social Media',
+    de: 'Soziale Medien'
+  },
+  searchAds: {
+    en: 'Search Ads',
+    de: 'Suchanzeigen'
+  },
+  emailMarketing: {
+    en: 'Email Marketing',
+    de: 'E-Mail-Marketing'
+  },
+  campaignName: {
+    en: 'Campaign',
+    de: 'Kampagne'
+  },
+  campaignType: {
+    en: 'Type',
+    de: 'Typ'
+  },
+  platform: {
+    en: 'Platform',
+    de: 'Plattform'
+  },
+  status: {
+    en: 'Status',
+    de: 'Status'
+  },
+  budget: {
+    en: 'Budget',
+    de: 'Budget'
+  },
+  spent: {
+    en: 'Spent',
+    de: 'Ausgegeben'
+  },
+  dates: {
+    en: 'Dates',
+    de: 'Zeitraum'
+  },
+  performance: {
+    en: 'Performance',
+    de: 'Leistung'
+  },
+  actions: {
+    en: 'Actions',
+    de: 'Aktionen'
+  },
+  active: {
+    en: 'Active',
+    de: 'Aktiv'
+  },
+  completed: {
+    en: 'Completed',
+    de: 'Abgeschlossen'
+  },
+  paused: {
+    en: 'Paused',
+    de: 'Pausiert'
+  },
+  scheduled: {
+    en: 'Scheduled',
+    de: 'Geplant'
+  },
+  excellent: {
+    en: 'Excellent',
+    de: 'Ausgezeichnet'
+  },
+  good: {
+    en: 'Good',
+    de: 'Gut'
+  },
+  average: {
+    en: 'Average',
+    de: 'Durchschnittlich'
+  },
+  poor: {
+    en: 'Poor',
+    de: 'Schlecht'
+  },
+  edit: {
+    en: 'Edit',
+    de: 'Bearbeiten'
+  },
+  duplicate: {
+    en: 'Duplicate',
+    de: 'Duplizieren'
+  },
+  pause: {
+    en: 'Pause',
+    de: 'Pausieren'
+  },
+  resume: {
+    en: 'Resume',
+    de: 'Fortsetzen'
+  },
+  delete: {
+    en: 'Delete',
+    de: 'Löschen'
+  },
+  start: {
+    en: 'Start',
+    de: 'Start'
+  },
+  end: {
+    en: 'End',
+    de: 'Ende'
+  },
+  noCampaignsFound: {
+    en: 'No campaigns found matching your filters.',
+    de: 'Keine Kampagnen gefunden, die deinen Filtern entsprechen.'
+  },
+  cancel: {
+    en: 'Cancel',
+    de: 'Abbrechen'
+  },
+  // New Campaign Form
+  createNewCampaign: {
+    en: 'Create New Campaign',
+    de: 'Neue Kampagne erstellen'
+  },
+  campaignNameLabel: {
+    en: 'Campaign Name',
+    de: 'Kampagnenname'
+  },
+  campaignNamePlaceholder: {
+    en: 'Summer Sale 2025',
+    de: 'Sommer-Sale 2025'
+  },
+  campaignNameDescription: {
+    en: 'A clear, descriptive name for your campaign',
+    de: 'Ein klarer, beschreibender Name für deine Kampagne'
+  },
+  platformLabel: {
+    en: 'Platform',
+    de: 'Plattform'
+  },
+  selectPlatform: {
+    en: 'Select platform',
+    de: 'Plattform auswählen'
+  },
+  platformDescription: {
+    en: 'The marketing platform for this campaign',
+    de: 'Die Marketing-Plattform für diese Kampagne'
+  },
+  campaignTypeLabel: {
+    en: 'Campaign Type',
+    de: 'Kampagnentyp'
+  },
+  selectCampaignType: {
+    en: 'Select campaign type',
+    de: 'Kampagnentyp auswählen'
+  },
+  campaignTypeDescription: {
+    en: 'The type of marketing campaign',
+    de: 'Die Art der Marketing-Kampagne'
+  },
+  budgetLabel: {
+    en: 'Budget',
+    de: 'Budget'
+  },
+  budgetPlaceholder: {
+    en: '$1,000',
+    de: '1.000 €'
+  },
+  budgetDescription: {
+    en: 'Total budget allocated for this campaign',
+    de: 'Gesamtbudget für diese Kampagne'
+  },
+  startDateLabel: {
+    en: 'Start Date',
+    de: 'Startdatum'
+  },
+  endDateLabel: {
+    en: 'End Date',
+    de: 'Enddatum'
+  },
+  campaignDescriptionLabel: {
+    en: 'Campaign Description',
+    de: 'Kampagnenbeschreibung'
+  },
+  campaignDescriptionPlaceholder: {
+    en: 'Describe the purpose and details of your campaign',
+    de: 'Beschreibe den Zweck und die Details deiner Kampagne'
+  },
+  objectivesLabel: {
+    en: 'Campaign Objectives',
+    de: 'Kampagnenziele'
+  },
+  objectivesPlaceholder: {
+    en: 'What are the main goals of this campaign?',
+    de: 'Was sind die Hauptziele dieser Kampagne?'
+  },
+  targetAudienceLabel: {
+    en: 'Target Audience',
+    de: 'Zielgruppe'
+  },
+  targetAudienceDescription: {
+    en: 'The intended audience for your campaign',
+    de: 'Die beabsichtigte Zielgruppe für deine Kampagne'
+  },
+  targetAudiencePlaceholder: {
+    en: 'Describe your target audience for this campaign',
+    de: 'Beschreibe deine Zielgruppe für diese Kampagne'
+  },
+  // Dashboard metrics
+  totalReach: {
+    en: 'Total Reach',
+    de: 'Gesamtreichweite'
+  },
+  impressions: {
+    en: 'Impressions',
+    de: 'Impressionen'
+  },
+  conversionRate: {
+    en: 'Conversion Rate',
+    de: 'Konversionsrate'
+  },
+  engagementRate: {
+    en: 'Engagement Rate',
+    de: 'Engagement-Rate'
+  },
+  reachDescription: {
+    en: 'The total number of unique users who have seen your content across all platforms and campaigns.',
+    de: 'Die Gesamtzahl der einzelnen Nutzer, die deine Inhalte über alle Plattformen und Kampagnen hinweg gesehen haben.'
+  },
+  impressionsDescription: {
+    en: 'The total number of times your content has been displayed, regardless of whether it was clicked or not.',
+    de: 'Die Gesamtzahl der Anzeigen deiner Inhalte, unabhängig davon, ob darauf geklickt wurde oder nicht.'
+  },
+  conversionRateDescription: {
+    en: 'The percentage of visitors who completed a desired goal (e.g., made a purchase or signed up) out of the total number of visitors.',
+    de: 'Der Prozentsatz der Besucher, die ein gewünschtes Ziel erreicht haben (z.B. einen Kauf getätigt oder sich angemeldet haben), gemessen an der Gesamtzahl der Besucher.'
+  },
+  engagementRateDescription: {
+    en: 'The percentage of people who engaged with your content (likes, comments, shares, clicks) compared to the total reach.',
+    de: 'Der Prozentsatz der Personen, die mit deinen Inhalten interagiert haben (Likes, Kommentare, Shares, Klicks) im Vergleich zur Gesamtreichweite.'
   }
 };
 

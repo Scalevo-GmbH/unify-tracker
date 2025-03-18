@@ -17,6 +17,15 @@ export const LanguageSwitcher: React.FC = () => {
     return lang === "en" ? "🇬🇧" : "🇩🇪";
   };
 
+  // Get language name in the target language
+  const getLanguageName = (lang: string, displayLang: string) => {
+    if (lang === "en") {
+      return displayLang === "en" ? "English" : "Englisch";
+    } else {
+      return displayLang === "en" ? "German" : "Deutsch";
+    }
+  };
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -31,14 +40,14 @@ export const LanguageSwitcher: React.FC = () => {
           className={language === "en" ? "bg-accent" : ""}
         >
           <span className="mr-2">🇬🇧</span>
-          <span className="cal-sans">English</span>
+          <span className="cal-sans">{getLanguageName("en", language)}</span>
         </DropdownMenuItem>
         <DropdownMenuItem 
           onClick={() => setLanguage("de")}
           className={language === "de" ? "bg-accent" : ""}
         >
           <span className="mr-2">🇩🇪</span>
-          <span className="cal-sans">Deutsch</span>
+          <span className="cal-sans">{getLanguageName("de", language)}</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
