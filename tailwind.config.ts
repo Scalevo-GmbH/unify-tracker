@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -93,6 +94,23 @@ export default {
 				sans: ['Cal Sans', 'Inter', 'system-ui', 'sans-serif'],
 				display: ['Cal Sans', 'Inter', 'system-ui', 'sans-serif'],
 				cal: ['Cal Sans', 'Inter', 'system-ui', 'sans-serif']
+			},
+			fontSize: {
+				'display': ['2.25rem', '2.5rem'],
+				'title': ['1.875rem', '2.25rem'],
+				'subtitle': ['1.5rem', '2rem'],
+				'heading': ['1.25rem', '1.75rem'],
+				'subheading': ['1.125rem', '1.75rem'],
+			},
+			letterSpacing: {
+				'cal': 'var(--cal-letter-spacing)',
+				'cal-heading': 'var(--cal-heading-spacing)',
+				'cal-body': 'var(--cal-body-spacing)',
+				'cal-tight': 'var(--cal-tracking-tight)',
+			},
+			fontWeight: {
+				'cal-heading': 'var(--cal-heading-weight)',
+				'cal-body': 'var(--cal-body-weight)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

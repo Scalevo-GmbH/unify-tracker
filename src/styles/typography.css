@@ -1,5 +1,5 @@
 
-/* Typography styles for Cal Sans */
+/* Typography styles for Cal Sans and Inter */
 
 /* Base font settings */
 :root {
@@ -11,36 +11,92 @@
   --cal-body-weight: 400;
 }
 
-/* Global Cal Sans application - using !important to override any conflicting styles */
-body {
+/* Cal Sans family classes */
+.font-cal {
   font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  letter-spacing: var(--cal-body-spacing) !important;
+  letter-spacing: var(--cal-letter-spacing);
 }
 
-/* Apply Cal Sans to specific HTML elements */
-h1, h2, h3, h4, h5, h6,
-button, input, select, textarea, label {
+.font-cal-heading {
   font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
-  letter-spacing: var(--cal-letter-spacing) !important;
-  font-weight: var(--cal-heading-weight) !important;
+  letter-spacing: var(--cal-heading-spacing);
+  font-weight: var(--cal-heading-weight);
 }
 
-/* Body text elements with thinner font weight */
-p, a, div, span, li, ul, ol {
+.font-cal-body {
   font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
-  letter-spacing: var(--cal-body-spacing) !important;
+  letter-spacing: var(--cal-body-spacing);
+  font-weight: var(--cal-body-weight);
 }
 
-/* Headings with tighter letter spacing */
-h1, h2 {
-  letter-spacing: var(--cal-heading-spacing) !important;
-  font-weight: var(--cal-heading-weight) !important;
-}
-
-/* Utility class for Cal Sans text */
+/* Applied via global styles instead of directly to elements */
 .cal-sans {
   font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
-  letter-spacing: var(--cal-letter-spacing) !important;
+  letter-spacing: var(--cal-letter-spacing);
+}
+
+.cal-sans-heading {
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
+  letter-spacing: var(--cal-heading-spacing);
+  font-weight: var(--cal-heading-weight);
+}
+
+.cal-sans-body {
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
+  letter-spacing: var(--cal-body-spacing);
+  font-weight: var(--cal-body-weight);
+}
+
+/* Font size utility classes */
+.text-display {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  letter-spacing: var(--cal-heading-spacing);
+  font-weight: var(--cal-heading-weight);
+}
+
+.text-title {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  letter-spacing: var(--cal-heading-spacing);
+  font-weight: var(--cal-heading-weight);
+}
+
+.text-subtitle {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  letter-spacing: var(--cal-heading-spacing);
+  font-weight: var(--cal-heading-weight);
+}
+
+.text-heading {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  letter-spacing: var(--cal-heading-spacing);
+  font-weight: var(--cal-heading-weight);
+}
+
+.text-subheading {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  letter-spacing: var(--cal-letter-spacing);
+  font-weight: var(--cal-heading-weight);
+}
+
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: var(--cal-body-spacing);
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  letter-spacing: var(--cal-body-spacing);
+}
+
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  letter-spacing: var(--cal-body-spacing);
 }

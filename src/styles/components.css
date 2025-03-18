@@ -13,17 +13,13 @@
 .sidebar-footer,
 .sidebar-menu,
 .sidebar-submenu-item a {
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
-  letter-spacing: var(--cal-letter-spacing);
-  font-weight: var(--cal-heading-weight);
+  @apply font-cal-heading;
 }
 
 /* All text in the sidebar */
 .sidebar, 
 .sidebar * {
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
-  letter-spacing: var(--cal-letter-spacing);
-  font-weight: var(--cal-heading-weight);
+  @apply font-cal;
 }
 
 /* Menu and dropdown elements */
@@ -36,9 +32,7 @@
 .menu-label,
 .menu-title,
 .submenu-item {
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
-  letter-spacing: var(--cal-letter-spacing);
-  font-weight: var(--cal-heading-weight);
+  @apply font-cal-heading;
 }
 
 /* Button and interactive elements */
@@ -52,9 +46,7 @@ input[type="submit"],
 input[type="reset"],
 a.button,
 .action-button {
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
-  letter-spacing: var(--cal-letter-spacing);
-  font-weight: var(--cal-heading-weight);
+  @apply font-cal-heading;
 }
 
 /* Card related elements */
@@ -66,9 +58,7 @@ a.button,
 .metric-value,
 .dashboard-card-title,
 .dashboard-card-value {
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
-  letter-spacing: var(--cal-letter-spacing);
-  font-weight: var(--cal-heading-weight);
+  @apply font-cal-heading;
 }
 
 /* Tab and navigation elements */
@@ -82,9 +72,7 @@ a.button,
 .navigation-menu-item,
 .navigation-menu-link,
 .navigation-menu-trigger {
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
-  letter-spacing: var(--cal-letter-spacing);
-  font-weight: var(--cal-heading-weight);
+  @apply font-cal-heading;
 }
 
 /* Dialog and modal elements */
@@ -94,9 +82,7 @@ a.button,
 .modal-header,
 .popover-title,
 .tooltip-content {
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
-  letter-spacing: var(--cal-letter-spacing);
-  font-weight: var(--cal-heading-weight);
+  @apply font-cal-heading;
 }
 
 /* Form elements */
@@ -107,9 +93,7 @@ legend,
 .checkbox-label,
 .radio-label,
 .select-label {
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
-  letter-spacing: var(--cal-letter-spacing);
-  font-weight: var(--cal-heading-weight);
+  @apply font-cal-heading;
 }
 
 /* Component-specific from the design screenshots */
@@ -124,9 +108,7 @@ legend,
 .performance-chart-title,
 .channel-name,
 .channel-percentage {
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
-  letter-spacing: var(--cal-letter-spacing);
-  font-weight: var(--cal-heading-weight);
+  @apply font-cal-heading;
 }
 
 /* Ensure all direct text in cards and metrics use Cal Sans */
@@ -134,9 +116,7 @@ legend,
 .metric-card span:not(.icon),
 .dashboard-card p,
 .dashboard-card span:not(.icon) {
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
-  letter-spacing: var(--cal-body-spacing);
-  font-weight: var(--cal-body-weight);
+  @apply font-cal-body;
 }
 
 /* Dashboard and data visualization elements */
@@ -146,7 +126,5 @@ legend,
 .tooltip-label,
 .data-label,
 .axis-label {
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
-  letter-spacing: var(--cal-body-spacing);
-  font-weight: var(--cal-body-weight);
+  @apply font-cal-body;
 }

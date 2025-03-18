@@ -16,8 +16,7 @@
 
 /* iOS Switch styling */
 .ios-switch {
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
-  letter-spacing: var(--cal-letter-spacing);
+  @apply font-cal;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
@@ -25,9 +24,7 @@
 }
 
 .ios-switch button {
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
-  letter-spacing: var(--cal-letter-spacing);
-  font-weight: 500;
+  @apply font-cal font-medium;
   transition: all 0.2s ease;
   user-select: none;
   min-width: 80px;
@@ -151,8 +148,7 @@ th, td {
   background-color: transparent;
   padding: 0;
   width: 100%;
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
-  letter-spacing: var(--cal-letter-spacing);
+  @apply font-cal;
 }
 
 .dashboard-tab {
@@ -166,8 +162,7 @@ th, td {
   border-bottom: 2px solid transparent;
   transition: all 0.2s ease;
   white-space: nowrap;
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
-  letter-spacing: var(--cal-letter-spacing);
+  @apply font-cal;
 }
 
 .dashboard-tab[data-state=active] {

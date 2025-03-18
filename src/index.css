@@ -87,35 +87,27 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background text-foreground antialiased font-cal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    letter-spacing: var(--cal-letter-spacing);
-    font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
-    letter-spacing: var(--cal-letter-spacing);
-    font-weight: var(--cal-heading-weight);
+    @apply font-cal-heading;
   }
   
   button, a, input, select, textarea {
-    font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
+    @apply font-cal;
   }
 }
 
 /* Tab styling like the awork design */
 .dashboard-tabs {
   @apply flex rounded-md bg-slate-100 p-1 font-cal w-full;
-  letter-spacing: var(--cal-letter-spacing);
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
 }
 
 .dashboard-tab {
   @apply flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium transition-all font-cal tracking-tight font-semibold;
-  letter-spacing: var(--cal-letter-spacing);
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
 }
 
 .dashboard-tab[data-state="active"] {
