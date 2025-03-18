@@ -6,6 +6,7 @@ import { googleAdsTranslations, GoogleAdsTranslationKey } from './google-ads';
 import { dashboardTranslations, DashboardTranslationKey } from './dashboard';
 import { metricsTranslations, MetricsTranslationKey } from './metrics';
 import { navigationTranslations, NavigationTranslationKey } from './navigation';
+import { campaignsTranslations, CampaignsTranslationKey } from './campaigns';
 
 // Union type of all translation keys
 export type TranslationKey = 
@@ -14,7 +15,8 @@ export type TranslationKey =
   | GoogleAdsTranslationKey
   | DashboardTranslationKey
   | MetricsTranslationKey
-  | NavigationTranslationKey;
+  | NavigationTranslationKey
+  | CampaignsTranslationKey;
 
 // Function to get a translation
 export function getTranslation(key: TranslationKey, language: Language = 'en'): string {
@@ -43,6 +45,10 @@ export function getTranslation(key: TranslationKey, language: Language = 'en'): 
     return navigationTranslations[key as NavigationTranslationKey][language];
   }
   
+  if (key in campaignsTranslations) {
+    return campaignsTranslations[key as CampaignsTranslationKey][language];
+  }
+  
   // If the key is not found, return the key itself as a fallback
   console.warn(`Translation key not found: ${key}`);
   return key;
@@ -55,3 +61,4 @@ export * from './google-ads';
 export * from './dashboard';
 export * from './metrics';
 export * from './navigation';
+export * from './campaigns';

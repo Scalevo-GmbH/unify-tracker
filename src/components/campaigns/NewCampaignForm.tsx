@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Facebook, Instagram, Twitter, Search, Mail } from "lucide-react";
+import useTranslation from "@/hooks/use-translation";
 
 // Form schema
 const formSchema = z.object({
@@ -55,6 +56,8 @@ const campaignTypes = [
 ];
 
 const NewCampaignForm = () => {
+  const { t } = useTranslation();
+  
   // Initialize form
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -81,7 +84,7 @@ const NewCampaignForm = () => {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <h2 className="text-2xl font-bold mb-6">Create New Campaign</h2>
+      <h2 className="text-2xl font-bold mb-6">{t('createNewCampaign')}</h2>
       
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -92,12 +95,12 @@ const NewCampaignForm = () => {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Campaign Name</FormLabel>
+                  <FormLabel>{t('campaignName')}</FormLabel>
                   <FormControl>
                     <Input placeholder="Summer Sale 2025" {...field} />
                   </FormControl>
                   <FormDescription>
-                    A clear, descriptive name for your campaign
+                    {t('campaignNameDescription')}
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -110,7 +113,7 @@ const NewCampaignForm = () => {
               name="platform"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Platform</FormLabel>
+                  <FormLabel>{t('platform')}</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger>
@@ -132,7 +135,7 @@ const NewCampaignForm = () => {
                     </SelectContent>
                   </Select>
                   <FormDescription>
-                    The marketing platform for this campaign
+                    {t('platformDescription')}
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -145,7 +148,7 @@ const NewCampaignForm = () => {
               name="type"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Campaign Type</FormLabel>
+                  <FormLabel>{t('campaignType')}</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger>
@@ -161,7 +164,7 @@ const NewCampaignForm = () => {
                     </SelectContent>
                   </Select>
                   <FormDescription>
-                    The type of marketing campaign
+                    {t('campaignTypeDescription')}
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -174,12 +177,12 @@ const NewCampaignForm = () => {
               name="budget"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Budget</FormLabel>
+                  <FormLabel>{t('budget')}</FormLabel>
                   <FormControl>
                     <Input type="text" placeholder="$1,000" {...field} />
                   </FormControl>
                   <FormDescription>
-                    Total budget allocated for this campaign
+                    {t('budgetDescription')}
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -192,7 +195,7 @@ const NewCampaignForm = () => {
               name="startDate"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Start Date</FormLabel>
+                  <FormLabel>{t('startDate')}</FormLabel>
                   <FormControl>
                     <Input type="date" {...field} />
                   </FormControl>
@@ -207,7 +210,7 @@ const NewCampaignForm = () => {
               name="endDate"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>End Date</FormLabel>
+                  <FormLabel>{t('endDate')}</FormLabel>
                   <FormControl>
                     <Input type="date" {...field} />
                   </FormControl>
@@ -223,7 +226,7 @@ const NewCampaignForm = () => {
             name="description"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Campaign Description</FormLabel>
+                <FormLabel>{t('campaignDescription')}</FormLabel>
                 <FormControl>
                   <Textarea
                     placeholder="Describe the purpose and details of your campaign"
@@ -242,10 +245,10 @@ const NewCampaignForm = () => {
             name="objectives"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Campaign Objectives</FormLabel>
+                <FormLabel>{t('campaignObjectives')}</FormLabel>
                 <FormControl>
                   <Textarea
-                    placeholder="What are the main goals of this campaign?"
+                    placeholder={t('campaignObjectivesPlaceholder')}
                     className="resize-none"
                     {...field}
                   />
@@ -261,10 +264,10 @@ const NewCampaignForm = () => {
             name="targetAudience"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Target Audience</FormLabel>
+                <FormLabel>{t('targetAudience')}</FormLabel>
                 <FormControl>
                   <Textarea
-                    placeholder="Describe your target audience for this campaign"
+                    placeholder={t('targetAudiencePlaceholder')}
                     className="resize-none"
                     {...field}
                   />
@@ -275,8 +278,8 @@ const NewCampaignForm = () => {
           />
 
           <div className="flex justify-end gap-4">
-            <Button type="button" variant="outline">Cancel</Button>
-            <Button type="submit">Create Campaign</Button>
+            <Button type="button" variant="outline">{t('cancel')}</Button>
+            <Button type="submit">{t('create')}</Button>
           </div>
         </form>
       </Form>

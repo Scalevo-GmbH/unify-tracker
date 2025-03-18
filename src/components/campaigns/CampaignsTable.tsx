@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -7,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Facebook, Instagram, Twitter, Search, LineChart, Mail, MoreHorizontal, Edit, Trash2, Copy, PauseCircle, PlayCircle, X } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { useIsMobile } from "@/hooks/use-mobile";
+import useTranslation from "@/hooks/use-translation";
 
 // Types
 interface Campaign {
@@ -172,6 +174,7 @@ interface CampaignsTableProps {
 
 const CampaignsTable: React.FC<CampaignsTableProps> = ({ filterStatus, platformFilters }) => {
   const isMobile = useIsMobile();
+  const { t } = useTranslation();
   
   // Filter campaigns based on the selected status and platform categories
   const filteredCampaigns = campaignsData.filter(campaign => {
@@ -200,10 +203,10 @@ const CampaignsTable: React.FC<CampaignsTableProps> = ({ filterStatus, platformF
       {platformFilters.length > 0 && (
         <div className="bg-slate-50 p-3 border-b border-slate-200 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="text-sm font-medium">Filtered by:</span>
+            <span className="text-sm font-medium">{t('filterByPlatform')}:</span>
             {platformFilters.map(filter => (
               <Badge key={filter} variant="outline" className="flex items-center gap-1 px-2 py-1">
-                {filter === 'search' ? 'Search' : filter === 'social' ? 'Social Media' : 'Email'}
+                {filter === 'search' ? t('search') : filter === 'social' ? t('socialMedia') : t('emailMarketing')}
               </Badge>
             ))}
           </div>
@@ -213,11 +216,11 @@ const CampaignsTable: React.FC<CampaignsTableProps> = ({ filterStatus, platformF
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Campaign</TableHead>
-              <TableHead>Platform</TableHead>
-              <TableHead>Type</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead>Budget</TableHead>
+              <TableHead>{t('campaignName')}</TableHead>
+              <TableHead>{t('platform')}</TableHead>
+              <TableHead>{t('campaignType')}</TableHead>
+              <TableHead>{t('active')}</TableHead>
+              <TableHead>{t('budget')}</TableHead>
               <TableHead>Spent</TableHead>
               <TableHead>Dates</TableHead>
               <TableHead>Performance</TableHead>
@@ -291,7 +294,7 @@ const CampaignsTable: React.FC<CampaignsTableProps> = ({ filterStatus, platformF
             ) : (
               <TableRow>
                 <TableCell colSpan={9} className="text-center py-6 text-muted-foreground">
-                  No campaigns found matching your filters.
+                  {t('noCampaignsFound')}
                 </TableCell>
               </TableRow>
             )}
