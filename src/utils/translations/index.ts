@@ -1,37 +1,43 @@
 
 import { Language } from './types';
-import { NavigationTranslationKey, navigationTranslations } from './navigation';
-import { ChannelsTranslationKey, channelsTranslations } from './channels';
-import { DashboardTranslationKey, dashboardTranslations } from './dashboard';
-import { MetricsTranslationKey, metricsTranslations } from './metrics';
-import { PerformanceTranslationKey, performanceTranslations } from './performance';
+import { channelsTranslations, ChannelsTranslationKey } from './channels';
+import { performanceTranslations, PerformanceTranslationKey } from './performance';
+import { googleAdsTranslations, GoogleAdsTranslationKey } from './google-ads';
 
-// Combine all translation keys
-export type TranslationKey =
-  | NavigationTranslationKey
-  | ChannelsTranslationKey
-  | DashboardTranslationKey
-  | MetricsTranslationKey
-  | PerformanceTranslationKey;
+// Import other translation categories as needed
+// import { otherCategoryTranslations } from './other-category';
 
-// Export all translation objects
-export const translations = {
-  ...navigationTranslations,
-  ...channelsTranslations,
-  ...dashboardTranslations,
-  ...metricsTranslations,
-  ...performanceTranslations
-};
+// Union type of all translation keys
+export type TranslationKey = 
+  | ChannelsTranslationKey 
+  | PerformanceTranslationKey
+  | GoogleAdsTranslationKey;
+  // Add other categories as needed
 
-// Export the main getTranslation function
-export const getTranslation = (key: TranslationKey, language: Language): string => {
-  return translations[key][language];
-};
+// Function to get a translation
+export function getTranslation(key: TranslationKey, language: Language = 'en'): string {
+  // Look for the key in each translation object
+  if (key in channelsTranslations) {
+    return channelsTranslations[key as ChannelsTranslationKey][language];
+  }
+  
+  if (key in performanceTranslations) {
+    return performanceTranslations[key as PerformanceTranslationKey][language];
+  }
+  
+  if (key in googleAdsTranslations) {
+    return googleAdsTranslations[key as GoogleAdsTranslationKey][language];
+  }
+  
+  // Add other categories as needed
+  
+  // If the key is not found, return the key itself as a fallback
+  console.warn(`Translation key not found: ${key}`);
+  return key;
+}
 
-// Re-export all types
-export type { Language } from './types';
-export type { NavigationTranslationKey } from './navigation';
-export type { ChannelsTranslationKey } from './channels';
-export type { DashboardTranslationKey } from './dashboard';
-export type { MetricsTranslationKey } from './metrics';
-export type { PerformanceTranslationKey } from './performance';
+export * from './types';
+export * from './channels';
+export * from './performance';
+export * from './google-ads';
+// Export other categories as needed

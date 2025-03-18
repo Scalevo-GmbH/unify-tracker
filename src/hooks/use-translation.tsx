@@ -3,7 +3,8 @@ import { useLanguage } from './use-language';
 import { getTranslation } from '@/utils/translations';
 import type { ComponentProps, ReactNode } from 'react';
 
-export function useTranslation() {
+// Export as default to fix Fast Refresh compatibility
+export default function useTranslation() {
   const { language } = useLanguage();
   
   const t = (key: Parameters<typeof getTranslation>[0]) => {
@@ -38,3 +39,6 @@ export function useTranslation() {
   
   return { t, Trans, language };
 }
+
+// For backward compatibility
+export { useTranslation };

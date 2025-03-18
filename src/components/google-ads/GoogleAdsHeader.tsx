@@ -5,7 +5,7 @@ import { DateRangeSelector, DateRange } from "@/components/DateRangeSelector";
 import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CreateAdModal } from "./CreateAdModal";
-import { useTranslation } from "@/hooks/use-translation";
+import useTranslation from "@/hooks/use-translation";
 
 interface GoogleAdsHeaderProps {
   dateRange: DateRange;

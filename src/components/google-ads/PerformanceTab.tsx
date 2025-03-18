@@ -4,7 +4,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { MetricCard } from "@/components/MetricCard";
 import { PerformanceChart } from "@/components/PerformanceChart";
 import { DateRange } from "@/components/DateRangeSelector";
-import { useTranslation } from "@/hooks/use-translation";
+import useTranslation from "@/hooks/use-translation";
 
 interface Ad {
   id: number;
