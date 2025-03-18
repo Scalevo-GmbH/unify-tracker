@@ -8,6 +8,7 @@ import { WebsiteTranslationKey } from './website';
 import { IndexTranslationKey } from './index-page';
 import { PerformanceTranslationKey } from './performance';
 import { IntelligenceTranslationKey } from './intelligence';
+import { IntegrationsTranslationKey } from './integrations';
 
 // Export a union type of all translation keys
 export type TranslationKey = 
@@ -19,4 +20,5 @@ export type TranslationKey =
   | WebsiteTranslationKey
   | IndexTranslationKey
   | PerformanceTranslationKey
-  | IntelligenceTranslationKey;
+  | IntelligenceTranslationKey
+  | IntegrationsTranslationKey;

@@ -9,6 +9,7 @@ import { campaignTranslations, CampaignTranslationKey } from './campaigns';
 import { adsTranslations, AdsTranslationKey } from './ads';
 import { performanceTranslations, PerformanceTranslationKey } from './performance';
 import { intelligenceTranslations, IntelligenceTranslationKey } from './intelligence';
+import { integrationsTranslations, IntegrationsTranslationKey } from './integrations';
 
 // Combine all translation keys
 export type TranslationKey = 
@@ -20,7 +21,8 @@ export type TranslationKey =
   | CampaignTranslationKey
   | AdsTranslationKey
   | PerformanceTranslationKey
-  | IntelligenceTranslationKey;
+  | IntelligenceTranslationKey
+  | IntegrationsTranslationKey;
 
 // Get a translation for a specific key and language
 export function getTranslation(key: TranslationKey, language: Language): string {
@@ -51,6 +53,9 @@ export function getTranslation(key: TranslationKey, language: Language): string 
   }
   else if (key in intelligenceTranslations) {
     return intelligenceTranslations[key as IntelligenceTranslationKey][language];
+  }
+  else if (key in integrationsTranslations) {
+    return integrationsTranslations[key as IntegrationsTranslationKey][language];
   }
   
   // Handle missing translations
