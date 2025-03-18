@@ -44,7 +44,7 @@ export const campaignsTranslations: TranslationsObject<CampaignsTranslationKey> 
   },
   manageCampaigns: {
     en: 'Manage all your marketing campaigns across different platforms',
-    de: 'Verwalten Sie alle Ihre Marketingkampagnen auf verschiedenen Plattformen'
+    de: 'Verwalte all deine Marketingkampagnen auf verschiedenen Plattformen'
   },
   allCampaigns: {
     en: 'All Campaigns',
@@ -84,7 +84,7 @@ export const campaignsTranslations: TranslationsObject<CampaignsTranslationKey> 
   },
   socialMedia: {
     en: 'Social Media',
-    de: 'Soziale Medien'
+    de: 'Social Media'
   },
   emailMarketing: {
     en: 'Email Marketing',
@@ -100,7 +100,7 @@ export const campaignsTranslations: TranslationsObject<CampaignsTranslationKey> 
   },
   noCampaignsFound: {
     en: 'No campaigns found matching your filters.',
-    de: 'Keine Kampagnen gefunden, die Ihren Filtern entsprechen.'
+    de: 'Keine Kampagnen gefunden, die deinen Filtern entsprechen.'
   },
   createNewCampaign: {
     en: 'Create New Campaign',
@@ -112,7 +112,7 @@ export const campaignsTranslations: TranslationsObject<CampaignsTranslationKey> 
   },
   campaignNameDescription: {
     en: 'A clear, descriptive name for your campaign',
-    de: 'Ein klarer, beschreibender Name für Ihre Kampagne'
+    de: 'Ein klarer, beschreibender Name für deine Kampagne'
   },
   platform: {
     en: 'Platform',
@@ -164,7 +164,7 @@ export const campaignsTranslations: TranslationsObject<CampaignsTranslationKey> 
   },
   targetAudiencePlaceholder: {
     en: 'Describe your target audience for this campaign',
-    de: 'Beschreiben Sie Ihre Zielgruppe für diese Kampagne'
+    de: 'Beschreibe deine Zielgruppe für diese Kampagne'
   },
   cancel: {
     en: 'Cancel',
