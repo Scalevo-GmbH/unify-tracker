@@ -14,14 +14,24 @@ export function useTranslation() {
   const Trans = ({ 
     i18nKey, 
     components = {},
+    values = {},
     ...rest 
   }: { 
     i18nKey: Parameters<typeof getTranslation>[0];
     components?: Record<string, ReactNode>;
+    values?: Record<string, string | number>;
     [key: string]: any;
   }) => {
-    const text = t(i18nKey);
-    // This is a simplified version that doesn't support HTML interpolation
+    let text = t(i18nKey);
+    
+    // Replace values in the translation string
+    if (values && Object.keys(values).length > 0) {
+      Object.entries(values).forEach(([key, value]) => {
+        text = text.replace(new RegExp(`{{${key}}}`, 'g'), String(value));
+      });
+    }
+    
+    // This is a simplified version that doesn't support complex HTML interpolation
     // In a real app, you would want to use a library like i18next
     return <span {...rest}>{text}</span>;
   };

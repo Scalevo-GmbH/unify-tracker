@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { DashboardMetrics } from "@/components/DashboardMetrics";
 import { PerformanceChart } from "@/components/PerformanceChart";
@@ -21,6 +22,7 @@ import {
 } from "lucide-react";
 import { Tooltip, TooltipProvider, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/hooks/use-translation";
 
 const Index = () => {
   const [selectedPlatform, setSelectedPlatform] = useState<{
@@ -30,6 +32,7 @@ const Index = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [dateRange, setDateRange] = useState<DateRange>("this-month");
   const [activeTab, setActiveTab] = useState<"overview" | "campaigns">("overview");
+  const { t } = useTranslation();
   
   const userName = "Pascal";
 
@@ -46,10 +49,10 @@ const Index = () => {
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between">
               <div className="space-y-2">
                 <div className="inline-flex items-center gap-2 bg-primary/5 text-primary font-medium px-3 py-1 rounded-full text-sm">
-                  <span className="text-lg animate-delayed-shake inline-block">👋</span> Welcome back, <span className="font-cal">{userName}</span>!
+                  <span className="text-lg animate-delayed-shake inline-block">👋</span> {t('welcomeBack')}, <span className="font-cal">{userName}</span>!
                 </div>
-                <h1 className="text-3xl font-cal font-semibold tracking-tight">Marketing Dashboard</h1>
-                <p className="text-muted-foreground">Track and optimize your marketing performance across platforms.</p>
+                <h1 className="text-3xl font-cal font-semibold tracking-tight">{t('marketingDashboard')}</h1>
+                <p className="text-muted-foreground">{t('trackOptimizePerformance')}</p>
               </div>
               
               <div className="mt-4 sm:mt-0 flex flex-wrap items-center gap-2">
@@ -58,10 +61,10 @@ const Index = () => {
                   onChange={setDateRange} 
                 />
                 <Button variant="outline" className="cal-button">
-                  Export
+                  {t('export')}
                 </Button>
                 <Button className="cal-button">
-                  New Campaign
+                  {t('newCampaign')}
                 </Button>
               </div>
             </div>
@@ -75,7 +78,7 @@ const Index = () => {
             onClick={() => setActiveTab("overview")}
           >
             <Home className="h-4 w-4 mr-2" />
-            Overview
+            {t('overview')}
           </button>
           <button 
             className={`dashboard-tab ${activeTab === "campaigns" ? "data-[state=active]" : "data-[state=inactive]"}`}
@@ -83,7 +86,7 @@ const Index = () => {
             onClick={() => setActiveTab("campaigns")}
           >
             <ListPlus className="h-4 w-4 mr-2" />
-            Active Campaigns
+            {t('activeCampaigns')}
           </button>
         </div>
 
@@ -99,7 +102,7 @@ const Index = () => {
               <FadeInSection className="h-full">
                 <div className="bg-card rounded-xl shadow-subtle p-6 h-full flex flex-col">
                   <div className="flex items-center gap-2 mb-4">
-                    <h3 className="text-lg font-cal font-semibold">Top Channels</h3>
+                    <h3 className="text-lg font-cal font-semibold">{t('topChannels')}</h3>
                     <TooltipProvider>
                       <Tooltip>
                         <TooltipTrigger asChild>
@@ -108,7 +111,7 @@ const Index = () => {
                           </span>
                         </TooltipTrigger>
                         <TooltipContent side="top" className="max-w-xs text-sm">
-                          Top channels are ranked based on their contribution to your overall traffic and conversion metrics. Percentages represent the proportion of total traffic coming from each source.
+                          {t('topChannelsTooltip')}
                         </TooltipContent>
                       </Tooltip>
                     </TooltipProvider>
@@ -193,7 +196,7 @@ const Index = () => {
                     </div>
                     
                     <button className="mt-4 w-full py-2 px-4 text-sm cal-button font-semibold text-primary border border-primary rounded-md hover:bg-primary/5 transition-colors">
-                      View All Channels
+                      {t('viewAllChannels')}
                     </button>
                   </div>
                 </div>
@@ -203,8 +206,8 @@ const Index = () => {
             <section>
               <div className="flex items-center justify-between mb-6">
                 <FadeInSection>
-                  <h2 className="text-xl font-cal font-semibold">Connect Platforms</h2>
-                  <p className="text-muted-foreground">Connect your marketing tools to see all your data in one place.</p>
+                  <h2 className="text-xl font-cal font-semibold">{t('connectPlatforms')}</h2>
+                  <p className="text-muted-foreground">{t('connectDescription')}</p>
                 </FadeInSection>
               </div>
               
@@ -280,9 +283,9 @@ const Index = () => {
                     <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/5 mb-4">
                       <span className="text-lg font-cal font-semibold">+</span>
                     </div>
-                    <h3 className="text-base cal-card-title mb-2">More Platforms</h3>
+                    <h3 className="text-base cal-card-title mb-2">{t('morePlatforms')}</h3>
                     <p className="text-sm text-muted-foreground text-center flex-grow">
-                      Connect to 50+ other marketing platforms and tools.
+                      {t('morePlatformsDescription')}
                     </p>
                     <div className="mt-auto w-full">
                       <div className="h-[38px]"></div>

@@ -23,6 +23,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Input } from "@/components/ui/input";
 import { mainMenuItems, settingsItems } from "@/components/Sidebar";
 import { useTranslation } from "@/hooks/use-translation";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export const Navbar: React.FC = () => {
   const isMobile = useIsMobile();
@@ -102,7 +103,7 @@ export const Navbar: React.FC = () => {
                     {/* Main menu items */}
                     {filteredMainMenu.length > 0 && (
                       <div className="px-2 py-2">
-                        <p className="px-4 text-xs font-medium text-muted-foreground mb-2">Navigation</p>
+                        <p className="px-4 text-xs font-medium text-muted-foreground mb-2">{t('navigation')}</p>
                         {filteredMainMenu.map((item) => (
                           <Link 
                             key={item.label}
@@ -122,7 +123,7 @@ export const Navbar: React.FC = () => {
                     {/* Settings section */}
                     {filteredSettings.length > 0 && (
                       <div className="px-2 py-2">
-                        <p className="px-4 text-xs font-medium text-muted-foreground mb-2">Settings</p>
+                        <p className="px-4 text-xs font-medium text-muted-foreground mb-2">{t('settings')}</p>
                         {filteredSettings.map((item) => (
                           <Link 
                             key={item.label}
@@ -141,7 +142,7 @@ export const Navbar: React.FC = () => {
                       !filteredMainMenu.length &&
                       !filteredSettings.length && (
                         <div className="p-4 text-center text-muted-foreground">
-                          No menu items found
+                          {t('noMenuItems')}
                         </div>
                       )
                     }
