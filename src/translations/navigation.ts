@@ -31,7 +31,11 @@ export type NavigationTranslationKey =
   | 'hourAgo'
   | 'hoursAgo'
   | 'dayAgo'
-  | 'daysAgo';
+  | 'daysAgo'
+  | 'metaAds'
+  | 'adPerformance'
+  | 'trackOptimize'
+  | 'export';
 
 // Navigation-related translations
 export const navigationTranslations: Record<NavigationTranslationKey, Record<Language, string>> = {
@@ -150,5 +154,21 @@ export const navigationTranslations: Record<NavigationTranslationKey, Record<Lan
   daysAgo: {
     en: 'days ago',
     de: 'Tage zuvor'
+  },
+  metaAds: {
+    en: 'Meta Ads',
+    de: 'Meta Anzeigen'
+  },
+  adPerformance: {
+    en: 'Ad Performance',
+    de: 'Anzeigenleistung'
+  },
+  trackOptimize: {
+    en: 'Track and optimize your ad performance',
+    de: 'Verfolgen und optimieren Sie Ihre Anzeigenleistung'
+  },
+  export: {
+    en: 'Export',
+    de: 'Exportieren'
   }
 };
