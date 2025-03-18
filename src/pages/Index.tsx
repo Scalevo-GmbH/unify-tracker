@@ -214,67 +214,67 @@ const Index = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <FadeInSection delay={100}>
                   <IntegrationCard
-                    name="Facebook Ads"
+                    name={t('facebookAds')}
                     icon={<Facebook className="h-6 w-6 text-blue-600" />}
-                    description="Connect your Facebook Ads account to track performance and ROI."
+                    description={t('facebookAdsDescription')}
                     popular
-                    onClick={() => handleOpenModal("Facebook Ads", <Facebook className="h-6 w-6 text-blue-600" />)}
+                    onClick={() => handleOpenModal(t('facebookAds'), <Facebook className="h-6 w-6 text-blue-600" />)}
                   />
                 </FadeInSection>
                 
                 <FadeInSection delay={200}>
                   <IntegrationCard
-                    name="Google Ads"
+                    name={t('googleAds')}
                     icon={<LineChart className="h-6 w-6 text-marketing-red" />}
-                    description="Import your Google Ads campaigns and track conversions."
+                    description={t('googleAdsDescription')}
                     popular
-                    onClick={() => handleOpenModal("Google Ads", <LineChart className="h-6 w-6 text-marketing-red" />)}
+                    onClick={() => handleOpenModal(t('googleAds'), <LineChart className="h-6 w-6 text-marketing-red" />)}
                   />
                 </FadeInSection>
                 
                 <FadeInSection delay={300}>
                   <IntegrationCard
-                    name="Instagram"
+                    name={t('instagram')}
                     icon={<Instagram className="h-6 w-6 text-pink-600" />}
-                    description="Connect Instagram to analyze engagement and reach."
-                    onClick={() => handleOpenModal("Instagram", <Instagram className="h-6 w-6 text-pink-600" />)}
+                    description={t('instagramDescription')}
+                    onClick={() => handleOpenModal(t('instagram'), <Instagram className="h-6 w-6 text-pink-600" />)}
                   />
                 </FadeInSection>
                 
                 <FadeInSection delay={400}>
                   <IntegrationCard
-                    name="Twitter Ads"
+                    name={t('twitterAds')}
                     icon={<Twitter className="h-6 w-6 text-blue-400" />}
-                    description="Track your Twitter ad campaigns and performance."
-                    onClick={() => handleOpenModal("Twitter Ads", <Twitter className="h-6 w-6 text-blue-400" />)}
+                    description={t('twitterAdsDescription')}
+                    onClick={() => handleOpenModal(t('twitterAds'), <Twitter className="h-6 w-6 text-blue-400" />)}
                   />
                 </FadeInSection>
                 
                 <FadeInSection delay={500}>
                   <IntegrationCard
-                    name="Mailchimp"
+                    name={t('mailchimp')}
                     icon={<Mail className="h-6 w-6 text-marketing-yellow" />}
-                    description="Import your email campaign data and subscriber analytics."
-                    onClick={() => handleOpenModal("Mailchimp", <Mail className="h-6 w-6 text-marketing-yellow" />)}
+                    description={t('mailchimpDescription')}
+                    onClick={() => handleOpenModal(t('mailchimp'), <Mail className="h-6 w-6 text-marketing-yellow" />)}
                   />
                 </FadeInSection>
                 
                 <FadeInSection delay={600}>
                   <IntegrationCard
-                    name="Google Analytics"
+                    name={t('googleAnalytics')}
                     icon={<BarChart3 className="h-6 w-6 text-marketing-orange" />}
-                    description="Import website traffic and conversion data."
+                    description={t('googleAnalyticsDescription')}
                     popular
-                    onClick={() => handleOpenModal("Google Analytics", <BarChart3 className="h-6 w-6 text-marketing-orange" />)}
+                    onClick={() => handleOpenModal(t('googleAnalytics'), <BarChart3 className="h-6 w-6 text-marketing-orange" />)}
                   />
                 </FadeInSection>
                 
                 <FadeInSection delay={700}>
                   <IntegrationCard
-                    name="LinkedIn Ads"
+                    name={t('linkedInAds')}
                     icon={<PieChart className="h-6 w-6 text-blue-700" />}
-                    description="Track your LinkedIn advertising campaigns and conversions."
-                    onClick={() => handleOpenModal("LinkedIn Ads", <PieChart className="h-6 w-6 text-blue-700" />)}
+                    description={t('linkedInAdsDescription')}
+                    onClick={() => handleOpenModal(t('linkedInAds'), <PieChart className="h-6 w-6 text-blue-700" />)}
                   />
                 </FadeInSection>
                 

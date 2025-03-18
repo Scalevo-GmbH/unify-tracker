@@ -16,7 +16,29 @@ export type IndexTranslationKey =
   | 'connectPlatforms'
   | 'connectPlatformsDesc'
   | 'morePlatforms'
-  | 'morePlatformsDesc';
+  | 'morePlatformsDesc'
+  | 'totalReach'
+  | 'reachDescription'
+  | 'impressions'
+  | 'impressionsDescription'
+  | 'conversionRate'
+  | 'conversionRateDescription'
+  | 'engagementRate'
+  | 'engagementRateDescription'
+  | 'facebookAds'
+  | 'facebookAdsDescription'
+  | 'googleAds'
+  | 'googleAdsDescription'
+  | 'instagram'
+  | 'instagramDescription'
+  | 'twitterAds'
+  | 'twitterAdsDescription'
+  | 'mailchimp'
+  | 'mailchimpDescription'
+  | 'googleAnalytics'
+  | 'googleAnalyticsDescription'
+  | 'linkedInAds'
+  | 'linkedInAdsDescription';
 
 // Index page-related translations
 export const indexPageTranslations: Record<IndexTranslationKey, Record<Language, string>> = {
@@ -75,5 +97,95 @@ export const indexPageTranslations: Record<IndexTranslationKey, Record<Language,
   morePlatformsDesc: {
     en: 'Connect to 50+ other marketing platforms and tools.',
     de: 'Verbinde dich mit mehr als 50 anderen Marketing-Plattformen und Tools.'
+  },
+  // Dashboard metrics translations
+  totalReach: {
+    en: 'Total Reach',
+    de: 'Gesamte Reichweite'
+  },
+  reachDescription: {
+    en: 'Total number of unique users who saw your content',
+    de: 'Gesamtzahl der einzelnen Nutzer, die deine Inhalte gesehen haben'
+  },
+  impressions: {
+    en: 'Impressions',
+    de: 'Impressionen'
+  },
+  impressionsDescription: {
+    en: 'Total number of times your content was displayed',
+    de: 'Gesamtzahl der Anzeigen deiner Inhalte'
+  },
+  conversionRate: {
+    en: 'Conversion Rate',
+    de: 'Konversionsrate'
+  },
+  conversionRateDescription: {
+    en: 'Percentage of visitors who completed a desired action',
+    de: 'Prozentsatz der Besucher, die eine gewünschte Aktion durchgeführt haben'
+  },
+  engagementRate: {
+    en: 'Engagement Rate',
+    de: 'Interaktionsrate'
+  },
+  engagementRateDescription: {
+    en: 'Percentage of viewers who engaged with your content',
+    de: 'Prozentsatz der Betrachter, die mit deinen Inhalten interagiert haben'
+  },
+  // Integration platforms translations
+  facebookAds: {
+    en: 'Facebook Ads',
+    de: 'Facebook Ads'
+  },
+  facebookAdsDescription: {
+    en: 'Connect your Facebook Ads account to track performance and ROI.',
+    de: 'Verbinde dein Facebook Ads-Konto, um Leistung und ROI zu verfolgen.'
+  },
+  googleAds: {
+    en: 'Google Ads',
+    de: 'Google Ads'
+  },
+  googleAdsDescription: {
+    en: 'Import your Google Ads campaigns and track conversions.',
+    de: 'Importiere deine Google Ads-Kampagnen und verfolge Konversionen.'
+  },
+  instagram: {
+    en: 'Instagram',
+    de: 'Instagram'
+  },
+  instagramDescription: {
+    en: 'Connect Instagram to analyze engagement and reach.',
+    de: 'Verbinde Instagram, um Engagement und Reichweite zu analysieren.'
+  },
+  twitterAds: {
+    en: 'Twitter Ads',
+    de: 'Twitter Ads'
+  },
+  twitterAdsDescription: {
+    en: 'Track your Twitter ad campaigns and performance.',
+    de: 'Verfolge deine Twitter-Werbekampagnen und -Leistung.'
+  },
+  mailchimp: {
+    en: 'Mailchimp',
+    de: 'Mailchimp'
+  },
+  mailchimpDescription: {
+    en: 'Import your email campaign data and subscriber analytics.',
+    de: 'Importiere deine E-Mail-Kampagnendaten und Abonnentenanalysen.'
+  },
+  googleAnalytics: {
+    en: 'Google Analytics',
+    de: 'Google Analytics'
+  },
+  googleAnalyticsDescription: {
+    en: 'Import website traffic and conversion data.',
+    de: 'Importiere Website-Traffic- und Konversionsdaten.'
+  },
+  linkedInAds: {
+    en: 'LinkedIn Ads',
+    de: 'LinkedIn Ads'
+  },
+  linkedInAdsDescription: {
+    en: 'Track your LinkedIn advertising campaigns and conversions.',
+    de: 'Verfolge deine LinkedIn-Werbekampagnen und -Konversionen.'
   }
 };
