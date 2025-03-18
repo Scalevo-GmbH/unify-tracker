@@ -1,4 +1,3 @@
-
 import { Language } from '@/hooks/use-language';
 
 // Define all translations keys for the Performance page
@@ -99,9 +98,9 @@ export type PerformanceTranslationKey =
   | 'totalComments'
   | 'totalShares'
   | 'totalImps'
-  | 'clickPerformance';
+  | 'clickPerformance'
+  | 'listGrowth';
 
-// Define all translations for the Performance page
 export const performanceTranslations: Record<PerformanceTranslationKey, Record<Language, string>> = {
   performance: {
     en: 'Performance',
@@ -490,5 +489,9 @@ export const performanceTranslations: Record<PerformanceTranslationKey, Record<L
   clickPerformance: {
     en: 'Click Performance',
     de: 'Klickleistung',
+  },
+  listGrowth: {
+    en: 'List Growth',
+    de: 'Listenwachstum',
   },
 };
