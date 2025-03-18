@@ -1,0 +1,45 @@
+
+/* Card related elements */
+.card-title,
+.card-header,
+.card-heading,
+.metric-card-title,
+.metric-card-value,
+.metric-value,
+.dashboard-card-title,
+.dashboard-card-value {
+  @apply font-cal-heading;
+}
+
+/* Component-specific from the design screenshots */
+.welcome-message,
+.section-title,
+.page-description,
+.page-title,
+.marketing-dashboard-title,
+.platform-section-title,
+.metric-description,
+.metric-label,
+.performance-chart-title,
+.channel-name,
+.channel-percentage {
+  @apply font-cal-heading;
+}
+
+/* Ensure all direct text in cards and metrics use Cal Sans */
+.metric-card p,
+.metric-card span:not(.icon),
+.dashboard-card p,
+.dashboard-card span:not(.icon) {
+  @apply font-cal-body;
+}
+
+/* Dashboard and data visualization elements */
+.dashboard-item,
+.chart-label,
+.legend-item,
+.tooltip-label,
+.data-label,
+.axis-label {
+  @apply font-cal-body;
+}

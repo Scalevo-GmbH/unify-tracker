@@ -1,0 +1,14 @@
+
+/* Button and interactive elements */
+button,
+.button,
+[role="button"],
+.btn,
+.btn-cal,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+a.button,
+.action-button {
+  @apply font-cal-heading;
+}

@@ -1,0 +1,11 @@
+
+/* Form elements */
+.form-label,
+label,
+legend,
+.input-label,
+.checkbox-label,
+.radio-label,
+.select-label {
+  @apply font-cal-heading;
+}

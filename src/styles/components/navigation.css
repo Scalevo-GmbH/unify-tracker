@@ -1,0 +1,48 @@
+
+/* Navigation and sidebar specific elements */
+.navigation-section-title,
+.navigation-link,
+.navigation-item,
+.sidebar-item,
+.sidebar-link,
+.sidebar-section-title,
+.sidebar-menu-item,
+.sidebar-header,
+.sidebar-footer,
+.sidebar-menu,
+.sidebar-submenu-item a {
+  @apply font-cal-heading;
+}
+
+/* All text in the sidebar */
+.sidebar, 
+.sidebar * {
+  @apply font-cal;
+}
+
+/* Menu and dropdown elements */
+.menu-item,
+.dropdown-item,
+.menubar-item,
+.menubar-menu,
+.context-menu-item,
+.menu-content,
+.menu-label,
+.menu-title,
+.submenu-item {
+  @apply font-cal-heading;
+}
+
+/* Tab and navigation elements */
+.tab,
+.tab-trigger,
+.tab-content,
+.tab-list,
+.dashboard-tab,
+.nav-item,
+.nav-link,
+.navigation-menu-item,
+.navigation-menu-link,
+.navigation-menu-trigger {
+  @apply font-cal-heading;
+}
