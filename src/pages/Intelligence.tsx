@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -14,16 +15,18 @@ import {
 } from "lucide-react";
 import FadeInSection from "@/components/animations/FadeInSection";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { useTranslation } from "@/hooks/use-translation";
 
 const Intelligence = () => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const { t } = useTranslation();
   
   return (
     <div className="container mx-auto py-8 px-4 md:px-6">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">Intelligence</h1>
+        <h1 className="text-3xl font-bold mb-2">{t('intelligence')}</h1>
         <p className="text-muted-foreground">
-          Powerful AI-driven insights designed to transform your marketing strategy
+          {t('aiDrivenInsights')}
         </p>
       </div>
 
@@ -31,24 +34,22 @@ const Intelligence = () => {
         <div className="relative z-10 flex flex-col md:flex-row items-center">
           <div className="md:w-3/5 mb-6 md:mb-0 md:mr-8">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 font-cal">
-              Meet Your Marketing AI Assistant
+              {t('marketingAiAssistant')}
             </h2>
             <p className="text-lg text-muted-foreground mb-4">
-              We're building a powerful AI tool that analyzes your marketing data, provides 
-              actionable insights, and helps you make data-driven decisions with confidence.
+              {t('aiAnalyzeData')}
             </p>
             <p className="text-muted-foreground mb-6">
-              Our AI assistant uses advanced machine learning algorithms to identify patterns, 
-              predict trends, and recommend optimizations across all your marketing channels.
+              {t('advancedMachineLearning')}
             </p>
             <form className="flex flex-col sm:flex-row gap-3">
               <input 
                 type="email" 
-                placeholder="Enter your email for early access" 
+                placeholder={t('enterEmail')} 
                 className="px-4 py-2 rounded-md border border-input bg-background w-full sm:w-auto flex-grow" 
               />
               <Button variant="default">
-                Join Waitlist
+                {t('joinWaitlist')}
               </Button>
             </form>
           </div>
@@ -65,7 +66,7 @@ const Intelligence = () => {
       </div>
 
       <FadeInSection>
-        <h3 className="text-2xl font-bold mb-6 text-center">What Our AI Will Do For You</h3>
+        <h3 className="text-2xl font-bold mb-6 text-center">{t('whatAiWillDo')}</h3>
       </FadeInSection>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
@@ -75,22 +76,22 @@ const Intelligence = () => {
               <div className="mb-4 w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center">
                 <Zap className="h-6 w-6 text-purple-600" />
               </div>
-              <h3 className="text-xl font-bold mb-2">Instant Insights</h3>
+              <h3 className="text-xl font-bold mb-2">{t('instantInsights')}</h3>
               <p className="text-muted-foreground mb-3">
-                Get immediate analysis of your marketing performance across all channels.
+                {t('instantInsightsDesc')}
               </p>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li className="flex items-center">
                   <span className="mr-2 text-purple-500">•</span>
-                  Real-time performance metrics
+                  {t('realTimeMetrics')}
                 </li>
                 <li className="flex items-center">
                   <span className="mr-2 text-purple-500">•</span>
-                  Anomaly detection
+                  {t('anomalyDetection')}
                 </li>
                 <li className="flex items-center">
                   <span className="mr-2 text-purple-500">•</span>
-                  Comparative analysis
+                  {t('comparativeAnalysis')}
                 </li>
               </ul>
             </CardContent>
@@ -103,22 +104,22 @@ const Intelligence = () => {
               <div className="mb-4 w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
                 <Bot className="h-6 w-6 text-blue-600" />
               </div>
-              <h3 className="text-xl font-bold mb-2">Automation</h3>
+              <h3 className="text-xl font-bold mb-2">{t('automation')}</h3>
               <p className="text-muted-foreground mb-3">
-                Automate reporting and uncover opportunities you might have missed.
+                {t('automationDesc')}
               </p>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li className="flex items-center">
                   <span className="mr-2 text-blue-500">•</span>
-                  Scheduled insight reports
+                  {t('scheduledReports')}
                 </li>
                 <li className="flex items-center">
                   <span className="mr-2 text-blue-500">•</span>
-                  Automated campaign adjustments
+                  {t('automatedAdjustments')}
                 </li>
                 <li className="flex items-center">
                   <span className="mr-2 text-blue-500">•</span>
-                  Budget optimization
+                  {t('budgetOptimization')}
                 </li>
               </ul>
             </CardContent>
@@ -131,22 +132,22 @@ const Intelligence = () => {
               <div className="mb-4 w-12 h-12 rounded-full bg-pink-100 flex items-center justify-center">
                 <Sparkles className="h-6 w-6 text-pink-600" />
               </div>
-              <h3 className="text-xl font-bold mb-2">Optimization</h3>
+              <h3 className="text-xl font-bold mb-2">{t('optimization')}</h3>
               <p className="text-muted-foreground mb-3">
-                Receive personalized recommendations to optimize your campaigns.
+                {t('optimizationDesc')}
               </p>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li className="flex items-center">
                   <span className="mr-2 text-pink-500">•</span>
-                  A/B testing insights
+                  {t('abTestingInsights')}
                 </li>
                 <li className="flex items-center">
                   <span className="mr-2 text-pink-500">•</span>
-                  Creative performance analysis
+                  {t('creativePerformance')}
                 </li>
                 <li className="flex items-center">
                   <span className="mr-2 text-pink-500">•</span>
-                  Audience targeting suggestions
+                  {t('audienceTargeting')}
                 </li>
               </ul>
             </CardContent>
@@ -156,7 +157,7 @@ const Intelligence = () => {
 
       <FadeInSection delay={350}>
         <div className="bg-slate-50 rounded-xl p-8 mb-12">
-          <h3 className="text-2xl font-bold mb-6 text-center">Core Intelligence Features</h3>
+          <h3 className="text-2xl font-bold mb-6 text-center">{t('coreFeatures')}</h3>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Card className="border border-slate-200 shadow-sm">
@@ -164,12 +165,11 @@ const Intelligence = () => {
                 <div className="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center mb-2">
                   <Search className="h-5 w-5 text-indigo-600" />
                 </div>
-                <CardTitle className="text-lg">Predictive Analysis</CardTitle>
+                <CardTitle className="text-lg">{t('predictiveAnalysis')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  Leverage machine learning to forecast campaign performance, identify trends before they happen, 
-                  and allocate resources more effectively based on predicted outcomes.
+                  {t('predictiveAnalysisDesc')}
                 </p>
               </CardContent>
             </Card>
@@ -179,12 +179,11 @@ const Intelligence = () => {
                 <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center mb-2">
                   <MessageSquareCode className="h-5 w-5 text-green-600" />
                 </div>
-                <CardTitle className="text-lg">Content Intelligence</CardTitle>
+                <CardTitle className="text-lg">{t('contentIntelligence')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  AI-powered content analysis to identify which messages resonate with your audience, 
-                  optimize copy for better engagement, and generate content ideas based on performance.
+                  {t('contentIntelligenceDesc')}
                 </p>
               </CardContent>
             </Card>
@@ -194,12 +193,11 @@ const Intelligence = () => {
                 <div className="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center mb-2">
                   <ChartPie className="h-5 w-5 text-orange-600" />
                 </div>
-                <CardTitle className="text-lg">Cross-Channel Insights</CardTitle>
+                <CardTitle className="text-lg">{t('crossChannelInsights')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  Holistic analysis across all marketing channels to understand customer journeys, 
-                  identify attribution patterns, and optimize your marketing mix for maximum ROI.
+                  {t('crossChannelInsightsDesc')}
                 </p>
               </CardContent>
             </Card>
@@ -209,12 +207,11 @@ const Intelligence = () => {
                 <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center mb-2">
                   <Network className="h-5 w-5 text-purple-600" />
                 </div>
-                <CardTitle className="text-lg">Competitive Intelligence</CardTitle>
+                <CardTitle className="text-lg">{t('competitiveIntelligence')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  Analyze competitor strategies, benchmark your performance against industry standards, 
-                  and identify market gaps and opportunities for your brand to capitalize on.
+                  {t('competitiveIntelligenceDesc')}
                 </p>
               </CardContent>
             </Card>
@@ -226,27 +223,27 @@ const Intelligence = () => {
         <div className="bg-gray-50 rounded-xl p-8 mb-12">
           <div className="flex flex-col md:flex-row items-center">
             <div className="mb-6 md:mb-0 md:mr-8 md:w-2/3">
-              <h3 className="text-2xl font-bold mb-4">How It Works</h3>
+              <h3 className="text-2xl font-bold mb-4">{t('howItWorks')}</h3>
               <ul className="space-y-4">
                 <li className="flex items-start">
                   <span className="mr-4 bg-purple-100 text-purple-700 w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0">1</span>
                   <div>
-                    <h4 className="font-semibold">Connect Your Data</h4>
-                    <p className="text-muted-foreground">Our AI integrates with all your marketing platforms including Google Ads, Meta, Email services, and analytics tools to create a unified view of your marketing ecosystem.</p>
+                    <h4 className="font-semibold">{t('connectData')}</h4>
+                    <p className="text-muted-foreground">{t('connectDataDesc')}</p>
                   </div>
                 </li>
                 <li className="flex items-start">
                   <span className="mr-4 bg-purple-100 text-purple-700 w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0">2</span>
                   <div>
-                    <h4 className="font-semibold">AI Analysis</h4>
-                    <p className="text-muted-foreground">Advanced algorithms analyze patterns and trends across historical and real-time data, applying machine learning models trained on marketing performance data across industries.</p>
+                    <h4 className="font-semibold">{t('aiAnalysis')}</h4>
+                    <p className="text-muted-foreground">{t('aiAnalysisDesc')}</p>
                   </div>
                 </li>
                 <li className="flex items-start">
                   <span className="mr-4 bg-purple-100 text-purple-700 w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0">3</span>
                   <div>
-                    <h4 className="font-semibold">Get Recommendations</h4>
-                    <p className="text-muted-foreground">Receive actionable insights tailored to your specific business goals, with clear explanations of why each recommendation matters and how to implement it effectively.</p>
+                    <h4 className="font-semibold">{t('getRecommendations')}</h4>
+                    <p className="text-muted-foreground">{t('getRecommendationsDesc')}</p>
                   </div>
                 </li>
               </ul>
@@ -279,7 +276,7 @@ const Intelligence = () => {
 
       <FadeInSection delay={450}>
         <div className="mb-12 bg-white rounded-xl border border-gray-100 p-6 shadow-sm">
-          <h3 className="text-2xl font-bold mb-4">Frequently Asked Questions</h3>
+          <h3 className="text-2xl font-bold mb-4">{t('faq')}</h3>
           
           <div className="space-y-4">
             <Collapsible 
@@ -288,41 +285,41 @@ const Intelligence = () => {
               className="border border-gray-200 rounded-md overflow-hidden"
             >
               <CollapsibleTrigger className="flex justify-between w-full p-4 text-left font-medium hover:bg-gray-50">
-                <span>When will the AI Intelligence tool be available?</span>
+                <span>{t('faqReleaseQuestion')}</span>
                 <span>{isOpen ? '−' : '+'}</span>
               </CollapsibleTrigger>
               <CollapsibleContent className="p-4 pt-0 bg-gray-50 text-muted-foreground text-sm">
-                We're currently in the final stages of development and testing. We anticipate a beta release for waitlist members within the next quarter, with full release shortly after.
+                {t('faqReleaseAnswer')}
               </CollapsibleContent>
             </Collapsible>
             
             <Collapsible className="border border-gray-200 rounded-md overflow-hidden">
               <CollapsibleTrigger className="flex justify-between w-full p-4 text-left font-medium hover:bg-gray-50">
-                <span>What marketing platforms will be supported?</span>
+                <span>{t('faqPlatformsQuestion')}</span>
                 <span>+</span>
               </CollapsibleTrigger>
               <CollapsibleContent className="p-4 pt-0 bg-gray-50 text-muted-foreground text-sm">
-                At launch, we'll support Google Ads, Meta Ads, Google Analytics, and major email marketing platforms. Additional integrations will be added based on user needs and feedback.
+                {t('faqPlatformsAnswer')}
               </CollapsibleContent>
             </Collapsible>
             
             <Collapsible className="border border-gray-200 rounded-md overflow-hidden">
               <CollapsibleTrigger className="flex justify-between w-full p-4 text-left font-medium hover:bg-gray-50">
-                <span>How does the AI make recommendations?</span>
+                <span>{t('faqRecommendationsQuestion')}</span>
                 <span>+</span>
               </CollapsibleTrigger>
               <CollapsibleContent className="p-4 pt-0 bg-gray-50 text-muted-foreground text-sm">
-                Our AI analyzes your historical data, current performance, industry benchmarks, and emerging trends to generate recommendations. Each insight is accompanied by an explanation of the reasoning behind it and the expected impact.
+                {t('faqRecommendationsAnswer')}
               </CollapsibleContent>
             </Collapsible>
             
             <Collapsible className="border border-gray-200 rounded-md overflow-hidden">
               <CollapsibleTrigger className="flex justify-between w-full p-4 text-left font-medium hover:bg-gray-50">
-                <span>Will the AI automatically make changes to my campaigns?</span>
+                <span>{t('faqAutomaticQuestion')}</span>
                 <span>+</span>
               </CollapsibleTrigger>
               <CollapsibleContent className="p-4 pt-0 bg-gray-50 text-muted-foreground text-sm">
-                While the AI can provide automated optimizations, you'll have full control over which recommendations to implement. You can choose between manual approval, scheduled implementation, or fully automated optimization with customizable guardrails.
+                {t('faqAutomaticAnswer')}
               </CollapsibleContent>
             </Collapsible>
           </div>
@@ -331,23 +328,22 @@ const Intelligence = () => {
 
       <FadeInSection delay={500}>
         <div className="text-center bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-8">
-          <h3 className="text-2xl font-bold mb-4">Be Among The First To Experience It</h3>
+          <h3 className="text-2xl font-bold mb-4">{t('earlyAccess')}</h3>
           <p className="max-w-2xl mx-auto mb-6 text-muted-foreground">
-            Our AI Intelligence tools are currently in development. Join our waitlist to be notified
-            when we launch and get exclusive early access to our beta program with special introductory pricing.
+            {t('earlyAccessDesc')}
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto">
             <input 
               type="email" 
-              placeholder="Your email address" 
+              placeholder={t('emailAddress')} 
               className="px-4 py-2 rounded-md border border-gray-300 w-full" 
             />
             <Button size="lg" className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700">
-              Join the Waitlist
+              {t('joinWaitlist')}
             </Button>
           </div>
           <p className="text-xs text-muted-foreground mt-4">
-            We respect your privacy and will never share your information with third parties.
+            {t('privacyNotice')}
           </p>
         </div>
       </FadeInSection>
