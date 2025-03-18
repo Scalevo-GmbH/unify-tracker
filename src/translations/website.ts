@@ -1,109 +1,127 @@
 
-import type { Language } from "@/hooks/use-language";
+import { Language } from '@/hooks/use-language';
 
-// Define types for website-related translations
 export type WebsiteTranslationKey = 
-  | 'websiteDashboard'
-  | 'trafficOverview'
-  | 'engagementMetrics' 
-  | 'users'
-  | 'newUsers'
-  | 'sessions'
-  | 'pageviews' 
-  | 'bounceRate'
-  | 'sessionDuration'
-  | 'pagesPerSession'
-  | 'conversions'
-  | 'totalVisitors'
-  | 'firstTimeVisitors'
-  | 'totalSessions'
-  | 'totalPageViews'
-  | 'singlePageSessions'
-  | 'avgTimeOnSite'
-  | 'pagesPerSessionDesc'
-  | 'conversionRateDesc'
-  | 'export';
+  | 'today' 
+  | 'yesterday' 
+  | 'lastSevenDays' 
+  | 'lastThirtyDays' 
+  | 'thisMonth'
+  | 'lastMonth'
+  | 'custom'
+  | 'vsLastPeriod'
+  | 'area'
+  | 'bar'
+  | 'line'
+  | 'month'
+  | 'quarter'
+  | 'year'
+  | 'keyMetrics'
+  | 'overTime'
+  | 'adPerformanceMetrics'
+  | 'comparingReachClick'
+  | 'avgCostPerClick'
+  | 'percentageClicks'
+  | 'avgPosition'
+  | 'avgPositionDesc'
+  | 'monthlyListGrowth'
+  | 'unsubscribeRate';
 
-// Website-related translations
 export const websiteTranslations: Record<WebsiteTranslationKey, Record<Language, string>> = {
-  websiteDashboard: {
-    en: 'Google Analytics Dashboard',
-    de: 'Google Analytics Dashboard'
+  today: {
+    en: 'Today',
+    de: 'Heute'
   },
-  trafficOverview: {
-    en: 'Traffic Overview',
-    de: 'Verkehrsübersicht'
+  yesterday: {
+    en: 'Yesterday',
+    de: 'Gestern'
   },
-  engagementMetrics: {
-    en: 'Engagement Metrics',
-    de: 'Engagement-Metriken'
+  lastSevenDays: {
+    en: 'Last 7 days',
+    de: 'Letzte 7 Tage'
   },
-  users: {
-    en: 'Users',
-    de: 'Benutzer'
+  lastThirtyDays: {
+    en: 'Last 30 days',
+    de: 'Letzte 30 Tage'
   },
-  newUsers: {
-    en: 'New Users',
-    de: 'Neue Benutzer'
+  thisMonth: {
+    en: 'This Month',
+    de: 'Dieser Monat'
   },
-  sessions: {
-    en: 'Sessions',
-    de: 'Sitzungen'
+  lastMonth: {
+    en: 'Last Month',
+    de: 'Letzter Monat'
   },
-  pageviews: {
-    en: 'Pageviews',
-    de: 'Seitenaufrufe'
+  custom: {
+    en: 'Custom',
+    de: 'Benutzerdefiniert'
   },
-  bounceRate: {
-    en: 'Bounce Rate',
-    de: 'Absprungrate'
+  vsLastPeriod: {
+    en: 'vs last period',
+    de: 'vs. letzter Zeitraum'
   },
-  sessionDuration: {
-    en: 'Session Duration',
-    de: 'Sitzungsdauer'
+  area: {
+    en: 'Area',
+    de: 'Fläche'
   },
-  pagesPerSession: {
-    en: 'Pages / Session',
-    de: 'Seiten / Sitzung'
+  bar: {
+    en: 'Bar',
+    de: 'Balken'
   },
-  conversions: {
-    en: 'Conversions',
-    de: 'Konversionen'
+  line: {
+    en: 'Line',
+    de: 'Linie'
   },
-  totalVisitors: {
-    en: 'Total visitors',
-    de: 'Gesamtbesucher'
+  month: {
+    en: 'Month',
+    de: 'Monat'
   },
-  firstTimeVisitors: {
-    en: 'First-time visitors',
-    de: 'Erstbesucher'
+  quarter: {
+    en: 'Quarter',
+    de: 'Quartal'
   },
-  totalSessions: {
-    en: 'Total sessions',
-    de: 'Gesamtsitzungen'
+  year: {
+    en: 'Year',
+    de: 'Jahr'
   },
-  totalPageViews: {
-    en: 'Total page views',
-    de: 'Gesamtseitenaufrufe'
+  keyMetrics: {
+    en: 'Key Metrics',
+    de: 'Wichtige Kennzahlen'
   },
-  singlePageSessions: {
-    en: 'Single page sessions',
-    de: 'Einzelseitensitzungen'
+  overTime: {
+    en: 'Over Time',
+    de: 'Im Zeitverlauf'
   },
-  avgTimeOnSite: {
-    en: 'Avg. time on site',
-    de: 'Durchschn. Zeit auf der Seite'
+  adPerformanceMetrics: {
+    en: 'Ad Performance Metrics',
+    de: 'Anzeigenleistungsmetriken'
   },
-  pagesPerSessionDesc: {
-    en: 'Pages per session',
-    de: 'Seiten pro Sitzung'
+  comparingReachClick: {
+    en: 'Comparing Reach and Click Performance',
+    de: 'Vergleich von Reichweite und Klickleistung'
   },
-  conversionRateDesc: {
-    en: 'conversion rate',
-    de: 'Konversionsrate'
+  avgCostPerClick: {
+    en: 'Average cost for each click',
+    de: 'Durchschnittliche Kosten pro Klick'
   },
-  export: {
-    en: 'Export',
-    de: 'Exportieren'
+  percentageClicks: {
+    en: 'Percentage of clicks that result in conversions',
+    de: 'Prozentsatz der Klicks, die zu Konversionen führen'
+  },
+  avgPosition: {
+    en: 'Avg. Position',
+    de: 'Durchschn. Position'
+  },
+  avgPositionDesc: {
+    en: 'Average position of your ad in search results',
+    de: 'Durchschnittliche Position Ihrer Anzeige in Suchergebnissen'
+  },
+  monthlyListGrowth: {
+    en: 'Monthly list growth',
+    de: 'Monatliches Listenwachstum'
+  },
+  unsubscribeRate: {
+    en: 'Unsubscribe Rate',
+    de: 'Abmelderate'
   }
 };

@@ -4,12 +4,15 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MetricCard } from "@/components/MetricCard";
 import { PerformanceChart } from "@/components/PerformanceChart";
 import { DateRange } from "@/components/DateRangeSelector";
+import { useTranslation } from "@/hooks/use-translation";
 
 interface PaidSocialsDashboardProps {
   toolId: string;
 }
 
 const PaidSocialsDashboard: React.FC<PaidSocialsDashboardProps> = ({ toolId }) => {
+  const { t, formatNumber } = useTranslation();
+  
   // In a real implementation, we would fetch this data from the API based on toolId
   const metrics = {
     "meta-ads": {
@@ -65,39 +68,39 @@ const PaidSocialsDashboard: React.FC<PaidSocialsDashboardProps> = ({ toolId }) =
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold">{toolName} Dashboard</h2>
+      <h2 className="text-2xl font-bold">{toolName}</h2>
       
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4">
         <MetricCard 
-          title="Reach" 
-          value={currentMetrics.reach.toLocaleString()} 
+          title={t('reach')} 
+          value={formatNumber(currentMetrics.reach)} 
           change={7.8} 
-          description="Unique users reached"
+          description={t('uniqueUsers')}
         />
         <MetricCard 
-          title="Impressions" 
-          value={currentMetrics.impressions.toLocaleString()} 
+          title={t('impressions')} 
+          value={formatNumber(currentMetrics.impressions)} 
           change={6.2} 
-          description="Total ad impressions"
+          description={t('totalImpressions')}
         />
         <MetricCard 
-          title="Frequency" 
+          title={t('frequency')} 
           value={currentMetrics.frequency.toFixed(2)} 
           change={-1.5} 
-          description="Avg. impressions per user"
+          description={t('avgImpressions')}
         />
         <MetricCard 
-          title="Clicks" 
-          value={currentMetrics.clicks.toLocaleString()} 
+          title={t('clicks')} 
+          value={formatNumber(currentMetrics.clicks)} 
           change={8.4} 
-          description="Total ad clicks"
+          description={t('totalClicks')}
         />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <Card className="md:col-span-2">
           <CardHeader>
-            <CardTitle>Reach & Engagement</CardTitle>
+            <CardTitle>{t('reachEngagement')}</CardTitle>
           </CardHeader>
           <CardContent>
             <PerformanceChart dateRange={dateRange} />
@@ -106,33 +109,33 @@ const PaidSocialsDashboard: React.FC<PaidSocialsDashboardProps> = ({ toolId }) =
         
         <Card>
           <CardHeader>
-            <CardTitle>Performance Metrics</CardTitle>
+            <CardTitle>{t('performanceMetrics')}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               <MetricCard 
-                title="CTR" 
+                title={t('ctr')} 
                 value={`${currentMetrics.ctr}%`} 
                 change={2.1} 
-                description="Click-through rate"
+                description={t('clickThroughRate')}
               />
               <MetricCard 
-                title="CPC" 
+                title={t('cpc')} 
                 value={`$${currentMetrics.cpc.toFixed(2)}`} 
                 change={-3.2} 
-                description="Cost per click"
+                description={t('costPerClick')}
               />
               <MetricCard 
-                title="Conversions" 
-                value={currentMetrics.conversions.toString()} 
+                title={t('conversions')} 
+                value={formatNumber(currentMetrics.conversions)} 
                 change={9.5} 
-                description="Total conversions"
+                description={t('totalConversions')}
               />
               <MetricCard 
-                title="ROAS" 
+                title={t('roas')} 
                 value={`${currentMetrics.roas}x`} 
                 change={5.8} 
-                description="Return on ad spend"
+                description={t('returnOnAdSpend')}
               />
             </div>
           </CardContent>

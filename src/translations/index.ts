@@ -4,9 +4,10 @@ import { websiteTranslations, WebsiteTranslationKey } from './website';
 import { navigationTranslations, NavigationTranslationKey } from './navigation';
 import { dashboardTranslations, DashboardTranslationKey } from './dashboard';
 import { helpSupportTranslations, HelpSupportTranslationKey } from './help-support';
-import { indexPageTranslations, IndexPageTranslationKey } from './index-page';
+import { indexPageTranslations, IndexTranslationKey } from './index-page';
 import { campaignTranslations, CampaignTranslationKey } from './campaigns';
 import { adsTranslations, AdsTranslationKey } from './ads';
+import { performanceTranslations, PerformanceTranslationKey } from './performance';
 
 // Combine all translation keys
 export type TranslationKey = 
@@ -14,9 +15,10 @@ export type TranslationKey =
   | NavigationTranslationKey 
   | DashboardTranslationKey 
   | HelpSupportTranslationKey
-  | IndexPageTranslationKey
+  | IndexTranslationKey
   | CampaignTranslationKey
-  | AdsTranslationKey;
+  | AdsTranslationKey
+  | PerformanceTranslationKey;
 
 // Get a translation for a specific key and language
 export function getTranslation(key: TranslationKey, language: Language): string {
@@ -34,13 +36,16 @@ export function getTranslation(key: TranslationKey, language: Language): string 
     return helpSupportTranslations[key as HelpSupportTranslationKey][language];
   }
   else if (key in indexPageTranslations) {
-    return indexPageTranslations[key as IndexPageTranslationKey][language];
+    return indexPageTranslations[key as IndexTranslationKey][language];
   }
   else if (key in campaignTranslations) {
     return campaignTranslations[key as CampaignTranslationKey][language];
   }
   else if (key in adsTranslations) {
     return adsTranslations[key as AdsTranslationKey][language];
+  }
+  else if (key in performanceTranslations) {
+    return performanceTranslations[key as PerformanceTranslationKey][language];
   }
   
   // Handle missing translations

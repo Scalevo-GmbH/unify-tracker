@@ -14,6 +14,7 @@ import {
   Line
 } from "recharts";
 import { DateRange } from "@/components/DateRangeSelector";
+import { useTranslation } from "@/hooks/use-translation";
 
 // Updated data to emphasize reach and clicks
 const data = [
@@ -42,6 +43,7 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
   className = "",
   dateRange = "this-month"
 }) => {
+  const { t } = useTranslation();
   const [chartType, setChartType] = useState<ChartType>("area");
   const [timeframe, setTimeframe] = useState<string>("year");
 
@@ -203,8 +205,8 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
     <div className={`bg-card rounded-xl shadow-subtle p-6 ${className}`}>
       <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6">
         <div>
-          <h3 className="text-lg font-semibold">Ad Performance Metrics</h3>
-          <p className="text-sm text-muted-foreground">Comparing Reach and Click Performance</p>
+          <h3 className="text-lg font-semibold">{t('adPerformanceMetrics')}</h3>
+          <p className="text-sm text-muted-foreground">{t('comparingReachClick')}</p>
         </div>
         
         <div className="flex flex-wrap mt-4 sm:mt-0 space-x-2">
@@ -217,7 +219,7 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
-              Area
+              {t('area')}
             </button>
             <button
               onClick={() => setChartType("bar")}
@@ -227,7 +229,7 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
-              Bar
+              {t('bar')}
             </button>
             <button
               onClick={() => setChartType("line")}
@@ -237,7 +239,7 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
-              Line
+              {t('line')}
             </button>
           </div>
           
@@ -250,7 +252,7 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
-              Month
+              {t('month')}
             </button>
             <button
               onClick={() => setTimeframe("quarter")}
@@ -260,7 +262,7 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
-              Quarter
+              {t('quarter')}
             </button>
             <button
               onClick={() => setTimeframe("year")}
@@ -270,7 +272,7 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
-              Year
+              {t('year')}
             </button>
           </div>
         </div>
@@ -279,11 +281,11 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
       <div className="flex items-center gap-4 mb-4">
         <div className="flex items-center">
           <div className="h-3 w-3 rounded-full bg-[#9b87f5] mr-2"></div>
-          <span className="text-sm font-medium">Reach</span>
+          <span className="text-sm font-medium">{t('reach')}</span>
         </div>
         <div className="flex items-center">
           <div className="h-3 w-3 rounded-full bg-[#F97316] mr-2"></div>
-          <span className="text-sm font-medium">Clicks</span>
+          <span className="text-sm font-medium">{t('clicks')}</span>
         </div>
       </div>
       

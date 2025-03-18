@@ -6,12 +6,15 @@ import { PerformanceChart } from "@/components/PerformanceChart";
 import { DateRange } from "@/components/DateRangeSelector";
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
+import { useTranslation } from "@/hooks/use-translation";
 
 interface EmailDashboardProps {
   toolId: string;
 }
 
 const EmailDashboard: React.FC<EmailDashboardProps> = ({ toolId }) => {
+  const { t, formatNumber } = useTranslation();
+  
   // In a real implementation, we would fetch this data from the API based on toolId
   const metrics = {
     "mailchimp": {
@@ -67,44 +70,44 @@ const EmailDashboard: React.FC<EmailDashboardProps> = ({ toolId }) => {
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h2 className="text-2xl font-bold">{toolName} Dashboard</h2>
+        <h2 className="text-2xl font-bold">{toolName} {t('emailDashboard')}</h2>
         <Button variant="outline" size="sm" onClick={handleExport} className="gap-2">
           <Download className="h-4 w-4" />
-          Export
+          {t('export')}
         </Button>
       </div>
       
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4">
         <MetricCard 
-          title="Campaigns" 
+          title={t('campaigns')} 
           value={currentMetrics.campaigns.toString()} 
           change={8.3} 
-          description="Sent this month"
+          description={t('postsThisMonth')}
         />
         <MetricCard 
-          title="Open Rate" 
+          title={t('openRate')} 
           value={`${currentMetrics.openRate}%`} 
           change={1.8} 
-          description="Email open rate"
+          description={t('emailOpenRate')}
         />
         <MetricCard 
-          title="Click Rate" 
+          title={t('clickRate')} 
           value={`${currentMetrics.clickRate}%`} 
           change={2.4} 
-          description="Email click rate"
+          description={t('emailClickRate')}
         />
         <MetricCard 
-          title="Subscribers" 
-          value={currentMetrics.subscribers.toLocaleString()} 
+          title={t('subscribers')} 
+          value={formatNumber(currentMetrics.subscribers)} 
           change={currentMetrics.listGrowth} 
-          description="Total list subscribers"
+          description={t('totalSubscribers')}
         />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <Card className="md:col-span-2">
           <CardHeader>
-            <CardTitle>Open & Click Rates</CardTitle>
+            <CardTitle>{t('openRate')} & {t('clickRate')}</CardTitle>
           </CardHeader>
           <CardContent>
             <PerformanceChart dateRange={dateRange} />
@@ -113,35 +116,35 @@ const EmailDashboard: React.FC<EmailDashboardProps> = ({ toolId }) => {
         
         <Card>
           <CardHeader>
-            <CardTitle>List Health Metrics</CardTitle>
+            <CardTitle>{t('engagementMetrics')}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               <MetricCard 
-                title="Emails Sent" 
-                value={currentMetrics.totalSent.toLocaleString()} 
+                title={t('totalImpressions')} 
+                value={formatNumber(currentMetrics.totalSent)} 
                 change={5.2} 
-                description="Total emails sent"
+                description={t('totalImps')}
               />
               <MetricCard 
-                title="Bounce Rate" 
+                title={t('bounceRate')} 
                 value={`${currentMetrics.bounceRate}%`} 
                 change={-0.2} 
-                description="Email bounce rate"
+                description={t('bounceRate')}
                 invertedChange
               />
               <MetricCard 
-                title="Unsubscribe Rate" 
+                title={t('unsubscribeRate')} 
                 value={`${currentMetrics.unsubscribeRate}%`} 
                 change={-0.1} 
-                description="Unsubscribe rate"
+                description={t('unsubscribeRate')}
                 invertedChange
               />
               <MetricCard 
-                title="List Growth" 
+                title={t('listGrowth')} 
                 value={`${currentMetrics.listGrowth}%`} 
                 change={0.4} 
-                description="Monthly list growth"
+                description={t('monthlyListGrowth')}
               />
             </div>
           </CardContent>
