@@ -1,5 +1,4 @@
-
-import React, { useState } from "react";
+import React from "react";
 import { 
   Card, 
   CardContent, 
@@ -13,29 +12,13 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { BookOpen, HelpCircle, LifeBuoy, Mail, MessageSquare, Search } from "lucide-react";
 
 const HelpSupport: React.FC = () => {
-  const [activeTab, setActiveTab] = useState("faq");
-
-  const renderTabContent = () => {
-    switch (activeTab) {
-      case "faq":
-        return <FAQSection />;
-      case "guides":
-        return <GuidesSection />;
-      case "tickets":
-        return <SupportTicketsSection />;
-      case "contact":
-        return <ContactSection />;
-      default:
-        return <FAQSection />;
-    }
-  };
-
   return (
     <div className="container mx-auto py-8 px-4 md:px-6">
       <div className="mb-8">
@@ -43,42 +26,42 @@ const HelpSupport: React.FC = () => {
         <p className="text-muted-foreground">Find answers to your questions or get in touch with our support team</p>
       </div>
 
-      <div className="dashboard-tabs mb-8">
-        <button
-          className={`dashboard-tab ${activeTab === "faq" ? "data-[state=active]" : "data-[state=inactive]"}`}
-          data-state={activeTab === "faq" ? "active" : "inactive"}
-          onClick={() => setActiveTab("faq")}
-        >
-          <HelpCircle className="mr-2 h-4 w-4" />
-          FAQs
-        </button>
-        <button
-          className={`dashboard-tab ${activeTab === "guides" ? "data-[state=active]" : "data-[state=inactive]"}`}
-          data-state={activeTab === "guides" ? "active" : "inactive"}
-          onClick={() => setActiveTab("guides")}
-        >
-          <BookOpen className="mr-2 h-4 w-4" />
-          User Guides
-        </button>
-        <button
-          className={`dashboard-tab ${activeTab === "tickets" ? "data-[state=active]" : "data-[state=inactive]"}`}
-          data-state={activeTab === "tickets" ? "active" : "inactive"}
-          onClick={() => setActiveTab("tickets")}
-        >
-          <MessageSquare className="mr-2 h-4 w-4" />
-          Support Tickets
-        </button>
-        <button
-          className={`dashboard-tab ${activeTab === "contact" ? "data-[state=active]" : "data-[state=inactive]"}`}
-          data-state={activeTab === "contact" ? "active" : "inactive"}
-          onClick={() => setActiveTab("contact")}
-        >
-          <Mail className="mr-2 h-4 w-4" />
-          Contact Us
-        </button>
-      </div>
+      <Tabs defaultValue="faq" className="w-full">
+        <TabsList className="mb-6 w-full justify-start">
+          <TabsTrigger value="faq">
+            <HelpCircle className="mr-2 h-4 w-4" />
+            FAQs
+          </TabsTrigger>
+          <TabsTrigger value="guides">
+            <BookOpen className="mr-2 h-4 w-4" />
+            User Guides
+          </TabsTrigger>
+          <TabsTrigger value="tickets">
+            <MessageSquare className="mr-2 h-4 w-4" />
+            Support Tickets
+          </TabsTrigger>
+          <TabsTrigger value="contact">
+            <Mail className="mr-2 h-4 w-4" />
+            Contact Us
+          </TabsTrigger>
+        </TabsList>
 
-      {renderTabContent()}
+        <TabsContent value="faq">
+          <FAQSection />
+        </TabsContent>
+        
+        <TabsContent value="guides">
+          <GuidesSection />
+        </TabsContent>
+        
+        <TabsContent value="tickets">
+          <SupportTicketsSection />
+        </TabsContent>
+        
+        <TabsContent value="contact">
+          <ContactSection />
+        </TabsContent>
+      </Tabs>
     </div>
   );
 };

@@ -1,53 +1,50 @@
 
-/* Tabs styling - consistent across all pages */
+/* Tab styling - consistent across the entire application */
 .dashboard-tabs {
-  display: flex;
-  overflow-x: auto;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 1rem;
-  gap: 1rem;
-  background-color: transparent;
-  padding: 0;
-  width: 100%;
-  @apply font-cal;
-}
-
-.dashboard-tab {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--muted-foreground);
-  border-bottom: 2px solid transparent;
+  @apply flex rounded-lg bg-slate-100/80 p-1.5 font-cal w-full gap-1;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
   transition: all 0.2s ease;
-  white-space: nowrap;
-  @apply font-cal;
-}
-
-.dashboard-tab[data-state=active] {
-  color: var(--foreground);
-  border-bottom-color: var(--primary);
-}
-
-.dashboard-tab:hover {
-  color: var(--foreground);
-}
-
-/* Tab styling like the awork design */
-.dashboard-tabs {
-  @apply flex rounded-md bg-slate-100 p-1 font-cal w-full;
 }
 
 .dashboard-tab {
-  @apply flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium transition-all font-cal tracking-tight font-semibold;
+  @apply flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-all 
+         font-cal tracking-tight font-semibold relative;
+  min-width: 100px;
 }
 
 .dashboard-tab[data-state="active"] {
-  @apply bg-white shadow text-foreground;
+  @apply bg-white text-primary shadow-subtle;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .dashboard-tab[data-state="inactive"] {
-  @apply text-muted-foreground hover:text-foreground;
+  @apply text-muted-foreground hover:text-foreground hover:bg-slate-200/50;
+}
+
+/* Icon alignment in tabs */
+.dashboard-tab svg,
+.dashboard-tab .icon {
+  @apply mr-2 h-4 w-4;
+}
+
+/* Alternative tab style for secondary tabs */
+.secondary-tabs {
+  @apply flex border-b border-border font-cal w-full gap-4;
+  background-color: transparent;
+  padding: 0;
+}
+
+.secondary-tab {
+  @apply py-2.5 px-1 font-cal font-medium text-sm tracking-tight border-b-2 border-transparent text-muted-foreground;
+}
+
+.secondary-tab[data-state="active"] {
+  @apply border-primary text-foreground;
+  box-shadow: none;
+  background-color: transparent;
+}
+
+.secondary-tab[data-state="inactive"] {
+  @apply hover:text-foreground hover:border-border;
+  background-color: transparent;
 }
