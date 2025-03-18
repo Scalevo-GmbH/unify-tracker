@@ -7,6 +7,7 @@ import { CampaignTranslationKey } from './campaigns';
 import { WebsiteTranslationKey } from './website';
 import { IndexTranslationKey } from './index-page';
 import { PerformanceTranslationKey } from './performance';
+import { IntelligenceTranslationKey } from './intelligence';
 
 // Export a union type of all translation keys
 export type TranslationKey = 
@@ -17,4 +18,5 @@ export type TranslationKey =
   | CampaignTranslationKey
   | WebsiteTranslationKey
   | IndexTranslationKey
-  | PerformanceTranslationKey;
+  | PerformanceTranslationKey
+  | IntelligenceTranslationKey;
