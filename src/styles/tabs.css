@@ -1,0 +1,53 @@
+
+/* Tabs styling - consistent across all pages */
+.dashboard-tabs {
+  display: flex;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1rem;
+  gap: 1rem;
+  background-color: transparent;
+  padding: 0;
+  width: 100%;
+  @apply font-cal;
+}
+
+.dashboard-tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  @apply font-cal;
+}
+
+.dashboard-tab[data-state=active] {
+  color: var(--foreground);
+  border-bottom-color: var(--primary);
+}
+
+.dashboard-tab:hover {
+  color: var(--foreground);
+}
+
+/* Tab styling like the awork design */
+.dashboard-tabs {
+  @apply flex rounded-md bg-slate-100 p-1 font-cal w-full;
+}
+
+.dashboard-tab {
+  @apply flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium transition-all font-cal tracking-tight font-semibold;
+}
+
+.dashboard-tab[data-state="active"] {
+  @apply bg-white shadow text-foreground;
+}
+
+.dashboard-tab[data-state="inactive"] {
+  @apply text-muted-foreground hover:text-foreground;
+}
