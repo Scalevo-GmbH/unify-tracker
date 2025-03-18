@@ -11,13 +11,13 @@
 .sidebar-footer,
 .sidebar-menu,
 .sidebar-submenu-item a {
-  @apply font-cal-heading;
+  @apply font-inter;
 }
 
 /* All text in the sidebar */
 .sidebar, 
 .sidebar * {
-  @apply font-cal;
+  @apply font-inter;
 }
 
 /* Menu and dropdown elements */
@@ -30,7 +30,7 @@
 .menu-label,
 .menu-title,
 .submenu-item {
-  @apply font-cal-heading;
+  @apply font-inter;
 }
 
 /* Tab and navigation elements */
@@ -44,5 +44,6 @@
 .navigation-menu-item,
 .navigation-menu-link,
 .navigation-menu-trigger {
-  @apply font-cal-heading;
+  @apply font-inter;
 }
+

@@ -15,17 +15,15 @@ const MainLayout: React.FC<MainLayoutProps> = ({
   isMobile 
 }) => {
   return (
-    <div className="app-container">
-      <div className={`sidebar-container ${sidebarOpen ? 'block' : 'hidden md:block'}`}>
-        <MainSidebar className="hidden md:block" />
+    <div className="flex h-screen bg-[#F9FAFB]">
+      <div className={`${sidebarOpen ? 'block' : 'hidden md:block'}`}>
+        <MainSidebar />
       </div>
-      <div className="content-area">
-        <div className="top-nav">
-          <Navbar />
-        </div>
-        <div className={`content-area-inner ${!sidebarOpen && !isMobile ? 'border-top-left-radius-0' : ''}`}>
+      <div className="flex-1 flex flex-col overflow-hidden">
+        <Navbar />
+        <main className="flex-1 overflow-y-auto p-6 bg-[#F9FAFB]">
           {children}
-        </div>
+        </main>
       </div>
     </div>
   );
