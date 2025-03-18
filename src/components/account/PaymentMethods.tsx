@@ -14,11 +14,9 @@ import { CreditCard, Plus, AlertCircle } from "lucide-react";
 import PaymentMethodCard, { PaymentMethod } from "../payments/PaymentMethodCard";
 import StripeCardForm from "../payments/StripeCardForm";
 import BillingAddressForm from "../payments/BillingAddressForm";
-import { useTranslation } from "@/hooks/use-translation";
 
 const PaymentMethods = () => {
   const { toast } = useToast();
-  const { t } = useTranslation();
   const [isAddingCard, setIsAddingCard] = useState(false);
   const [paymentMethods, setPaymentMethods] = useState<PaymentMethod[]>([
     {
@@ -61,10 +59,10 @@ const PaymentMethods = () => {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <CreditCard className="h-5 w-5" />
-            {t('paymentMethodsTitle')}
+            Payment Methods
           </CardTitle>
           <CardDescription>
-            {t('paymentMethodsDesc')}
+            Manage your payment methods and billing information
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -89,7 +87,7 @@ const PaymentMethods = () => {
               className="w-full justify-center py-6 border-dashed"
             >
               <Plus className="h-4 w-4 mr-2" />
-              {t('addPaymentMethod')}
+              Add Payment Method
             </Button>
           )}
         </CardContent>
@@ -99,10 +97,10 @@ const PaymentMethods = () => {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <AlertCircle className="h-5 w-5" />
-            {t('billingInfoTitle')}
+            Billing Information
           </CardTitle>
           <CardDescription>
-            {t('billingInfoDesc')}
+            Manage your billing address and tax information
           </CardDescription>
         </CardHeader>
         <CardContent>

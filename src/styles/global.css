@@ -1,31 +1,90 @@
 
-/* Global styles */
+/* Import modular CSS files */
 @import './typography.css';
-@import './components/buttons.css';
-@import './components/navigation.css';
-@import './components/cards.css';
-@import './components/forms.css';
-@import './components/dialogs.css';
-@import './components/ios-switch.css';
+@import './components.css';
 @import './utilities.css';
-@import './tables.css';
-@import './animations.css';
-@import './scrollbars.css';
-@import './tabs.css';
 
-/* Common styles */
-:root {
-  --cal-letter-spacing: -0.015em;
-  --cal-tracking-tight: -0.01em;
-  --cal-heading-spacing: -0.03em;
-  --cal-body-spacing: -0.005em;
-  --cal-heading-weight: 600;
-  --cal-body-weight: 400;
+/* Global responsive table styles */
+.responsive-table-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
 }
 
-/* Content card styling */
-.content-card {
-  background-color: white;
-  border-radius: 0.75rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+/* Table reset and base styles */
+table {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: separate;
+}
+
+/* Ensure tables don't force page width */
+.responsive-table-container table {
+  width: auto;
+  min-width: 100%; /* Ensure the table fills the container but can grow wider */
+}
+
+/* Custom scrollbar styling */
+.responsive-table-container::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+.responsive-table-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.responsive-table-container::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+}
+
+/* Dark mode scrollbar */
+.dark .responsive-table-container::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Ensure table cell content doesn't break layout */
+th, td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0.75rem 1rem;
+}
+
+/* Cell sizing */
+.cell-fixed-xs {
+  width: 60px;
+  max-width: 60px;
+}
+
+.cell-fixed-sm {
+  width: 80px;
+  max-width: 80px;
+}
+
+.cell-fixed-md {
+  width: 120px;
+  max-width: 120px;
+}
+
+.cell-fixed-lg {
+  width: 160px;
+  max-width: 160px;
+}
+
+/* Responsive breakpoints for tables */
+@media (max-width: 640px) {
+  th, td {
+    padding: 0.5rem 0.75rem;
+  }
+  
+  .responsive-table-container {
+    margin-left: -1rem;
+    margin-right: -1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: calc(100% + 2rem);
+  }
 }

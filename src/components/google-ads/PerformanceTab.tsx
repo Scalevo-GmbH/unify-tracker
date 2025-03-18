@@ -4,7 +4,6 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { MetricCard } from "@/components/MetricCard";
 import { PerformanceChart } from "@/components/PerformanceChart";
 import { DateRange } from "@/components/DateRangeSelector";
-import { useTranslation } from "@/hooks/use-translation";
 
 interface Ad {
   id: number;
@@ -33,13 +32,11 @@ export const PerformanceTab: React.FC<PerformanceTabProps> = ({
   currentAd,
   dateRange,
 }) => {
-  const { t } = useTranslation();
-  
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
       <Card className="lg:col-span-2">
         <CardHeader>
-          <CardTitle>{t('impressions')} & {t('clicks')} {t('overTime')}</CardTitle>
+          <CardTitle>Impressions & Clicks Over Time</CardTitle>
         </CardHeader>
         <CardContent>
           <PerformanceChart dateRange={dateRange} />
@@ -48,33 +45,33 @@ export const PerformanceTab: React.FC<PerformanceTabProps> = ({
 
       <Card className="lg:col-span-1">
         <CardHeader>
-          <CardTitle>{t('keyMetrics')}</CardTitle>
+          <CardTitle>Key Metrics</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
             <MetricCard
-              title={t('costPerClick')}
+              title="Cost Per Click"
               value={`$${currentAd.cpc}`}
               change={-4.1}
-              description={t('avgCostPerClick')}
+              description="Average cost for each click"
             />
             <MetricCard
-              title={t('conversionRate')}
+              title="Conversion Rate"
               value={`${currentAd.conversionRate}%`}
               change={2.7}
-              description={t('percentageClicks')}
+              description="Percentage of clicks that result in conversions"
             />
             <MetricCard
-              title={t('roas')}
+              title="ROAS"
               value={`${currentAd.roas}x`}
               change={5.2}
-              description={t('returnOnAdSpend')}
+              description="Return on ad spend (revenue ÷ cost)"
             />
             <MetricCard
-              title={t('avgPosition')}
+              title="Avg. Position"
               value="2.4"
               change={-0.3}
-              description={t('avgPositionDesc')}
+              description="Average position of your ad in search results"
             />
           </div>
         </CardContent>

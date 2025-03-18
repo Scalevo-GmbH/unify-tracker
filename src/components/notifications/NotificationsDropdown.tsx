@@ -1,19 +1,28 @@
 
 import React from "react";
-import { Bell } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import {
+import { 
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Notification } from "@/types/notifications";
-import { useTranslation } from "@/hooks/use-translation";
+import { Bell, Check, Clock, AlertCircle, MessageSquare, Info } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { toast } from "@/hooks/use-toast";
+
+export type NotificationType = "message" | "alert" | "info";
+
+export interface Notification {
+  id: string;
+  title: string;
+  description: string;
+  timestamp: Date;
+  type: NotificationType;
+  read: boolean;
+}
 
 interface NotificationsDropdownProps {
   notifications: Notification[];
@@ -28,118 +37,123 @@ export const NotificationsDropdown: React.FC<NotificationsDropdownProps> = ({
   onMarkAllAsRead,
   onDismiss,
 }) => {
-  const { t } = useTranslation();
-  const unreadCount = notifications.filter((n) => !n.read).length;
-
-  // Safe date formatter that handles invalid dates
-  const formatDate = (date: Date | string | number) => {
-    try {
-      const dateObj = date instanceof Date ? date : new Date(date);
-      // Check if the date is valid before formatting
-      if (isNaN(dateObj.getTime())) {
-        return "Invalid date";
-      }
-      
-      // Format the date as a relative time
-      const now = new Date();
-      const diffMs = now.getTime() - dateObj.getTime();
-      const diffMins = Math.floor(diffMs / (60 * 1000));
-      const diffHours = Math.floor(diffMs / (60 * 60 * 1000));
-      const diffDays = Math.floor(diffMs / (24 * 60 * 60 * 1000));
-      
-      if (diffMins < 1) return t('justNow');
-      if (diffMins < 60) return `${diffMins} ${diffMins === 1 ? t('minuteAgo') : t('minutesAgo')}`;
-      if (diffHours < 24) return `${diffHours} ${diffHours === 1 ? t('hourAgo') : t('hoursAgo')}`;
-      if (diffDays < 7) return `${diffDays} ${diffDays === 1 ? t('dayAgo') : t('daysAgo')}`;
-      
-      // For older dates, use the standard date format
-      return new Intl.DateTimeFormat('en-US', {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric'
-      }).format(dateObj);
-    } catch (error) {
-      console.error("Error formatting date:", error);
-      return "Invalid date";
+  const unreadCount = notifications.filter(n => !n.read).length;
+  
+  const formatTimestamp = (date: Date) => {
+    const now = new Date();
+    const diffInMinutes = Math.floor((now.getTime() - date.getTime()) / (1000 * 60));
+    
+    if (diffInMinutes < 1) return 'Just now';
+    if (diffInMinutes < 60) return `${diffInMinutes}m ago`;
+    
+    const diffInHours = Math.floor(diffInMinutes / 60);
+    if (diffInHours < 24) return `${diffInHours}h ago`;
+    
+    const diffInDays = Math.floor(diffInHours / 24);
+    if (diffInDays === 1) return 'Yesterday';
+    
+    return `${diffInDays}d ago`;
+  };
+  
+  const getIconForType = (type: NotificationType) => {
+    switch (type) {
+      case "message": 
+        return <MessageSquare className="h-4 w-4 text-blue-500" />;
+      case "alert": 
+        return <AlertCircle className="h-4 w-4 text-red-500" />;
+      case "info":
+      default:
+        return <Info className="h-4 w-4 text-gray-500" />;
     }
   };
 
+  const handleItemClick = (notification: Notification) => {
+    if (!notification.read) {
+      onMarkAsRead(notification.id);
+    }
+    
+    // Show a toast with the notification details
+    toast({
+      title: notification.title,
+      description: notification.description,
+    });
+  };
+  
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" className="relative h-8 w-8">
+        <Button variant="ghost" size="icon" className="relative">
           <Bell className="h-5 w-5" />
           {unreadCount > 0 && (
-            <span className="absolute top-1 right-1 flex h-2 w-2 rounded-full bg-destructive"></span>
+            <span className="absolute top-1 right-1 h-2 w-2 rounded-full bg-marketing-red"></span>
           )}
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-[380px]">
-        <DropdownMenuLabel className="flex items-center justify-between">
-          <span>{t('notifications')}</span>
+      <DropdownMenuContent align="end" className="w-80">
+        <div className="flex items-center justify-between px-4 py-2">
+          <DropdownMenuLabel className="font-semibold">Notifications</DropdownMenuLabel>
           {unreadCount > 0 && (
-            <span className="text-xs bg-primary/10 text-primary rounded-full px-2 py-0.5">
-              {unreadCount} {t('new')}
-            </span>
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              className="text-xs h-8"
+              onClick={onMarkAllAsRead}
+            >
+              <Check className="mr-1 h-3 w-3" />
+              Mark all as read
+            </Button>
           )}
-        </DropdownMenuLabel>
+        </div>
         <DropdownMenuSeparator />
         
-        {notifications.length > 0 ? (
-          <>
-            <ScrollArea className="h-[300px]">
-              <DropdownMenuGroup className="p-2">
-                {notifications.map((notification) => (
-                  <DropdownMenuItem
-                    key={notification.id}
-                    className={`flex flex-col items-start gap-1 p-3 ${
-                      !notification.read ? "bg-primary/5" : ""
-                    }`}
-                    onClick={() => onMarkAsRead(notification.id)}
-                  >
-                    <div className="flex w-full justify-between">
-                      <p className="text-sm font-medium">{notification.title}</p>
-                      <button
-                        className="text-xs text-muted-foreground hover:text-destructive"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          onDismiss(notification.id);
-                        }}
-                      >
-                        ×
-                      </button>
-                    </div>
-                    <p className="text-xs text-muted-foreground">
-                      {notification.description}
-                    </p>
-                    <p className="text-xs text-muted-foreground mt-1">
-                      {formatDate(notification.timestamp)}
-                    </p>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuGroup>
-            </ScrollArea>
-            <DropdownMenuSeparator />
-            <div className="flex items-center justify-between p-2">
-              <Button
-                variant="ghost"
-                size="sm"
-                className="text-xs"
-                onClick={onMarkAllAsRead}
-              >
-                {t('markAllAsRead')}
-              </Button>
-              <Button variant="ghost" size="sm" className="text-xs">
-                {t('viewAll')}
-              </Button>
+        <div className="max-h-[300px] overflow-y-auto">
+          {notifications.length === 0 ? (
+            <div className="px-4 py-6 text-center">
+              <p className="text-sm text-muted-foreground">No notifications</p>
             </div>
+          ) : (
+            notifications.map((notification) => (
+              <DropdownMenuItem
+                key={notification.id}
+                className={cn(
+                  "flex flex-col items-start p-4 cursor-pointer",
+                  !notification.read && "bg-accent/50"
+                )}
+                onClick={() => handleItemClick(notification)}
+              >
+                <div className="flex w-full justify-between items-start mb-1">
+                  <div className="flex items-center">
+                    {getIconForType(notification.type)}
+                    <span className="ml-2 font-medium">{notification.title}</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <span className="text-xs text-muted-foreground">
+                      {formatTimestamp(notification.timestamp)}
+                    </span>
+                    {!notification.read && (
+                      <span className="h-2 w-2 rounded-full bg-blue-500" />
+                    )}
+                  </div>
+                </div>
+                <p className="text-sm text-muted-foreground line-clamp-2">
+                  {notification.description}
+                </p>
+              </DropdownMenuItem>
+            ))
+          )}
+        </div>
+        
+        {notifications.length > 0 && (
+          <>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem className="justify-center cursor-pointer">
+              View all notifications
+            </DropdownMenuItem>
           </>
-        ) : (
-          <div className="py-6 text-center">
-            <p className="text-sm text-muted-foreground">{t('noNotifications')}</p>
-          </div>
         )}
       </DropdownMenuContent>
     </DropdownMenu>
   );
 };
+
+export default NotificationsDropdown;

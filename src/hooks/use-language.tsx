@@ -1,9 +1,9 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-export type Language = 'en' | 'de';
+type Language = 'en' | 'de';
 
-export interface LanguageContextType {
+interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
 }

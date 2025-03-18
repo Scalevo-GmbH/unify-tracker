@@ -1,41 +1,77 @@
 
-/* App-specific styling */
-.app-container {
+/* Tabs styling - consistent across all pages */
+.dashboard-tabs {
   display: flex;
-  min-height: 100vh;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1rem;
+  gap: 1rem;
+  background-color: transparent;
+  padding: 0;
   width: 100%;
-  background-color: #F9FAFB;
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
+  letter-spacing: var(--cal-letter-spacing);
 }
 
-.sidebar-container {
-  flex-shrink: 0;
-  position: relative;
-  background-color: white;
-  border-right: 1px solid #F2F4F7;
+.dashboard-tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
+  letter-spacing: var(--cal-letter-spacing);
 }
 
-/* Content area */
-.content-area {
-  background-color: #F9FAFB;
-  flex-grow: 1;
+.dashboard-tab[data-state=active] {
+  color: var(--foreground);
+  border-bottom-color: var(--primary);
+}
+
+.dashboard-tab:hover {
+  color: var(--foreground);
+}
+
+/* iOS Switch styling */
+.ios-switch {
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
+  letter-spacing: var(--cal-letter-spacing);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  background-color: #F6F6F7 !important;
+}
+
+.ios-switch button {
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
+  letter-spacing: var(--cal-letter-spacing);
+  font-weight: 500;
+  transition: all 0.2s ease;
+  user-select: none;
+  min-width: 80px;
+  height: 100%;
   display: flex;
-  flex-direction: column;
-  position: relative;
+  justify-content: center;
+  align-items: center;
 }
 
-.content-area-inner {
-  flex-grow: 1;
-  background-color: #F9FAFB;
-  padding: 24px;
-  overflow: auto;
+.ios-switch div {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
 }
 
-/* Fix for the top navigation area */
-.top-nav {
+/* Force Cal Sans on all text elements */
+* {
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif;
+}
+
+/* Content card styling */
+.content-card {
   background-color: white;
-  border-bottom: 1px solid #F2F4F7;
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
-

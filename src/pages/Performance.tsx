@@ -18,8 +18,6 @@ import EmailDashboard from "@/components/performance/EmailDashboard";
 import FormsDashboard from "@/components/performance/FormsDashboard";
 import { MetricCard } from "@/components/MetricCard";
 import { IosSwitch } from "@/components/ui/ios-switch";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useTranslation } from "@/hooks/use-translation";
 
 const overviewData = {
   "paid-search": {
@@ -91,7 +89,6 @@ const overviewData = {
 };
 
 const Performance = () => {
-  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState("paid-search");
   const [activeSubTab, setActiveSubTab] = useState<Record<string, string>>({
     "paid-search": "overview",
@@ -189,7 +186,7 @@ const Performance = () => {
             <CardHeader className="pb-2">
               <CardTitle className="text-lg flex items-center">
                 <Zap className="h-5 w-5 mr-2 text-amber-500" />
-                {t('performanceSummary')}
+                Performance Summary
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -199,7 +196,7 @@ const Performance = () => {
                 <div className="bg-slate-50 p-4 rounded-lg border border-slate-100">
                   <h4 className="text-sm font-medium text-slate-700 mb-2 flex items-center">
                     <Award className="h-4 w-4 mr-2 text-emerald-500" />
-                    {t('topPerformer')}
+                    Top Performer
                   </h4>
                   <p className="text-sm">{data.topPerformer}</p>
                 </div>
@@ -207,7 +204,7 @@ const Performance = () => {
                 <div className="bg-slate-50 p-4 rounded-lg border border-slate-100">
                   <h4 className="text-sm font-medium text-slate-700 mb-2 flex items-center">
                     <TrendingUp className="h-4 w-4 mr-2 text-blue-500" />
-                    {t('recommendation')}
+                    Recommendation
                   </h4>
                   <p className="text-sm">{data.recommendation}</p>
                 </div>
@@ -217,22 +214,22 @@ const Performance = () => {
           
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle className="text-lg">{t('channelDetails')}</CardTitle>
+              <CardTitle className="text-lg">Channel Details</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground mb-4">
-                {t('showsAggregate')} {getCategoryName(activeTab)}.
+                This overview shows aggregate performance across all your {getCategoryName(activeTab)}.
               </p>
               
               <div className="mt-4 space-y-4">
                 <div>
-                  <label className="text-sm font-medium mb-1.5 block">{t('selectChannel')}</label>
+                  <label className="text-sm font-medium mb-1.5 block">Select channel</label>
                   <Select 
                     value={selectedTool[activeTab]} 
                     onValueChange={handleToolChange}
                   >
                     <SelectTrigger className="w-full bg-white border-gray-200 shadow-sm">
-                      <SelectValue placeholder={t('selectPlatform')} />
+                      <SelectValue placeholder="Select platform" />
                     </SelectTrigger>
                     <SelectContent className="bg-white">
                       {toolsByCategory[activeTab as keyof typeof toolsByCategory]?.map(tool => (
@@ -248,7 +245,7 @@ const Performance = () => {
                   className="w-full flex items-center justify-center gap-1"
                   onClick={() => handleSubTabChange("details")}
                 >
-                  {t('viewDetailedAnalytics')}
+                  View Detailed Analytics
                   <ChevronRight className="h-4 w-4" />
                 </Button>
               </div>
@@ -312,112 +309,92 @@ const Performance = () => {
   return (
     <div className="container mx-auto py-8 px-4 md:px-6">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">{t('performance')}</h1>
+        <h1 className="text-3xl font-bold mb-2">Performance</h1>
         <p className="text-muted-foreground">
-          {t('trackAndAnalyze')}
+          Track and analyze performance across all your marketing channels
         </p>
       </div>
 
-      <Tabs defaultValue="paid-search" value={activeTab} onValueChange={setActiveTab} className="w-full">
-        <TabsList className="dashboard-tabs mb-8 w-full justify-start">
-          <TabsTrigger className="dashboard-tab" value="paid-search">
-            {t('paidSearch')}
-          </TabsTrigger>
-          <TabsTrigger className="dashboard-tab" value="paid-socials">
-            {t('paidSocials')}
-          </TabsTrigger>
-          <TabsTrigger className="dashboard-tab" value="organic-social">
-            {t('organicSocial')}
-          </TabsTrigger>
-          <TabsTrigger className="dashboard-tab" value="website">
-            {t('website')}
-          </TabsTrigger>
-          <TabsTrigger className="dashboard-tab" value="email">
-            {t('email')}
-          </TabsTrigger>
-          <TabsTrigger className="dashboard-tab" value="forms">
-            {t('forms')}
-          </TabsTrigger>
-        </TabsList>
+      <div className="dashboard-tabs mb-8">
+        <button
+          className={`dashboard-tab ${activeTab === "paid-search" ? "data-[state=active]" : "data-[state=inactive]"}`}
+          data-state={activeTab === "paid-search" ? "active" : "inactive"}
+          onClick={() => setActiveTab("paid-search")}
+        >
+          Paid Search
+        </button>
+        <button
+          className={`dashboard-tab ${activeTab === "paid-socials" ? "data-[state=active]" : "data-[state=inactive]"}`}
+          data-state={activeTab === "paid-socials" ? "active" : "inactive"}
+          onClick={() => setActiveTab("paid-socials")}
+        >
+          Paid Socials
+        </button>
+        <button
+          className={`dashboard-tab ${activeTab === "organic-social" ? "data-[state=active]" : "data-[state=inactive]"}`}
+          data-state={activeTab === "organic-social" ? "active" : "inactive"}
+          onClick={() => setActiveTab("organic-social")}
+        >
+          Organic Social
+        </button>
+        <button
+          className={`dashboard-tab ${activeTab === "website" ? "data-[state=active]" : "data-[state=inactive]"}`}
+          data-state={activeTab === "website" ? "active" : "inactive"}
+          onClick={() => setActiveTab("website")}
+        >
+          Website
+        </button>
+        <button
+          className={`dashboard-tab ${activeTab === "email" ? "data-[state=active]" : "data-[state=inactive]"}`}
+          data-state={activeTab === "email" ? "active" : "inactive"}
+          onClick={() => setActiveTab("email")}
+        >
+          E-Mail
+        </button>
+        <button
+          className={`dashboard-tab ${activeTab === "forms" ? "data-[state=active]" : "data-[state=inactive]"}`}
+          data-state={activeTab === "forms" ? "active" : "inactive"}
+          onClick={() => setActiveTab("forms")}
+        >
+          Forms
+        </button>
+      </div>
 
-        <div className="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-          <IosSwitch
-            options={[
-              { value: "overview", label: t('overview') },
-              { value: "details", label: t('details') }
-            ]}
-            value={activeSubTab[activeTab]}
-            onChange={handleSubTabChange}
-            className="ios-switch"
-          />
+      <div className="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <IosSwitch
+          options={[
+            { value: "overview", label: "Overview" },
+            { value: "details", label: "Details" }
+          ]}
+          value={activeSubTab[activeTab]}
+          onChange={handleSubTabChange}
+          className="ios-switch"
+        />
 
-          {activeSubTab[activeTab] === "details" && (
-            <Select 
-              value={selectedTool[activeTab]} 
-              onValueChange={handleToolChange}
-            >
-              <SelectTrigger className="w-[200px] bg-white border-gray-200 shadow-sm">
-                <SelectValue placeholder={t('selectPlatform')} />
-              </SelectTrigger>
-              <SelectContent className="bg-white">
-                {toolsByCategory[activeTab as keyof typeof toolsByCategory]?.map(tool => (
-                  <SelectItem key={tool.id} value={tool.id}>
-                    {tool.name}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          )}
-        </div>
+        {activeSubTab[activeTab] === "details" && (
+          <Select 
+            value={selectedTool[activeTab]} 
+            onValueChange={handleToolChange}
+          >
+            <SelectTrigger className="w-[200px] bg-white border-gray-200 shadow-sm">
+              <SelectValue placeholder="Select platform" />
+            </SelectTrigger>
+            <SelectContent className="bg-white">
+              {toolsByCategory[activeTab as keyof typeof toolsByCategory]?.map(tool => (
+                <SelectItem key={tool.id} value={tool.id}>
+                  {tool.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        )}
+      </div>
 
-        <TabsContent value="paid-search">
-          <Card>
-            <CardContent className="pt-6">
-              {renderDashboard("paid-search", selectedTool["paid-search"])}
-            </CardContent>
-          </Card>
-        </TabsContent>
-        
-        <TabsContent value="paid-socials">
-          <Card>
-            <CardContent className="pt-6">
-              {renderDashboard("paid-socials", selectedTool["paid-socials"])}
-            </CardContent>
-          </Card>
-        </TabsContent>
-        
-        <TabsContent value="organic-social">
-          <Card>
-            <CardContent className="pt-6">
-              {renderDashboard("organic-social", selectedTool["organic-social"])}
-            </CardContent>
-          </Card>
-        </TabsContent>
-        
-        <TabsContent value="website">
-          <Card>
-            <CardContent className="pt-6">
-              {renderDashboard("website", selectedTool["website"])}
-            </CardContent>
-          </Card>
-        </TabsContent>
-        
-        <TabsContent value="email">
-          <Card>
-            <CardContent className="pt-6">
-              {renderDashboard("email", selectedTool["email"])}
-            </CardContent>
-          </Card>
-        </TabsContent>
-        
-        <TabsContent value="forms">
-          <Card>
-            <CardContent className="pt-6">
-              {renderDashboard("forms", selectedTool["forms"])}
-            </CardContent>
-          </Card>
-        </TabsContent>
-      </Tabs>
+      <Card>
+        <CardContent className="pt-6">
+          {renderDashboard(activeTab, selectedTool[activeTab])}
+        </CardContent>
+      </Card>
     </div>
   );
 };

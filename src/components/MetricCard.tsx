@@ -3,7 +3,6 @@ import React from "react";
 import { ArrowDown, ArrowUp, HelpCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Tooltip, TooltipProvider, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
-import { useTranslation } from "@/hooks/use-translation";
 
 interface MetricCardProps {
   title: string;
@@ -24,8 +23,6 @@ export const MetricCard: React.FC<MetricCardProps> = ({
   description,
   invertedChange,
 }) => {
-  const { t } = useTranslation();
-  
   // For some metrics like bounce rate, a decrease is positive and should be shown in green
   // invertedChange flips the color logic for metrics where lower is better
   const isPositive = invertedChange 
@@ -86,7 +83,7 @@ export const MetricCard: React.FC<MetricCardProps> = ({
                 {isNegative && <ArrowDown className="mr-1 h-3 w-3" />}
                 {Math.abs(change)}%
               </span>
-              <span className="ml-1 text-xs text-muted-foreground">{t('vsLastPeriod')}</span>
+              <span className="ml-1 text-xs text-muted-foreground">vs last period</span>
             </div>
           )}
         </div>

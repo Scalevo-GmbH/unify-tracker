@@ -8,8 +8,3 @@
   font-style: normal;
   font-display: swap;
 }
-
-/* Ensure the font is preloaded */
-:root {
-  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif;
-}

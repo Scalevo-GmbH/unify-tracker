@@ -7,7 +7,6 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import { Facebook, Instagram, Twitter, Search, LineChart, Mail } from "lucide-react";
 import FadeInSection from "./animations/FadeInSection";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { useTranslation } from "@/hooks/use-translation";
 
 // Mock campaign data - in a real app, this would come from an API
 const activeCampaigns = [
@@ -91,59 +90,45 @@ const activeCampaigns = [
   }
 ];
 
-const getPerformanceBadge = (performance: string, t: (key: any) => string) => {
+const getPerformanceBadge = (performance: string) => {
   switch (performance) {
     case "Excellent":
-      return <Badge className="bg-green-100 text-green-800 hover:bg-green-200 border-green-200">{t('excellent')}</Badge>;
+      return <Badge className="bg-green-100 text-green-800 hover:bg-green-200 border-green-200">Excellent</Badge>;
     case "Good":
-      return <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200 border-blue-200">{t('good')}</Badge>;
+      return <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200 border-blue-200">Good</Badge>;
     case "Average":
-      return <Badge className="bg-yellow-100 text-yellow-800 hover:bg-yellow-200 border-yellow-200">{t('average')}</Badge>;
+      return <Badge className="bg-yellow-100 text-yellow-800 hover:bg-yellow-200 border-yellow-200">Average</Badge>;
     case "Poor":
-      return <Badge className="bg-red-100 text-red-800 hover:bg-red-200 border-red-200">{t('poor')}</Badge>;
+      return <Badge className="bg-red-100 text-red-800 hover:bg-red-200 border-red-200">Poor</Badge>;
     default:
       return <Badge>{performance}</Badge>;
   }
 };
 
-const getTranslatedType = (type: string, t: (key: any) => string) => {
-  switch (type) {
-    case "Paid Social":
-      return t('paidSocial');
-    case "Paid Search":
-      return t('paidSearch');
-    case "Email Marketing":
-      return t('emailMarketing');
-    default:
-      return type;
-  }
-};
-
 export const ActiveCampaigns: React.FC = () => {
   const isMobile = useIsMobile();
-  const { t } = useTranslation();
   
   return (
     <FadeInSection>
       <Card className="overflow-hidden">
         <CardHeader>
-          <CardTitle>{t('activeCampaigns')}</CardTitle>
+          <CardTitle>Active Campaigns</CardTitle>
           <CardDescription>
-            {t('currentlyRunning')}
+            Currently running campaigns across all connected platforms
           </CardDescription>
         </CardHeader>
         <CardContent className={isMobile ? "px-0 pb-0" : ""}>
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>{t('campaign')}</TableHead>
-                <TableHead>{t('platform')}</TableHead>
-                <TableHead>{t('type')}</TableHead>
-                <TableHead>{t('budget')}</TableHead>
-                <TableHead>{t('spent')}</TableHead>
-                <TableHead>{t('remaining')}</TableHead>
-                <TableHead>{t('endDate')}</TableHead>
-                <TableHead>{t('performance')}</TableHead>
+                <TableHead>Campaign</TableHead>
+                <TableHead>Platform</TableHead>
+                <TableHead>Type</TableHead>
+                <TableHead>Budget</TableHead>
+                <TableHead>Spent</TableHead>
+                <TableHead>Remaining</TableHead>
+                <TableHead>End Date</TableHead>
+                <TableHead>Performance</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -158,7 +143,7 @@ export const ActiveCampaigns: React.FC = () => {
                     </div>
                   </TableCell>
                   <TableCell>{campaign.platform}</TableCell>
-                  <TableCell>{getTranslatedType(campaign.type, t)}</TableCell>
+                  <TableCell>{campaign.type}</TableCell>
                   <TableCell>{campaign.budget}</TableCell>
                   <TableCell>{campaign.spent}</TableCell>
                   <TableCell>{campaign.remaining}</TableCell>
@@ -167,10 +152,10 @@ export const ActiveCampaigns: React.FC = () => {
                     <TooltipProvider>
                       <Tooltip>
                         <TooltipTrigger asChild>
-                          <div>{getPerformanceBadge(campaign.performance, t)}</div>
+                          <div>{getPerformanceBadge(campaign.performance)}</div>
                         </TooltipTrigger>
                         <TooltipContent>
-                          <p>{t('basedOnMetrics')}</p>
+                          <p>Based on ROI and engagement metrics</p>
                         </TooltipContent>
                       </Tooltip>
                     </TooltipProvider>

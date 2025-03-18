@@ -148,12 +148,12 @@ export default function GoogleAds() {
 
       <section className="mb-8">
         <FadeInSection>
-          <Tabs defaultValue="performance" className="w-full">
-            <TabsList className="mb-6 w-full justify-start">
-              <TabsTrigger value="performance">Performance</TabsTrigger>
-              <TabsTrigger value="search-analytics">Search Analytics</TabsTrigger>
-              <TabsTrigger value="ad-groups">Ad Groups</TabsTrigger>
-              <TabsTrigger value="conversions">Conversions</TabsTrigger>
+          <Tabs defaultValue="performance">
+            <TabsList className="mb-4 dashboard-tabs">
+              <TabsTrigger value="performance" className="dashboard-tab">Performance</TabsTrigger>
+              <TabsTrigger value="search-analytics" className="dashboard-tab">Search Analytics</TabsTrigger>
+              <TabsTrigger value="ad-groups" className="dashboard-tab">Ad Groups</TabsTrigger>
+              <TabsTrigger value="conversions" className="dashboard-tab">Conversions</TabsTrigger>
             </TabsList>
 
             <TabsContent value="performance">

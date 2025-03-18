@@ -1,6 +1,6 @@
 
 import { useState, useCallback } from "react";
-import { Notification, NotificationType } from "@/types/notifications";
+import { Notification, NotificationType } from "@/components/notifications/NotificationsDropdown";
 
 // Sample notifications data
 const initialNotifications: Notification[] = [

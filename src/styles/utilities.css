@@ -3,22 +3,30 @@
 
 /* Button-specific utility classes */
 .cal-button {
-  @apply font-cal-heading;
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
+  letter-spacing: var(--cal-letter-spacing);
+  font-weight: var(--cal-heading-weight);
 }
 
 /* Badge-specific utility classes */
 .cal-badge {
-  @apply font-cal-heading;
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
+  letter-spacing: var(--cal-letter-spacing);
+  font-weight: var(--cal-heading-weight);
 }
 
 /* Card title utility class */
 .cal-card-title {
-  @apply font-cal-heading;
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
+  letter-spacing: var(--cal-letter-spacing);
+  font-weight: var(--cal-heading-weight);
 }
 
 /* Tab utility class */
 .cal-tab {
-  @apply font-cal-heading;
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
+  letter-spacing: var(--cal-letter-spacing);
+  font-weight: var(--cal-heading-weight);
 }
 
 /* Specifically target any text that might be in lists */
@@ -27,18 +35,7 @@ ul span, ol span,
 ul a, ol a,
 .list-item, 
 .list-content {
-  @apply font-cal-body;
-}
-
-/* Additional Typography Utilities */
-.tracking-tighter {
-  letter-spacing: var(--cal-heading-spacing);
-}
-
-.tracking-tight {
-  letter-spacing: var(--cal-letter-spacing);
-}
-
-.tracking-normal {
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif;
   letter-spacing: var(--cal-body-spacing);
+  font-weight: var(--cal-body-weight);
 }

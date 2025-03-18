@@ -3,14 +3,11 @@ import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Sparkles } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useTranslation } from "@/hooks/use-translation";
-import { TranslationKey } from "@/translations/types";
 
 interface IntegrationCardProps {
   name: string;
   icon: React.ReactNode;
   description: string;
-  descriptionKey?: TranslationKey; // Change to TranslationKey type
   connected?: boolean;
   popular?: boolean;
   className?: string;
@@ -22,7 +19,6 @@ export const IntegrationCard: React.FC<IntegrationCardProps> = ({
   name,
   icon,
   description,
-  descriptionKey,
   connected = false,
   popular = false,
   className,
@@ -31,7 +27,6 @@ export const IntegrationCard: React.FC<IntegrationCardProps> = ({
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
-  const { t } = useTranslation();
 
   const handleClick = () => {
     if (route) {
@@ -57,7 +52,7 @@ export const IntegrationCard: React.FC<IntegrationCardProps> = ({
       {popular && (
         <div className="absolute top-3 right-3 flex items-center bg-marketing-purple/10 px-2 py-1 rounded-full">
           <Sparkles className="h-3 w-3 text-marketing-purple mr-1" />
-          <span className="text-xs text-marketing-purple cal-badge">{t('popular')}</span>
+          <span className="text-xs text-marketing-purple cal-badge">Popular</span>
         </div>
       )}
       
@@ -67,9 +62,7 @@ export const IntegrationCard: React.FC<IntegrationCardProps> = ({
       
       <h3 className="mb-2 text-base font-semibold cal-card-title">{name}</h3>
       
-      <p className="mb-4 text-sm text-muted-foreground flex-grow">
-        {descriptionKey ? t(descriptionKey) : description}
-      </p>
+      <p className="mb-4 text-sm text-muted-foreground flex-grow">{description}</p>
       
       <div className="mt-auto">
         <button
@@ -80,11 +73,7 @@ export const IntegrationCard: React.FC<IntegrationCardProps> = ({
               : "bg-primary text-primary-foreground hover:bg-primary/90"
           )}
         >
-          {route && connected 
-            ? t('viewDashboard') 
-            : connected 
-              ? t('manageConnection') 
-              : t('connect')}
+          {route && connected ? "View Dashboard" : connected ? "Manage Connection" : "Connect"}
         </button>
       </div>
       

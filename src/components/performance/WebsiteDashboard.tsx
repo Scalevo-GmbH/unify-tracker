@@ -6,15 +6,12 @@ import { PerformanceChart } from "@/components/PerformanceChart";
 import { DateRange } from "@/components/DateRangeSelector";
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
-import { useTranslation } from "@/hooks/use-translation";
 
 interface WebsiteDashboardProps {
   toolId: string;
 }
 
 const WebsiteDashboard: React.FC<WebsiteDashboardProps> = ({ toolId }) => {
-  const { t, formatNumber } = useTranslation();
-
   // In a real implementation, we would fetch this data from the Google Analytics API
   const metrics = {
     "google-analytics": {
@@ -48,44 +45,44 @@ const WebsiteDashboard: React.FC<WebsiteDashboardProps> = ({ toolId }) => {
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h2 className="text-2xl font-bold">{t('websiteDashboard')}</h2>
+        <h2 className="text-2xl font-bold">Google Analytics Dashboard</h2>
         <Button variant="outline" size="sm" onClick={handleExport} className="gap-2">
           <Download className="h-4 w-4" />
-          {t('export')}
+          Export
         </Button>
       </div>
       
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4">
         <MetricCard 
-          title={t('users')}
-          value={formatNumber(currentMetrics.users)} 
+          title="Users" 
+          value={currentMetrics.users.toLocaleString()} 
           change={6.8} 
-          description={t('totalVisitors')}
+          description="Total visitors"
         />
         <MetricCard 
-          title={t('newUsers')}
-          value={formatNumber(currentMetrics.newUsers)} 
+          title="New Users" 
+          value={currentMetrics.newUsers.toLocaleString()} 
           change={8.2} 
-          description={t('firstTimeVisitors')}
+          description="First-time visitors"
         />
         <MetricCard 
-          title={t('sessions')}
-          value={formatNumber(currentMetrics.sessions)} 
+          title="Sessions" 
+          value={currentMetrics.sessions.toLocaleString()} 
           change={5.4} 
-          description={t('totalSessions')}
+          description="Total sessions"
         />
         <MetricCard 
-          title={t('pageviews')}
-          value={formatNumber(currentMetrics.pageviews)} 
+          title="Pageviews" 
+          value={currentMetrics.pageviews.toLocaleString()} 
           change={7.1} 
-          description={t('totalPageViews')}
+          description="Total page views"
         />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <Card className="md:col-span-2">
           <CardHeader>
-            <CardTitle>{t('trafficOverview')}</CardTitle>
+            <CardTitle>Traffic Overview</CardTitle>
           </CardHeader>
           <CardContent>
             <PerformanceChart dateRange={dateRange} />
@@ -94,34 +91,34 @@ const WebsiteDashboard: React.FC<WebsiteDashboardProps> = ({ toolId }) => {
         
         <Card>
           <CardHeader>
-            <CardTitle>{t('engagementMetrics')}</CardTitle>
+            <CardTitle>Engagement Metrics</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               <MetricCard 
-                title={t('bounceRate')}
+                title="Bounce Rate" 
                 value={`${currentMetrics.bounceRate}%`} 
                 change={-2.1} 
-                description={t('singlePageSessions')}
+                description="Single page sessions"
                 invertedChange
               />
               <MetricCard 
-                title={t('sessionDuration')}
+                title="Session Duration" 
                 value={formatTime(currentMetrics.avgSessionDuration)} 
                 change={3.8} 
-                description={t('avgTimeOnSite')}
+                description="Avg. time on site"
               />
               <MetricCard 
-                title={t('pagesPerSession')}
+                title="Pages / Session" 
                 value={currentMetrics.pagesPerSession.toString()} 
                 change={1.5} 
-                description={t('pagesPerSessionDesc')}
+                description="Pages per session"
               />
               <MetricCard 
-                title={t('conversions')}
-                value={formatNumber(currentMetrics.conversions)} 
+                title="Conversions" 
+                value={currentMetrics.conversions.toLocaleString()} 
                 change={9.2} 
-                description={`${currentMetrics.conversionRate}% ${t('conversionRateDesc')}`}
+                description={`${currentMetrics.conversionRate}% conversion rate`}
               />
             </div>
           </CardContent>
