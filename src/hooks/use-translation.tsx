@@ -1,12 +1,13 @@
 
 import React from 'react';
 import { useLanguage } from './use-language';
-import { getTranslation } from '@/utils/translations';
+import { getTranslation } from '@/translations';
+import type { TranslationKey } from '@/translations';
 
 export function useTranslation() {
   const { language } = useLanguage();
   
-  const t = (key: Parameters<typeof getTranslation>[0]) => {
+  const t = (key: TranslationKey) => {
     return getTranslation(key, language);
   };
   
@@ -17,7 +18,7 @@ export function useTranslation() {
     values = {},
     ...rest 
   }: { 
-    i18nKey: Parameters<typeof getTranslation>[0];
+    i18nKey: TranslationKey;
     components?: Record<string, React.ReactNode>;
     values?: Record<string, string>;
     [key: string]: any;
