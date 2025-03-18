@@ -5,6 +5,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useTranslation } from "@/hooks/use-translation";
 
 interface Ad {
   id: number;
@@ -36,13 +37,14 @@ export const GoogleAdsTable: React.FC<GoogleAdsTableProps> = ({
   onSelectAd,
 }) => {
   const isMobile = useIsMobile();
+  const { t } = useTranslation();
   
   return (
     <section>
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-semibold">All Google Ads</h2>
         <Button variant="outline" size="sm">
-          Manage All Ads
+          {t('manageAllAds')}
         </Button>
       </div>
       
@@ -53,8 +55,8 @@ export const GoogleAdsTable: React.FC<GoogleAdsTableProps> = ({
               <TableRow>
                 <TableHead>Ad Name</TableHead>
                 <TableHead>Status</TableHead>
-                <TableHead>Spent</TableHead>
-                <TableHead>Impressions</TableHead>
+                <TableHead>{t('spent')}</TableHead>
+                <TableHead>{t('impressions')}</TableHead>
                 <TableHead>Clicks</TableHead>
                 <TableHead>CTR</TableHead>
                 <TableHead>Conversions</TableHead>

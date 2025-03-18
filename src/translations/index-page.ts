@@ -38,7 +38,36 @@ export type IndexTranslationKey =
   | 'googleAnalytics'
   | 'googleAnalyticsDescription'
   | 'linkedInAds'
-  | 'linkedInAdsDescription';
+  | 'linkedInAdsDescription'
+  | 'vsLastPeriod'
+  | 'campaign'
+  | 'platform'
+  | 'type'
+  | 'budget'
+  | 'spent'
+  | 'remaining'
+  | 'endDate'
+  | 'performance'
+  | 'paidSocial'
+  | 'paidSearch'
+  | 'emailMarketing'
+  | 'basedOnMetrics'
+  | 'excellent'
+  | 'good'
+  | 'average'
+  | 'poor'
+  | 'today'
+  | 'yesterday'
+  | 'lastSevenDays'
+  | 'lastThirtyDays'
+  | 'thisMonth'
+  | 'lastMonth'
+  | 'custom'
+  | 'performanceMetrics'
+  | 'keyMetrics'
+  | 'reachVsClicks'
+  | 'manageAllAds'
+  | 'currentlyRunning';
 
 // Index page-related translations
 export const indexPageTranslations: Record<IndexTranslationKey, Record<Language, string>> = {
@@ -187,5 +216,127 @@ export const indexPageTranslations: Record<IndexTranslationKey, Record<Language,
   linkedInAdsDescription: {
     en: 'Track your LinkedIn advertising campaigns and conversions.',
     de: 'Verfolge deine LinkedIn-Werbekampagnen und -Konversionen.'
+  },
+  // New translations for missing elements
+  vsLastPeriod: {
+    en: 'vs last period',
+    de: 'im Vergleich zum letzten Zeitraum'
+  },
+  // Active campaigns table translations
+  campaign: {
+    en: 'Campaign',
+    de: 'Kampagne'
+  },
+  platform: {
+    en: 'Platform',
+    de: 'Plattform'
+  },
+  type: {
+    en: 'Type',
+    de: 'Typ'
+  },
+  budget: {
+    en: 'Budget',
+    de: 'Budget'
+  },
+  spent: {
+    en: 'Spent',
+    de: 'Ausgegeben'
+  },
+  remaining: {
+    en: 'Remaining',
+    de: 'Verbleibend'
+  },
+  endDate: {
+    en: 'End Date',
+    de: 'Enddatum'
+  },
+  performance: {
+    en: 'Performance',
+    de: 'Leistung'
+  },
+  // Campaign types
+  paidSocial: {
+    en: 'Paid Social',
+    de: 'Bezahlte soziale Medien'
+  },
+  paidSearch: {
+    en: 'Paid Search',
+    de: 'Bezahlte Suche'
+  },
+  emailMarketing: {
+    en: 'Email Marketing',
+    de: 'E-Mail-Marketing'
+  },
+  // Performance ratings
+  basedOnMetrics: {
+    en: 'Based on ROI and engagement metrics',
+    de: 'Basierend auf ROI und Engagement-Metriken'
+  },
+  excellent: {
+    en: 'Excellent',
+    de: 'Ausgezeichnet'
+  },
+  good: {
+    en: 'Good',
+    de: 'Gut'
+  },
+  average: {
+    en: 'Average',
+    de: 'Durchschnittlich'
+  },
+  poor: {
+    en: 'Poor',
+    de: 'Schwach'
+  },
+  // Date range selector
+  today: {
+    en: 'Today',
+    de: 'Heute'
+  },
+  yesterday: {
+    en: 'Yesterday',
+    de: 'Gestern'
+  },
+  lastSevenDays: {
+    en: 'Last 7 days',
+    de: 'Letzte 7 Tage'
+  },
+  lastThirtyDays: {
+    en: 'Last 30 days',
+    de: 'Letzte 30 Tage'
+  },
+  thisMonth: {
+    en: 'This month',
+    de: 'Dieser Monat'
+  },
+  lastMonth: {
+    en: 'Last month',
+    de: 'Letzter Monat'
+  },
+  custom: {
+    en: 'Custom',
+    de: 'Benutzerdefiniert'
+  },
+  // Performance metrics
+  performanceMetrics: {
+    en: 'Performance Metrics',
+    de: 'Leistungskennzahlen'
+  },
+  keyMetrics: {
+    en: 'Key Metrics',
+    de: 'Schlüsselkennzahlen'
+  },
+  reachVsClicks: {
+    en: 'Reach vs. Clicks Over Time',
+    de: 'Reichweite vs. Klicks im Zeitverlauf'
+  },
+  manageAllAds: {
+    en: 'Manage All Ads',
+    de: 'Alle Anzeigen verwalten'
+  },
+  currentlyRunning: {
+    en: 'Currently running campaigns across all connected platforms',
+    de: 'Aktuell laufende Kampagnen über alle verbundenen Plattformen'
   }
 };

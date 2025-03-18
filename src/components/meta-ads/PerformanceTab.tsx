@@ -6,6 +6,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { DateRange } from "@/components/DateRangeSelector";
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
+import { useTranslation } from "@/hooks/use-translation";
 
 interface Ad {
   id: number;
@@ -33,6 +34,8 @@ interface PerformanceTabProps {
 }
 
 export const PerformanceTab: React.FC<PerformanceTabProps> = ({ currentAd, dateRange }) => {
+  const { t } = useTranslation();
+  
   const handleExport = () => {
     // This would handle the export functionality in a real implementation
     console.log(`Exporting performance data for ad: ${currentAd.name}`);
@@ -41,17 +44,17 @@ export const PerformanceTab: React.FC<PerformanceTabProps> = ({ currentAd, dateR
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center mb-4">
-        <h3 className="text-lg font-semibold">Performance Metrics</h3>
+        <h3 className="text-lg font-semibold">{t('performanceMetrics')}</h3>
         <Button variant="outline" size="sm" onClick={handleExport} className="gap-2">
           <Download className="h-4 w-4" />
-          Export
+          {t('export')}
         </Button>
       </div>
     
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <Card className="lg:col-span-2">
           <CardHeader>
-            <CardTitle>Reach vs. Clicks Over Time</CardTitle>
+            <CardTitle>{t('reachVsClicks')}</CardTitle>
           </CardHeader>
           <CardContent>
             <PerformanceChart dateRange={dateRange} />
@@ -60,7 +63,7 @@ export const PerformanceTab: React.FC<PerformanceTabProps> = ({ currentAd, dateR
 
         <Card className="lg:col-span-1">
           <CardHeader>
-            <CardTitle>Key Metrics</CardTitle>
+            <CardTitle>{t('keyMetrics')}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
