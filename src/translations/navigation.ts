@@ -23,7 +23,15 @@ export type NavigationTranslationKey =
   | 'notifications'
   | 'noNotifications'
   | 'english'
-  | 'german';
+  | 'german'
+  | 'new'
+  | 'justNow'
+  | 'minuteAgo'
+  | 'minutesAgo'
+  | 'hourAgo'
+  | 'hoursAgo'
+  | 'dayAgo'
+  | 'daysAgo';
 
 // Navigation-related translations
 export const navigationTranslations: Record<NavigationTranslationKey, Record<Language, string>> = {
@@ -110,5 +118,37 @@ export const navigationTranslations: Record<NavigationTranslationKey, Record<Lan
   german: {
     en: 'German',
     de: 'Deutsch'
+  },
+  new: {
+    en: 'new',
+    de: 'neu'
+  },
+  justNow: {
+    en: 'just now',
+    de: 'gerade eben'
+  },
+  minuteAgo: {
+    en: 'minute ago',
+    de: 'Minute zuvor'
+  },
+  minutesAgo: {
+    en: 'minutes ago',
+    de: 'Minuten zuvor'
+  },
+  hourAgo: {
+    en: 'hour ago',
+    de: 'Stunde zuvor'
+  },
+  hoursAgo: {
+    en: 'hours ago',
+    de: 'Stunden zuvor'
+  },
+  dayAgo: {
+    en: 'day ago',
+    de: 'Tag zuvor'
+  },
+  daysAgo: {
+    en: 'days ago',
+    de: 'Tage zuvor'
   }
 };

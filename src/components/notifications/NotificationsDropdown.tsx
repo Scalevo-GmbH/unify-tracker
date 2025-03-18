@@ -12,7 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Notification } from "@/hooks/use-notifications";
+import { Notification } from "@/types/notifications";
 import { useTranslation } from "@/hooks/use-translation";
 
 interface NotificationsDropdownProps {
@@ -28,8 +28,41 @@ export const NotificationsDropdown: React.FC<NotificationsDropdownProps> = ({
   onMarkAllAsRead,
   onDismiss,
 }) => {
-  const { t, formatDate } = useTranslation();
+  const { t } = useTranslation();
   const unreadCount = notifications.filter((n) => !n.read).length;
+
+  // Safe date formatter that handles invalid dates
+  const formatDate = (date: Date | string | number) => {
+    try {
+      const dateObj = date instanceof Date ? date : new Date(date);
+      // Check if the date is valid before formatting
+      if (isNaN(dateObj.getTime())) {
+        return "Invalid date";
+      }
+      
+      // Format the date as a relative time
+      const now = new Date();
+      const diffMs = now.getTime() - dateObj.getTime();
+      const diffMins = Math.floor(diffMs / (60 * 1000));
+      const diffHours = Math.floor(diffMs / (60 * 60 * 1000));
+      const diffDays = Math.floor(diffMs / (24 * 60 * 60 * 1000));
+      
+      if (diffMins < 1) return t('justNow');
+      if (diffMins < 60) return `${diffMins} ${diffMins === 1 ? t('minuteAgo') : t('minutesAgo')}`;
+      if (diffHours < 24) return `${diffHours} ${diffHours === 1 ? t('hourAgo') : t('hoursAgo')}`;
+      if (diffDays < 7) return `${diffDays} ${diffDays === 1 ? t('dayAgo') : t('daysAgo')}`;
+      
+      // For older dates, use the standard date format
+      return new Intl.DateTimeFormat('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      }).format(dateObj);
+    } catch (error) {
+      console.error("Error formatting date:", error);
+      return "Invalid date";
+    }
+  };
 
   return (
     <DropdownMenu>
@@ -46,7 +79,7 @@ export const NotificationsDropdown: React.FC<NotificationsDropdownProps> = ({
           <span>{t('notifications')}</span>
           {unreadCount > 0 && (
             <span className="text-xs bg-primary/10 text-primary rounded-full px-2 py-0.5">
-              {unreadCount} new
+              {unreadCount} {t('new')}
             </span>
           )}
         </DropdownMenuLabel>
@@ -77,10 +110,10 @@ export const NotificationsDropdown: React.FC<NotificationsDropdownProps> = ({
                       </button>
                     </div>
                     <p className="text-xs text-muted-foreground">
-                      {notification.message}
+                      {notification.description}
                     </p>
                     <p className="text-xs text-muted-foreground mt-1">
-                      {formatDate(notification.date)}
+                      {formatDate(notification.timestamp)}
                     </p>
                   </DropdownMenuItem>
                 ))}

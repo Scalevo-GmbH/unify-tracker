@@ -27,18 +27,19 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Avatar } from "@/components/ui/avatar";
 import { useTranslation } from "@/hooks/use-translation";
+import type { NavigationTranslationKey } from "@/translations/navigation";
 
 export const mainMenuItems = [
-  { icon: Home, labelKey: "dashboard", path: "/" },
-  { icon: Megaphone, labelKey: "campaigns", path: "/campaigns" },
-  { icon: BarChart3, labelKey: "performance", path: "/performance" },
-  { icon: Lightbulb, labelKey: "intelligence", path: "/intelligence" },
-  { icon: Plug, labelKey: "integrations", path: "/integrations" },
-  { icon: Settings, labelKey: "settings", path: "/account" },
+  { icon: Home, labelKey: "dashboard" as NavigationTranslationKey, path: "/" },
+  { icon: Megaphone, labelKey: "campaigns" as NavigationTranslationKey, path: "/campaigns" },
+  { icon: BarChart3, labelKey: "performance" as NavigationTranslationKey, path: "/performance" },
+  { icon: Lightbulb, labelKey: "intelligence" as NavigationTranslationKey, path: "/intelligence" },
+  { icon: Plug, labelKey: "integrations" as NavigationTranslationKey, path: "/integrations" },
+  { icon: Settings, labelKey: "settings" as NavigationTranslationKey, path: "/account" },
 ];
 
 export const settingsItems = [
-  { icon: HelpCircle, labelKey: "helpSupport", path: "/help" },
+  { icon: HelpCircle, labelKey: "helpSupport" as NavigationTranslationKey, path: "/help" },
 ];
 
 interface SidebarProps {
@@ -47,14 +48,14 @@ interface SidebarProps {
 
 const SidebarMenuGroup: React.FC<{
   items: typeof mainMenuItems;
-  label: string;
+  label: NavigationTranslationKey;
 }> = ({ items, label }) => {
   const location = useLocation();
   const { t } = useTranslation();
   
   return (
     <SidebarGroup>
-      <SidebarGroupLabel className="text-[#B4B3B5]">{t(label as any)}</SidebarGroupLabel>
+      <SidebarGroupLabel className="text-[#B4B3B5]">{t(label)}</SidebarGroupLabel>
       <SidebarGroupContent>
         <SidebarMenu className="space-y-3">
           {items.map((item) => (
