@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
@@ -9,6 +8,7 @@ import { ConnectPlatformModal } from "@/components/ConnectPlatformModal";
 import { FadeInSection } from "@/components/animations/FadeInSection";
 import { Search, Grid } from "lucide-react";
 import { useTranslation } from "@/hooks/use-translation";
+import { TranslationKey } from "@/translations/types";
 import { 
   Facebook, 
   Instagram, 
@@ -41,165 +41,172 @@ const Integrations = () => {
     setIsModalOpen(true);
   };
 
-  const integrations = {
+  interface Integration {
+    name: string;
+    icon: React.ReactNode;
+    descriptionKey: TranslationKey;
+    popular?: boolean;
+  }
+
+  const integrations: Record<string, Integration[]> = {
     advertising: [
       {
         name: "Facebook Ads",
         icon: <Facebook className="h-6 w-6 text-blue-600" />,
-        descriptionKey: "facebookAdsDesc",
+        descriptionKey: "facebookAdsDesc" as TranslationKey,
         popular: true,
       },
       {
         name: "Google Ads",
         icon: <LineChart className="h-6 w-6 text-marketing-red" />,
-        descriptionKey: "googleAdsDesc",
+        descriptionKey: "googleAdsDesc" as TranslationKey,
         popular: true,
       },
       {
         name: "LinkedIn Ads",
         icon: <Linkedin className="h-6 w-6 text-blue-700" />,
-        descriptionKey: "linkedinAdsDesc",
+        descriptionKey: "linkedinAdsDesc" as TranslationKey,
       },
       {
         name: "Twitter Ads",
         icon: <Twitter className="h-6 w-6 text-blue-400" />,
-        descriptionKey: "twitterAdsDesc",
+        descriptionKey: "twitterAdsDesc" as TranslationKey,
       },
     ],
     social: [
       {
         name: "Instagram",
         icon: <Instagram className="h-6 w-6 text-pink-600" />,
-        descriptionKey: "instagramDesc",
+        descriptionKey: "instagramDesc" as TranslationKey,
         popular: true,
       },
       {
         name: "Facebook Pages",
         icon: <Facebook className="h-6 w-6 text-blue-600" />,
-        descriptionKey: "facebookPagesDesc",
+        descriptionKey: "facebookPagesDesc" as TranslationKey,
         popular: true,
       },
       {
         name: "Twitter",
         icon: <Twitter className="h-6 w-6 text-blue-400" />,
-        descriptionKey: "twitterDesc",
+        descriptionKey: "twitterDesc" as TranslationKey,
       },
       {
         name: "LinkedIn",
         icon: <Linkedin className="h-6 w-6 text-blue-700" />,
-        descriptionKey: "linkedinDesc",
+        descriptionKey: "linkedinDesc" as TranslationKey,
       },
       {
         name: "YouTube",
         icon: <Youtube className="h-6 w-6 text-red-600" />,
-        descriptionKey: "youtubeDesc",
+        descriptionKey: "youtubeDesc" as TranslationKey,
       },
     ],
     email: [
       {
         name: "Mailchimp",
         icon: <Mail className="h-6 w-6 text-marketing-yellow" />,
-        descriptionKey: "mailchimpDesc",
+        descriptionKey: "mailchimpDesc" as TranslationKey,
         popular: true,
       },
       {
         name: "Campaign Monitor",
         icon: <Mail className="h-6 w-6 text-blue-500" />,
-        descriptionKey: "campaignMonitorDesc",
+        descriptionKey: "campaignMonitorDesc" as TranslationKey,
       },
       {
         name: "Constant Contact",
         icon: <Mail className="h-6 w-6 text-marketing-green" />,
-        descriptionKey: "constantContactDesc",
+        descriptionKey: "constantContactDesc" as TranslationKey,
       },
       {
         name: "SendGrid",
         icon: <Mail className="h-6 w-6 text-indigo-600" />,
-        descriptionKey: "sendGridDesc",
+        descriptionKey: "sendGridDesc" as TranslationKey,
       },
     ],
     analytics: [
       {
         name: "Google Analytics",
         icon: <BarChart3 className="h-6 w-6 text-marketing-orange" />,
-        descriptionKey: "googleAnalyticsDesc",
+        descriptionKey: "googleAnalyticsDesc" as TranslationKey,
         popular: true,
       },
       {
         name: "Mixpanel",
         icon: <PieChart className="h-6 w-6 text-purple-600" />,
-        descriptionKey: "mixpanelDesc",
+        descriptionKey: "mixpanelDesc" as TranslationKey,
       },
       {
         name: "Hotjar",
         icon: <BarChart3 className="h-6 w-6 text-marketing-red" />,
-        descriptionKey: "hotjarDesc",
+        descriptionKey: "hotjarDesc" as TranslationKey,
       },
       {
         name: "Segment",
         icon: <Share2 className="h-6 w-6 text-teal-600" />,
-        descriptionKey: "segmentDesc",
+        descriptionKey: "segmentDesc" as TranslationKey,
       },
     ],
     ecommerce: [
       {
         name: "Shopify",
         icon: <ShoppingCart className="h-6 w-6 text-green-600" />,
-        descriptionKey: "shopifyDesc",
+        descriptionKey: "shopifyDesc" as TranslationKey,
         popular: true,
       },
       {
         name: "WooCommerce",
         icon: <ShoppingCart className="h-6 w-6 text-purple-600" />,
-        descriptionKey: "wooCommerceDesc",
+        descriptionKey: "wooCommerceDesc" as TranslationKey,
       },
       {
         name: "Stripe",
         icon: <CreditCard className="h-6 w-6 text-indigo-500" />,
-        descriptionKey: "stripeDesc",
+        descriptionKey: "stripeDesc" as TranslationKey,
       },
       {
         name: "BigCommerce",
         icon: <ShoppingCart className="h-6 w-6 text-blue-500" />,
-        descriptionKey: "bigCommerceDesc",
+        descriptionKey: "bigCommerceDesc" as TranslationKey,
       },
     ],
     other: [
       {
         name: "Intercom",
         icon: <MessageSquare className="h-6 w-6 text-blue-400" />,
-        descriptionKey: "intercomDesc",
+        descriptionKey: "intercomDesc" as TranslationKey,
       },
       {
         name: "HubSpot",
         icon: <FileText className="h-6 w-6 text-marketing-orange" />,
-        descriptionKey: "hubspotDesc",
+        descriptionKey: "hubspotDesc" as TranslationKey,
         popular: true,
       },
       {
         name: "Twilio",
         icon: <Phone className="h-6 w-6 text-red-500" />,
-        descriptionKey: "twilioDesc",
+        descriptionKey: "twilioDesc" as TranslationKey,
       },
       {
         name: "Zendesk",
         icon: <MessageSquare className="h-6 w-6 text-green-500" />,
-        descriptionKey: "zendeskDesc",
+        descriptionKey: "zendeskDesc" as TranslationKey,
       },
     ],
   };
 
   const allIntegrations = Object.values(integrations).flat();
 
-  const filterIntegrations = (integrations: any) => {
+  const filterIntegrations = (integrations: Record<string, Integration[]>) => {
     if (!searchTerm) return integrations;
     
-    const filtered: any = {};
+    const filtered: Record<string, Integration[]> = {};
     
     Object.keys(integrations).forEach(category => {
-      filtered[category] = integrations[category].filter((integration: any) => 
+      filtered[category] = integrations[category].filter((integration) => 
         integration.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        (integration.descriptionKey && t(integration.descriptionKey).toLowerCase().includes(searchTerm.toLowerCase()))
+        t(integration.descriptionKey).toLowerCase().includes(searchTerm.toLowerCase())
       );
     });
     
@@ -211,11 +218,11 @@ const Integrations = () => {
   const filteredAllIntegrations = searchTerm 
     ? allIntegrations.filter(integration => 
         integration.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        (integration.descriptionKey && t(integration.descriptionKey).toLowerCase().includes(searchTerm.toLowerCase())))
+        t(integration.descriptionKey).toLowerCase().includes(searchTerm.toLowerCase()))
     : allIntegrations;
   
   const hasResults = Object.values(filteredIntegrations).some(
-    (category: any) => (category as any[]).length > 0
+    (category) => category.length > 0
   ) || filteredAllIntegrations.length > 0;
 
   return (
@@ -300,7 +307,7 @@ const Integrations = () => {
                 </FadeInSection>
               ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                  {filteredAllIntegrations.map((integration: any, index: number) => (
+                  {filteredAllIntegrations.map((integration, index) => (
                     <FadeInSection key={`all-${integration.name}`} delay={index * 50}>
                       <IntegrationCard
                         name={integration.name}
@@ -347,7 +354,7 @@ const Integrations = () => {
                   </FadeInSection>
                 ) : (
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                    {filteredIntegrations[category].map((integration: any, index: number) => (
+                    {filteredIntegrations[category].map((integration, index) => (
                       <FadeInSection key={integration.name} delay={index * 100}>
                         <IntegrationCard
                           name={integration.name}
