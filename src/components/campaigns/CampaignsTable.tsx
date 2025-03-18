@@ -203,7 +203,7 @@ const CampaignsTable: React.FC<CampaignsTableProps> = ({ filterStatus, platformF
       {platformFilters.length > 0 && (
         <div className="bg-slate-50 p-3 border-b border-slate-200 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="text-sm font-medium">Filtered by:</span>
+            <span className="text-sm font-medium">{t('filterByPlatform')}:</span>
             {platformFilters.map(filter => (
               <Badge key={filter} variant="outline" className="flex items-center gap-1 px-2 py-1">
                 {filter === 'search' ? t('searchAds') : filter === 'social' ? t('socialMedia') : t('emailMarketing')}

@@ -13,11 +13,13 @@ import {
 } from "@/components/ui/popover";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import { useTranslation } from "@/hooks/use-translation";
 
 const Campaigns = () => {
   const [filterStatus, setFilterStatus] = useState<"all" | "active" | "completed">("all");
   const [platformFilters, setPlatformFilters] = useState<string[]>([]);
   const [filtersOpen, setFiltersOpen] = useState(false);
+  const { t } = useTranslation();
 
   const handlePlatformFilterChange = (category: string) => {
     setPlatformFilters(current => {
@@ -39,15 +41,15 @@ const Campaigns = () => {
   return (
     <div>
       <div className="mb-6 p-6">
-        <h1 className="text-3xl font-bold mb-2">Campaigns</h1>
-        <p className="text-muted-foreground">Manage all your marketing campaigns across different platforms</p>
+        <h1 className="text-3xl font-bold mb-2">{t('campaigns')}</h1>
+        <p className="text-muted-foreground">{t('manageCampaigns')}</p>
       </div>
 
       <div className="px-6">
         <Tabs defaultValue="all-campaigns" className="w-full">
           <TabsList className="mb-6 w-full justify-start">
-            <TabsTrigger value="all-campaigns">All Campaigns</TabsTrigger>
-            <TabsTrigger value="new-campaign">New Campaign</TabsTrigger>
+            <TabsTrigger value="all-campaigns">{t('allCampaigns')}</TabsTrigger>
+            <TabsTrigger value="new-campaign">{t('newCampaign')}</TabsTrigger>
           </TabsList>
 
           <TabsContent value="all-campaigns">
@@ -58,33 +60,33 @@ const Campaigns = () => {
                   onClick={() => setFilterStatus("all")}
                   className="h-9"
                 >
-                  All
+                  {t('all')}
                 </Button>
                 <Button
                   variant={filterStatus === "active" ? "default" : "outline"}
                   onClick={() => setFilterStatus("active")}
                   className="h-9"
                 >
-                  Active
+                  {t('active')}
                 </Button>
                 <Button
                   variant={filterStatus === "completed" ? "default" : "outline"}
                   onClick={() => setFilterStatus("completed")}
                   className="h-9"
                 >
-                  Completed
+                  {t('completed')}
                 </Button>
               </div>
               <Popover open={filtersOpen} onOpenChange={setFiltersOpen}>
                 <PopoverTrigger asChild>
                   <Button size="sm" variant={hasActiveFilters ? "default" : "outline"} className="flex items-center gap-1">
                     {hasActiveFilters ? <FilterX className="h-4 w-4" /> : <Filter className="h-4 w-4" />}
-                    {hasActiveFilters ? "Filters Applied" : "More Filters"}
+                    {hasActiveFilters ? t('filtersApplied') : t('moreFilters')}
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-56 p-4" align="end">
                   <div className="space-y-4">
-                    <h4 className="font-medium text-sm">Filter by Platform Type</h4>
+                    <h4 className="font-medium text-sm">{t('filterByPlatform')}</h4>
                     
                     <div className="space-y-2">
                       <div className="flex items-center space-x-2">
@@ -93,7 +95,7 @@ const Campaigns = () => {
                           checked={platformFilters.includes('search')}
                           onCheckedChange={() => handlePlatformFilterChange('search')}
                         />
-                        <Label htmlFor="filter-search" className="text-sm font-normal">Search (Google, Bing)</Label>
+                        <Label htmlFor="filter-search" className="text-sm font-normal">{t('searchAds')}</Label>
                       </div>
                       
                       <div className="flex items-center space-x-2">
@@ -102,7 +104,7 @@ const Campaigns = () => {
                           checked={platformFilters.includes('social')}
                           onCheckedChange={() => handlePlatformFilterChange('social')}
                         />
-                        <Label htmlFor="filter-social" className="text-sm font-normal">Social Media</Label>
+                        <Label htmlFor="filter-social" className="text-sm font-normal">{t('socialMedia')}</Label>
                       </div>
                       
                       <div className="flex items-center space-x-2">
@@ -111,7 +113,7 @@ const Campaigns = () => {
                           checked={platformFilters.includes('email')}
                           onCheckedChange={() => handlePlatformFilterChange('email')}
                         />
-                        <Label htmlFor="filter-email" className="text-sm font-normal">Email Marketing</Label>
+                        <Label htmlFor="filter-email" className="text-sm font-normal">{t('emailMarketing')}</Label>
                       </div>
                     </div>
                     
@@ -122,14 +124,14 @@ const Campaigns = () => {
                         className="text-xs"
                         onClick={clearFilters}
                       >
-                        Clear Filters
+                        {t('clearFilters')}
                       </Button>
                       <Button 
                         size="sm" 
                         className="text-xs"
                         onClick={() => setFiltersOpen(false)}
                       >
-                        Apply
+                        {t('apply')}
                       </Button>
                     </div>
                   </div>

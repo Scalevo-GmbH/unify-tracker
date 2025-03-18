@@ -60,7 +60,16 @@ export type CampaignTranslationKey =
   | 'objectivesPlaceholder'
   | 'targetAudienceLabel'
   | 'targetAudienceDescription'
-  | 'targetAudiencePlaceholder';
+  | 'targetAudiencePlaceholder'
+  // New translations for Campaigns page
+  | 'campaigns'
+  | 'manageCampaigns'
+  | 'newCampaign'
+  | 'all'
+  | 'filtersApplied'
+  | 'moreFilters'
+  | 'clearFilters'
+  | 'apply';
 
 // Campaign-related translations
 export const campaignTranslations: Record<CampaignTranslationKey, Record<Language, string>> = {
@@ -93,8 +102,8 @@ export const campaignTranslations: Record<CampaignTranslationKey, Record<Languag
     de: 'Soziale Medien'
   },
   searchAds: {
-    en: 'Search Ads',
-    de: 'Suchanzeigen'
+    en: 'Search (Google, Bing)',
+    de: 'Suchanzeigen (Google, Bing)'
   },
   emailMarketing: {
     en: 'Email Marketing',
@@ -292,5 +301,38 @@ export const campaignTranslations: Record<CampaignTranslationKey, Record<Languag
   targetAudiencePlaceholder: {
     en: 'Describe your target audience for this campaign',
     de: 'Beschreibe deine Zielgruppe für diese Kampagne'
+  },
+  // New translations for Campaigns page
+  campaigns: {
+    en: 'Campaigns',
+    de: 'Kampagnen'
+  },
+  manageCampaigns: {
+    en: 'Manage all your marketing campaigns across different platforms',
+    de: 'Verwalte alle deine Marketing-Kampagnen über verschiedene Plattformen hinweg'
+  },
+  newCampaign: {
+    en: 'New Campaign',
+    de: 'Neue Kampagne'
+  },
+  all: {
+    en: 'All',
+    de: 'Alle'
+  },
+  filtersApplied: {
+    en: 'Filters Applied',
+    de: 'Filter angewendet'
+  },
+  moreFilters: {
+    en: 'More Filters',
+    de: 'Weitere Filter'
+  },
+  clearFilters: {
+    en: 'Clear Filters',
+    de: 'Filter zurücksetzen'
+  },
+  apply: {
+    en: 'Apply',
+    de: 'Anwenden'
   }
 };

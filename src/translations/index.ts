@@ -1,55 +1,49 @@
 
-import type { Language } from "@/hooks/use-language";
-import type { TranslationKey } from './types';
-import { dashboardTranslations } from './dashboard';
-import { navigationTranslations } from './navigation';
-import { adsTranslations } from './ads';
-import { helpSupportTranslations } from './help-support';
-import { campaignTranslations } from './campaigns';
-import { websiteTranslations } from './website';
-import { indexPageTranslations } from './index-page';
+import { Language } from '@/hooks/use-language';
+import { websiteTranslations, WebsiteTranslationKey } from './website';
+import { navigationTranslations, NavigationTranslationKey } from './navigation';
+import { dashboardTranslations, DashboardTranslationKey } from './dashboard';
+import { helpSupportTranslations, HelpSupportTranslationKey } from './help-support';
+import { indexPageTranslations, IndexPageTranslationKey } from './index-page';
+import { campaignTranslations, CampaignTranslationKey } from './campaigns';
+import { adsTranslations, AdsTranslationKey } from './ads';
 
-// Get a translation by key and language
+// Combine all translation keys
+export type TranslationKey = 
+  | WebsiteTranslationKey 
+  | NavigationTranslationKey 
+  | DashboardTranslationKey 
+  | HelpSupportTranslationKey
+  | IndexPageTranslationKey
+  | CampaignTranslationKey
+  | AdsTranslationKey;
+
+// Get a translation for a specific key and language
 export function getTranslation(key: TranslationKey, language: Language): string {
-  // Check each translation group for the key
-  if (key in dashboardTranslations) {
-    return dashboardTranslations[key as keyof typeof dashboardTranslations][language] || key;
-  }
-  
-  if (key in navigationTranslations) {
-    return navigationTranslations[key as keyof typeof navigationTranslations][language] || key;
-  }
-  
-  if (key in adsTranslations) {
-    return adsTranslations[key as keyof typeof adsTranslations][language] || key;
-  }
-  
-  if (key in helpSupportTranslations) {
-    return helpSupportTranslations[key as keyof typeof helpSupportTranslations][language] || key;
-  }
-  
-  if (key in campaignTranslations) {
-    return campaignTranslations[key as keyof typeof campaignTranslations][language] || key;
-  }
-  
+  // Check which translation set contains the key
   if (key in websiteTranslations) {
-    return websiteTranslations[key as keyof typeof websiteTranslations][language] || key;
+    return websiteTranslations[key as WebsiteTranslationKey][language];
+  } 
+  else if (key in navigationTranslations) {
+    return navigationTranslations[key as NavigationTranslationKey][language];
+  } 
+  else if (key in dashboardTranslations) {
+    return dashboardTranslations[key as DashboardTranslationKey][language];
+  } 
+  else if (key in helpSupportTranslations) {
+    return helpSupportTranslations[key as HelpSupportTranslationKey][language];
+  }
+  else if (key in indexPageTranslations) {
+    return indexPageTranslations[key as IndexPageTranslationKey][language];
+  }
+  else if (key in campaignTranslations) {
+    return campaignTranslations[key as CampaignTranslationKey][language];
+  }
+  else if (key in adsTranslations) {
+    return adsTranslations[key as AdsTranslationKey][language];
   }
   
-  if (key in indexPageTranslations) {
-    return indexPageTranslations[key as keyof typeof indexPageTranslations][language] || key;
-  }
-  
-  // If not found in any group, return the key itself
-  return key;
+  // Handle missing translations
+  console.warn(`Translation missing for key: ${key}`);
+  return `[${key}]`;
 }
-
-// Export all translation parts for direct access
-export * from './dashboard';
-export * from './navigation';
-export * from './ads';
-export * from './help-support';
-export * from './campaigns';
-export * from './website';
-export * from './index-page';
-export * from './types';
