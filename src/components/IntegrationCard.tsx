@@ -54,7 +54,7 @@ export const IntegrationCard: React.FC<IntegrationCardProps> = ({
       {popular && (
         <div className="absolute top-3 right-3 flex items-center bg-marketing-purple/10 px-2 py-1 rounded-full">
           <Sparkles className="h-3 w-3 text-marketing-purple mr-1" />
-          <span className="text-xs text-marketing-purple cal-badge">Popular</span>
+          <span className="text-xs text-marketing-purple cal-badge">{t('popular')}</span>
         </div>
       )}
       

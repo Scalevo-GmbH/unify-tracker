@@ -22,7 +22,8 @@ export type IntegrationsTranslationKey =
   | 'requestIntegrationDescription'
   | 'connect'
   | 'manageConnection'
-  | 'viewDashboard';
+  | 'viewDashboard'
+  | 'popular';
 
 // Integrations translations
 export const integrationsTranslations: Record<IntegrationsTranslationKey, Record<Language, string>> = {
@@ -105,5 +106,9 @@ export const integrationsTranslations: Record<IntegrationsTranslationKey, Record
   viewDashboard: {
     en: 'View Dashboard',
     de: 'Dashboard anzeigen'
+  },
+  popular: {
+    en: 'Popular',
+    de: 'Beliebt'
   }
 };
