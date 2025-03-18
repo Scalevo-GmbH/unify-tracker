@@ -100,20 +100,3 @@
     @apply font-cal;
   }
 }
-
-/* Tab styling like the awork design */
-.dashboard-tabs {
-  @apply flex rounded-md bg-slate-100 p-1 font-cal w-full;
-}
-
-.dashboard-tab {
-  @apply flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium transition-all font-cal tracking-tight font-semibold;
-}
-
-.dashboard-tab[data-state="active"] {
-  @apply bg-white shadow text-foreground;
-}
-
-.dashboard-tab[data-state="inactive"] {
-  @apply text-muted-foreground hover:text-foreground;
-}

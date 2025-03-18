@@ -18,6 +18,7 @@ import EmailDashboard from "@/components/performance/EmailDashboard";
 import FormsDashboard from "@/components/performance/FormsDashboard";
 import { MetricCard } from "@/components/MetricCard";
 import { IosSwitch } from "@/components/ui/ios-switch";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const overviewData = {
   "paid-search": {
@@ -315,86 +316,106 @@ const Performance = () => {
         </p>
       </div>
 
-      <div className="dashboard-tabs mb-8">
-        <button
-          className={`dashboard-tab ${activeTab === "paid-search" ? "data-[state=active]" : "data-[state=inactive]"}`}
-          data-state={activeTab === "paid-search" ? "active" : "inactive"}
-          onClick={() => setActiveTab("paid-search")}
-        >
-          Paid Search
-        </button>
-        <button
-          className={`dashboard-tab ${activeTab === "paid-socials" ? "data-[state=active]" : "data-[state=inactive]"}`}
-          data-state={activeTab === "paid-socials" ? "active" : "inactive"}
-          onClick={() => setActiveTab("paid-socials")}
-        >
-          Paid Socials
-        </button>
-        <button
-          className={`dashboard-tab ${activeTab === "organic-social" ? "data-[state=active]" : "data-[state=inactive]"}`}
-          data-state={activeTab === "organic-social" ? "active" : "inactive"}
-          onClick={() => setActiveTab("organic-social")}
-        >
-          Organic Social
-        </button>
-        <button
-          className={`dashboard-tab ${activeTab === "website" ? "data-[state=active]" : "data-[state=inactive]"}`}
-          data-state={activeTab === "website" ? "active" : "inactive"}
-          onClick={() => setActiveTab("website")}
-        >
-          Website
-        </button>
-        <button
-          className={`dashboard-tab ${activeTab === "email" ? "data-[state=active]" : "data-[state=inactive]"}`}
-          data-state={activeTab === "email" ? "active" : "inactive"}
-          onClick={() => setActiveTab("email")}
-        >
-          E-Mail
-        </button>
-        <button
-          className={`dashboard-tab ${activeTab === "forms" ? "data-[state=active]" : "data-[state=inactive]"}`}
-          data-state={activeTab === "forms" ? "active" : "inactive"}
-          onClick={() => setActiveTab("forms")}
-        >
-          Forms
-        </button>
-      </div>
+      <Tabs defaultValue="paid-search" value={activeTab} onValueChange={setActiveTab} className="w-full">
+        <TabsList className="dashboard-tabs mb-8 w-full justify-start">
+          <TabsTrigger className="dashboard-tab" value="paid-search">
+            Paid Search
+          </TabsTrigger>
+          <TabsTrigger className="dashboard-tab" value="paid-socials">
+            Paid Socials
+          </TabsTrigger>
+          <TabsTrigger className="dashboard-tab" value="organic-social">
+            Organic Social
+          </TabsTrigger>
+          <TabsTrigger className="dashboard-tab" value="website">
+            Website
+          </TabsTrigger>
+          <TabsTrigger className="dashboard-tab" value="email">
+            E-Mail
+          </TabsTrigger>
+          <TabsTrigger className="dashboard-tab" value="forms">
+            Forms
+          </TabsTrigger>
+        </TabsList>
 
-      <div className="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        <IosSwitch
-          options={[
-            { value: "overview", label: "Overview" },
-            { value: "details", label: "Details" }
-          ]}
-          value={activeSubTab[activeTab]}
-          onChange={handleSubTabChange}
-          className="ios-switch"
-        />
+        <div className="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <IosSwitch
+            options={[
+              { value: "overview", label: "Overview" },
+              { value: "details", label: "Details" }
+            ]}
+            value={activeSubTab[activeTab]}
+            onChange={handleSubTabChange}
+            className="ios-switch"
+          />
 
-        {activeSubTab[activeTab] === "details" && (
-          <Select 
-            value={selectedTool[activeTab]} 
-            onValueChange={handleToolChange}
-          >
-            <SelectTrigger className="w-[200px] bg-white border-gray-200 shadow-sm">
-              <SelectValue placeholder="Select platform" />
-            </SelectTrigger>
-            <SelectContent className="bg-white">
-              {toolsByCategory[activeTab as keyof typeof toolsByCategory]?.map(tool => (
-                <SelectItem key={tool.id} value={tool.id}>
-                  {tool.name}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        )}
-      </div>
+          {activeSubTab[activeTab] === "details" && (
+            <Select 
+              value={selectedTool[activeTab]} 
+              onValueChange={handleToolChange}
+            >
+              <SelectTrigger className="w-[200px] bg-white border-gray-200 shadow-sm">
+                <SelectValue placeholder="Select platform" />
+              </SelectTrigger>
+              <SelectContent className="bg-white">
+                {toolsByCategory[activeTab as keyof typeof toolsByCategory]?.map(tool => (
+                  <SelectItem key={tool.id} value={tool.id}>
+                    {tool.name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          )}
+        </div>
 
-      <Card>
-        <CardContent className="pt-6">
-          {renderDashboard(activeTab, selectedTool[activeTab])}
-        </CardContent>
-      </Card>
+        <TabsContent value="paid-search">
+          <Card>
+            <CardContent className="pt-6">
+              {renderDashboard("paid-search", selectedTool["paid-search"])}
+            </CardContent>
+          </Card>
+        </TabsContent>
+        
+        <TabsContent value="paid-socials">
+          <Card>
+            <CardContent className="pt-6">
+              {renderDashboard("paid-socials", selectedTool["paid-socials"])}
+            </CardContent>
+          </Card>
+        </TabsContent>
+        
+        <TabsContent value="organic-social">
+          <Card>
+            <CardContent className="pt-6">
+              {renderDashboard("organic-social", selectedTool["organic-social"])}
+            </CardContent>
+          </Card>
+        </TabsContent>
+        
+        <TabsContent value="website">
+          <Card>
+            <CardContent className="pt-6">
+              {renderDashboard("website", selectedTool["website"])}
+            </CardContent>
+          </Card>
+        </TabsContent>
+        
+        <TabsContent value="email">
+          <Card>
+            <CardContent className="pt-6">
+              {renderDashboard("email", selectedTool["email"])}
+            </CardContent>
+          </Card>
+        </TabsContent>
+        
+        <TabsContent value="forms">
+          <Card>
+            <CardContent className="pt-6">
+              {renderDashboard("forms", selectedTool["forms"])}
+            </CardContent>
+          </Card>
+        </TabsContent>
+      </Tabs>
     </div>
   );
 };
