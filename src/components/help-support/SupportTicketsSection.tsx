@@ -8,19 +8,22 @@ import {
   CardDescription 
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/hooks/use-translation";
 
 const SupportTicketsSection: React.FC = () => {
+  const { t } = useTranslation();
+
   const tickets = [
     {
       id: "TCK-2023-06-12",
       subject: "Issue with Google Ads Integration",
-      status: "Open",
+      status: t('statusOpen'),
       lastUpdate: "2 hours ago",
     },
     {
       id: "TCK-2023-06-10",
       subject: "Campaign Report Export Problem",
-      status: "Closed",
+      status: t('statusClosed'),
       lastUpdate: "2 days ago",
     },
   ];
@@ -29,13 +32,13 @@ const SupportTicketsSection: React.FC = () => {
     <div className="space-y-6">
       <Card>
         <CardHeader>
-          <CardTitle>Support Tickets</CardTitle>
-          <CardDescription>View and manage your support requests</CardDescription>
+          <CardTitle>{t('ticketsTitle')}</CardTitle>
+          <CardDescription>{t('ticketsDescription')}</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="mb-6 flex items-center justify-between">
-            <h3 className="font-medium">Your Tickets</h3>
-            <Button>Create New Ticket</Button>
+            <h3 className="font-medium">{t('yourTickets')}</h3>
+            <Button>{t('createNewTicket')}</Button>
           </div>
           
           {tickets.length > 0 ? (
@@ -47,23 +50,23 @@ const SupportTicketsSection: React.FC = () => {
                 >
                   <div>
                     <p className="font-medium">{ticket.subject}</p>
-                    <p className="text-sm text-muted-foreground">ID: {ticket.id} • Last updated: {ticket.lastUpdate}</p>
+                    <p className="text-sm text-muted-foreground">ID: {ticket.id} • {t('lastUpdated')}: {ticket.lastUpdate}</p>
                   </div>
                   <div className="flex items-center gap-4">
                     <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                      ticket.status === "Open" ? "bg-green-100 text-green-800" : "bg-gray-100 text-gray-800"
+                      ticket.status === t('statusOpen') ? "bg-green-100 text-green-800" : "bg-gray-100 text-gray-800"
                     }`}>
                       {ticket.status}
                     </span>
-                    <Button variant="outline" size="sm">View</Button>
+                    <Button variant="outline" size="sm">{t('viewTicket')}</Button>
                   </div>
                 </div>
               ))}
             </div>
           ) : (
             <div className="text-center py-8">
-              <p className="text-muted-foreground mb-4">You don't have any support tickets yet</p>
-              <Button>Create Your First Ticket</Button>
+              <p className="text-muted-foreground mb-4">{t('noTicketsYet')}</p>
+              <Button>{t('createFirstTicket')}</Button>
             </div>
           )}
         </CardContent>

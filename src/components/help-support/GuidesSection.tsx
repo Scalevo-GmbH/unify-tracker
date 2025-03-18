@@ -8,27 +8,30 @@ import {
   CardDescription 
 } from "@/components/ui/card";
 import { BookOpen, MessageSquare, HelpCircle, LifeBuoy } from "lucide-react";
+import { useTranslation } from "@/hooks/use-translation";
 
 const GuidesSection: React.FC = () => {
+  const { t } = useTranslation();
+
   const guides = [
     {
-      title: "Getting Started with Scalevo",
-      description: "Learn the basics of navigating and using the Scalevo platform",
+      title: t('guide1Title'),
+      description: t('guide1Description'),
       icon: <BookOpen className="h-8 w-8 text-primary" />,
     },
     {
-      title: "Setting Up Your First Campaign",
-      description: "A step-by-step guide to creating and launching your first ad campaign",
+      title: t('guide2Title'),
+      description: t('guide2Description'),
       icon: <MessageSquare className="h-8 w-8 text-primary" />,
     },
     {
-      title: "Understanding Performance Metrics",
-      description: "Learn how to interpret and act on campaign performance data",
+      title: t('guide3Title'),
+      description: t('guide3Description'),
       icon: <HelpCircle className="h-8 w-8 text-primary" />,
     },
     {
-      title: "Optimizing Ad Campaigns",
-      description: "Advanced techniques to improve your campaign performance",
+      title: t('guide4Title'),
+      description: t('guide4Description'),
       icon: <LifeBuoy className="h-8 w-8 text-primary" />,
     },
   ];
@@ -37,8 +40,8 @@ const GuidesSection: React.FC = () => {
     <div className="space-y-6">
       <Card>
         <CardHeader>
-          <CardTitle>User Guides</CardTitle>
-          <CardDescription>Detailed guides to help you get the most out of our platform</CardDescription>
+          <CardTitle>{t('guidesTitle')}</CardTitle>
+          <CardDescription>{t('guidesDescription')}</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
