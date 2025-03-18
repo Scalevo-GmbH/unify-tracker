@@ -4,14 +4,15 @@ import { Card, CardContent } from "@/components/ui/card";
 import { LucideIcon } from "lucide-react";
 import { useTranslation } from "@/hooks/use-translation";
 import FadeInSection from "@/components/animations/FadeInSection";
+import { TranslationKey } from "@/translations/types";
 
 interface FeatureCardProps {
   icon: LucideIcon;
   iconColor: string;
   iconBgColor: string;
-  titleKey: string;
-  descriptionKey: string;
-  featureItems: string[];
+  titleKey: TranslationKey;
+  descriptionKey: TranslationKey;
+  featureItems: TranslationKey[];
   bulletColor: string;
   delay: number;
 }

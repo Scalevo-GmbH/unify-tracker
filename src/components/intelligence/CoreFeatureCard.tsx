@@ -3,13 +3,14 @@ import React from "react";
 import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
 import { LucideIcon } from "lucide-react";
 import { useTranslation } from "@/hooks/use-translation";
+import { TranslationKey } from "@/translations/types";
 
 interface CoreFeatureCardProps {
   icon: LucideIcon;
   iconColor: string;
   iconBgColor: string;
-  titleKey: string;
-  descriptionKey: string;
+  titleKey: TranslationKey;
+  descriptionKey: TranslationKey;
 }
 
 const CoreFeatureCard = ({ 
