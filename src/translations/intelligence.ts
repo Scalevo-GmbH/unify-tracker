@@ -63,19 +63,19 @@ export const intelligenceTranslations: Record<IntelligenceTranslationKey, Record
   },
   aiDrivenInsights: {
     en: 'Powerful AI-driven insights designed to transform your marketing strategy',
-    de: 'Leistungsstarke KI-gestützte Erkenntnisse, die Ihre Marketingstrategie transformieren'
+    de: 'Leistungsstarke KI-gestützte Erkenntnisse, die deine Marketingstrategie transformieren'
   },
   marketingAiAssistant: {
     en: 'Meet Your Marketing AI Assistant',
-    de: 'Treffen Sie Ihren Marketing-KI-Assistenten'
+    de: 'Triff deinen Marketing-KI-Assistenten'
   },
   powerfulAiTool: {
     en: 'We\'re building a powerful AI tool that analyzes your marketing data, provides actionable insights, and helps you make data-driven decisions with confidence.',
-    de: 'Wir entwickeln ein leistungsstarkes KI-Tool, das Ihre Marketingdaten analysiert, umsetzbare Erkenntnisse liefert und Ihnen hilft, datengestützte Entscheidungen mit Zuversicht zu treffen.'
+    de: 'Wir entwickeln ein leistungsstarkes KI-Tool, das deine Marketingdaten analysiert, umsetzbare Erkenntnisse liefert und dir hilft, datengestützte Entscheidungen mit Zuversicht zu treffen.'
   },
   aiAssistantDescription: {
     en: 'Our AI assistant uses advanced machine learning algorithms to identify patterns, predict trends, and recommend optimizations across all your marketing channels.',
-    de: 'Unser KI-Assistent verwendet fortschrittliche Machine-Learning-Algorithmen, um Muster zu erkennen, Trends vorherzusagen und Optimierungen für alle Ihre Marketingkanäle zu empfehlen.'
+    de: 'Unser KI-Assistent verwendet fortschrittliche Machine-Learning-Algorithmen, um Muster zu erkennen, Trends vorherzusagen und Optimierungen für alle deine Marketingkanäle zu empfehlen.'
   },
   joinWaitlist: {
     en: 'Join Waitlist',
@@ -83,11 +83,11 @@ export const intelligenceTranslations: Record<IntelligenceTranslationKey, Record
   },
   emailPlaceholder: {
     en: 'Enter your email for early access',
-    de: 'Geben Sie Ihre E-Mail für frühen Zugang ein'
+    de: 'Gib deine E-Mail für frühen Zugang ein'
   },
   whatAiDoes: {
     en: 'What Our AI Will Do For You',
-    de: 'Was unsere KI für Sie tun wird'
+    de: 'Was unsere KI für dich tun wird'
   },
   instantInsights: {
     en: 'Instant Insights',
@@ -95,7 +95,7 @@ export const intelligenceTranslations: Record<IntelligenceTranslationKey, Record
   },
   instantInsightsDescription: {
     en: 'Get immediate analysis of your marketing performance across all channels.',
-    de: 'Erhalten Sie sofortige Analysen Ihrer Marketingleistung über alle Kanäle hinweg.'
+    de: 'Erhalte sofortige Analysen deiner Marketingleistung über alle Kanäle hinweg.'
   },
   realTimeMetrics: {
     en: 'Real-time performance metrics',
@@ -115,7 +115,7 @@ export const intelligenceTranslations: Record<IntelligenceTranslationKey, Record
   },
   automationDescription: {
     en: 'Automate reporting and uncover opportunities you might have missed.',
-    de: 'Automatisieren Sie Berichte und entdecken Sie Möglichkeiten, die Sie vielleicht übersehen haben.'
+    de: 'Automatisiere Berichte und entdecke Möglichkeiten, die du vielleicht übersehen hast.'
   },
   scheduledReports: {
     en: 'Scheduled insight reports',
@@ -135,7 +135,7 @@ export const intelligenceTranslations: Record<IntelligenceTranslationKey, Record
   },
   optimizationDescription: {
     en: 'Receive personalized recommendations to optimize your campaigns.',
-    de: 'Erhalten Sie personalisierte Empfehlungen zur Optimierung Ihrer Kampagnen.'
+    de: 'Erhalte personalisierte Empfehlungen zur Optimierung deiner Kampagnen.'
   },
   abTestingInsights: {
     en: 'A/B testing insights',
@@ -159,7 +159,7 @@ export const intelligenceTranslations: Record<IntelligenceTranslationKey, Record
   },
   predictiveAnalysisDescription: {
     en: 'Leverage machine learning to forecast campaign performance, identify trends before they happen, and allocate resources more effectively based on predicted outcomes.',
-    de: 'Nutzen Sie maschinelles Lernen, um die Kampagnenleistung vorherzusagen, Trends zu identifizieren, bevor sie eintreten, und Ressourcen auf der Grundlage vorhergesagter Ergebnisse effektiver zuzuordnen.'
+    de: 'Nutze maschinelles Lernen, um die Kampagnenleistung vorherzusagen, Trends zu identifizieren, bevor sie eintreten, und Ressourcen auf der Grundlage vorhergesagter Ergebnisse effektiver zuzuordnen.'
   },
   contentIntelligence: {
     en: 'Content Intelligence',
@@ -167,7 +167,7 @@ export const intelligenceTranslations: Record<IntelligenceTranslationKey, Record
   },
   contentIntelligenceDescription: {
     en: 'AI-powered content analysis to identify which messages resonate with your audience, optimize copy for better engagement, and generate content ideas based on performance.',
-    de: 'KI-gestützte Inhaltsanalyse, um zu identifizieren, welche Nachrichten bei Ihrer Zielgruppe ankommen, Texte für besseres Engagement zu optimieren und Inhaltsideen auf Basis der Leistung zu generieren.'
+    de: 'KI-gestützte Inhaltsanalyse, um zu identifizieren, welche Nachrichten bei deiner Zielgruppe ankommen, Texte für besseres Engagement zu optimieren und Inhaltsideen auf Basis der Leistung zu generieren.'
   },
   crossChannelInsights: {
     en: 'Cross-Channel Insights',
@@ -175,7 +175,7 @@ export const intelligenceTranslations: Record<IntelligenceTranslationKey, Record
   },
   crossChannelInsightsDescription: {
     en: 'Holistic analysis across all marketing channels to understand customer journeys, identify attribution patterns, and optimize your marketing mix for maximum ROI.',
-    de: 'Ganzheitliche Analyse über alle Marketingkanäle hinweg, um Kundenreisen zu verstehen, Attributionsmuster zu identifizieren und Ihren Marketing-Mix für maximalen ROI zu optimieren.'
+    de: 'Ganzheitliche Analyse über alle Marketingkanäle hinweg, um Kundenreisen zu verstehen, Attributionsmuster zu identifizieren und deinen Marketing-Mix für maximalen ROI zu optimieren.'
   },
   competitiveIntelligence: {
     en: 'Competitive Intelligence',
@@ -183,7 +183,7 @@ export const intelligenceTranslations: Record<IntelligenceTranslationKey, Record
   },
   competitiveIntelligenceDescription: {
     en: 'Analyze competitor strategies, benchmark your performance against industry standards, and identify market gaps and opportunities for your brand to capitalize on.',
-    de: 'Analysieren Sie Wettbewerbsstrategien, vergleichen Sie Ihre Leistung mit Branchenstandards und identifizieren Sie Marktlücken und Chancen, die Ihre Marke nutzen kann.'
+    de: 'Analysiere Wettbewerbsstrategien, vergleiche deine Leistung mit Branchenstandards und identifiziere Marktlücken und Chancen, die deine Marke nutzen kann.'
   },
   howItWorks: {
     en: 'How It Works',
@@ -191,11 +191,11 @@ export const intelligenceTranslations: Record<IntelligenceTranslationKey, Record
   },
   connectData: {
     en: 'Connect Your Data',
-    de: 'Verbinden Sie Ihre Daten'
+    de: 'Verbinde deine Daten'
   },
   connectDataDescription: {
     en: 'Our AI integrates with all your marketing platforms including Google Ads, Meta, Email services, and analytics tools to create a unified view of your marketing ecosystem.',
-    de: 'Unsere KI integriert sich mit all Ihren Marketingplattformen, einschließlich Google Ads, Meta, E-Mail-Diensten und Analysetools, um eine einheitliche Ansicht Ihres Marketing-Ökosystems zu schaffen.'
+    de: 'Unsere KI integriert sich mit all deinen Marketingplattformen, einschließlich Google Ads, Meta, E-Mail-Diensten und Analysetools, um eine einheitliche Ansicht deines Marketing-Ökosystems zu schaffen.'
   },
   aiAnalysis: {
     en: 'AI Analysis',
@@ -211,7 +211,7 @@ export const intelligenceTranslations: Record<IntelligenceTranslationKey, Record
   },
   getRecommendationsDescription: {
     en: 'Receive actionable insights tailored to your specific business goals, with clear explanations of why each recommendation matters and how to implement it effectively.',
-    de: 'Erhalten Sie umsetzbare Erkenntnisse, die auf Ihre spezifischen Geschäftsziele zugeschnitten sind, mit klaren Erklärungen, warum jede Empfehlung wichtig ist und wie Sie sie effektiv umsetzen können.'
+    de: 'Erhalte umsetzbare Erkenntnisse, die auf deine spezifischen Geschäftsziele zugeschnitten sind, mit klaren Erklärungen, warum jede Empfehlung wichtig ist und wie du sie effektiv umsetzen kannst.'
   },
   faq: {
     en: 'Frequently Asked Questions',
@@ -231,7 +231,7 @@ export const intelligenceTranslations: Record<IntelligenceTranslationKey, Record
   },
   faqPlatformsAnswer: {
     en: 'At launch, we\'ll support Google Ads, Meta Ads, Google Analytics, and major email marketing platforms. Additional integrations will be added based on user needs and feedback.',
-    de: 'Beim Start werden wir Google Ads, Meta Ads, Google Analytics und große E-Mail-Marketing-Plattformen unterstützen. Weitere Integrationen werden basierend auf Benutzerbedürfnissen und Feedback hinzugefügt.'
+    de: 'Beim Start werden wir Google Ads, Meta Ads, Google Analytics und große E-Mail-Marketing-Plattformen unterstützen. Weitere Integrationen werden basierend auf Nutzerbedürfnissen und Feedback hinzugefügt.'
   },
   faqRecommendations: {
     en: 'How does the AI make recommendations?',
@@ -239,7 +239,7 @@ export const intelligenceTranslations: Record<IntelligenceTranslationKey, Record
   },
   faqRecommendationsAnswer: {
     en: 'Our AI analyzes your historical data, current performance, industry benchmarks, and emerging trends to generate recommendations. Each insight is accompanied by an explanation of the reasoning behind it and the expected impact.',
-    de: 'Unsere KI analysiert Ihre historischen Daten, aktuelle Leistung, Branchenbenchmarks und aufkommende Trends, um Empfehlungen zu generieren. Jede Erkenntnis wird von einer Erklärung der dahinterstehenden Logik und der erwarteten Auswirkung begleitet.'
+    de: 'Unsere KI analysiert deine historischen Daten, aktuelle Leistung, Branchenbenchmarks und aufkommende Trends, um Empfehlungen zu generieren. Jede Erkenntnis wird von einer Erklärung der dahinterstehenden Logik und der erwarteten Auswirkung begleitet.'
   },
   faqAutomation: {
     en: 'Will the AI automatically make changes to my campaigns?',
@@ -247,18 +247,18 @@ export const intelligenceTranslations: Record<IntelligenceTranslationKey, Record
   },
   faqAutomationAnswer: {
     en: 'While the AI can provide automated optimizations, you\'ll have full control over which recommendations to implement. You can choose between manual approval, scheduled implementation, or fully automated optimization with customizable guardrails.',
-    de: 'Während die KI automatisierte Optimierungen bieten kann, haben Sie volle Kontrolle darüber, welche Empfehlungen Sie umsetzen möchten. Sie können zwischen manueller Genehmigung, geplanter Implementierung oder vollautomatischer Optimierung mit anpassbaren Leitplanken wählen.'
+    de: 'Während die KI automatisierte Optimierungen bieten kann, hast du volle Kontrolle darüber, welche Empfehlungen du umsetzen möchtest. Du kannst zwischen manueller Genehmigung, geplanter Implementierung oder vollautomatischer Optimierung mit anpassbaren Leitplanken wählen.'
   },
   earlyAccess: {
     en: 'Be Among The First To Experience It',
-    de: 'Seien Sie unter den Ersten, die es erleben'
+    de: 'Sei unter den Ersten, die es erleben'
   },
   earlyAccessDescription: {
     en: 'Our AI Intelligence tools are currently in development. Join our waitlist to be notified when we launch and get exclusive early access to our beta program with special introductory pricing.',
-    de: 'Unsere KI-Intelligenz-Tools befinden sich derzeit in der Entwicklung. Treten Sie unserer Warteliste bei, um benachrichtigt zu werden, wenn wir starten, und erhalten Sie exklusiven frühen Zugang zu unserem Beta-Programm mit speziellen Einführungspreisen.'
+    de: 'Unsere KI-Intelligenz-Tools befinden sich derzeit in der Entwicklung. Tritt unserer Warteliste bei, um benachrichtigt zu werden, wenn wir starten, und erhalte exklusiven frühen Zugang zu unserem Beta-Programm mit speziellen Einführungspreisen.'
   },
   privacyNote: {
     en: 'We respect your privacy and will never share your information with third parties.',
-    de: 'Wir respektieren Ihre Privatsphäre und werden Ihre Informationen niemals an Dritte weitergeben.'
+    de: 'Wir respektieren deine Privatsphäre und werden deine Informationen niemals an Dritte weitergeben.'
   }
 };
