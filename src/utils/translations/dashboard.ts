@@ -1,4 +1,3 @@
-
 import { TranslationEntry, TranslationsObject } from './types';
 
 export type DashboardTranslationKey =

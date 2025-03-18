@@ -1,58 +1,24 @@
 
-import { TranslationEntry, TranslationsObject } from './types';
+import { TranslationsObject } from './types';
 
 export type NavigationTranslationKey = 
-  | 'dashboard'
-  | 'overview'
-  | 'adPerformance'
-  | 'trackOptimize'
-  | 'export'
-  | 'createAd'
-  | 'accountSettings'
-  | 'helpSupport'
-  | 'logout'
   | 'searchMenu'
   | 'navigation'
   | 'settings'
-  | 'noMenuItems';
+  | 'noMenuItems'
+  | 'accountSettings'
+  | 'helpSupport'
+  | 'logout'
+  | 'overview'
+  | 'export'
+  | 'paidSearchTab'
+  | 'paidSocialsTab'
+  | 'organicSocialTab'
+  | 'websiteTab'
+  | 'emailTab'
+  | 'formsTab';
 
 export const navigationTranslations: TranslationsObject<NavigationTranslationKey> = {
-  dashboard: {
-    en: 'Dashboard',
-    de: 'Übersicht'
-  },
-  overview: {
-    en: 'Overview',
-    de: 'Überblick'
-  },
-  adPerformance: {
-    en: 'Ad Performance',
-    de: 'Werbeleistung'
-  },
-  trackOptimize: {
-    en: 'Track and optimize your Google Search and Display ad campaigns.',
-    de: 'Verfolge und optimiere deine Google Such- und Display-Werbekampagnen.'
-  },
-  export: {
-    en: 'Export',
-    de: 'Exportieren'
-  },
-  createAd: {
-    en: 'Create Ad',
-    de: 'Anzeige erstellen'
-  },
-  accountSettings: {
-    en: 'Account Settings',
-    de: 'Kontoeinstellungen'
-  },
-  helpSupport: {
-    en: 'Help & Support',
-    de: 'Hilfe & Support'
-  },
-  logout: {
-    en: 'Log out',
-    de: 'Abmelden'
-  },
   searchMenu: {
     en: 'Search menu...',
     de: 'Menü durchsuchen...'
@@ -67,6 +33,50 @@ export const navigationTranslations: TranslationsObject<NavigationTranslationKey
   },
   noMenuItems: {
     en: 'No menu items found',
-    de: 'Keine Menüpunkte gefunden'
+    de: 'Keine Menüelemente gefunden'
+  },
+  accountSettings: {
+    en: 'Account Settings',
+    de: 'Kontoeinstellungen'
+  },
+  helpSupport: {
+    en: 'Help & Support',
+    de: 'Hilfe & Support'
+  },
+  logout: {
+    en: 'Logout',
+    de: 'Abmelden'
+  },
+  overview: {
+    en: 'Overview',
+    de: 'Übersicht'
+  },
+  export: {
+    en: 'Export',
+    de: 'Exportieren'
+  },
+  paidSearchTab: {
+    en: 'Paid Search',
+    de: 'Bezahlte Suche'
+  },
+  paidSocialsTab: {
+    en: 'Paid Social',
+    de: 'Bezahlte Social Media'
+  },
+  organicSocialTab: {
+    en: 'Organic Social',
+    de: 'Organische Social Media'
+  },
+  websiteTab: {
+    en: 'Website',
+    de: 'Webseite'
+  },
+  emailTab: {
+    en: 'Email',
+    de: 'E-Mail'
+  },
+  formsTab: {
+    en: 'Forms',
+    de: 'Formulare'
   }
 };
