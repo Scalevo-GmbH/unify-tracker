@@ -46,145 +46,145 @@ const Integrations = () => {
       {
         name: "Facebook Ads",
         icon: <Facebook className="h-6 w-6 text-blue-600" />,
-        description: "Connect your Facebook Ads account to track performance and ROI.",
+        descriptionKey: "facebookAdsDesc",
         popular: true,
       },
       {
         name: "Google Ads",
         icon: <LineChart className="h-6 w-6 text-marketing-red" />,
-        description: "Import your Google Ads campaigns and track conversions.",
+        descriptionKey: "googleAdsDesc",
         popular: true,
       },
       {
         name: "LinkedIn Ads",
         icon: <Linkedin className="h-6 w-6 text-blue-700" />,
-        description: "Track your LinkedIn advertising campaigns and conversions.",
+        descriptionKey: "linkedinAdsDesc",
       },
       {
         name: "Twitter Ads",
         icon: <Twitter className="h-6 w-6 text-blue-400" />,
-        description: "Track your Twitter ad campaigns and performance.",
+        descriptionKey: "twitterAdsDesc",
       },
     ],
     social: [
       {
         name: "Instagram",
         icon: <Instagram className="h-6 w-6 text-pink-600" />,
-        description: "Connect Instagram to analyze engagement and reach.",
+        descriptionKey: "instagramDesc",
         popular: true,
       },
       {
         name: "Facebook Pages",
         icon: <Facebook className="h-6 w-6 text-blue-600" />,
-        description: "Manage and analyze your Facebook Page performance.",
+        descriptionKey: "facebookPagesDesc",
         popular: true,
       },
       {
         name: "Twitter",
         icon: <Twitter className="h-6 w-6 text-blue-400" />,
-        description: "Track engagement and audience growth on Twitter.",
+        descriptionKey: "twitterDesc",
       },
       {
         name: "LinkedIn",
         icon: <Linkedin className="h-6 w-6 text-blue-700" />,
-        description: "Track company page analytics and engagement.",
+        descriptionKey: "linkedinDesc",
       },
       {
         name: "YouTube",
         icon: <Youtube className="h-6 w-6 text-red-600" />,
-        description: "Analyze video performance and channel growth.",
+        descriptionKey: "youtubeDesc",
       },
     ],
     email: [
       {
         name: "Mailchimp",
         icon: <Mail className="h-6 w-6 text-marketing-yellow" />,
-        description: "Import your email campaign data and subscriber analytics.",
+        descriptionKey: "mailchimpDesc",
         popular: true,
       },
       {
         name: "Campaign Monitor",
         icon: <Mail className="h-6 w-6 text-blue-500" />,
-        description: "Track email campaign performance and subscriber engagement.",
+        descriptionKey: "campaignMonitorDesc",
       },
       {
         name: "Constant Contact",
         icon: <Mail className="h-6 w-6 text-marketing-green" />,
-        description: "Analyze email marketing performance and list growth.",
+        descriptionKey: "constantContactDesc",
       },
       {
         name: "SendGrid",
         icon: <Mail className="h-6 w-6 text-indigo-600" />,
-        description: "Monitor email delivery rates and engagement metrics.",
+        descriptionKey: "sendGridDesc",
       },
     ],
     analytics: [
       {
         name: "Google Analytics",
         icon: <BarChart3 className="h-6 w-6 text-marketing-orange" />,
-        description: "Import website traffic and conversion data.",
+        descriptionKey: "googleAnalyticsDesc",
         popular: true,
       },
       {
         name: "Mixpanel",
         icon: <PieChart className="h-6 w-6 text-purple-600" />,
-        description: "Track user events and conversion funnels.",
+        descriptionKey: "mixpanelDesc",
       },
       {
         name: "Hotjar",
         icon: <BarChart3 className="h-6 w-6 text-marketing-red" />,
-        description: "Visualize user behavior with heatmaps and recordings.",
+        descriptionKey: "hotjarDesc",
       },
       {
         name: "Segment",
         icon: <Share2 className="h-6 w-6 text-teal-600" />,
-        description: "Collect, unify and activate your customer data.",
+        descriptionKey: "segmentDesc",
       },
     ],
     ecommerce: [
       {
         name: "Shopify",
         icon: <ShoppingCart className="h-6 w-6 text-green-600" />,
-        description: "Import your store data, products, and customer information.",
+        descriptionKey: "shopifyDesc",
         popular: true,
       },
       {
         name: "WooCommerce",
         icon: <ShoppingCart className="h-6 w-6 text-purple-600" />,
-        description: "Connect your WordPress store and track sales metrics.",
+        descriptionKey: "wooCommerceDesc",
       },
       {
         name: "Stripe",
         icon: <CreditCard className="h-6 w-6 text-indigo-500" />,
-        description: "Track payment processing and subscription metrics.",
+        descriptionKey: "stripeDesc",
       },
       {
         name: "BigCommerce",
         icon: <ShoppingCart className="h-6 w-6 text-blue-500" />,
-        description: "Import your store data and track performance metrics.",
+        descriptionKey: "bigCommerceDesc",
       },
     ],
     other: [
       {
         name: "Intercom",
         icon: <MessageSquare className="h-6 w-6 text-blue-400" />,
-        description: "Track customer conversations and support metrics.",
+        descriptionKey: "intercomDesc",
       },
       {
         name: "HubSpot",
         icon: <FileText className="h-6 w-6 text-marketing-orange" />,
-        description: "Connect your CRM and marketing automation platform.",
+        descriptionKey: "hubspotDesc",
         popular: true,
       },
       {
         name: "Twilio",
         icon: <Phone className="h-6 w-6 text-red-500" />,
-        description: "Track SMS campaign performance and engagement.",
+        descriptionKey: "twilioDesc",
       },
       {
         name: "Zendesk",
         icon: <MessageSquare className="h-6 w-6 text-green-500" />,
-        description: "Monitor customer support metrics and satisfaction.",
+        descriptionKey: "zendeskDesc",
       },
     ],
   };
@@ -305,7 +305,8 @@ const Integrations = () => {
                       <IntegrationCard
                         name={integration.name}
                         icon={integration.icon}
-                        description={integration.description}
+                        description=""
+                        descriptionKey={integration.descriptionKey}
                         popular={integration.popular}
                         onClick={() => handleOpenModal(integration.name, integration.icon)}
                         className="h-full"
@@ -351,7 +352,8 @@ const Integrations = () => {
                         <IntegrationCard
                           name={integration.name}
                           icon={integration.icon}
-                          description={integration.description}
+                          description=""
+                          descriptionKey={integration.descriptionKey}
                           popular={integration.popular}
                           onClick={() => handleOpenModal(integration.name, integration.icon)}
                           className="h-full"

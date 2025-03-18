@@ -9,6 +9,7 @@ interface IntegrationCardProps {
   name: string;
   icon: React.ReactNode;
   description: string;
+  descriptionKey?: string; // Add optional translation key for description
   connected?: boolean;
   popular?: boolean;
   className?: string;
@@ -20,6 +21,7 @@ export const IntegrationCard: React.FC<IntegrationCardProps> = ({
   name,
   icon,
   description,
+  descriptionKey,
   connected = false,
   popular = false,
   className,
@@ -64,7 +66,9 @@ export const IntegrationCard: React.FC<IntegrationCardProps> = ({
       
       <h3 className="mb-2 text-base font-semibold cal-card-title">{name}</h3>
       
-      <p className="mb-4 text-sm text-muted-foreground flex-grow">{description}</p>
+      <p className="mb-4 text-sm text-muted-foreground flex-grow">
+        {descriptionKey ? t(descriptionKey) : description}
+      </p>
       
       <div className="mt-auto">
         <button
