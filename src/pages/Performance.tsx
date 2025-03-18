@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { 
   Select, 
@@ -18,6 +19,7 @@ import EmailDashboard from "@/components/performance/EmailDashboard";
 import FormsDashboard from "@/components/performance/FormsDashboard";
 import { MetricCard } from "@/components/MetricCard";
 import { IosSwitch } from "@/components/ui/ios-switch";
+import { useTranslation } from "@/hooks/use-translation";
 
 const overviewData = {
   "paid-search": {
@@ -106,6 +108,7 @@ const Performance = () => {
     "email": "mailchimp",
     "forms": "typeform"
   });
+  const { t } = useTranslation();
 
   const toolsByCategory = {
     "paid-search": [
@@ -186,7 +189,7 @@ const Performance = () => {
             <CardHeader className="pb-2">
               <CardTitle className="text-lg flex items-center">
                 <Zap className="h-5 w-5 mr-2 text-amber-500" />
-                Performance Summary
+                {t('performanceSummary')}
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -196,7 +199,7 @@ const Performance = () => {
                 <div className="bg-slate-50 p-4 rounded-lg border border-slate-100">
                   <h4 className="text-sm font-medium text-slate-700 mb-2 flex items-center">
                     <Award className="h-4 w-4 mr-2 text-emerald-500" />
-                    Top Performer
+                    {t('topPerformer')}
                   </h4>
                   <p className="text-sm">{data.topPerformer}</p>
                 </div>
@@ -204,7 +207,7 @@ const Performance = () => {
                 <div className="bg-slate-50 p-4 rounded-lg border border-slate-100">
                   <h4 className="text-sm font-medium text-slate-700 mb-2 flex items-center">
                     <TrendingUp className="h-4 w-4 mr-2 text-blue-500" />
-                    Recommendation
+                    {t('recommendation')}
                   </h4>
                   <p className="text-sm">{data.recommendation}</p>
                 </div>
@@ -214,7 +217,7 @@ const Performance = () => {
           
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle className="text-lg">Channel Details</CardTitle>
+              <CardTitle className="text-lg">{t('channelDetails')}</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground mb-4">
@@ -223,7 +226,7 @@ const Performance = () => {
               
               <div className="mt-4 space-y-4">
                 <div>
-                  <label className="text-sm font-medium mb-1.5 block">Select channel</label>
+                  <label className="text-sm font-medium mb-1.5 block">{t('selectChannel')}</label>
                   <Select 
                     value={selectedTool[activeTab]} 
                     onValueChange={handleToolChange}
@@ -245,7 +248,7 @@ const Performance = () => {
                   className="w-full flex items-center justify-center gap-1"
                   onClick={() => handleSubTabChange("details")}
                 >
-                  View Detailed Analytics
+                  {t('viewDetailedAnalytics')}
                   <ChevronRight className="h-4 w-4" />
                 </Button>
               </div>
@@ -309,9 +312,9 @@ const Performance = () => {
   return (
     <div className="container mx-auto py-8 px-4 md:px-6">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">Performance</h1>
+        <h1 className="text-3xl font-bold mb-2">{t('performance')}</h1>
         <p className="text-muted-foreground">
-          Track and analyze performance across all your marketing channels
+          {t('trackAnalyzePerformance')}
         </p>
       </div>
 
@@ -321,50 +324,50 @@ const Performance = () => {
           data-state={activeTab === "paid-search" ? "active" : "inactive"}
           onClick={() => setActiveTab("paid-search")}
         >
-          Paid Search
+          {t('paidSearchTab')}
         </button>
         <button
           className={`dashboard-tab ${activeTab === "paid-socials" ? "data-[state=active]" : "data-[state=inactive]"}`}
           data-state={activeTab === "paid-socials" ? "active" : "inactive"}
           onClick={() => setActiveTab("paid-socials")}
         >
-          Paid Socials
+          {t('paidSocialsTab')}
         </button>
         <button
           className={`dashboard-tab ${activeTab === "organic-social" ? "data-[state=active]" : "data-[state=inactive]"}`}
           data-state={activeTab === "organic-social" ? "active" : "inactive"}
           onClick={() => setActiveTab("organic-social")}
         >
-          Organic Social
+          {t('organicSocialTab')}
         </button>
         <button
           className={`dashboard-tab ${activeTab === "website" ? "data-[state=active]" : "data-[state=inactive]"}`}
           data-state={activeTab === "website" ? "active" : "inactive"}
           onClick={() => setActiveTab("website")}
         >
-          Website
+          {t('websiteTab')}
         </button>
         <button
           className={`dashboard-tab ${activeTab === "email" ? "data-[state=active]" : "data-[state=inactive]"}`}
           data-state={activeTab === "email" ? "active" : "inactive"}
           onClick={() => setActiveTab("email")}
         >
-          E-Mail
+          {t('emailTab')}
         </button>
         <button
           className={`dashboard-tab ${activeTab === "forms" ? "data-[state=active]" : "data-[state=inactive]"}`}
           data-state={activeTab === "forms" ? "active" : "inactive"}
           onClick={() => setActiveTab("forms")}
         >
-          Forms
+          {t('formsTab')}
         </button>
       </div>
 
       <div className="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <IosSwitch
           options={[
-            { value: "overview", label: "Overview" },
-            { value: "details", label: "Details" }
+            { value: "overview", label: t('overviewTab') },
+            { value: "details", label: t('detailsTab') }
           ]}
           value={activeSubTab[activeTab]}
           onChange={handleSubTabChange}

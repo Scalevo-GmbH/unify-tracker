@@ -37,7 +37,48 @@ type TranslationKey =
   | 'engagementRateDescription'
   | 'topChannels'
   | 'topChannelsTooltip'
-  | 'newCampaign';
+  | 'newCampaign'
+  | 'performance'
+  | 'trackAnalyzePerformance'
+  | 'paidSearchTab'
+  | 'paidSocialsTab'
+  | 'organicSocialTab'
+  | 'websiteTab'
+  | 'emailTab'
+  | 'formsTab'
+  | 'overviewTab'
+  | 'detailsTab'
+  | 'channelDetails'
+  | 'selectChannel'
+  | 'viewDetailedAnalytics'
+  | 'performanceSummary'
+  | 'topPerformer'
+  | 'recommendation'
+  | 'keyMetrics'
+  | 'totalImpressions'
+  | 'totalClicks'
+  | 'averageCTR'
+  | 'totalSpend'
+  | 'totalReachMetric'
+  | 'engagementRateMetric'
+  | 'totalImpressionsMetric'
+  | 'totalSpendMetric'
+  | 'totalFollowers'
+  | 'totalEngagement'
+  | 'engagementRateMetric2'
+  | 'reachGrowth'
+  | 'totalVisitors'
+  | 'avgSessionDuration'
+  | 'bounceRate'
+  | 'conversionRateMetric'
+  | 'totalSent'
+  | 'openRate'
+  | 'clickRate'
+  | 'conversionRateMetric2'
+  | 'totalSubmissions'
+  | 'completionRate'
+  | 'avgCompletionTime'
+  | 'conversionRateMetric3';
 
 type Translations = {
   [key in TranslationKey]: {
@@ -202,6 +243,170 @@ export const translations: Translations = {
   newCampaign: {
     en: 'New Campaign',
     de: 'Neue Kampagne'
+  },
+  performance: {
+    en: 'Performance',
+    de: 'Leistung'
+  },
+  trackAnalyzePerformance: {
+    en: 'Track and analyze performance across all your marketing channels',
+    de: 'Verfolge und analysiere die Leistung über alle deine Marketing-Kanäle hinweg'
+  },
+  paidSearchTab: {
+    en: 'Paid Search',
+    de: 'Bezahlte Suche'
+  },
+  paidSocialsTab: {
+    en: 'Paid Socials',
+    de: 'Bezahlte Soziale Medien'
+  },
+  organicSocialTab: {
+    en: 'Organic Social',
+    de: 'Organische Soziale Medien'
+  },
+  websiteTab: {
+    en: 'Website',
+    de: 'Webseite'
+  },
+  emailTab: {
+    en: 'E-Mail',
+    de: 'E-Mail'
+  },
+  formsTab: {
+    en: 'Forms',
+    de: 'Formulare'
+  },
+  overviewTab: {
+    en: 'Overview',
+    de: 'Überblick'
+  },
+  detailsTab: {
+    en: 'Details',
+    de: 'Details'
+  },
+  channelDetails: {
+    en: 'Channel Details',
+    de: 'Kanal-Details'
+  },
+  selectChannel: {
+    en: 'Select channel',
+    de: 'Kanal auswählen'
+  },
+  viewDetailedAnalytics: {
+    en: 'View Detailed Analytics',
+    de: 'Detaillierte Analysen anzeigen'
+  },
+  performanceSummary: {
+    en: 'Performance Summary',
+    de: 'Leistungsübersicht'
+  },
+  topPerformer: {
+    en: 'Top Performer',
+    de: 'Top-Performer'
+  },
+  recommendation: {
+    en: 'Recommendation',
+    de: 'Empfehlung'
+  },
+  keyMetrics: {
+    en: 'Key Metrics',
+    de: 'Wichtige Kennzahlen'
+  },
+  totalImpressions: {
+    en: 'Total Impressions',
+    de: 'Gesamtimpressionen'
+  },
+  totalClicks: {
+    en: 'Total Clicks',
+    de: 'Gesamtklicks'
+  },
+  averageCTR: {
+    en: 'Average CTR',
+    de: 'Durchschnittliche CTR'
+  },
+  totalSpend: {
+    en: 'Total Spend',
+    de: 'Gesamtausgaben'
+  },
+  totalReachMetric: {
+    en: 'Total Reach',
+    de: 'Gesamtreichweite'
+  },
+  engagementRateMetric: {
+    en: 'Engagement Rate',
+    de: 'Engagement-Rate'
+  },
+  totalImpressionsMetric: {
+    en: 'Total Impressions',
+    de: 'Gesamtimpressionen'
+  },
+  totalSpendMetric: {
+    en: 'Total Spend',
+    de: 'Gesamtausgaben'
+  },
+  totalFollowers: {
+    en: 'Total Followers',
+    de: 'Gesamtanzahl Follower'
+  },
+  totalEngagement: {
+    en: 'Total Engagement',
+    de: 'Gesamtengagement'
+  },
+  engagementRateMetric2: {
+    en: 'Engagement Rate',
+    de: 'Engagement-Rate'
+  },
+  reachGrowth: {
+    en: 'Reach Growth',
+    de: 'Reichweitenwachstum'
+  },
+  totalVisitors: {
+    en: 'Total Visitors',
+    de: 'Gesamtbesucher'
+  },
+  avgSessionDuration: {
+    en: 'Avg. Session Duration',
+    de: 'Durchschn. Sitzungsdauer'
+  },
+  bounceRate: {
+    en: 'Bounce Rate',
+    de: 'Absprungrate'
+  },
+  conversionRateMetric: {
+    en: 'Conversion Rate',
+    de: 'Konversionsrate'
+  },
+  totalSent: {
+    en: 'Total Sent',
+    de: 'Gesamt gesendet'
+  },
+  openRate: {
+    en: 'Open Rate',
+    de: 'Öffnungsrate'
+  },
+  clickRate: {
+    en: 'Click Rate',
+    de: 'Klickrate'
+  },
+  conversionRateMetric2: {
+    en: 'Conversion Rate',
+    de: 'Konversionsrate'
+  },
+  totalSubmissions: {
+    en: 'Total Submissions',
+    de: 'Gesamteinsendungen'
+  },
+  completionRate: {
+    en: 'Completion Rate',
+    de: 'Abschlussrate'
+  },
+  avgCompletionTime: {
+    en: 'Avg. Completion Time',
+    de: 'Durchschn. Abschlusszeit'
+  },
+  conversionRateMetric3: {
+    en: 'Conversion Rate',
+    de: 'Konversionsrate'
   }
 };
 

@@ -6,6 +6,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { DateRange } from "@/components/DateRangeSelector";
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
+import { useTranslation } from "@/hooks/use-translation";
 
 interface Ad {
   id: number;
@@ -33,6 +34,8 @@ interface PerformanceTabProps {
 }
 
 export const PerformanceTab: React.FC<PerformanceTabProps> = ({ currentAd, dateRange }) => {
+  const { t } = useTranslation();
+  
   const handleExport = () => {
     // This would handle the export functionality in a real implementation
     console.log(`Exporting performance data for ad: ${currentAd.name}`);
@@ -41,10 +44,10 @@ export const PerformanceTab: React.FC<PerformanceTabProps> = ({ currentAd, dateR
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center mb-4">
-        <h3 className="text-lg font-semibold">Performance Metrics</h3>
+        <h3 className="text-lg font-semibold">{t('keyMetrics')}</h3>
         <Button variant="outline" size="sm" onClick={handleExport} className="gap-2">
           <Download className="h-4 w-4" />
-          Export
+          {t('export')}
         </Button>
       </div>
     
@@ -60,7 +63,7 @@ export const PerformanceTab: React.FC<PerformanceTabProps> = ({ currentAd, dateR
 
         <Card className="lg:col-span-1">
           <CardHeader>
-            <CardTitle>Key Metrics</CardTitle>
+            <CardTitle>{t('keyMetrics')}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
@@ -71,7 +74,7 @@ export const PerformanceTab: React.FC<PerformanceTabProps> = ({ currentAd, dateR
                 description="Average cost for each click"
               />
               <MetricCard
-                title="Conversion Rate"
+                title={t('conversionRate')}
                 value={`${currentAd.conversionRate}%`}
                 change={3.8}
                 description="Percentage of clicks that result in conversions"

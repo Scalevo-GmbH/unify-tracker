@@ -14,6 +14,7 @@ import {
   Line
 } from "recharts";
 import { DateRange } from "@/components/DateRangeSelector";
+import { useTranslation } from "@/hooks/use-translation";
 
 // Updated data to emphasize reach and clicks
 const data = [
@@ -44,6 +45,7 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
 }) => {
   const [chartType, setChartType] = useState<ChartType>("area");
   const [timeframe, setTimeframe] = useState<string>("year");
+  const { t } = useTranslation();
 
   const getFilteredData = () => {
     console.log("Date range selected:", dateRange);
@@ -203,7 +205,7 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
     <div className={`bg-card rounded-xl shadow-subtle p-6 ${className}`}>
       <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6">
         <div>
-          <h3 className="text-lg font-semibold">Ad Performance Metrics</h3>
+          <h3 className="text-lg font-semibold">{t('adPerformance')}</h3>
           <p className="text-sm text-muted-foreground">Comparing Reach and Click Performance</p>
         </div>
         

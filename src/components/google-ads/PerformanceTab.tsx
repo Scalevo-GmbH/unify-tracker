@@ -4,6 +4,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { MetricCard } from "@/components/MetricCard";
 import { PerformanceChart } from "@/components/PerformanceChart";
 import { DateRange } from "@/components/DateRangeSelector";
+import { useTranslation } from "@/hooks/use-translation";
 
 interface Ad {
   id: number;
@@ -32,6 +33,8 @@ export const PerformanceTab: React.FC<PerformanceTabProps> = ({
   currentAd,
   dateRange,
 }) => {
+  const { t } = useTranslation();
+  
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
       <Card className="lg:col-span-2">
@@ -45,7 +48,7 @@ export const PerformanceTab: React.FC<PerformanceTabProps> = ({
 
       <Card className="lg:col-span-1">
         <CardHeader>
-          <CardTitle>Key Metrics</CardTitle>
+          <CardTitle>{t('keyMetrics')}</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
@@ -56,7 +59,7 @@ export const PerformanceTab: React.FC<PerformanceTabProps> = ({
               description="Average cost for each click"
             />
             <MetricCard
-              title="Conversion Rate"
+              title={t('conversionRate')}
               value={`${currentAd.conversionRate}%`}
               change={2.7}
               description="Percentage of clicks that result in conversions"
