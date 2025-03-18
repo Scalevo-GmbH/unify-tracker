@@ -30,7 +30,7 @@ export const indexPageTranslations: Record<IndexTranslationKey, Record<Language,
   },
   trackOptimizePerformance: {
     en: 'Track and optimize your marketing performance across platforms.',
-    de: 'Verfolgen und optimieren Sie Ihre Marketingleistung über verschiedene Plattformen hinweg.'
+    de: 'Verfolge und optimiere deine Marketingleistung über verschiedene Plattformen hinweg.'
   },
   export: {
     en: 'Export',
@@ -54,7 +54,7 @@ export const indexPageTranslations: Record<IndexTranslationKey, Record<Language,
   },
   topChannelsTooltip: {
     en: 'Top channels are ranked based on their contribution to your overall traffic and conversion metrics. Percentages represent the proportion of total traffic coming from each source.',
-    de: 'Top-Kanäle werden nach ihrem Beitrag zu Ihren Gesamt-Traffic- und Konversionsmetriken eingestuft. Die Prozentsätze stellen den Anteil des Gesamttraffics dar, der aus jeder Quelle stammt.'
+    de: 'Top-Kanäle werden nach ihrem Beitrag zu deinen Gesamt-Traffic- und Konversionsmetriken eingestuft. Die Prozentsätze stellen den Anteil des Gesamttraffics dar, der aus jeder Quelle stammt.'
   },
   viewAllChannels: {
     en: 'View All Channels',
@@ -66,7 +66,7 @@ export const indexPageTranslations: Record<IndexTranslationKey, Record<Language,
   },
   connectPlatformsDesc: {
     en: 'Connect your marketing tools to see all your data in one place.',
-    de: 'Verbinden Sie Ihre Marketing-Tools, um alle Ihre Daten an einem Ort zu sehen.'
+    de: 'Verbinde deine Marketing-Tools, um alle deine Daten an einem Ort zu sehen.'
   },
   morePlatforms: {
     en: 'More Platforms',
@@ -74,6 +74,6 @@ export const indexPageTranslations: Record<IndexTranslationKey, Record<Language,
   },
   morePlatformsDesc: {
     en: 'Connect to 50+ other marketing platforms and tools.',
-    de: 'Verbinden Sie sich mit mehr als 50 anderen Marketing-Plattformen und Tools.'
+    de: 'Verbinde dich mit mehr als 50 anderen Marketing-Plattformen und Tools.'
   }
 };
