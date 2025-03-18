@@ -2,7 +2,6 @@
 /* Tab styling - consistent across the entire application */
 .dashboard-tabs {
   @apply flex rounded-lg bg-slate-100/80 p-1.5 font-cal w-full gap-1;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
   transition: all 0.2s ease;
 }
 
@@ -13,8 +12,7 @@
 }
 
 .dashboard-tab[data-state="active"] {
-  @apply bg-white text-primary shadow-subtle;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  @apply bg-white text-primary;
 }
 
 .dashboard-tab[data-state="inactive"] {
