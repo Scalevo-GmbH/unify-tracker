@@ -7,8 +7,17 @@ import type { TranslationKey } from '@/translations';
 export function useTranslation() {
   const { language } = useLanguage();
   
-  const t = (key: TranslationKey) => {
-    return getTranslation(key, language);
+  const t = (key: TranslationKey, values?: Record<string, string>) => {
+    let text = getTranslation(key, language);
+    
+    // Replace values if provided
+    if (values && Object.keys(values).length > 0) {
+      Object.entries(values).forEach(([key, value]) => {
+        text = text.replace(new RegExp(`{{${key}}}`, 'g'), value);
+      });
+    }
+    
+    return text;
   };
   
   // Translation component for more complex translations
@@ -57,10 +66,11 @@ export function useTranslation() {
     return new Intl.NumberFormat(language === 'en' ? 'en-US' : 'de-DE', options).format(num);
   };
   
-  const formatCurrency = (amount: number, currency = language === 'en' ? 'USD' : 'EUR') => {
+  const formatCurrency = (amount: number, currency?: string) => {
+    const currencyCode = currency || (language === 'en' ? 'USD' : 'EUR');
     return new Intl.NumberFormat(language === 'en' ? 'en-US' : 'de-DE', {
       style: 'currency',
-      currency
+      currency: currencyCode
     }).format(amount);
   };
   

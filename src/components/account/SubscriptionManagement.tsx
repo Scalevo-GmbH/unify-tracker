@@ -7,13 +7,13 @@ import { useTranslation } from "@/hooks/use-translation";
 
 const SubscriptionManagement = () => {
   const { toast } = useToast();
-  const { t } = useTranslation();
+  const { t, formatCurrency } = useTranslation();
   
   // Current plan details
   const currentPlan = {
     name: t('pro'),
-    renewDate: "November 15, 2023",
-    amount: "$29.99"
+    renewDate: t('renewDateValue', { date: "November 15, 2023" }),
+    amount: formatCurrency(29.99)
   };
 
   // Sample plan data with IDs that would correspond to Stripe Price IDs
@@ -22,51 +22,51 @@ const SubscriptionManagement = () => {
       id: "price_free_monthly",
       name: t('free'),
       price: t('free'),
-      description: "Basic features for individuals",
+      description: t('freeDescription'),
       current: false,
       popular: false,
       interval: "month",
       features: [
-        { name: "1 integration", included: true },
-        { name: "Basic analytics", included: true },
-        { name: "Standard reports", included: true },
-        { name: "Team collaboration", included: false },
-        { name: "Advanced insights", included: false },
-        { name: "24/7 support", included: false },
+        { name: t('freeFeature1'), included: true },
+        { name: t('freeFeature2'), included: true },
+        { name: t('freeFeature3'), included: true },
+        { name: t('freeFeature4'), included: false },
+        { name: t('freeFeature5'), included: false },
+        { name: t('freeFeature6'), included: false },
       ]
     },
     {
       id: "price_pro_monthly",
       name: t('pro'),
-      price: "$29.99",
-      description: "Advanced features for professionals",
+      price: formatCurrency(29.99),
+      description: t('proDescription'),
       current: true,
       popular: true,
       interval: "month",
       features: [
-        { name: "5 integrations", included: true },
-        { name: "Advanced analytics", included: true },
-        { name: "Custom reports", included: true },
-        { name: "Team collaboration", included: true },
-        { name: "Advanced insights", included: true },
-        { name: "24/7 support", included: false },
+        { name: t('proFeature1'), included: true },
+        { name: t('proFeature2'), included: true },
+        { name: t('proFeature3'), included: true },
+        { name: t('proFeature4'), included: true },
+        { name: t('proFeature5'), included: true },
+        { name: t('proFeature6'), included: false },
       ]
     },
     {
       id: "price_enterprise_monthly",
       name: t('enterprise'),
-      price: "$99.99",
-      description: "Complete solution for businesses",
+      price: formatCurrency(99.99),
+      description: t('enterpriseDescription'),
       current: false,
       popular: false,
       interval: "month",
       features: [
-        { name: "Unlimited integrations", included: true },
-        { name: "Enterprise analytics", included: true },
-        { name: "Custom solutions", included: true },
-        { name: "Advanced team tools", included: true },
-        { name: "AI-powered insights", included: true },
-        { name: "24/7 priority support", included: true },
+        { name: t('enterpriseFeature1'), included: true },
+        { name: t('enterpriseFeature2'), included: true },
+        { name: t('enterpriseFeature3'), included: true },
+        { name: t('enterpriseFeature4'), included: true },
+        { name: t('enterpriseFeature5'), included: true },
+        { name: t('enterpriseFeature6'), included: true },
       ]
     }
   ];
@@ -74,16 +74,17 @@ const SubscriptionManagement = () => {
   const handleCancelSubscription = () => {
     // This would make an API call to Stripe to cancel the subscription
     toast({
-      title: "Subscription canceled",
-      description: "Your subscription has been canceled. It will remain active until the end of the billing period."
+      title: t('subscriptionCanceled'),
+      description: t('subscriptionCanceledDesc')
     });
   };
 
   const handleSubscribe = (planId: string) => {
     // This would redirect to a Stripe Checkout session or show a payment form
+    const selectedPlan = plans.find(p => p.id === planId);
     toast({
-      title: "Plan change initiated",
-      description: `You're switching to the ${plans.find(p => p.id === planId)?.name} plan. Redirecting to checkout...`
+      title: t('planChangeInitiated'),
+      description: t('planChangeDesc', { plan: selectedPlan?.name || '' })
     });
   };
 
