@@ -35,6 +35,9 @@ const generateData = (dateRange: DateRange) => {
       cpc: ((2 + Math.random() * 1.5)).toFixed(2),
       cost: Math.round(clicks * (2 + Math.random() * 1.5)),
       revenue: Math.round(conversions * (50 + Math.random() * 30)),
+      // Add metrics used by WebsiteDashboard
+      sessions: Math.round(baseImpressions * 0.8 * trend * weekendEffect),
+      users: Math.round(baseImpressions * 0.6 * trend * weekendEffect),
     };
   });
 };
@@ -42,7 +45,7 @@ const generateData = (dateRange: DateRange) => {
 interface PerformanceChartProps {
   dateRange: DateRange;
   chartType?: "line" | "bar";
-  metrics?: Array<"impressions" | "clicks" | "conversions" | "ctr" | "cpc" | "cost" | "revenue">;
+  metrics?: Array<"impressions" | "clicks" | "conversions" | "ctr" | "cpc" | "cost" | "revenue" | "sessions" | "users">;
   colors?: Record<string, string>;
 }
 
@@ -57,18 +60,21 @@ export const PerformanceChart: React.FC<PerformanceChartProps> = ({
     ctr: "#ffc658",
     cpc: "#ff8042",
     cost: "#ff6b6b",
-    revenue: "#82ca9d"
+    revenue: "#82ca9d",
+    sessions: "#9b87f5",
+    users: "#58cc8f"
   }
 }) => {
   const data = generateData(dateRange);
   
-  const formatYAxis = (value: number) => {
+  // Fixed to ensure it always returns a string
+  const formatYAxis = (value: number): string => {
     if (value >= 1000000) {
       return `${(value / 1000000).toFixed(1)}M`;
     } else if (value >= 1000) {
       return `${(value / 1000).toFixed(1)}K`;
     }
-    return value;
+    return value.toString();
   };
 
   if (chartType === "bar") {

@@ -1,9 +1,22 @@
-
 import React from "react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { CalendarRange } from "lucide-react";
 
-export type DateRange = "today" | "yesterday" | "this-week" | "last-week" | "this-month" | "last-month" | "this-quarter" | "last-quarter" | "this-year" | "last-year" | "all-time" | "custom";
+export type DateRange = 
+  | "today" 
+  | "yesterday" 
+  | "this-week" 
+  | "last-week" 
+  | "this-month" 
+  | "last-month" 
+  | "last-3-months" 
+  | "year-to-date" 
+  | "this-quarter" 
+  | "last-quarter" 
+  | "this-year" 
+  | "last-year" 
+  | "all-time" 
+  | "custom";
 
 interface DateRangeSelectorProps {
   value: DateRange;
@@ -36,6 +49,8 @@ export const DateRangeSelector: React.FC<DateRangeSelectorProps> = ({
           <SelectItem value="last-week">Last Week</SelectItem>
           <SelectItem value="this-month">This Month</SelectItem>
           <SelectItem value="last-month">Last Month</SelectItem>
+          <SelectItem value="last-3-months">Last 3 Months</SelectItem>
+          <SelectItem value="year-to-date">Year to Date</SelectItem>
           <SelectItem value="this-quarter">This Quarter</SelectItem>
           <SelectItem value="last-quarter">Last Quarter</SelectItem>
           <SelectItem value="this-year">This Year</SelectItem>

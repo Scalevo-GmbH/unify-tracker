@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MetricCard } from "@/components/MetricCard";
@@ -17,7 +16,6 @@ const WebsiteDashboard: React.FC<WebsiteDashboardProps> = ({ toolId }) => {
   const [activeSubTab, setActiveSubTab] = useState("overview");
   const { t } = useTranslation();
   
-  // In a real implementation, we would fetch this data from the Google Analytics API
   const metrics = {
     "google-analytics": {
       users: 58420,
@@ -50,7 +48,6 @@ const WebsiteDashboard: React.FC<WebsiteDashboardProps> = ({ toolId }) => {
   const currentMetrics = metrics["google-analytics"];
   const dateRange: DateRange = "this-month";
 
-  // Format session duration as mm:ss
   const formatTime = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
@@ -58,7 +55,6 @@ const WebsiteDashboard: React.FC<WebsiteDashboardProps> = ({ toolId }) => {
   };
 
   const handleExport = () => {
-    // This would handle the export functionality in a real implementation
     console.log(`Exporting Google Analytics data...`);
   };
 
