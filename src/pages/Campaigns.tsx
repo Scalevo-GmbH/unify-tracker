@@ -53,22 +53,24 @@ const Campaigns = () => {
 
       <div className="px-6">
         <Tabs value={activeTab} onValueChange={handleTabChange}>
-          <TabsList className="inline-flex h-10 items-center justify-start rounded-md bg-muted p-1 text-muted-foreground font-cal w-auto mb-6">
-            <TabsTrigger 
-              value="all-campaigns"
-              className="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm"
+          <div className="dashboard-tabs">
+            <button 
+              className={`dashboard-tab ${activeTab === "all-campaigns" ? "data-[state=active]" : "data-[state=inactive]"}`}
+              data-state={activeTab === "all-campaigns" ? "active" : "inactive"}
+              onClick={() => setActiveTab("all-campaigns")}
             >
               <Table className="h-4 w-4 mr-2" />
               {t('allCampaigns')}
-            </TabsTrigger>
-            <TabsTrigger 
-              value="new-campaign"
-              className="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm"
+            </button>
+            <button 
+              className={`dashboard-tab ${activeTab === "new-campaign" ? "data-[state=active]" : "data-[state=inactive]"}`}
+              data-state={activeTab === "new-campaign" ? "active" : "inactive"}
+              onClick={() => setActiveTab("new-campaign")}
             >
               <ListPlus className="h-4 w-4 mr-2" />
               {t('newCampaign')}
-            </TabsTrigger>
-          </TabsList>
+            </button>
+          </div>
 
           <TabsContent value="all-campaigns" className="pt-6">
             <div className="flex justify-between items-center mb-6">
