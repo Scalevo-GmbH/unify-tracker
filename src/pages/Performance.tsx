@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { 
   Select, 
@@ -312,10 +311,8 @@ const Performance = () => {
   return (
     <div className="container mx-auto py-8 px-4 md:px-6">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">{t('performance')}</h1>
-        <p className="text-muted-foreground">
-          {t('trackAnalyzePerformance')}
-        </p>
+        <h1 className="page-title">{t('performance')}</h1>
+        <p className="page-description">{t('trackAnalyzePerformance')}</p>
       </div>
 
       <div className="dashboard-tabs mb-8">

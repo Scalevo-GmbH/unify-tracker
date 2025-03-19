@@ -50,10 +50,11 @@
 }
 
 .page-description {
-  color: var(--muted-foreground);
+  color: #6b7280; /* slate-500 color which is lighter and matches the Performance page screenshot */
   font-size: 0.975rem;
   margin-bottom: 1.5rem;
   font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
+  letter-spacing: var(--cal-letter-spacing);
 }
 
 /* iOS Switch styling */

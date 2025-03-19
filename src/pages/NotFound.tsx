@@ -23,7 +23,7 @@ const NotFound = () => {
             <AlertTriangle className="size-7" />
           </div>
           <h1 className="page-title text-foreground">404</h1>
-          <p className="text-muted-foreground">Page not found</p>
+          <p className="page-description">Page not found</p>
         </CardHeader>
         
         <CardContent className="text-center pt-6">
