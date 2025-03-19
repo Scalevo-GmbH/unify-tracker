@@ -3,13 +3,15 @@ import React from "react";
 import { useToast } from "@/hooks/use-toast";
 import PlanCard, { SubscriptionPlan } from "../subscriptions/PlanCard";
 import CurrentSubscription from "../subscriptions/CurrentSubscription";
+import useTranslation from "@/hooks/use-translation";
 
 const SubscriptionManagement = () => {
   const { toast } = useToast();
+  const { t } = useTranslation();
   
   // Current plan details
   const currentPlan = {
-    name: "Pro",
+    name: t('pro'),
     renewDate: "November 15, 2023",
     amount: "$29.99"
   };
@@ -18,9 +20,9 @@ const SubscriptionManagement = () => {
   const plans: SubscriptionPlan[] = [
     {
       id: "price_free_monthly",
-      name: "Free",
-      price: "Free",
-      description: "Basic features for individuals",
+      name: t('free'),
+      price: t('free'),
+      description: t('freeDescription'),
       current: false,
       popular: false,
       interval: "month",
@@ -35,9 +37,9 @@ const SubscriptionManagement = () => {
     },
     {
       id: "price_pro_monthly",
-      name: "Pro",
+      name: t('pro'),
       price: "$29.99",
-      description: "Advanced features for professionals",
+      description: t('proDescription'),
       current: true,
       popular: true,
       interval: "month",
@@ -52,9 +54,9 @@ const SubscriptionManagement = () => {
     },
     {
       id: "price_enterprise_monthly",
-      name: "Enterprise",
+      name: t('enterprise'),
       price: "$99.99",
-      description: "Complete solution for businesses",
+      description: t('enterpriseDescription'),
       current: false,
       popular: false,
       interval: "month",
@@ -72,16 +74,17 @@ const SubscriptionManagement = () => {
   const handleCancelSubscription = () => {
     // This would make an API call to Stripe to cancel the subscription
     toast({
-      title: "Subscription canceled",
-      description: "Your subscription has been canceled. It will remain active until the end of the billing period."
+      title: t('subscriptionCanceled'),
+      description: t('subscriptionCanceledDescription')
     });
   };
 
   const handleSubscribe = (planId: string) => {
     // This would redirect to a Stripe Checkout session or show a payment form
+    const selectedPlan = plans.find(p => p.id === planId);
     toast({
-      title: "Plan change initiated",
-      description: `You're switching to the ${plans.find(p => p.id === planId)?.name} plan. Redirecting to checkout...`
+      title: t('planChangeInitiated'),
+      description: t('planChangeDescription').replace('{plan}', selectedPlan?.name || '')
     });
   };
 
@@ -93,7 +96,7 @@ const SubscriptionManagement = () => {
       />
 
       <div>
-        <h2 className="text-xl font-semibold mb-4">Available Plans</h2>
+        <h2 className="text-xl font-semibold mb-4">{t('availablePlans')}</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {plans.map((plan) => (
             <PlanCard 

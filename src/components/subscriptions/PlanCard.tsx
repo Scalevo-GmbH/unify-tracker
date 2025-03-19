@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { CheckCircle, Clock } from "lucide-react";
+import useTranslation from "@/hooks/use-translation";
 
 export interface PlanFeature {
   name: string;
@@ -36,13 +37,14 @@ interface PlanCardProps {
 
 const PlanCard: React.FC<PlanCardProps> = ({ plan, onSubscribe }) => {
   const { toast } = useToast();
+  const { t } = useTranslation();
   const { id, name, price, description, features, current, popular, interval } = plan;
 
   const handleSubscribe = () => {
     onSubscribe(id);
     toast({
-      title: "Plan change initiated",
-      description: `You're switching to the ${name} plan. Redirecting to checkout...`
+      title: t('planChangeInitiated'),
+      description: t('planChangeDescription').replace('{plan}', name || '')
     });
   };
 
@@ -50,7 +52,7 @@ const PlanCard: React.FC<PlanCardProps> = ({ plan, onSubscribe }) => {
     <Card className={`relative flex flex-col ${popular ? 'border-primary shadow-md' : ''}`}>
       {popular && (
         <div className="absolute top-0 right-0 transform translate-x-2 -translate-y-2">
-          <Badge variant="secondary" className="text-xs font-medium">Popular Choice</Badge>
+          <Badge variant="secondary" className="text-xs font-medium">{t('popularChoice')}</Badge>
         </div>
       )}
       <CardHeader>
@@ -59,11 +61,11 @@ const PlanCard: React.FC<PlanCardProps> = ({ plan, onSubscribe }) => {
             <CardTitle>{name}</CardTitle>
             <CardDescription className="mt-1">{description}</CardDescription>
           </div>
-          {current && <Badge variant="outline" className="text-xs">Current Plan</Badge>}
+          {current && <Badge variant="outline" className="text-xs">{t('currentPlan')}</Badge>}
         </div>
         <div className="mt-4">
           <span className="text-3xl font-bold">{price}</span>
-          {price !== 'Free' && interval && <span className="text-muted-foreground"> /{interval}</span>}
+          {price !== t('free') && interval && <span className="text-muted-foreground"> /{interval}</span>}
         </div>
       </CardHeader>
       <CardContent className="flex-grow">
@@ -86,7 +88,7 @@ const PlanCard: React.FC<PlanCardProps> = ({ plan, onSubscribe }) => {
           variant={current ? "outline" : (popular ? "default" : "secondary")}
           disabled={current}
         >
-          {current ? "Current Plan" : "Subscribe"}
+          {current ? t('currentPlan') : t('subscribe')}
         </Button>
       </CardFooter>
     </Card>
