@@ -124,4 +124,24 @@
     padding-left: 0.75rem;
     padding-right: 0.75rem;
   }
+  
+  /* Smaller buttons and text for mobile */
+  button,
+  .button,
+  [role="button"] {
+    font-size: 0.875rem;
+    padding: 0.375rem 0.75rem;
+  }
+  
+  /* Adjust dashboard tabs for mobile */
+  .dashboard-tab {
+    padding: 0.375rem 0.625rem;
+    font-size: 0.75rem;
+  }
+  
+  /* Make icon sizes smaller on mobile */
+  svg, .icon {
+    width: 1rem;
+    height: 1rem;
+  }
 }
