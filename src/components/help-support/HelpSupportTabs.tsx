@@ -1,7 +1,7 @@
 
 import React from "react";
 import { useTranslation } from "@/hooks/use-translation";
-import { QuestionMarkCircle, BookOpen, TicketCheck, Phone } from "lucide-react";
+import { HelpCircle, BookOpen, TicketCheck, Phone } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -26,7 +26,7 @@ const HelpSupportTabs: React.FC<HelpSupportTabsProps> = ({
             data-state={activeTab === "faq" ? "active" : "inactive"}
             onClick={() => setActiveTab("faq")}
           >
-            <QuestionMarkCircle className={`${isMobile ? "h-3 w-3 mr-1" : "h-4 w-4 mr-2"}`} />
+            <HelpCircle className={`${isMobile ? "h-3 w-3 mr-1" : "h-4 w-4 mr-2"}`} />
             <span className="hidden sm:inline">{t('frequentlyAskedQuestions')}</span>
             <span className="sm:hidden">FAQs</span>
           </button>

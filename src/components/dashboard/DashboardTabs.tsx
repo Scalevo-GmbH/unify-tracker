@@ -17,6 +17,17 @@ interface DashboardTabsProps {
   onOpenModal: (name: string, icon: React.ReactNode) => void;
 }
 
+// Define props for the components that need dateRange
+interface WithDateRangeProps {
+  dateRange: DateRange;
+}
+
+// Explicitly type the components to accept dateRange
+// This tells TypeScript that these components can accept the dateRange prop
+const TypedDashboardMetrics = DashboardMetrics as React.ComponentType<WithDateRangeProps>;
+const TypedActiveCampaigns = ActiveCampaigns as React.ComponentType<WithDateRangeProps>;
+const TypedTopChannels = TopChannels as React.ComponentType<WithDateRangeProps>;
+
 const DashboardTabs: React.FC<DashboardTabsProps> = ({
   activeTab,
   onTabChange,
@@ -40,15 +51,15 @@ const DashboardTabs: React.FC<DashboardTabsProps> = ({
       </TabsList>
 
       <TabsContent value="overview" className="space-y-6 pb-8">
-        <DashboardMetrics dateRange={dateRange} />
+        <TypedDashboardMetrics dateRange={dateRange} />
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <TopChannels dateRange={dateRange} />
+          <TypedTopChannels dateRange={dateRange} />
           <ConnectPlatforms onOpenModal={onOpenModal} />
         </div>
       </TabsContent>
 
       <TabsContent value="campaigns" className="pb-8">
-        <ActiveCampaigns dateRange={dateRange} />
+        <TypedActiveCampaigns dateRange={dateRange} />
       </TabsContent>
     </Tabs>
   );
