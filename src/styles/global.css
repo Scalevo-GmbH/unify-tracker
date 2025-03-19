@@ -75,6 +75,17 @@ th, td {
   max-width: 160px;
 }
 
+/* Fix for ScrollArea component horizontal scrolling */
+.dashboard-tabs {
+  padding-bottom: 2px; /* Add padding to prevent scrollbar from cutting off content */
+}
+
+/* Ensure the ScrollArea viewport allows horizontal scrolling for tabs */
+[data-radix-scroll-area-viewport] {
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
 /* Responsive breakpoints for tables */
 @media (max-width: 640px) {
   th, td {

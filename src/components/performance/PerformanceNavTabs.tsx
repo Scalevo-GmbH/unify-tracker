@@ -19,7 +19,7 @@ export const PerformanceNavTabs: React.FC<PerformanceNavTabsProps> = ({
   
   return (
     <div className="w-full max-w-full overflow-hidden mb-4">
-      <ScrollArea className="w-full" orientation="horizontal">
+      <ScrollArea className="w-full">
         <div className="dashboard-tabs min-w-max inline-flex">
           <button
             className={`dashboard-tab flex items-center ${activeTab === "paid-search" ? "active" : ""}`}
