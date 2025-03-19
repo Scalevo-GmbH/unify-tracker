@@ -23,30 +23,33 @@ const Account = () => {
         <p className="text-muted-foreground">{t('accountManage')}</p>
       </div>
 
-      <Tabs defaultValue="settings" value={activeTab} onValueChange={handleTabChange}>
-        <TabsList className="inline-flex h-10 items-center justify-start rounded-md bg-muted p-1 text-muted-foreground font-cal w-auto mb-6">
-          <TabsTrigger 
-            value="settings"
-            className="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm"
+      <Tabs value={activeTab} onValueChange={handleTabChange}>
+        <div className="dashboard-tabs">
+          <button 
+            className={`dashboard-tab ${activeTab === "settings" ? "data-[state=active]" : "data-[state=inactive]"}`}
+            data-state={activeTab === "settings" ? "active" : "inactive"}
+            onClick={() => setActiveTab("settings")}
           >
             <Settings className="h-4 w-4 mr-2" />
             {t('settings')}
-          </TabsTrigger>
-          <TabsTrigger 
-            value="subscriptions"
-            className="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm"
+          </button>
+          <button 
+            className={`dashboard-tab ${activeTab === "subscriptions" ? "data-[state=active]" : "data-[state=inactive]"}`}
+            data-state={activeTab === "subscriptions" ? "active" : "inactive"}
+            onClick={() => setActiveTab("subscriptions")}
           >
             <Bookmark className="h-4 w-4 mr-2" />
             {t('subscriptions')}
-          </TabsTrigger>
-          <TabsTrigger 
-            value="payment"
-            className="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm"
+          </button>
+          <button 
+            className={`dashboard-tab ${activeTab === "payment" ? "data-[state=active]" : "data-[state=inactive]"}`}
+            data-state={activeTab === "payment" ? "active" : "inactive"}
+            onClick={() => setActiveTab("payment")}
           >
             <CreditCard className="h-4 w-4 mr-2" />
             {t('paymentMethods')}
-          </TabsTrigger>
-        </TabsList>
+          </button>
+        </div>
 
         <TabsContent value="settings" className="mt-6">
           <AccountSettings />
