@@ -3,11 +3,12 @@ import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MetricCard } from "@/components/MetricCard";
 import { PerformanceChart } from "@/components/PerformanceChart";
-import { DateRange } from "@/components/DateRangeSelector";
-import { Button } from "@/components/ui/button";
+import { DateRange, DateRangeSelector } from "@/components/DateRangeSelector";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { BarChart3, Search, Users, LineChart, Download } from "lucide-react";
-import { IosSwitch } from "@/components/ui/ios-switch";
+import { Button } from "@/components/ui/button";
+import { GoogleAdsTable } from "@/components/google-ads/GoogleAdsTable";
+import { AdPreviewCard } from "@/components/google-ads/AdPreviewCard";
 import { useTranslation } from "@/hooks/use-translation";
 
 interface PaidSearchDashboardProps {
@@ -16,102 +17,226 @@ interface PaidSearchDashboardProps {
 
 const PaidSearchDashboard: React.FC<PaidSearchDashboardProps> = ({ toolId }) => {
   const [activeSubTab, setActiveSubTab] = useState("performance");
+  const [dateRange, setDateRange] = useState<DateRange>("this-month");
+  const [currentAdIndex, setCurrentAdIndex] = useState(0);
   const { t } = useTranslation();
+  
+  // Mock data for ads - in a real app, this would come from an API based on the toolId
+  const adsData = {
+    "google-ads": [
+      {
+        id: 1,
+        name: "Summer Sale - Search Campaign",
+        status: "Active",
+        budget: "$600",
+        spent: "$432.67",
+        impressions: 52340,
+        clicks: 2170,
+        ctr: 4.15,
+        cpc: 0.20,
+        conversions: 87,
+        conversionRate: 4.01,
+        revenue: "$4,350",
+        roas: 10.05,
+        qualityScore: 8,
+        adPreview: "/placeholder.svg",
+      },
+      {
+        id: 2,
+        name: "Brand Awareness - Display",
+        status: "Active",
+        budget: "$850",
+        spent: "$614.29",
+        impressions: 98760,
+        clicks: 1480,
+        ctr: 1.50,
+        cpc: 0.42,
+        conversions: 42,
+        conversionRate: 2.84,
+        revenue: "$2,100",
+        roas: 3.42,
+        qualityScore: 7,
+        adPreview: "/placeholder.svg",
+      },
+      {
+        id: 3,
+        name: "Product Remarketing",
+        status: "Paused",
+        budget: "$400",
+        spent: "$312.45",
+        impressions: 32150,
+        clicks: 1270,
+        ctr: 3.95,
+        cpc: 0.25,
+        conversions: 65,
+        conversionRate: 5.12,
+        revenue: "$3,250",
+        roas: 10.40,
+        qualityScore: 9,
+        adPreview: "/placeholder.svg",
+      }
+    ],
+    "bing-ads": [
+      {
+        id: 1,
+        name: "Fall Collection - Search",
+        status: "Active",
+        budget: "$400",
+        spent: "$345.28",
+        impressions: 38670,
+        clicks: 1670,
+        ctr: 4.32,
+        cpc: 0.21,
+        conversions: 65,
+        conversionRate: 3.89,
+        revenue: "$3,250",
+        roas: 9.41,
+        qualityScore: 7,
+        adPreview: "/placeholder.svg",
+      },
+      {
+        id: 2,
+        name: "Competitor Keywords",
+        status: "Active",
+        budget: "$300",
+        spent: "$267.45",
+        impressions: 28450,
+        clicks: 1120,
+        ctr: 3.94,
+        cpc: 0.24,
+        conversions: 38,
+        conversionRate: 3.39,
+        revenue: "$1,900",
+        roas: 7.10,
+        qualityScore: 6,
+        adPreview: "/placeholder.svg",
+      }
+    ]
+  };
   
   // In a real implementation, we would fetch this data from the API based on toolId
   const metrics = {
     "google-ads": {
-      impressions: 125340,
-      clicks: 4815,
-      ctr: 3.84,
-      cpc: 1.25,
-      conversions: 215,
-      conversionRate: 4.47,
-      cost: 6019.23,
-      roas: 3.5,
-      qualityScore: 7.8,
-      adPositions: {
-        top: 65,
-        otherVisible: 32,
-        notShown: 3
-      },
-      keywordPerformance: [
-        { keyword: "marketing dashboard", impressions: 12500, clicks: 620, ctr: 4.96, cpc: 0.18, conversions: 31 },
-        { keyword: "digital marketing tools", impressions: 9800, clicks: 485, ctr: 4.95, cpc: 0.22, conversions: 24 },
-        { keyword: "marketing automation", impressions: 7650, clicks: 320, ctr: 4.18, cpc: 0.19, conversions: 18 },
-        { keyword: "analytics dashboard", impressions: 6200, clicks: 245, ctr: 3.95, cpc: 0.25, conversions: 12 },
-        { keyword: "campaign management", impressions: 5100, clicks: 198, ctr: 3.88, cpc: 0.27, conversions: 9 }
+      impressions: 183250,
+      clicks: 4920,
+      ctr: 2.68,
+      cpc: 0.29,
+      cost: 1426.80,
+      conversions: 194,
+      conversionRate: 3.94,
+      searchImpressionShare: 72.4,
+      qualityScore: 7.6,
+      avgPosition: 2.3,
+      searchTerms: [
+        { term: "summer shoes sale", impressions: 8450, clicks: 485, ctr: 5.74 },
+        { term: "discount running shoes", impressions: 6320, clicks: 387, ctr: 6.12 },
+        { term: "athletic footwear", impressions: 5240, clicks: 276, ctr: 5.27 },
+        { term: "summer collection", impressions: 4780, clicks: 245, ctr: 5.13 },
+        { term: "sports shoes", impressions: 3950, clicks: 198, ctr: 5.01 }
       ]
     },
     "bing-ads": {
-      impressions: 42180,
-      clicks: 1624,
-      ctr: 3.85,
-      cpc: 0.95,
-      conversions: 68,
-      conversionRate: 4.19,
-      cost: 1542.80,
-      roas: 2.8,
-      qualityScore: 7.2,
-      adPositions: {
-        top: 59,
-        otherVisible: 38,
-        notShown: 3
-      },
-      keywordPerformance: [
-        { keyword: "marketing dashboard", impressions: 6200, clicks: 240, ctr: 3.87, cpc: 0.15, conversions: 12 },
-        { keyword: "digital marketing tools", impressions: 4300, clicks: 168, ctr: 3.91, cpc: 0.18, conversions: 9 },
-        { keyword: "marketing automation", impressions: 3520, clicks: 135, ctr: 3.84, cpc: 0.16, conversions: 7 },
-        { keyword: "analytics dashboard", impressions: 2840, clicks: 105, ctr: 3.70, cpc: 0.21, conversions: 5 },
-        { keyword: "campaign management", impressions: 2420, clicks: 86, ctr: 3.55, cpc: 0.23, conversions: 4 }
+      impressions: 67120,
+      clicks: 2790,
+      ctr: 4.16,
+      cpc: 0.22,
+      cost: 613.80,
+      conversions: 103,
+      conversionRate: 3.69,
+      searchImpressionShare: 56.8,
+      qualityScore: 6.8,
+      avgPosition: 2.6,
+      searchTerms: [
+        { term: "discount shoes", impressions: 3250, clicks: 187, ctr: 5.75 },
+        { term: "athletic shoes sale", impressions: 2840, clicks: 165, ctr: 5.81 },
+        { term: "sports footwear", impressions: 2380, clicks: 132, ctr: 5.55 },
+        { term: "running shoes", impressions: 2150, clicks: 118, ctr: 5.49 },
+        { term: "shoes online", impressions: 1680, clicks: 87, ctr: 5.18 }
       ]
     }
   };
 
-  const currentMetrics = toolId === "google-ads" ? metrics["google-ads"] : metrics["bing-ads"];
-  const dateRange: DateRange = "this-month";
+  let toolName = "Google Ads";
+  let currentMetrics = metrics["google-ads"];
+  let ads = adsData["google-ads"];
+  
+  if (toolId === "bing-ads") {
+    toolName = "Bing Ads";
+    currentMetrics = metrics["bing-ads"];
+    ads = adsData["bing-ads"];
+  }
+  
+  const currentAd = ads[currentAdIndex];
 
   const handleExport = () => {
     // This would handle the export functionality in a real implementation
-    console.log(`Exporting ${toolId === "google-ads" ? "Google Ads" : "Bing Ads"} data...`);
+    console.log(`Exporting ${toolName} data...`);
+  };
+
+  const goToNextAd = () => {
+    setCurrentAdIndex((prevIndex) => 
+      prevIndex === ads.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+  
+  const goToPreviousAd = () => {
+    setCurrentAdIndex((prevIndex) => 
+      prevIndex === 0 ? ads.length - 1 : prevIndex - 1
+    );
   };
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <h2 className="text-2xl font-bold">{toolId === "google-ads" ? "Google Ads" : "Bing Ads"} Dashboard</h2>
-        <Button variant="outline" size="sm" onClick={handleExport} className="gap-2">
-          <Download className="h-4 w-4" />
-          {t('export')}
-        </Button>
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-2xl font-bold">{toolName} Dashboard</h2>
+        <div className="flex items-center gap-3">
+          <DateRangeSelector 
+            value={dateRange} 
+            onChange={setDateRange} 
+          />
+          <Button variant="outline" size="sm" onClick={handleExport} className="gap-2">
+            <Download className="h-4 w-4" />
+            {t('export')}
+          </Button>
+        </div>
       </div>
       
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4">
         <MetricCard 
           title="Impressions" 
           value={currentMetrics.impressions.toLocaleString()} 
-          change={8.2} 
+          change={8.3} 
           description="Total ad impressions"
         />
         <MetricCard 
           title="Clicks" 
           value={currentMetrics.clicks.toLocaleString()} 
-          change={5.7} 
+          change={7.5} 
           description="Total ad clicks"
         />
         <MetricCard 
           title="CTR" 
           value={`${currentMetrics.ctr}%`} 
-          change={-1.2} 
+          change={2.1} 
           description="Click-through rate"
         />
         <MetricCard 
-          title="Avg. CPC" 
-          value={`$${currentMetrics.cpc}`} 
-          change={-3.5} 
-          description="Average cost per click"
+          title="Conversions" 
+          value={currentMetrics.conversions.toString()} 
+          change={9.4} 
+          description="Total conversions"
         />
       </div>
+
+      {ads.length > 0 && (
+        <section className="mb-6">
+          <AdPreviewCard
+            currentAd={currentAd}
+            onPreviousAd={goToPreviousAd}
+            onNextAd={goToNextAd}
+          />
+        </section>
+      )}
 
       <div className="mb-6">
         <Tabs defaultValue="performance" value={activeSubTab} onValueChange={setActiveSubTab}>
@@ -120,9 +245,13 @@ const PaidSearchDashboard: React.FC<PaidSearchDashboardProps> = ({ toolId }) => 
               <BarChart3 className="h-4 w-4 mr-2" />
               Performance
             </TabsTrigger>
-            <TabsTrigger value="keywords">
+            <TabsTrigger value="search-terms">
               <Search className="h-4 w-4 mr-2" />
-              Keywords
+              Search Terms
+            </TabsTrigger>
+            <TabsTrigger value="audiences">
+              <Users className="h-4 w-4 mr-2" />
+              Audiences
             </TabsTrigger>
             <TabsTrigger value="conversions">
               <LineChart className="h-4 w-4 mr-2" />
@@ -134,7 +263,7 @@ const PaidSearchDashboard: React.FC<PaidSearchDashboardProps> = ({ toolId }) => 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <Card className="md:col-span-2">
                 <CardHeader>
-                  <CardTitle>Click Performance</CardTitle>
+                  <CardTitle>Impressions & Clicks Over Time</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <PerformanceChart 
@@ -151,28 +280,28 @@ const PaidSearchDashboard: React.FC<PaidSearchDashboardProps> = ({ toolId }) => 
                 <CardContent>
                   <div className="space-y-4">
                     <MetricCard 
-                      title="Conversions" 
-                      value={currentMetrics.conversions.toString()} 
-                      change={12.4} 
-                      description="Total conversions"
+                      title="CPC" 
+                      value={`$${currentMetrics.cpc.toFixed(2)}`} 
+                      change={-3.2} 
+                      description="Cost per click"
                     />
                     <MetricCard 
-                      title="Conv. Rate" 
+                      title="Conversion Rate" 
                       value={`${currentMetrics.conversionRate}%`} 
-                      change={6.8} 
-                      description="Conversion rate"
+                      change={2.5} 
+                      description="Percentage of clicks that convert"
                     />
                     <MetricCard 
-                      title="Cost" 
-                      value={`$${currentMetrics.cost.toLocaleString()}`} 
-                      change={4.2} 
-                      description="Total ad spend"
+                      title="Avg. Position" 
+                      value={currentMetrics.avgPosition.toString()} 
+                      change={-0.2} 
+                      description="Average ad position in results"
                     />
                     <MetricCard 
-                      title="ROAS" 
-                      value={`${currentMetrics.roas}x`} 
-                      change={7.5} 
-                      description="Return on ad spend"
+                      title="Quality Score" 
+                      value={currentMetrics.qualityScore.toString()} 
+                      change={0.4} 
+                      description="Average ad quality score"
                     />
                   </div>
                 </CardContent>
@@ -180,38 +309,48 @@ const PaidSearchDashboard: React.FC<PaidSearchDashboardProps> = ({ toolId }) => 
             </div>
           </TabsContent>
 
-          <TabsContent value="keywords">
+          <TabsContent value="search-terms">
             <Card>
               <CardHeader>
-                <CardTitle>Top Performing Keywords</CardTitle>
+                <CardTitle>Top Search Terms</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="overflow-x-auto">
-                  <table className="w-full text-sm">
+                  <table className="w-full border-collapse">
                     <thead>
                       <tr className="border-b">
-                        <th className="text-left py-3 px-4 font-medium">Keyword</th>
-                        <th className="text-right py-3 px-4 font-medium">Impressions</th>
-                        <th className="text-right py-3 px-4 font-medium">Clicks</th>
-                        <th className="text-right py-3 px-4 font-medium">CTR</th>
-                        <th className="text-right py-3 px-4 font-medium">CPC</th>
-                        <th className="text-right py-3 px-4 font-medium">Conversions</th>
+                        <th className="text-left py-3 px-4">Search Term</th>
+                        <th className="text-right py-3 px-4">Impressions</th>
+                        <th className="text-right py-3 px-4">Clicks</th>
+                        <th className="text-right py-3 px-4">CTR</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {currentMetrics.keywordPerformance.map((keyword, index) => (
-                        <tr key={index} className="border-b">
-                          <td className="py-3 px-4">{keyword.keyword}</td>
-                          <td className="text-right py-3 px-4">{keyword.impressions.toLocaleString()}</td>
-                          <td className="text-right py-3 px-4">{keyword.clicks.toLocaleString()}</td>
-                          <td className="text-right py-3 px-4">{keyword.ctr}%</td>
-                          <td className="text-right py-3 px-4">${keyword.cpc}</td>
-                          <td className="text-right py-3 px-4">{keyword.conversions}</td>
+                      {currentMetrics.searchTerms.map((term, index) => (
+                        <tr key={index} className="border-b hover:bg-muted/50">
+                          <td className="py-3 px-4">{term.term}</td>
+                          <td className="text-right py-3 px-4">{term.impressions.toLocaleString()}</td>
+                          <td className="text-right py-3 px-4">{term.clicks.toLocaleString()}</td>
+                          <td className="text-right py-3 px-4">{term.ctr}%</td>
                         </tr>
                       ))}
                     </tbody>
                   </table>
                 </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="audiences">
+            <Card>
+              <CardHeader>
+                <CardTitle>Audience Performance</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <PerformanceChart 
+                  dateRange={dateRange} 
+                  metrics={["impressions", "clicks", "ctr"]}
+                />
               </CardContent>
             </Card>
           </TabsContent>
@@ -232,46 +371,28 @@ const PaidSearchDashboard: React.FC<PaidSearchDashboardProps> = ({ toolId }) => 
               
               <Card>
                 <CardHeader>
-                  <CardTitle>Ad Position Impact</CardTitle>
+                  <CardTitle>Conversion Metrics</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="mt-2 space-y-4">
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm">Top of page</span>
-                      <div className="flex items-center">
-                        <div className="w-40 bg-gray-200 rounded-full h-2.5">
-                          <div className="bg-green-500 h-2.5 rounded-full" style={{ width: `${currentMetrics.adPositions.top}%` }}></div>
-                        </div>
-                        <span className="ml-2 text-sm font-medium">{currentMetrics.adPositions.top}%</span>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm">Other visible</span>
-                      <div className="flex items-center">
-                        <div className="w-40 bg-gray-200 rounded-full h-2.5">
-                          <div className="bg-blue-500 h-2.5 rounded-full" style={{ width: `${currentMetrics.adPositions.otherVisible}%` }}></div>
-                        </div>
-                        <span className="ml-2 text-sm font-medium">{currentMetrics.adPositions.otherVisible}%</span>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm">Not shown</span>
-                      <div className="flex items-center">
-                        <div className="w-40 bg-gray-200 rounded-full h-2.5">
-                          <div className="bg-red-500 h-2.5 rounded-full" style={{ width: `${currentMetrics.adPositions.notShown}%` }}></div>
-                        </div>
-                        <span className="ml-2 text-sm font-medium">{currentMetrics.adPositions.notShown}%</span>
-                      </div>
-                    </div>
-                    <div className="pt-4">
-                      <h4 className="text-sm font-medium mb-2">Quality Score</h4>
-                      <div className="flex items-center">
-                        <div className="w-full bg-gray-200 rounded-full h-2.5">
-                          <div className={`h-2.5 rounded-full ${currentMetrics.qualityScore >= 8 ? 'bg-green-500' : currentMetrics.qualityScore >= 6 ? 'bg-yellow-500' : 'bg-red-500'}`} style={{ width: `${(currentMetrics.qualityScore / 10) * 100}%` }}></div>
-                        </div>
-                        <span className="ml-2 font-medium">{currentMetrics.qualityScore}/10</span>
-                      </div>
-                    </div>
+                  <div className="space-y-4">
+                    <MetricCard 
+                      title="Cost Per Conversion" 
+                      value={`$${(currentMetrics.cost / currentMetrics.conversions).toFixed(2)}`} 
+                      change={-4.5} 
+                      description="Average cost per conversion"
+                    />
+                    <MetricCard 
+                      title="Conversion Rate" 
+                      value={`${currentMetrics.conversionRate}%`} 
+                      change={2.2} 
+                      description="Percentage of clicks that convert"
+                    />
+                    <MetricCard 
+                      title="Search Impression Share" 
+                      value={`${currentMetrics.searchImpressionShare}%`} 
+                      change={3.6} 
+                      description="Share of eligible impressions"
+                    />
                   </div>
                 </CardContent>
               </Card>
@@ -279,6 +400,16 @@ const PaidSearchDashboard: React.FC<PaidSearchDashboardProps> = ({ toolId }) => 
           </TabsContent>
         </Tabs>
       </div>
+
+      {ads.length > 0 && (
+        <section>
+          <GoogleAdsTable
+            ads={ads}
+            currentAdIndex={currentAdIndex}
+            onSelectAd={setCurrentAdIndex}
+          />
+        </section>
+      )}
     </div>
   );
 };

@@ -2,7 +2,7 @@
 import React from "react";
 import { FadeInSection } from "@/components/animations/FadeInSection";
 import { DateRangeSelector, DateRange } from "@/components/DateRangeSelector";
-import { Search } from "lucide-react";
+import { Search, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CreateAdModal } from "./CreateAdModal";
 import useTranslation from "@/hooks/use-translation";
@@ -37,7 +37,8 @@ export const GoogleAdsHeader: React.FC<GoogleAdsHeaderProps> = ({
                 value={dateRange} 
                 onChange={onDateRangeChange} 
               />
-              <Button variant="outline">
+              <Button variant="outline" size="sm" className="h-9">
+                <Download className="h-4 w-4 mr-2" />
                 {t('export')}
               </Button>
               <CreateAdModal />
