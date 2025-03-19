@@ -2,7 +2,7 @@
 import React from "react";
 import { useTranslation } from "@/hooks/use-translation";
 import { Search, BarChart3, LineChart, Globe, Mail, FileText } from "lucide-react";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { ScrollAreaHorizontal } from "@/components/ui/scroll-area";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 interface PerformanceNavTabsProps {
@@ -18,11 +18,11 @@ export const PerformanceNavTabs: React.FC<PerformanceNavTabsProps> = ({
   const isMobile = useIsMobile();
   
   return (
-    <div className="w-full max-w-full overflow-hidden mb-4">
-      <ScrollArea className="w-full">
-        <div className="dashboard-tabs min-w-max inline-flex">
+    <div className="w-full mb-4">
+      <ScrollAreaHorizontal className="w-full">
+        <div className="dashboard-tabs inline-flex min-w-max">
           <button
-            className={`dashboard-tab flex items-center ${activeTab === "paid-search" ? "active" : ""}`}
+            className={`dashboard-tab flex items-center whitespace-nowrap ${activeTab === "paid-search" ? "active" : ""}`}
             data-state={activeTab === "paid-search" ? "active" : "inactive"}
             onClick={() => setActiveTab("paid-search")}
           >
@@ -31,7 +31,7 @@ export const PerformanceNavTabs: React.FC<PerformanceNavTabsProps> = ({
             <span className="sm:hidden">Search</span>
           </button>
           <button
-            className={`dashboard-tab flex items-center ${activeTab === "paid-socials" ? "active" : ""}`}
+            className={`dashboard-tab flex items-center whitespace-nowrap ${activeTab === "paid-socials" ? "active" : ""}`}
             data-state={activeTab === "paid-socials" ? "active" : "inactive"}
             onClick={() => setActiveTab("paid-socials")}
           >
@@ -40,7 +40,7 @@ export const PerformanceNavTabs: React.FC<PerformanceNavTabsProps> = ({
             <span className="sm:hidden">Social Ads</span>
           </button>
           <button
-            className={`dashboard-tab flex items-center ${activeTab === "organic-social" ? "active" : ""}`}
+            className={`dashboard-tab flex items-center whitespace-nowrap ${activeTab === "organic-social" ? "active" : ""}`}
             data-state={activeTab === "organic-social" ? "active" : "inactive"}
             onClick={() => setActiveTab("organic-social")}
           >
@@ -49,7 +49,7 @@ export const PerformanceNavTabs: React.FC<PerformanceNavTabsProps> = ({
             <span className="sm:hidden">Organic</span>
           </button>
           <button
-            className={`dashboard-tab flex items-center ${activeTab === "website" ? "active" : ""}`}
+            className={`dashboard-tab flex items-center whitespace-nowrap ${activeTab === "website" ? "active" : ""}`}
             data-state={activeTab === "website" ? "active" : "inactive"}
             onClick={() => setActiveTab("website")}
           >
@@ -57,7 +57,7 @@ export const PerformanceNavTabs: React.FC<PerformanceNavTabsProps> = ({
             <span>{t('website')}</span>
           </button>
           <button
-            className={`dashboard-tab flex items-center ${activeTab === "email" ? "active" : ""}`}
+            className={`dashboard-tab flex items-center whitespace-nowrap ${activeTab === "email" ? "active" : ""}`}
             data-state={activeTab === "email" ? "active" : "inactive"}
             onClick={() => setActiveTab("email")}
           >
@@ -65,7 +65,7 @@ export const PerformanceNavTabs: React.FC<PerformanceNavTabsProps> = ({
             <span>{t('email')}</span>
           </button>
           <button
-            className={`dashboard-tab flex items-center ${activeTab === "forms" ? "active" : ""}`}
+            className={`dashboard-tab flex items-center whitespace-nowrap ${activeTab === "forms" ? "active" : ""}`}
             data-state={activeTab === "forms" ? "active" : "inactive"}
             onClick={() => setActiveTab("forms")}
           >
@@ -73,7 +73,7 @@ export const PerformanceNavTabs: React.FC<PerformanceNavTabsProps> = ({
             <span>{t('forms')}</span>
           </button>
         </div>
-      </ScrollArea>
+      </ScrollAreaHorizontal>
     </div>
   );
 };

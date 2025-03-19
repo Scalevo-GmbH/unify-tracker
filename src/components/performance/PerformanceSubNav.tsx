@@ -24,7 +24,7 @@ export const PerformanceSubNav: React.FC<PerformanceSubNavProps> = ({
 
   return (
     <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-6">
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 overflow-x-auto whitespace-nowrap pb-1">
         <button
           className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
             activeSubTab === "overview"

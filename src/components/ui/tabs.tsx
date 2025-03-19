@@ -13,7 +13,7 @@ const TabsList = React.forwardRef<
   <TabsPrimitive.List
     ref={ref}
     className={cn(
-      "dashboard-tabs",
+      "dashboard-tabs inline-flex min-w-max",
       className
     )}
     {...props}
@@ -28,7 +28,7 @@ const TabsTrigger = React.forwardRef<
   <TabsPrimitive.Trigger
     ref={ref}
     className={cn(
-      "dashboard-tab",
+      "dashboard-tab whitespace-nowrap",
       className
     )}
     {...props}

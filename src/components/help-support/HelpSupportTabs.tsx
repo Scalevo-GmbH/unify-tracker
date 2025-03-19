@@ -2,7 +2,7 @@
 import React from "react";
 import { useTranslation } from "@/hooks/use-translation";
 import { HelpCircle, BookOpen, TicketCheck, Phone } from "lucide-react";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { ScrollAreaHorizontal } from "@/components/ui/scroll-area";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 interface HelpSupportTabsProps {
@@ -18,11 +18,11 @@ const HelpSupportTabs: React.FC<HelpSupportTabsProps> = ({
   const isMobile = useIsMobile();
   
   return (
-    <div className="w-full max-w-full overflow-hidden mb-4">
-      <ScrollArea className="w-full">
-        <div className="dashboard-tabs min-w-max inline-flex">
+    <div className="w-full mb-4">
+      <ScrollAreaHorizontal className="w-full">
+        <div className="dashboard-tabs inline-flex min-w-max">
           <button
-            className={`dashboard-tab flex items-center ${activeTab === "faq" ? "active" : ""}`}
+            className={`dashboard-tab flex items-center whitespace-nowrap ${activeTab === "faq" ? "active" : ""}`}
             data-state={activeTab === "faq" ? "active" : "inactive"}
             onClick={() => setActiveTab("faq")}
           >
@@ -31,7 +31,7 @@ const HelpSupportTabs: React.FC<HelpSupportTabsProps> = ({
             <span className="sm:hidden">FAQs</span>
           </button>
           <button
-            className={`dashboard-tab flex items-center ${activeTab === "guides" ? "active" : ""}`}
+            className={`dashboard-tab flex items-center whitespace-nowrap ${activeTab === "guides" ? "active" : ""}`}
             data-state={activeTab === "guides" ? "active" : "inactive"}
             onClick={() => setActiveTab("guides")}
           >
@@ -40,7 +40,7 @@ const HelpSupportTabs: React.FC<HelpSupportTabsProps> = ({
             <span className="sm:hidden">Guides</span>
           </button>
           <button
-            className={`dashboard-tab flex items-center ${activeTab === "tickets" ? "active" : ""}`}
+            className={`dashboard-tab flex items-center whitespace-nowrap ${activeTab === "tickets" ? "active" : ""}`}
             data-state={activeTab === "tickets" ? "active" : "inactive"}
             onClick={() => setActiveTab("tickets")}
           >
@@ -49,7 +49,7 @@ const HelpSupportTabs: React.FC<HelpSupportTabsProps> = ({
             <span className="sm:hidden">Tickets</span>
           </button>
           <button
-            className={`dashboard-tab flex items-center ${activeTab === "contact" ? "active" : ""}`}
+            className={`dashboard-tab flex items-center whitespace-nowrap ${activeTab === "contact" ? "active" : ""}`}
             data-state={activeTab === "contact" ? "active" : "inactive"}
             onClick={() => setActiveTab("contact")}
           >
@@ -57,7 +57,7 @@ const HelpSupportTabs: React.FC<HelpSupportTabsProps> = ({
             <span>{t('contactUs')}</span>
           </button>
         </div>
-      </ScrollArea>
+      </ScrollAreaHorizontal>
     </div>
   );
 };

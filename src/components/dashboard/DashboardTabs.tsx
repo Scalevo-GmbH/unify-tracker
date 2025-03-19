@@ -39,16 +39,18 @@ const DashboardTabs: React.FC<DashboardTabsProps> = ({
 
   return (
     <Tabs value={activeTab} onValueChange={onTabChange} className="w-full">
-      <TabsList className="mb-6">
-        <TabsTrigger value="overview" className="flex items-center">
-          <LayoutGrid className={`${isMobile ? "h-3 w-3 mr-1" : "h-4 w-4 mr-2"}`} />
-          <span>{t('overview')}</span>
-        </TabsTrigger>
-        <TabsTrigger value="campaigns" className="flex items-center">
-          <Layers className={`${isMobile ? "h-3 w-3 mr-1" : "h-4 w-4 mr-2"}`} />
-          <span>{t('campaigns')}</span>
-        </TabsTrigger>
-      </TabsList>
+      <div className="overflow-x-auto pb-1">
+        <TabsList className="mb-6 flex-nowrap whitespace-nowrap">
+          <TabsTrigger value="overview" className="flex items-center">
+            <LayoutGrid className={`${isMobile ? "h-3 w-3 mr-1" : "h-4 w-4 mr-2"}`} />
+            <span>{t('overview')}</span>
+          </TabsTrigger>
+          <TabsTrigger value="campaigns" className="flex items-center">
+            <Layers className={`${isMobile ? "h-3 w-3 mr-1" : "h-4 w-4 mr-2"}`} />
+            <span>{t('campaigns')}</span>
+          </TabsTrigger>
+        </TabsList>
+      </div>
 
       <TabsContent value="overview" className="space-y-6 pb-8">
         <TypedDashboardMetrics dateRange={dateRange} />
