@@ -34,7 +34,7 @@ const Index = () => {
   const [activeTab, setActiveTab] = useState<"overview" | "campaigns">("overview");
   const { t } = useTranslation();
   
-  const userName = "Pascal";
+  const userName = "John Doe";
 
   const handleOpenModal = (name: string, icon: React.ReactNode) => {
     setSelectedPlatform({ name, icon });
