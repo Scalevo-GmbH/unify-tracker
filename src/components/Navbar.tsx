@@ -21,9 +21,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useSidebar, SidebarTrigger } from "@/components/ui/sidebar";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Input } from "@/components/ui/input";
-import { mainMenuItems, settingsItems } from "@/components/Sidebar";
-import { useTranslation } from "@/hooks/use-translation";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { useTranslation } from "@/hooks/use-translation";
 
 export const Navbar: React.FC = () => {
   const isMobile = useIsMobile();
@@ -38,6 +37,20 @@ export const Navbar: React.FC = () => {
   const [menuFilter, setMenuFilter] = useState("");
   const { t } = useTranslation();
 
+  // Define menu items with translations
+  const mainMenuItems = [
+    { icon: Home, label: t('dashboard'), path: "/" },
+    { icon: Megaphone, label: t('campaigns'), path: "/campaigns" },
+    { icon: BarChart3, label: t('performance'), path: "/performance" },
+    { icon: Lightbulb, label: t('intelligence'), path: "/intelligence" },
+    { icon: Plug, label: t('integrations'), path: "/integrations" },
+    { icon: Settings, label: t('accountSettings'), path: "/account" },
+  ];
+
+  const settingsItems = [
+    { icon: HelpCircle, label: t('helpSupport'), path: "/help" },
+  ];
+
   // Filter menu items based on search input
   const filterItems = (items: any[]) => {
     if (!menuFilter) return items;
@@ -46,11 +59,6 @@ export const Navbar: React.FC = () => {
       item.label.toLowerCase().includes(filter) || 
       (item.emoji && item.emoji.toLowerCase().includes(filter))
     );
-  };
-
-  // Get the flag emoji based on the current language
-  const getLanguageFlag = (lang: string) => {
-    return lang === "en" ? "🇬🇧" : "🇩🇪";
   };
 
   const filteredMainMenu = filterItems(mainMenuItems);

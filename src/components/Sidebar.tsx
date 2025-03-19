@@ -25,27 +25,25 @@ import {
   SidebarGroupContent,
 } from "@/components/ui/sidebar";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { useTranslation } from "@/hooks/use-translation";
 
 // Define menu items with icons instead of emojis
-export const mainMenuItems = [
-  { icon: Home, label: "Dashboard", path: "/" },
-  { icon: Megaphone, label: "Campaigns", path: "/campaigns" },
-  { icon: BarChart3, label: "Performance", path: "/performance" },
-  { icon: Lightbulb, label: "Intelligence", path: "/intelligence" },
-  { icon: Plug, label: "Integrations", path: "/integrations" },
-  { icon: Settings, label: "Settings", path: "/account" },
-];
-
-export const settingsItems = [
-  { icon: HelpCircle, label: "Help & Support", path: "/help" },
-];
-
-interface SidebarProps {
-  className?: string;
-}
-
-export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
+export const MainSidebar: React.FC<{ className?: string }> = ({ className }) => {
   const location = useLocation();
+  const { t } = useTranslation();
+
+  const mainMenuItems = [
+    { icon: Home, label: t('dashboard'), path: "/" },
+    { icon: Megaphone, label: t('campaigns'), path: "/campaigns" },
+    { icon: BarChart3, label: t('performance'), path: "/performance" },
+    { icon: Lightbulb, label: t('intelligence'), path: "/intelligence" },
+    { icon: Plug, label: t('integrations'), path: "/integrations" },
+    { icon: Settings, label: t('accountSettings'), path: "/account" },
+  ];
+
+  const settingsItems = [
+    { icon: HelpCircle, label: t('helpSupport'), path: "/help" },
+  ];
 
   return (
     <ShadcnSidebar className={cn("bg-white", className)}>
@@ -61,7 +59,7 @@ export const MainSidebar: React.FC<SidebarProps> = ({ className }) => {
       <SidebarContent>
         <ScrollArea className="h-[calc(100vh-8rem)]">
           <SidebarGroup>
-            <SidebarGroupLabel className="text-[#B4B3B5]">Navigation</SidebarGroupLabel>
+            <SidebarGroupLabel className="text-[#B4B3B5]">{t('navigation')}</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu className="space-y-3">
                 {mainMenuItems.map((item) => (
