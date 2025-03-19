@@ -11,6 +11,7 @@ import { AdGroupsTab } from "@/components/google-ads/AdGroupsTab";
 import { ConversionsTab } from "@/components/google-ads/ConversionsTab";
 import { GoogleAdsTable } from "@/components/google-ads/GoogleAdsTable";
 import { Ad, SearchAnalyticsData, ChartConfig } from "@/components/google-ads/types";
+import { BarChart3, Search, Users, LineChart } from "lucide-react";
 
 const googleAdsData: Ad[] = [
   {
@@ -115,6 +116,7 @@ const chartConfig: ChartConfig = {
 export default function GoogleAds() {
   const [dateRange, setDateRange] = useState<DateRange>("this-month");
   const [currentAdIndex, setCurrentAdIndex] = useState(0);
+  const [activeTab, setActiveTab] = useState("performance");
   const currentAd = googleAdsData[currentAdIndex];
   
   const goToNextAd = () => {
@@ -127,6 +129,11 @@ export default function GoogleAds() {
     setCurrentAdIndex((prevIndex) => 
       prevIndex === 0 ? googleAdsData.length - 1 : prevIndex - 1
     );
+  };
+
+  // Create a type-safe handler for tab changes
+  const handleTabChange = (value: string) => {
+    setActiveTab(value);
   };
 
   return (
@@ -148,12 +155,24 @@ export default function GoogleAds() {
 
       <section className="mb-8">
         <FadeInSection>
-          <Tabs defaultValue="performance">
+          <Tabs defaultValue="performance" value={activeTab} onValueChange={handleTabChange}>
             <TabsList className="w-full">
-              <TabsTrigger value="performance">Performance</TabsTrigger>
-              <TabsTrigger value="search-analytics">Search Analytics</TabsTrigger>
-              <TabsTrigger value="ad-groups">Ad Groups</TabsTrigger>
-              <TabsTrigger value="conversions">Conversions</TabsTrigger>
+              <TabsTrigger value="performance">
+                <BarChart3 className="h-4 w-4 mr-2" />
+                Performance
+              </TabsTrigger>
+              <TabsTrigger value="search-analytics">
+                <Search className="h-4 w-4 mr-2" />
+                Search Analytics
+              </TabsTrigger>
+              <TabsTrigger value="ad-groups">
+                <Users className="h-4 w-4 mr-2" />
+                Ad Groups
+              </TabsTrigger>
+              <TabsTrigger value="conversions">
+                <LineChart className="h-4 w-4 mr-2" />
+                Conversions
+              </TabsTrigger>
             </TabsList>
 
             <TabsContent value="performance" className="mt-6">

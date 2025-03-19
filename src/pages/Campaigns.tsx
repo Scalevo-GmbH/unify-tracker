@@ -1,7 +1,8 @@
+
 import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Filter, Plus, FilterX } from "lucide-react";
+import { Filter, Plus, FilterX, Table, ListPlus } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import CampaignsTable from "@/components/campaigns/CampaignsTable";
 import NewCampaignForm from "@/components/campaigns/NewCampaignForm";
@@ -31,6 +32,11 @@ const Campaigns = () => {
     });
   };
 
+  // Create a type-safe handler for tab changes
+  const handleTabChange = (value: string) => {
+    setActiveTab(value);
+  };
+
   const clearFilters = () => {
     setPlatformFilters([]);
     setFiltersOpen(false);
@@ -46,12 +52,14 @@ const Campaigns = () => {
       </div>
 
       <div className="px-6">
-        <Tabs value={activeTab} onValueChange={setActiveTab}>
+        <Tabs value={activeTab} onValueChange={handleTabChange}>
           <TabsList className="w-full">
             <TabsTrigger value="all-campaigns">
+              <Table className="h-4 w-4 mr-2" />
               {t('allCampaigns')}
             </TabsTrigger>
             <TabsTrigger value="new-campaign">
+              <ListPlus className="h-4 w-4 mr-2" />
               {t('newCampaign')}
             </TabsTrigger>
           </TabsList>

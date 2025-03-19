@@ -5,6 +5,7 @@ import AccountSettings from "@/components/account/AccountSettings";
 import SubscriptionManagement from "@/components/account/SubscriptionManagement";
 import PaymentMethods from "@/components/account/PaymentMethods";
 import useTranslation from "@/hooks/use-translation";
+import { Settings, CreditCard, Bookmark } from "lucide-react";
 
 const Account = () => {
   const [activeTab, setActiveTab] = useState("settings");
@@ -25,12 +26,15 @@ const Account = () => {
       <Tabs defaultValue="settings" value={activeTab} onValueChange={handleTabChange}>
         <TabsList className="w-full">
           <TabsTrigger value="settings">
+            <Settings className="h-4 w-4 mr-2" />
             {t('settings')}
           </TabsTrigger>
           <TabsTrigger value="subscriptions">
+            <Bookmark className="h-4 w-4 mr-2" />
             {t('subscriptions')}
           </TabsTrigger>
           <TabsTrigger value="payment">
+            <CreditCard className="h-4 w-4 mr-2" />
             {t('paymentMethods')}
           </TabsTrigger>
         </TabsList>
