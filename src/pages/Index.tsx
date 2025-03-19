@@ -1,5 +1,5 @@
-
 import React, { useState } from "react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { DashboardMetrics } from "@/components/DashboardMetrics";
 import { PerformanceChart } from "@/components/PerformanceChart";
 import { IntegrationCard } from "@/components/IntegrationCard";
@@ -71,27 +71,19 @@ const Index = () => {
           </div>
         </FadeInSection>
         
-        <div className="dashboard-tabs mb-6">
-          <button 
-            className={`dashboard-tab ${activeTab === "overview" ? "data-[state=active]" : "data-[state=inactive]"}`}
-            data-state={activeTab === "overview" ? "active" : "inactive"}
-            onClick={() => setActiveTab("overview")}
-          >
-            <Home className="h-4 w-4 mr-2" />
-            {t('overview')}
-          </button>
-          <button 
-            className={`dashboard-tab ${activeTab === "campaigns" ? "data-[state=active]" : "data-[state=inactive]"}`}
-            data-state={activeTab === "campaigns" ? "active" : "inactive"}
-            onClick={() => setActiveTab("campaigns")}
-          >
-            <ListPlus className="h-4 w-4 mr-2" />
-            {t('activeCampaigns')}
-          </button>
-        </div>
+        <Tabs defaultValue="overview" value={activeTab} onValueChange={setActiveTab}>
+          <TabsList>
+            <TabsTrigger value="overview">
+              <Home className="h-4 w-4 mr-2" />
+              {t('overview')}
+            </TabsTrigger>
+            <TabsTrigger value="campaigns">
+              <ListPlus className="h-4 w-4 mr-2" />
+              {t('activeCampaigns')}
+            </TabsTrigger>
+          </TabsList>
 
-        {activeTab === "overview" && (
-          <>
+          <TabsContent value="overview" className="mt-6">
             <DashboardMetrics />
             
             <section className="mb-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -294,12 +286,12 @@ const Index = () => {
                 </FadeInSection>
               </div>
             </section>
-          </>
-        )}
+          </TabsContent>
 
-        {activeTab === "campaigns" && (
-          <ActiveCampaigns />
-        )}
+          <TabsContent value="campaigns" className="mt-6">
+            <ActiveCampaigns />
+          </TabsContent>
+        </Tabs>
       </section>
       
       {selectedPlatform && (

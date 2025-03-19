@@ -1,5 +1,6 @@
 
 import React, { useState } from "react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import AccountSettings from "@/components/account/AccountSettings";
 import SubscriptionManagement from "@/components/account/SubscriptionManagement";
 import PaymentMethods from "@/components/account/PaymentMethods";
@@ -16,33 +17,29 @@ const Account = () => {
         <p className="text-muted-foreground">{t('accountManage')}</p>
       </div>
 
-      <div className="dashboard-tabs mb-8">
-        <button
-          className={`dashboard-tab ${activeTab === "settings" ? "data-[state=active]" : "data-[state=inactive]"}`}
-          data-state={activeTab === "settings" ? "active" : "inactive"}
-          onClick={() => setActiveTab("settings")}
-        >
-          {t('settings')}
-        </button>
-        <button
-          className={`dashboard-tab ${activeTab === "subscriptions" ? "data-[state=active]" : "data-[state=inactive]"}`}
-          data-state={activeTab === "subscriptions" ? "active" : "inactive"}
-          onClick={() => setActiveTab("subscriptions")}
-        >
-          {t('subscriptions')}
-        </button>
-        <button
-          className={`dashboard-tab ${activeTab === "payment" ? "data-[state=active]" : "data-[state=inactive]"}`}
-          data-state={activeTab === "payment" ? "active" : "inactive"}
-          onClick={() => setActiveTab("payment")}
-        >
-          {t('paymentMethods')}
-        </button>
-      </div>
+      <Tabs defaultValue="settings" value={activeTab} onValueChange={setActiveTab}>
+        <TabsList className="w-full">
+          <TabsTrigger value="settings">
+            {t('settings')}
+          </TabsTrigger>
+          <TabsTrigger value="subscriptions">
+            {t('subscriptions')}
+          </TabsTrigger>
+          <TabsTrigger value="payment">
+            {t('paymentMethods')}
+          </TabsTrigger>
+        </TabsList>
 
-      {activeTab === "settings" && <AccountSettings />}
-      {activeTab === "subscriptions" && <SubscriptionManagement />}
-      {activeTab === "payment" && <PaymentMethods />}
+        <TabsContent value="settings" className="mt-6">
+          <AccountSettings />
+        </TabsContent>
+        <TabsContent value="subscriptions" className="mt-6">
+          <SubscriptionManagement />
+        </TabsContent>
+        <TabsContent value="payment" className="mt-6">
+          <PaymentMethods />
+        </TabsContent>
+      </Tabs>
     </div>
   );
 };

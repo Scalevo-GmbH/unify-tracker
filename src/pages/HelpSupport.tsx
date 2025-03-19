@@ -1,6 +1,7 @@
 
 import React, { useState } from "react";
 import useTranslation from "@/hooks/use-translation";
+import { Tabs, TabsContent } from "@/components/ui/tabs";
 import FAQSection from "@/components/help-support/FAQSection";
 import GuidesSection from "@/components/help-support/GuidesSection";
 import SupportTicketsSection from "@/components/help-support/SupportTicketsSection";
@@ -11,21 +12,6 @@ const HelpSupport: React.FC = () => {
   const [activeTab, setActiveTab] = useState("faq");
   const { t } = useTranslation();
 
-  const renderTabContent = () => {
-    switch (activeTab) {
-      case "faq":
-        return <FAQSection />;
-      case "guides":
-        return <GuidesSection />;
-      case "tickets":
-        return <SupportTicketsSection />;
-      case "contact":
-        return <ContactSection />;
-      default:
-        return <FAQSection />;
-    }
-  };
-
   return (
     <div className="container mx-auto py-8 px-4 md:px-6">
       <div className="mb-8">
@@ -35,7 +21,20 @@ const HelpSupport: React.FC = () => {
 
       <HelpSupportTabs activeTab={activeTab} setActiveTab={setActiveTab} />
 
-      {renderTabContent()}
+      <Tabs value={activeTab} className="mt-6">
+        <TabsContent value="faq">
+          <FAQSection />
+        </TabsContent>
+        <TabsContent value="guides">
+          <GuidesSection />
+        </TabsContent>
+        <TabsContent value="tickets">
+          <SupportTicketsSection />
+        </TabsContent>
+        <TabsContent value="contact">
+          <ContactSection />
+        </TabsContent>
+      </Tabs>
     </div>
   );
 };
