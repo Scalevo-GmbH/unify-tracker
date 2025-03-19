@@ -3,6 +3,7 @@ import * as React from "react"
 import * as TabsPrimitive from "@radix-ui/react-tabs"
 
 import { cn } from "@/lib/utils"
+import { ScrollAreaHorizontal } from "@/components/ui/scroll-area"
 
 const Tabs = TabsPrimitive.Root
 

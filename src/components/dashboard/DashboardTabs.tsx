@@ -9,6 +9,7 @@ import TopChannels from "@/components/dashboard/TopChannels";
 import ConnectPlatforms from "@/components/dashboard/ConnectPlatforms";
 import { DateRange } from "@/components/DateRangeSelector";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { ScrollAreaHorizontal } from "@/components/ui/scroll-area";
 
 interface DashboardTabsProps {
   activeTab: "overview" | "campaigns";
@@ -39,7 +40,7 @@ const DashboardTabs: React.FC<DashboardTabsProps> = ({
 
   return (
     <Tabs value={activeTab} onValueChange={onTabChange} className="w-full">
-      <div className="overflow-x-auto pb-1">
+      <ScrollAreaHorizontal className="pb-1">
         <TabsList className="mb-6 flex-nowrap whitespace-nowrap">
           <TabsTrigger value="overview" className="flex items-center">
             <LayoutGrid className={`${isMobile ? "h-3 w-3 mr-1" : "h-4 w-4 mr-2"}`} />
@@ -50,7 +51,7 @@ const DashboardTabs: React.FC<DashboardTabsProps> = ({
             <span>{t('campaigns')}</span>
           </TabsTrigger>
         </TabsList>
-      </div>
+      </ScrollAreaHorizontal>
 
       <TabsContent value="overview" className="space-y-6 pb-8">
         <TypedDashboardMetrics dateRange={dateRange} />

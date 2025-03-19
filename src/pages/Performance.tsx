@@ -5,6 +5,7 @@ import { PerformanceNavTabs } from "@/components/performance/PerformanceNavTabs"
 import { PerformanceSubNav } from "@/components/performance/PerformanceSubNav";
 import { PerformanceDashboard } from "@/components/performance/PerformanceDashboard";
 import { toolsByCategory } from "@/components/performance/performanceData";
+import { ScrollAreaHorizontal } from "@/components/ui/scroll-area";
 
 const Performance = () => {
   const [activeTab, setActiveTab] = useState("paid-search");
@@ -47,10 +48,12 @@ const Performance = () => {
         <p className="page-description">{t('trackAnalyzePerformance')}</p>
       </div>
 
-      <PerformanceNavTabs 
-        activeTab={activeTab} 
-        setActiveTab={setActiveTab} 
-      />
+      <ScrollAreaHorizontal>
+        <PerformanceNavTabs 
+          activeTab={activeTab} 
+          setActiveTab={setActiveTab} 
+        />
+      </ScrollAreaHorizontal>
 
       <PerformanceSubNav
         activeSubTab={activeSubTab[activeTab]}
