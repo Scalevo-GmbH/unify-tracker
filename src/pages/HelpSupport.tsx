@@ -20,8 +20,8 @@ const HelpSupport: React.FC = () => {
   return (
     <div className="container mx-auto py-8 px-4 md:px-6">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">{t('helpSupport')}</h1>
-        <p className="text-muted-foreground">{t('helpSupportDesc')}</p>
+        <h1 className="page-title">{t('helpSupport')}</h1>
+        <p className="page-description">{t('helpSupportDesc')}</p>
       </div>
 
       <HelpSupportTabs activeTab={activeTab} setActiveTab={handleTabChange} />

@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { DashboardMetrics } from "@/components/DashboardMetrics";
@@ -42,9 +41,7 @@ const Index = () => {
     setIsModalOpen(true);
   };
 
-  // Create a type-safe handler for tab changes
   const handleTabChange = (value: string) => {
-    // This ensures we only set valid values
     if (value === "overview" || value === "campaigns") {
       setActiveTab(value);
     }
@@ -60,8 +57,8 @@ const Index = () => {
                 <div className="inline-flex items-center gap-2 bg-primary/5 text-primary font-medium px-3 py-1 rounded-full text-sm">
                   <span className="text-lg animate-delayed-shake inline-block">👋</span> {t('welcomeBack')}, <span className="font-cal">{userName}</span>!
                 </div>
-                <h1 className="text-3xl font-cal font-semibold tracking-tight">{t('marketingDashboard')}</h1>
-                <p className="text-muted-foreground">{t('trackOptimizePerformance')}</p>
+                <h1 className="page-title">{t('marketingDashboard')}</h1>
+                <p className="page-description">{t('trackOptimizePerformance')}</p>
               </div>
               
               <div className="mt-4 sm:mt-0 flex flex-wrap items-center gap-2">

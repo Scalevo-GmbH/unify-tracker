@@ -24,8 +24,8 @@ const Intelligence = () => {
   return (
     <div className="container mx-auto py-8 px-4 md:px-6">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">{t('intelligence')}</h1>
-        <p className="text-muted-foreground">
+        <h1 className="page-title">{t('intelligence')}</h1>
+        <p className="page-description">
           {t('intelligenceDescription')}
         </p>
       </div>

@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -32,7 +31,6 @@ const Campaigns = () => {
     });
   };
 
-  // Create a type-safe handler for tab changes
   const handleTabChange = (value: string) => {
     setActiveTab(value);
   };
@@ -47,8 +45,8 @@ const Campaigns = () => {
   return (
     <div>
       <div className="mb-6 p-6">
-        <h1 className="text-3xl font-bold mb-2">{t('campaigns')}</h1>
-        <p className="text-muted-foreground">{t('manageCampaigns')}</p>
+        <h1 className="page-title">{t('campaigns')}</h1>
+        <p className="page-description">{t('manageCampaigns')}</p>
       </div>
 
       <div className="px-6">

@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { FadeInSection } from "@/components/animations/FadeInSection";
 import { DateRange } from "@/components/DateRangeSelector";
@@ -37,8 +36,8 @@ export default function MetaAds() {
       <section className="mb-8">
         <FadeInSection>
           <div className="mb-6">
-            <h1 className="text-3xl font-bold mb-2">Meta Ads</h1>
-            <p className="text-muted-foreground">Manage and monitor your Meta advertising campaigns</p>
+            <h1 className="page-title">Meta Ads</h1>
+            <p className="page-description">Manage and monitor your Meta advertising campaigns</p>
           </div>
           <MetaAdsHeader 
             dateRange={dateRange}

@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -234,8 +235,8 @@ const Integrations = () => {
       <FadeInSection>
         <div className="flex flex-col space-y-4 md:flex-row md:justify-between md:space-y-0 mb-8">
           <div>
-            <h1 className="text-2xl font-semibold tracking-tight">{t('integrations')}</h1>
-            <p className="text-muted-foreground">{t('connectTools')}</p>
+            <h1 className="page-title">{t('integrations')}</h1>
+            <p className="page-description">{t('connectTools')}</p>
           </div>
           <div className="relative w-full md:w-64">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />

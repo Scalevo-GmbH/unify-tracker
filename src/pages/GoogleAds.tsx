@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { FadeInSection } from "@/components/animations/FadeInSection";
 import { DateRange } from "@/components/DateRangeSelector";
@@ -131,13 +130,17 @@ export default function GoogleAds() {
     );
   };
 
-  // Create a type-safe handler for tab changes
   const handleTabChange = (value: string) => {
     setActiveTab(value);
   };
 
   return (
     <div className="container px-4 sm:px-6 lg:px-8 py-8">
+      <div className="mb-6">
+        <h1 className="page-title">Google Ads</h1>
+        <p className="page-description">Manage and optimize your Google advertising campaigns</p>
+      </div>
+
       <GoogleAdsHeader 
         dateRange={dateRange} 
         onDateRangeChange={(value) => setDateRange(value)} 

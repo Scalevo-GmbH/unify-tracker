@@ -39,6 +39,23 @@
   color: var(--foreground);
 }
 
+/* Page title styling - consistent across all pages */
+.page-title {
+  font-size: 1.875rem;
+  line-height: 2.25rem; /* equivalent to text-3xl */
+  font-weight: 700;     /* equivalent to font-bold */
+  margin-bottom: 0.5rem;
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
+  letter-spacing: var(--cal-letter-spacing);
+}
+
+.page-description {
+  color: var(--muted-foreground);
+  font-size: 0.975rem;
+  margin-bottom: 1.5rem;
+  font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
+}
+
 /* iOS Switch styling */
 .ios-switch {
   font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;

@@ -19,8 +19,8 @@ const Account = () => {
   return (
     <div className="container mx-auto py-8 px-4 md:px-6">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">{t('account')}</h1>
-        <p className="text-muted-foreground">{t('accountManage')}</p>
+        <h1 className="page-title">{t('account')}</h1>
+        <p className="page-description">{t('accountManage')}</p>
       </div>
 
       <Tabs value={activeTab} onValueChange={handleTabChange}>
