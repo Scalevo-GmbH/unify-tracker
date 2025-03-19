@@ -147,4 +147,5 @@ const CommandSearch: React.FC<{ isMobile?: boolean }> = ({ isMobile = false }) =
   );
 };
 
+export { CommandSearch };
 export default CommandSearch;

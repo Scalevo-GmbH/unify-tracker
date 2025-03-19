@@ -35,7 +35,9 @@ export type NavigationTranslationKey =
   | 'faqs'
   | 'userGuides'
   | 'supportTickets'
-  | 'contactUs';
+  | 'contactUs'
+  | 'overview'
+  | 'activeCampaigns';
 
 // Translations for navigation
 export const navigationTranslations: Record<NavigationTranslationKey, Record<Language, string>> = {
@@ -170,5 +172,13 @@ export const navigationTranslations: Record<NavigationTranslationKey, Record<Lan
   contactUs: {
     en: 'Contact Us',
     de: 'Kontaktiere uns'
+  },
+  overview: {
+    en: 'Overview',
+    de: 'Übersicht'
+  },
+  activeCampaigns: {
+    en: 'Active Campaigns',
+    de: 'Aktive Kampagnen'
   }
 };

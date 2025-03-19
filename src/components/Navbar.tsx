@@ -1,7 +1,19 @@
 
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, LogOut, Settings, HelpCircle, Search, Globe } from "lucide-react";
+import { 
+  Menu, 
+  LogOut, 
+  Settings, 
+  HelpCircle, 
+  Search, 
+  Globe,
+  Home,
+  Megaphone,
+  BarChart3,
+  Lightbulb,
+  Plug
+} from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,7 +27,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { NotificationsDropdown } from "@/components/notifications/NotificationsDropdown";
 import { useNotifications } from "@/hooks/use-notifications";
 import { Toaster } from "@/components/ui/toaster";
-import { CommandSearch } from "@/components/CommandSearch";
+import CommandSearch from "@/components/CommandSearch";
 import { useLanguage } from "@/hooks/use-language";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useSidebar, SidebarTrigger } from "@/components/ui/sidebar";
