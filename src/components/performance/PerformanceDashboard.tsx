@@ -1,7 +1,8 @@
 
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Alert, AlertCircle, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { AlertCircle } from "lucide-react";
 import PaidSearchDashboard from "@/components/performance/PaidSearchDashboard";
 import PaidSocialsDashboard from "@/components/performance/PaidSocialsDashboard";
 import OrganicSocialDashboard from "@/components/performance/OrganicSocialDashboard";
