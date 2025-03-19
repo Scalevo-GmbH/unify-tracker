@@ -36,6 +36,10 @@ export default function MetaAds() {
     <div className="container px-4 sm:px-6 lg:px-8 py-8 font-cal">
       <section className="mb-8">
         <FadeInSection>
+          <div className="mb-6">
+            <h1 className="text-3xl font-bold mb-2">Meta Ads</h1>
+            <p className="text-muted-foreground">Manage and monitor your Meta advertising campaigns</p>
+          </div>
           <MetaAdsHeader 
             dateRange={dateRange}
             onDateRangeChange={(value) => setDateRange(value as DateRange)}
@@ -100,4 +104,4 @@ export default function MetaAds() {
       </section>
     </div>
   );
-}
+};
