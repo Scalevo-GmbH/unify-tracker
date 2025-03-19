@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { 
   Select, 
@@ -20,6 +19,7 @@ import FormsDashboard from "@/components/performance/FormsDashboard";
 import { MetricCard } from "@/components/MetricCard";
 import { IosSwitch } from "@/components/ui/ios-switch";
 import { useTranslation } from "@/hooks/use-translation";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const overviewData = {
   "paid-search": {
@@ -318,86 +318,256 @@ const Performance = () => {
         </p>
       </div>
 
-      <div className="dashboard-tabs mb-8">
-        <button
-          className={`dashboard-tab ${activeTab === "paid-search" ? "data-[state=active]" : "data-[state=inactive]"}`}
-          data-state={activeTab === "paid-search" ? "active" : "inactive"}
-          onClick={() => setActiveTab("paid-search")}
-        >
-          {t('paidSearchTab')}
-        </button>
-        <button
-          className={`dashboard-tab ${activeTab === "paid-socials" ? "data-[state=active]" : "data-[state=inactive]"}`}
-          data-state={activeTab === "paid-socials" ? "active" : "inactive"}
-          onClick={() => setActiveTab("paid-socials")}
-        >
-          {t('paidSocialsTab')}
-        </button>
-        <button
-          className={`dashboard-tab ${activeTab === "organic-social" ? "data-[state=active]" : "data-[state=inactive]"}`}
-          data-state={activeTab === "organic-social" ? "active" : "inactive"}
-          onClick={() => setActiveTab("organic-social")}
-        >
-          {t('organicSocialTab')}
-        </button>
-        <button
-          className={`dashboard-tab ${activeTab === "website" ? "data-[state=active]" : "data-[state=inactive]"}`}
-          data-state={activeTab === "website" ? "active" : "inactive"}
-          onClick={() => setActiveTab("website")}
-        >
-          {t('websiteTab')}
-        </button>
-        <button
-          className={`dashboard-tab ${activeTab === "email" ? "data-[state=active]" : "data-[state=inactive]"}`}
-          data-state={activeTab === "email" ? "active" : "inactive"}
-          onClick={() => setActiveTab("email")}
-        >
-          {t('emailTab')}
-        </button>
-        <button
-          className={`dashboard-tab ${activeTab === "forms" ? "data-[state=active]" : "data-[state=inactive]"}`}
-          data-state={activeTab === "forms" ? "active" : "inactive"}
-          onClick={() => setActiveTab("forms")}
-        >
-          {t('formsTab')}
-        </button>
-      </div>
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="mb-8">
+        <TabsList className="w-auto mb-6">
+          <TabsTrigger value="paid-search">
+            {t('paidSearchTab')}
+          </TabsTrigger>
+          <TabsTrigger value="paid-socials">
+            {t('paidSocialsTab')}
+          </TabsTrigger>
+          <TabsTrigger value="organic-social">
+            {t('organicSocialTab')}
+          </TabsTrigger>
+          <TabsTrigger value="website">
+            {t('websiteTab')}
+          </TabsTrigger>
+          <TabsTrigger value="email">
+            {t('emailTab')}
+          </TabsTrigger>
+          <TabsTrigger value="forms">
+            {t('formsTab')}
+          </TabsTrigger>
+        </TabsList>
 
-      <div className="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        <IosSwitch
-          options={[
-            { value: "overview", label: t('overviewTab') },
-            { value: "details", label: t('detailsTab') }
-          ]}
-          value={activeSubTab[activeTab]}
-          onChange={handleSubTabChange}
-          className="ios-switch"
-        />
+        <TabsContent value="paid-search">
+          <div className="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <IosSwitch
+              options={[
+                { value: "overview", label: t('overviewTab') },
+                { value: "details", label: t('detailsTab') }
+              ]}
+              value={activeSubTab[activeTab]}
+              onChange={handleSubTabChange}
+              className="ios-switch"
+            />
 
-        {activeSubTab[activeTab] === "details" && (
-          <Select 
-            value={selectedTool[activeTab]} 
-            onValueChange={handleToolChange}
-          >
-            <SelectTrigger className="w-[200px] bg-white border-gray-200 shadow-sm">
-              <SelectValue placeholder="Select platform" />
-            </SelectTrigger>
-            <SelectContent className="bg-white">
-              {toolsByCategory[activeTab as keyof typeof toolsByCategory]?.map(tool => (
-                <SelectItem key={tool.id} value={tool.id}>
-                  {tool.name}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        )}
-      </div>
+            {activeSubTab[activeTab] === "details" && (
+              <Select 
+                value={selectedTool[activeTab]} 
+                onValueChange={handleToolChange}
+              >
+                <SelectTrigger className="w-[200px] bg-white border-gray-200 shadow-sm">
+                  <SelectValue placeholder="Select platform" />
+                </SelectTrigger>
+                <SelectContent className="bg-white">
+                  {toolsByCategory[activeTab as keyof typeof toolsByCategory]?.map(tool => (
+                    <SelectItem key={tool.id} value={tool.id}>
+                      {tool.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            )}
+          </div>
 
-      <Card>
-        <CardContent className="pt-6">
-          {renderDashboard(activeTab, selectedTool[activeTab])}
-        </CardContent>
-      </Card>
+          <Card>
+            <CardContent className="pt-6">
+              {renderDashboard(activeTab, selectedTool[activeTab])}
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="paid-socials">
+          <div className="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <IosSwitch
+              options={[
+                { value: "overview", label: t('overviewTab') },
+                { value: "details", label: t('detailsTab') }
+              ]}
+              value={activeSubTab[activeTab]}
+              onChange={handleSubTabChange}
+              className="ios-switch"
+            />
+
+            {activeSubTab[activeTab] === "details" && (
+              <Select 
+                value={selectedTool[activeTab]} 
+                onValueChange={handleToolChange}
+              >
+                <SelectTrigger className="w-[200px] bg-white border-gray-200 shadow-sm">
+                  <SelectValue placeholder="Select platform" />
+                </SelectTrigger>
+                <SelectContent className="bg-white">
+                  {toolsByCategory[activeTab as keyof typeof toolsByCategory]?.map(tool => (
+                    <SelectItem key={tool.id} value={tool.id}>
+                      {tool.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            )}
+          </div>
+
+          <Card>
+            <CardContent className="pt-6">
+              {renderDashboard(activeTab, selectedTool[activeTab])}
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="organic-social">
+          <div className="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <IosSwitch
+              options={[
+                { value: "overview", label: t('overviewTab') },
+                { value: "details", label: t('detailsTab') }
+              ]}
+              value={activeSubTab[activeTab]}
+              onChange={handleSubTabChange}
+              className="ios-switch"
+            />
+
+            {activeSubTab[activeTab] === "details" && (
+              <Select 
+                value={selectedTool[activeTab]} 
+                onValueChange={handleToolChange}
+              >
+                <SelectTrigger className="w-[200px] bg-white border-gray-200 shadow-sm">
+                  <SelectValue placeholder="Select platform" />
+                </SelectTrigger>
+                <SelectContent className="bg-white">
+                  {toolsByCategory[activeTab as keyof typeof toolsByCategory]?.map(tool => (
+                    <SelectItem key={tool.id} value={tool.id}>
+                      {tool.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            )}
+          </div>
+
+          <Card>
+            <CardContent className="pt-6">
+              {renderDashboard(activeTab, selectedTool[activeTab])}
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="website">
+          <div className="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <IosSwitch
+              options={[
+                { value: "overview", label: t('overviewTab') },
+                { value: "details", label: t('detailsTab') }
+              ]}
+              value={activeSubTab[activeTab]}
+              onChange={handleSubTabChange}
+              className="ios-switch"
+            />
+
+            {activeSubTab[activeTab] === "details" && (
+              <Select 
+                value={selectedTool[activeTab]} 
+                onValueChange={handleToolChange}
+              >
+                <SelectTrigger className="w-[200px] bg-white border-gray-200 shadow-sm">
+                  <SelectValue placeholder="Select platform" />
+                </SelectTrigger>
+                <SelectContent className="bg-white">
+                  {toolsByCategory[activeTab as keyof typeof toolsByCategory]?.map(tool => (
+                    <SelectItem key={tool.id} value={tool.id}>
+                      {tool.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            )}
+          </div>
+
+          <Card>
+            <CardContent className="pt-6">
+              {renderDashboard(activeTab, selectedTool[activeTab])}
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="email">
+          <div className="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <IosSwitch
+              options={[
+                { value: "overview", label: t('overviewTab') },
+                { value: "details", label: t('detailsTab') }
+              ]}
+              value={activeSubTab[activeTab]}
+              onChange={handleSubTabChange}
+              className="ios-switch"
+            />
+
+            {activeSubTab[activeTab] === "details" && (
+              <Select 
+                value={selectedTool[activeTab]} 
+                onValueChange={handleToolChange}
+              >
+                <SelectTrigger className="w-[200px] bg-white border-gray-200 shadow-sm">
+                  <SelectValue placeholder="Select platform" />
+                </SelectTrigger>
+                <SelectContent className="bg-white">
+                  {toolsByCategory[activeTab as keyof typeof toolsByCategory]?.map(tool => (
+                    <SelectItem key={tool.id} value={tool.id}>
+                      {tool.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            )}
+          </div>
+
+          <Card>
+            <CardContent className="pt-6">
+              {renderDashboard(activeTab, selectedTool[activeTab])}
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="forms">
+          <div className="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <IosSwitch
+              options={[
+                { value: "overview", label: t('overviewTab') },
+                { value: "details", label: t('detailsTab') }
+              ]}
+              value={activeSubTab[activeTab]}
+              onChange={handleSubTabChange}
+              className="ios-switch"
+            />
+
+            {activeSubTab[activeTab] === "details" && (
+              <Select 
+                value={selectedTool[activeTab]} 
+                onValueChange={handleToolChange}
+              >
+                <SelectTrigger className="w-[200px] bg-white border-gray-200 shadow-sm">
+                  <SelectValue placeholder="Select platform" />
+                </SelectTrigger>
+                <SelectContent className="bg-white">
+                  {toolsByCategory[activeTab as keyof typeof toolsByCategory]?.map(tool => (
+                    <SelectItem key={tool.id} value={tool.id}>
+                      {tool.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            )}
+          </div>
+
+          <Card>
+            <CardContent className="pt-6">
+              {renderDashboard(activeTab, selectedTool[activeTab])}
+            </CardContent>
+          </Card>
+        </TabsContent>
+      </Tabs>
     </div>
   );
 };
