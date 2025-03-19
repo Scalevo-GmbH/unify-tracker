@@ -10,6 +10,8 @@ import ConnectPlatforms from "@/components/dashboard/ConnectPlatforms";
 import { DateRange } from "@/components/DateRangeSelector";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { ScrollAreaHorizontal } from "@/components/ui/scroll-area";
+import PerformanceChart from "@/components/PerformanceChart";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface DashboardTabsProps {
   activeTab: "overview" | "campaigns";
@@ -55,6 +57,16 @@ const DashboardTabs: React.FC<DashboardTabsProps> = ({
 
       <TabsContent value="overview" className="space-y-6 pb-8">
         <TypedDashboardMetrics dateRange={dateRange} />
+        
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-base font-medium">{t('overallPerformance')}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <PerformanceChart dateRange={dateRange} metrics={["impressions", "clicks"]} />
+          </CardContent>
+        </Card>
+        
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <TypedTopChannels dateRange={dateRange} />
           <ConnectPlatforms onOpenModal={onOpenModal} />

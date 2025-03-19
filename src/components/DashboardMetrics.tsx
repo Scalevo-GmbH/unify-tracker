@@ -1,11 +1,16 @@
 
 import React from "react";
-import { Users, Eye, Percent, BarChart3, ArrowUpRight } from "lucide-react";
+import { Users, Eye, Percent, ArrowUpRight } from "lucide-react";
 import { MetricCard } from "./MetricCard";
 import FadeInSection from "./animations/FadeInSection";
 import { useTranslation } from "@/hooks/use-translation";
+import { DateRange } from "@/components/DateRangeSelector";
 
-export const DashboardMetrics: React.FC = () => {
+interface DashboardMetricsProps {
+  dateRange: DateRange;
+}
+
+export const DashboardMetrics: React.FC<DashboardMetricsProps> = ({ dateRange }) => {
   const { t } = useTranslation();
   
   return (
