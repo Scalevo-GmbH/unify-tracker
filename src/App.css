@@ -12,6 +12,8 @@
   width: auto;
   font-family: 'Cal Sans', 'Inter', system-ui, sans-serif !important;
   letter-spacing: var(--cal-letter-spacing);
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .dashboard-tab {
@@ -94,4 +96,32 @@
   background-color: white;
   border-radius: 0.75rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Ensure all mobile containers respect viewport width */
+@media (max-width: 768px) {
+  .container, 
+  div[class*="dashboard"],
+  div[class*="tab-content"],
+  .card, 
+  table,
+  section {
+    max-width: 100vw;
+    width: 100%;
+    overflow-x: hidden;
+  }
+  
+  /* Tables should be horizontally scrollable when needed */
+  .responsive-table-container {
+    overflow-x: auto;
+    max-width: 100%;
+  }
+  
+  /* Adjust side padding for mobile */
+  .px-4, .px-6, .p-4, .p-6 {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
 }
