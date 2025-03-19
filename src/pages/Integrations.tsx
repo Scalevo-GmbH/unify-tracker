@@ -7,6 +7,7 @@ import { IntegrationCard } from "@/components/IntegrationCard";
 import { ConnectPlatformModal } from "@/components/ConnectPlatformModal";
 import { FadeInSection } from "@/components/animations/FadeInSection";
 import { Search, Grid } from "lucide-react";
+import { useTranslation } from "@/hooks/use-translation";
 import { 
   Facebook, 
   Instagram, 
@@ -32,6 +33,7 @@ const Integrations = () => {
     icon: React.ReactNode;
   } | null>(null);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const { t } = useTranslation();
 
   const handleOpenModal = (name: string, icon: React.ReactNode) => {
     setSelectedPlatform({ name, icon });
@@ -215,19 +217,31 @@ const Integrations = () => {
     (category: any) => (category as any[]).length > 0
   ) || filteredAllIntegrations.length > 0;
 
+  const getCategoryTranslation = (category: string) => {
+    const categoryMap: Record<string, string> = {
+      'advertising': t('advertisingTab'),
+      'social': t('socialMediaTab'),
+      'email': t('emailMarketingTab'),
+      'analytics': t('analyticsTab'),
+      'ecommerce': t('ecommerceTab'),
+      'other': t('otherToolsTab')
+    };
+    return categoryMap[category] || category;
+  };
+
   return (
     <div className="container px-4 sm:px-6 lg:px-8 py-8">
       <FadeInSection>
         <div className="flex flex-col space-y-4 md:flex-row md:justify-between md:space-y-0 mb-8">
           <div>
-            <h1 className="text-2xl font-semibold tracking-tight">Integrations</h1>
-            <p className="text-muted-foreground">Connect your marketing tools to automate reporting and analysis.</p>
+            <h1 className="text-2xl font-semibold tracking-tight">{t('integrations')}</h1>
+            <p className="text-muted-foreground">{t('connectTools')}</p>
           </div>
           <div className="relative w-full md:w-64">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
             <Input
               type="search"
-              placeholder="Search integrations..."
+              placeholder={t('searchIntegrations')}
               className="pl-8"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
@@ -240,25 +254,25 @@ const Integrations = () => {
         <FadeInSection>
           <TabsList className="dashboard-tabs">
             <TabsTrigger value="all" className="dashboard-tab">
-              All
+              {t('allTab')}
             </TabsTrigger>
             <TabsTrigger value="advertising" className="dashboard-tab">
-              Advertising
+              {t('advertisingTab')}
             </TabsTrigger>
             <TabsTrigger value="social" className="dashboard-tab">
-              Social Media
+              {t('socialMediaTab')}
             </TabsTrigger>
             <TabsTrigger value="email" className="dashboard-tab">
-              Email Marketing
+              {t('emailMarketingTab')}
             </TabsTrigger>
             <TabsTrigger value="analytics" className="dashboard-tab">
-              Analytics
+              {t('analyticsTab')}
             </TabsTrigger>
             <TabsTrigger value="ecommerce" className="dashboard-tab">
-              E-commerce
+              {t('ecommerceTab')}
             </TabsTrigger>
             <TabsTrigger value="other" className="dashboard-tab">
-              Other Tools
+              {t('otherToolsTab')}
             </TabsTrigger>
           </TabsList>
         </FadeInSection>
@@ -268,16 +282,16 @@ const Integrations = () => {
             <Card className="mt-8">
               <CardContent className="flex flex-col items-center justify-center py-12">
                 <Search className="h-12 w-12 text-muted-foreground mb-4 opacity-50" />
-                <h3 className="text-xl font-medium mb-2">No integrations found</h3>
+                <h3 className="text-xl font-medium mb-2">{t('noIntegrationsFound')}</h3>
                 <p className="text-muted-foreground text-center max-w-md">
-                  We couldn't find any integrations matching "{searchTerm}". Try a different search term or browse the categories.
+                  {t('noIntegrationsMessage').replace('{searchTerm}', searchTerm)}
                 </p>
                 <Button 
                   variant="outline" 
                   className="mt-4"
                   onClick={() => setSearchTerm("")}
                 >
-                  Clear Search
+                  {t('clearSearch')}
                 </Button>
               </CardContent>
             </Card>
@@ -290,7 +304,7 @@ const Integrations = () => {
                   <Card>
                     <CardContent className="flex flex-col items-center justify-center py-8">
                       <p className="text-muted-foreground">
-                        No integrations matching your search.
+                        {t('noMatchingIntegrations').replace('{category}', '')}
                       </p>
                     </CardContent>
                   </Card>
@@ -315,9 +329,9 @@ const Integrations = () => {
                         <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/5 mb-4">
                           <span className="text-lg font-semibold">+</span>
                         </div>
-                        <h3 className="text-base font-medium mb-2">Request Integration</h3>
+                        <h3 className="text-base font-medium mb-2">{t('requestIntegration')}</h3>
                         <p className="text-sm text-muted-foreground text-center flex-grow">
-                          Don't see what you need? Request a new integration.
+                          {t('requestIntegrationDescription')}
                         </p>
                         <div className="mt-auto w-full">
                           <div className="h-[38px]"></div>
@@ -336,7 +350,7 @@ const Integrations = () => {
                     <Card>
                       <CardContent className="flex flex-col items-center justify-center py-8">
                         <p className="text-muted-foreground">
-                          No {category} integrations matching your search.
+                          {t('noMatchingIntegrations').replace('{category}', getCategoryTranslation(category))}
                         </p>
                       </CardContent>
                     </Card>
@@ -361,9 +375,9 @@ const Integrations = () => {
                           <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/5 mb-4">
                             <span className="text-lg font-semibold">+</span>
                           </div>
-                          <h3 className="text-base font-medium mb-2">Request Integration</h3>
+                          <h3 className="text-base font-medium mb-2">{t('requestIntegration')}</h3>
                           <p className="text-sm text-muted-foreground text-center flex-grow">
-                            Don't see what you need? Request a new integration.
+                            {t('requestIntegrationDescription')}
                           </p>
                           <div className="mt-auto w-full">
                             <div className="h-[38px]"></div>

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Sparkles } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "@/hooks/use-translation";
 
 interface IntegrationCardProps {
   name: string;
@@ -27,6 +28,7 @@ export const IntegrationCard: React.FC<IntegrationCardProps> = ({
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleClick = () => {
     if (route) {
@@ -52,7 +54,7 @@ export const IntegrationCard: React.FC<IntegrationCardProps> = ({
       {popular && (
         <div className="absolute top-3 right-3 flex items-center bg-marketing-purple/10 px-2 py-1 rounded-full">
           <Sparkles className="h-3 w-3 text-marketing-purple mr-1" />
-          <span className="text-xs text-marketing-purple cal-badge">Popular</span>
+          <span className="text-xs text-marketing-purple cal-badge">{t('popular')}</span>
         </div>
       )}
       
@@ -73,7 +75,7 @@ export const IntegrationCard: React.FC<IntegrationCardProps> = ({
               : "bg-primary text-primary-foreground hover:bg-primary/90"
           )}
         >
-          {route && connected ? "View Dashboard" : connected ? "Manage Connection" : "Connect"}
+          {route && connected ? t('viewDashboard') : connected ? t('managedConnection') : t('connect')}
         </button>
       </div>
       
