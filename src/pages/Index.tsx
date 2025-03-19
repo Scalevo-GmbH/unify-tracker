@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { DashboardMetrics } from "@/components/DashboardMetrics";
@@ -41,6 +42,14 @@ const Index = () => {
     setIsModalOpen(true);
   };
 
+  // Create a type-safe handler for tab changes
+  const handleTabChange = (value: string) => {
+    // This ensures we only set valid values
+    if (value === "overview" || value === "campaigns") {
+      setActiveTab(value);
+    }
+  };
+
   return (
     <div className="container px-4 sm:px-6 lg:px-8 py-8">
       <section className="mb-8">
@@ -71,7 +80,7 @@ const Index = () => {
           </div>
         </FadeInSection>
         
-        <Tabs defaultValue="overview" value={activeTab} onValueChange={setActiveTab}>
+        <Tabs defaultValue="overview" value={activeTab} onValueChange={handleTabChange}>
           <TabsList>
             <TabsTrigger value="overview">
               <Home className="h-4 w-4 mr-2" />

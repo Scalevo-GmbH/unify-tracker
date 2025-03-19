@@ -10,6 +10,11 @@ const Account = () => {
   const [activeTab, setActiveTab] = useState("settings");
   const { t } = useTranslation();
 
+  // Create a type-safe handler for tab changes
+  const handleTabChange = (value: string) => {
+    setActiveTab(value);
+  };
+
   return (
     <div className="container mx-auto py-8 px-4 md:px-6">
       <div className="mb-8">
@@ -17,7 +22,7 @@ const Account = () => {
         <p className="text-muted-foreground">{t('accountManage')}</p>
       </div>
 
-      <Tabs defaultValue="settings" value={activeTab} onValueChange={setActiveTab}>
+      <Tabs defaultValue="settings" value={activeTab} onValueChange={handleTabChange}>
         <TabsList className="w-full">
           <TabsTrigger value="settings">
             {t('settings')}

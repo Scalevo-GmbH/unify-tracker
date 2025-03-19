@@ -12,6 +12,11 @@ const HelpSupport: React.FC = () => {
   const [activeTab, setActiveTab] = useState("faq");
   const { t } = useTranslation();
 
+  // Create a type-safe handler for tab changes
+  const handleTabChange = (value: string) => {
+    setActiveTab(value);
+  };
+
   return (
     <div className="container mx-auto py-8 px-4 md:px-6">
       <div className="mb-8">
@@ -19,7 +24,7 @@ const HelpSupport: React.FC = () => {
         <p className="text-muted-foreground">{t('helpSupportDesc')}</p>
       </div>
 
-      <HelpSupportTabs activeTab={activeTab} setActiveTab={setActiveTab} />
+      <HelpSupportTabs activeTab={activeTab} setActiveTab={handleTabChange} />
 
       <Tabs value={activeTab} className="mt-6">
         <TabsContent value="faq">
