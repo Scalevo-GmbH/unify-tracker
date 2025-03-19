@@ -27,97 +27,78 @@ export type PerformanceTranslationKey =
 export const performanceTranslations: Record<PerformanceTranslationKey, Record<Language, string>> = {
   performance: {
     en: 'Performance',
-    es: 'Rendimiento',
-    fr: 'Performance'
+    de: 'Leistung'
   },
   trackAnalyzePerformance: {
     en: 'Track and analyze the performance of your marketing channels',
-    es: 'Seguimiento y análisis del rendimiento de sus canales de marketing',
-    fr: 'Suivez et analysez la performance de vos canaux marketing'
+    de: 'Verfolgen und analysieren Sie die Leistung Ihrer Marketingkanäle'
   },
   overview: {
     en: 'Overview',
-    es: 'Visión general',
-    fr: 'Aperçu'
+    de: 'Überblick'
   },
   details: {
     en: 'Details',
-    es: 'Detalles',
-    fr: 'Détails'
+    de: 'Details'
   },
   paidSearch: {
     en: 'Paid Search',
-    es: 'Búsqueda pagada',
-    fr: 'Recherche payante'
+    de: 'Bezahlte Suche'
   },
   paidSocials: {
     en: 'Paid Social',
-    es: 'Social pagado',
-    fr: 'Social payant'
+    de: 'Bezahlte Soziale Medien'
   },
   organicSocial: {
     en: 'Organic Social',
-    es: 'Social orgánico',
-    fr: 'Social organique'
+    de: 'Organische Soziale Medien'
   },
   website: {
     en: 'Website',
-    es: 'Sitio web',
-    fr: 'Site web'
+    de: 'Webseite'
   },
   email: {
     en: 'Email',
-    es: 'Correo electrónico',
-    fr: 'Email'
+    de: 'E-Mail'
   },
   forms: {
     en: 'Forms',
-    es: 'Formularios',
-    fr: 'Formulaires'
+    de: 'Formulare'
   },
   selectTool: {
     en: 'Select Tool',
-    es: 'Seleccionar herramienta',
-    fr: 'Sélectionnez l\'outil'
+    de: 'Tool auswählen'
   },
   performanceSummary: {
     en: 'Performance Summary',
-    es: 'Resumen de rendimiento',
-    fr: 'Résumé de performance'
+    de: 'Leistungsübersicht'
   },
   topPerformer: {
     en: 'Top Performer',
-    es: 'Mejor rendimiento',
-    fr: 'Meilleur performant'
+    de: 'Top-Performer'
   },
   recommendation: {
     en: 'Recommendation',
-    es: 'Recomendación',
-    fr: 'Recommandation'
+    de: 'Empfehlung'
   },
   viewDetailedAnalytics: {
     en: 'View Detailed Analytics',
-    es: 'Ver análisis detallado',
-    fr: 'Voir les analyses détaillées'
+    de: 'Detaillierte Analysen anzeigen'
   },
   selectChannel: {
     en: 'Select Channel',
-    es: 'Seleccionar canal',
-    fr: 'Sélectionner le canal'
+    de: 'Kanal auswählen'
   },
   channelDetails: {
     en: 'Channel Details',
-    es: 'Detalles del canal',
-    fr: 'Détails du canal'
+    de: 'Kanaldetails'
   },
   keyMetrics: {
     en: 'Key Metrics',
-    es: 'Métricas clave',
-    fr: 'Indicateurs clés'
+    de: 'Wichtige Kennzahlen'
   },
   conversionRate: {
     en: 'Conversion Rate',
-    es: 'Tasa de conversión',
-    fr: 'Taux de conversion'
+    de: 'Konversionsrate'
   }
 };

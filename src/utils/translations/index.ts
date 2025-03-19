@@ -9,6 +9,7 @@ import { navigationTranslations, NavigationTranslationKey } from './navigation';
 import { campaignsTranslations, CampaignsTranslationKey } from './campaigns';
 import { integrationsTranslations, IntegrationsTranslationKey } from './integrations';
 import { accountTranslations, AccountTranslationKey } from './account';
+import { intelligenceTranslations, IntelligenceTranslationKey } from './intelligence';
 
 // Union type of all translation keys
 export type TranslationKey = 
@@ -20,7 +21,8 @@ export type TranslationKey =
   | NavigationTranslationKey
   | CampaignsTranslationKey
   | IntegrationsTranslationKey
-  | AccountTranslationKey;
+  | AccountTranslationKey
+  | IntelligenceTranslationKey;
 
 // Function to get a translation
 export function getTranslation(key: TranslationKey, language: Language = 'en'): string {
@@ -61,6 +63,10 @@ export function getTranslation(key: TranslationKey, language: Language = 'en'): 
     return accountTranslations[key as AccountTranslationKey][language];
   }
   
+  if (key in intelligenceTranslations) {
+    return intelligenceTranslations[key as IntelligenceTranslationKey][language];
+  }
+  
   // If the key is not found, return the key itself as a fallback
   console.warn(`Translation key not found: ${key}`);
   return key;
@@ -76,3 +82,4 @@ export * from './navigation';
 export * from './campaigns';
 export * from './integrations';
 export * from './account';
+export * from './intelligence';
