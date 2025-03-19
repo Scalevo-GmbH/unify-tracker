@@ -150,3 +150,54 @@ legend,
   letter-spacing: var(--cal-body-spacing);
   font-weight: var(--cal-body-weight);
 }
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  /* Reduce font sizes */
+  .card-title,
+  .metric-card-title,
+  .dashboard-card-title,
+  .section-title {
+    font-size: 1rem !important;
+    line-height: 1.5rem !important;
+  }
+  
+  .metric-value,
+  .metric-card-value,
+  .dashboard-card-value {
+    font-size: 1.25rem !important;
+    line-height: 1.75rem !important;
+  }
+  
+  .dialog-title,
+  .modal-title,
+  .popover-title {
+    font-size: 1.125rem !important;
+    line-height: 1.5rem !important;
+  }
+  
+  /* Reduce padding */
+  .menu-item,
+  .dropdown-item,
+  .navigation-item {
+    padding: 0.375rem 0.625rem !important;
+    font-size: 0.875rem !important;
+  }
+  
+  button,
+  .button,
+  [role="button"],
+  .btn {
+    padding: 0.375rem 0.75rem !important;
+    font-size: 0.875rem !important;
+  }
+  
+  /* Smaller icons */
+  button svg,
+  .button svg,
+  [role="button"] svg,
+  .icon {
+    width: 1rem !important;
+    height: 1rem !important;
+  }
+}
