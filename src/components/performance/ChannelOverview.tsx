@@ -39,8 +39,8 @@ export const ChannelOverview: React.FC<ChannelOverviewProps> = ({
   const { t } = useTranslation();
 
   return (
-    <div className="space-y-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div className="space-y-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
         {channelData.metrics.map((metric, index) => (
           <MetricCard
             key={index}
@@ -53,8 +53,8 @@ export const ChannelOverview: React.FC<ChannelOverviewProps> = ({
         ))}
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Card className="col-span-1 md:col-span-2">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <Card className="col-span-1 lg:col-span-2">
           <CardHeader className="pb-2">
             <CardTitle className="text-lg flex items-center">
               <Zap className="h-5 w-5 mr-2 text-amber-500" />
@@ -64,7 +64,7 @@ export const ChannelOverview: React.FC<ChannelOverviewProps> = ({
           <CardContent>
             <p className="text-muted-foreground mb-6">{channelData.summary}</p>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
               <div className="bg-slate-50 p-4 rounded-lg border border-slate-100">
                 <h4 className="text-sm font-medium text-slate-700 mb-2 flex items-center">
                   <Award className="h-4 w-4 mr-2 text-emerald-500" />

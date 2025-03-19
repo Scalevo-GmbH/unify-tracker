@@ -86,8 +86,8 @@ export const PerformanceDashboard: React.FC<PerformanceDashboardProps> = ({
   };
 
   return (
-    <Card>
-      <CardContent className="pt-6">
+    <Card className="w-full overflow-hidden">
+      <CardContent className="pt-6 px-4 sm:px-6">
         {renderDashboard(activeTab, selectedTool)}
       </CardContent>
     </Card>

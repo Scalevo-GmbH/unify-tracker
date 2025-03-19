@@ -41,8 +41,8 @@ const Performance = () => {
   };
 
   return (
-    <div className="container mx-auto py-8 px-4 md:px-6">
-      <div className="mb-8">
+    <div className="w-full mx-auto py-4 sm:py-8 px-2 sm:px-4 md:px-6">
+      <div className="mb-4 sm:mb-8">
         <h1 className="page-title">{t('performance')}</h1>
         <p className="page-description">{t('trackAnalyzePerformance')}</p>
       </div>

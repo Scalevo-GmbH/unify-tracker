@@ -11,8 +11,6 @@ import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import NotFound from "./pages/NotFound";
 import Integrations from "./pages/Integrations";
-import MetaAds from "./pages/MetaAds";
-import GoogleAds from "./pages/GoogleAds";
 import Account from "./pages/Account";
 import HelpSupport from "./pages/HelpSupport";
 import Campaigns from "./pages/Campaigns";
@@ -48,8 +46,6 @@ const AppLayout = () => {
                   <Route path="/forgot-password" element={<ForgotPassword />} />
                   <Route path="/reset-password" element={<ResetPassword />} />
                   <Route path="/integrations" element={<Integrations />} />
-                  <Route path="/meta-ads" element={<MetaAds />} />
-                  <Route path="/google-ads" element={<GoogleAds />} />
                   <Route path="/campaigns" element={<Campaigns />} />
                   <Route path="/performance" element={<Performance />} />
                   <Route path="/intelligence" element={<Intelligence />} />
