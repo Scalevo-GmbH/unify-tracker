@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { z } from "zod";
@@ -36,16 +35,13 @@ const Login = () => {
   };
 
   const onSubmit = (values: FormValues) => {
-    // Here you would typically call an authentication API
     console.log(values);
     
-    // Simulate successful login
     toast({
       title: "Login Successful",
       description: "You have successfully logged in!",
     });
     
-    // Redirect to the index page after successful login
     navigate("/");
   };
 
