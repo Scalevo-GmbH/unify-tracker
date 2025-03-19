@@ -13,6 +13,11 @@ import { ScrollAreaHorizontal } from "@/components/ui/scroll-area";
 import PerformanceChart from "@/components/PerformanceChart";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
+// Define common shared types
+interface WithDateRangeProps {
+  dateRange: DateRange;
+}
+
 interface DashboardTabsProps {
   activeTab: "overview" | "campaigns";
   onTabChange: (value: string) => void;
@@ -20,13 +25,7 @@ interface DashboardTabsProps {
   onOpenModal: (name: string, icon: React.ReactNode) => void;
 }
 
-// Define props for the components that need dateRange
-interface WithDateRangeProps {
-  dateRange: DateRange;
-}
-
 // Explicitly type the components to accept dateRange
-// This tells TypeScript that these components can accept the dateRange prop
 const TypedDashboardMetrics = DashboardMetrics as React.ComponentType<WithDateRangeProps>;
 const TypedActiveCampaigns = ActiveCampaigns as React.ComponentType<WithDateRangeProps>;
 const TypedTopChannels = TopChannels as React.ComponentType<WithDateRangeProps>;

@@ -10,6 +10,16 @@ interface TopChannelsProps {
   dateRange?: DateRange;
 }
 
+// Define the interface for the channel items
+interface ChannelItemProps {
+  icon: React.ReactNode;
+  name: string;
+  percentage: number;
+  bgColor: string;
+  textColor: string;
+  barColor: string;
+}
+
 export const TopChannels: React.FC<TopChannelsProps> = ({ dateRange }) => {
   const { t } = useTranslation();
 
@@ -89,15 +99,7 @@ export const TopChannels: React.FC<TopChannelsProps> = ({ dateRange }) => {
   );
 };
 
-interface ChannelItemProps {
-  icon: React.ReactNode;
-  name: string;
-  percentage: number;
-  bgColor: string;
-  textColor: string;
-  barColor: string;
-}
-
+// Extract ChannelItem to its own component for better readability
 const ChannelItem: React.FC<ChannelItemProps> = ({ 
   icon, 
   name, 
