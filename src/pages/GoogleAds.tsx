@@ -156,20 +156,32 @@ export default function GoogleAds() {
       <section className="mb-8">
         <FadeInSection>
           <Tabs defaultValue="performance" value={activeTab} onValueChange={handleTabChange}>
-            <TabsList className="w-full">
-              <TabsTrigger value="performance">
+            <TabsList className="inline-flex h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground font-cal w-full">
+              <TabsTrigger 
+                value="performance"
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm"
+              >
                 <BarChart3 className="h-4 w-4 mr-2" />
                 Performance
               </TabsTrigger>
-              <TabsTrigger value="search-analytics">
+              <TabsTrigger 
+                value="search-analytics"
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm"
+              >
                 <Search className="h-4 w-4 mr-2" />
                 Search Analytics
               </TabsTrigger>
-              <TabsTrigger value="ad-groups">
+              <TabsTrigger 
+                value="ad-groups"
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm"
+              >
                 <Users className="h-4 w-4 mr-2" />
                 Ad Groups
               </TabsTrigger>
-              <TabsTrigger value="conversions">
+              <TabsTrigger 
+                value="conversions"
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm"
+              >
                 <LineChart className="h-4 w-4 mr-2" />
                 Conversions
               </TabsTrigger>

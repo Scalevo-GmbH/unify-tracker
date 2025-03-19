@@ -53,12 +53,18 @@ const Campaigns = () => {
 
       <div className="px-6">
         <Tabs value={activeTab} onValueChange={handleTabChange}>
-          <TabsList className="w-full">
-            <TabsTrigger value="all-campaigns">
+          <TabsList className="inline-flex h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground font-cal w-full">
+            <TabsTrigger 
+              value="all-campaigns"
+              className="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm"
+            >
               <Table className="h-4 w-4 mr-2" />
               {t('allCampaigns')}
             </TabsTrigger>
-            <TabsTrigger value="new-campaign">
+            <TabsTrigger 
+              value="new-campaign"
+              className="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm"
+            >
               <ListPlus className="h-4 w-4 mr-2" />
               {t('newCampaign')}
             </TabsTrigger>
