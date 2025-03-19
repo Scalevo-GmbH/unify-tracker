@@ -4,8 +4,13 @@ import { HelpCircle, Facebook, Instagram, Twitter, Mail, Search } from "lucide-r
 import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 import { useTranslation } from "@/hooks/use-translation";
 import FadeInSection from "@/components/animations/FadeInSection";
+import { DateRange } from "@/components/DateRangeSelector";
 
-export const TopChannels: React.FC = () => {
+interface TopChannelsProps {
+  dateRange?: DateRange;
+}
+
+export const TopChannels: React.FC<TopChannelsProps> = ({ dateRange }) => {
   const { t } = useTranslation();
 
   return (

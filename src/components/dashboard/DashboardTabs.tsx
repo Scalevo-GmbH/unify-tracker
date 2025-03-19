@@ -58,19 +58,20 @@ const DashboardTabs: React.FC<DashboardTabsProps> = ({
       <TabsContent value="overview" className="space-y-6 pb-8">
         <TypedDashboardMetrics dateRange={dateRange} />
         
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-base font-medium">{t('overallPerformance')}</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <PerformanceChart dateRange={dateRange} metrics={["impressions", "clicks"]} />
-          </CardContent>
-        </Card>
-        
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <Card>
+            <CardHeader className="pb-2">
+              <CardTitle className="text-base font-medium">{t('overallPerformance')}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <PerformanceChart dateRange={dateRange} metrics={["impressions", "clicks"]} />
+            </CardContent>
+          </Card>
+          
           <TypedTopChannels dateRange={dateRange} />
-          <ConnectPlatforms onOpenModal={onOpenModal} />
         </div>
+        
+        <ConnectPlatforms onOpenModal={onOpenModal} />
       </TabsContent>
 
       <TabsContent value="campaigns" className="pb-8">
