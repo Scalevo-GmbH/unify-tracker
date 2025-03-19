@@ -2,13 +2,16 @@
 import { BarChart3, Eye, LineChart, MousePointerClick, Share2, TrendingUp, Users } from "lucide-react";
 import React from "react";
 
+// Define icon type to properly handle React elements in data
+type IconType = React.ReactNode;
+
 export const overviewData = {
   "paid-search": {
     metrics: [
-      { title: "Total Impressions", value: "786,245", change: 12.3, icon: <Eye className="h-4 w-4" /> },
-      { title: "Total Clicks", value: "42,890", change: 8.7, icon: <MousePointerClick className="h-4 w-4" /> },
-      { title: "Average CTR", value: "5.45%", change: -2.1, icon: <TrendingUp className="h-4 w-4" /> },
-      { title: "Total Spend", value: "€14,568", change: 15.2, icon: <BarChart3 className="h-4 w-4" /> }
+      { title: "Total Impressions", value: "786,245", change: 12.3, icon: React.createElement(Eye, { className: "h-4 w-4" }) },
+      { title: "Total Clicks", value: "42,890", change: 8.7, icon: React.createElement(MousePointerClick, { className: "h-4 w-4" }) },
+      { title: "Average CTR", value: "5.45%", change: -2.1, icon: React.createElement(TrendingUp, { className: "h-4 w-4" }) },
+      { title: "Total Spend", value: "€14,568", change: 15.2, icon: React.createElement(BarChart3, { className: "h-4 w-4" }) }
     ],
     summary: "Your paid search campaigns are performing well with a 12.3% increase in impressions and 8.7% increase in clicks compared to the previous period. Consider optimizing campaigns with lower CTR to improve overall performance.",
     topPerformer: "Google Ads - Summer Sale Campaign",
@@ -16,10 +19,10 @@ export const overviewData = {
   },
   "paid-socials": {
     metrics: [
-      { title: "Total Reach", value: "1,245,780", change: 24.5, icon: <Users className="h-4 w-4" /> },
-      { title: "Engagement Rate", value: "3.87%", change: 1.2, icon: <Share2 className="h-4 w-4" /> },
-      { title: "Total Impressions", value: "2,458,900", change: 18.4, icon: <Eye className="h-4 w-4" /> },
-      { title: "Total Spend", value: "€12,340", change: 9.7, icon: <BarChart3 className="h-4 w-4" /> }
+      { title: "Total Reach", value: "1,245,780", change: 24.5, icon: React.createElement(Users, { className: "h-4 w-4" }) },
+      { title: "Engagement Rate", value: "3.87%", change: 1.2, icon: React.createElement(Share2, { className: "h-4 w-4" }) },
+      { title: "Total Impressions", value: "2,458,900", change: 18.4, icon: React.createElement(Eye, { className: "h-4 w-4" }) },
+      { title: "Total Spend", value: "€12,340", change: 9.7, icon: React.createElement(BarChart3, { className: "h-4 w-4" }) }
     ],
     summary: "Your paid social campaigns are showing strong performance with a significant 24.5% increase in reach. Engagement is slightly up by 1.2%, suggesting content is resonating well with audiences.",
     topPerformer: "Meta Ads - Product Launch Video Campaign",
@@ -27,10 +30,10 @@ export const overviewData = {
   },
   "organic-social": {
     metrics: [
-      { title: "Total Followers", value: "124,580", change: 5.8, icon: <Users className="h-4 w-4" /> },
-      { title: "Total Engagement", value: "45,670", change: 7.2, icon: <Share2 className="h-4 w-4" /> },
-      { title: "Engagement Rate", value: "4.12%", change: 0.5, icon: <TrendingUp className="h-4 w-4" /> },
-      { title: "Reach Growth", value: "12.8%", change: 3.4, icon: <LineChart className="h-4 w-4" /> }
+      { title: "Total Followers", value: "124,580", change: 5.8, icon: React.createElement(Users, { className: "h-4 w-4" }) },
+      { title: "Total Engagement", value: "45,670", change: 7.2, icon: React.createElement(Share2, { className: "h-4 w-4" }) },
+      { title: "Engagement Rate", value: "4.12%", change: 0.5, icon: React.createElement(TrendingUp, { className: "h-4 w-4" }) },
+      { title: "Reach Growth", value: "12.8%", change: 3.4, icon: React.createElement(LineChart, { className: "h-4 w-4" }) }
     ],
     summary: "Your organic social channels are growing steadily with a 5.8% increase in followers. Engagement metrics show healthy growth at 7.2%, suggesting your content strategy is effective.",
     topPerformer: "Instagram - User-Generated Content Series",
@@ -38,10 +41,10 @@ export const overviewData = {
   },
   "website": {
     metrics: [
-      { title: "Total Visitors", value: "256,890", change: 16.7, icon: <Users className="h-4 w-4" /> },
-      { title: "Avg. Session Duration", value: "3m 42s", change: 5.3, icon: <TrendingUp className="h-4 w-4" /> },
-      { title: "Bounce Rate", value: "42.5%", change: -3.8, icon: <TrendingUp className="h-4 w-4" />, invertedChange: true },
-      { title: "Conversion Rate", value: "3.24%", change: 1.5, icon: <BarChart3 className="h-4 w-4" /> }
+      { title: "Total Visitors", value: "256,890", change: 16.7, icon: React.createElement(Users, { className: "h-4 w-4" }) },
+      { title: "Avg. Session Duration", value: "3m 42s", change: 5.3, icon: React.createElement(TrendingUp, { className: "h-4 w-4" }) },
+      { title: "Bounce Rate", value: "42.5%", change: -3.8, icon: React.createElement(TrendingUp, { className: "h-4 w-4" }), invertedChange: true },
+      { title: "Conversion Rate", value: "3.24%", change: 1.5, icon: React.createElement(BarChart3, { className: "h-4 w-4" }) }
     ],
     summary: "Website performance shows strong improvement with visitor growth of 16.7% and decreased bounce rates. The conversion rate increase of 1.5% indicates visitors are finding what they need.",
     topPerformer: "Product Pages - Especially Mobile Experience",
@@ -49,10 +52,10 @@ export const overviewData = {
   },
   "email": {
     metrics: [
-      { title: "Total Sent", value: "145,680", change: 28.4, icon: <Eye className="h-4 w-4" /> },
-      { title: "Open Rate", value: "22.4%", change: 3.2, icon: <TrendingUp className="h-4 w-4" /> },
-      { title: "Click Rate", value: "3.85%", change: 1.7, icon: <MousePointerClick className="h-4 w-4" /> },
-      { title: "Conversion Rate", value: "1.24%", change: 0.6, icon: <BarChart3 className="h-4 w-4" /> }
+      { title: "Total Sent", value: "145,680", change: 28.4, icon: React.createElement(Eye, { className: "h-4 w-4" }) },
+      { title: "Open Rate", value: "22.4%", change: 3.2, icon: React.createElement(TrendingUp, { className: "h-4 w-4" }) },
+      { title: "Click Rate", value: "3.85%", change: 1.7, icon: React.createElement(MousePointerClick, { className: "h-4 w-4" }) },
+      { title: "Conversion Rate", value: "1.24%", change: 0.6, icon: React.createElement(BarChart3, { className: "h-4 w-4" }) }
     ],
     summary: "Email campaigns are reaching more subscribers with a 28.4% increase in volume. Engagement metrics are improving with open rates up 3.2% and click rates up 1.7%.",
     topPerformer: "New Product Announcement Newsletter",
@@ -60,10 +63,10 @@ export const overviewData = {
   },
   "forms": {
     metrics: [
-      { title: "Total Submissions", value: "32,450", change: 18.3, icon: <TrendingUp className="h-4 w-4" /> },
-      { title: "Completion Rate", value: "68.7%", change: 4.5, icon: <BarChart3 className="h-4 w-4" /> },
-      { title: "Avg. Completion Time", value: "2m 15s", change: -12.4, icon: <TrendingUp className="h-4 w-4" />, invertedChange: true },
-      { title: "Conversion Rate", value: "2.87%", change: 1.2, icon: <BarChart3 className="h-4 w-4" /> }
+      { title: "Total Submissions", value: "32,450", change: 18.3, icon: React.createElement(TrendingUp, { className: "h-4 w-4" }) },
+      { title: "Completion Rate", value: "68.7%", change: 4.5, icon: React.createElement(BarChart3, { className: "h-4 w-4" }) },
+      { title: "Avg. Completion Time", value: "2m 15s", change: -12.4, icon: React.createElement(TrendingUp, { className: "h-4 w-4" }), invertedChange: true },
+      { title: "Conversion Rate", value: "2.87%", change: 1.2, icon: React.createElement(BarChart3, { className: "h-4 w-4" }) }
     ],
     summary: "Form performance has improved significantly with 18.3% more submissions and faster completion times. The increased completion rate of 4.5% indicates form optimizations are working well.",
     topPerformer: "Newsletter Signup Form",
